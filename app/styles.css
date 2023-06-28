@@ -1,0 +1,61 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+main {
+  margin: auto;
+  width: 50%;
+  padding: 20px;
+}
+
+main > h1 {
+  text-align: center;
+  font-size: 3.5em;
+}
+
+#people, #ppref_form, .footer {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#people td, #people th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#people tr:nth-child(even){background-color: #f2f2f2;}
+
+#people tr:hover {background-color: #ddd;}
+
+#people th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #3168dd;
+  color: white;
+}
+
+#petButton {
+  background-color: #3168dd;
+  border: solid #000 2px;
+  color: white;
+  border-radius: 20px;
+  padding: 7px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+}
