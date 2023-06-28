@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<script>
+// get credentials if available
+fetch('/.auth/me')
+  .then(res => {
+    return res.json()
+  })
+  .then(payload => {
+    const { clientPrincipal } = payload;
+    this.userDetails = clientPrincipal?.userDetails;
+    this.userId = clientPrincipal?.userId;
+  });
+
+// on load, get the data
+fetch('/data-api/api/person')
+    .then(res => res.text())
+    .then((out) => {
+      let jsonData = JSON.parse(out);
+      for (let i = 0; i < jsonData.value.length; i++) {
+        let person = jsonData.value[i];
+        peopleData.innerHTML +=
+          "<tr align='right'><td>" + person.person_id + "</td>" +
+          "<td>" + person.person_name + "</td>" +
+          "<td>" + person.person_email + "</td>" +
+          "<td>" + person.pet_preference + "</td></tr>";
+      };
+    })
+
+// Get the data from a stored procedure
+  function getPref(ppref) {
+    fetch('/data-api/api/getPersonByPet?pet=' + ppref)
+    .then(res => {
+      if (res.status== '403') {
+        alert('403 - forbidden, try logging in')
+      }
+        return res.text()}
+      )    
+    .then((out) => {
+      peopleData.innerHTML = "";
+      let jsonData = JSON.parse(out);
+      for (let i = 0; i < jsonData.value.length; i++) {
+        let person = jsonData.value[i];
+        peopleData.innerHTML +=
+          "<tr align='right'><td>" + person.person_id + "</td>" +
+          "<td>" + person.person_name + "</td>" +
+          "<td>" + person.person_email + "</td>" +
+          "<td>" + person.pet_preference + "</td></tr>";
+      };
+    })
+  }
+
+
+</script>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Sample JavaScript App</title>
+</head>
+
+<body>
+  <main>
+    <h1>Sample JavaScript App</h1>
+  </main>
+  <div id="ppref_form">
+      <label for="ppref">Pet Preference:</label>
+      <input type="text" id="ppref" name="ppref" value=""><br>
+      <input id="petButton" type="submit" value="Submit" onclick="getPref(ppref.value)">
+  </div>
+  <table id="people">
+    <thead>
+      <tr>
+        <th>Person ID</th>
+        <th>Person Name</th>
+        <th>Person Email</th>
+        <th>Pet Preference</th>
+      </tr>
+    </thead>
+    <tbody id="peopleData">
+      <tbody>
+  </table>
+</body>
+<footer class="footer"><a href="/.auth/login/github">Login</a></footer>
+</html>
