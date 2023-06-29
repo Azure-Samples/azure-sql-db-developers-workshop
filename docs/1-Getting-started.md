@@ -2,92 +2,49 @@
 
 # Getting started with your development environment
 
-For this workshop, we will be using GitHuv code space. This environment will provide us with all the necessary tools to run this lab completely in a cloud development space.
+For this workshop, we will be using GitHuv codespace. This environment will provide us with all the necessary tools to run this lab completely in a cloud development space.
 
 ## Clone/fork repository with necessary files
 
 * Repository at https://github.com/Azure-Samples/azure-sql-db-developers-workshop/
 
-This will also bring with it a pre-configured code spaces with some tools pre-installed
+This will also bring with it a pre-configured codespace with some tools pre-installed
 
 ### Repository Contents
 
-1. Scripts
+1. scripts
     1. Installs all the needed dev tools
-1. TBD
-1. TBD
+1. app
+    1. contains the sample HTML/JavaScript application for use with Data API builder and SWA
+1. docs
+    1. Has all the chapters/lessons of the workshop
 1. .devcontainer
-    1. Codespaces docker config
+    1. Codespace docker config
 
-### Create free accounts
+### Free accounts needed for the workshop
 
-1. Azure account
 1. GitHub account
+1. Azure account
 
-## Install necessary software components or start code spaces with specialized container
+## Install necessary software components or start codespace with specialized container
 
-### If using Code Spaces:
+### If using codespace:
 
-Done via sh script we put into the devcontainer.json
+1. Start/Create a codespace from the forked repository. Click on the **green Code button**, then click the **Create codespace on master** button.
 
-```bash
-{
-  "image": "mcr.microsoft.com/devcontainers/dotnet:7.0",
-"features": {
-	"ghcr.io/devcontainers-contrib/features/npm-package:1": {
-		"package": "typescript",
-		"version": "latest"
-	},
-	"ghcr.io/devcontainers/features/node:1": {
-		"nodeGypDependencies": true,
-		"version": "latest"
-	},
-	"ghcr.io/devcontainers/features/docker-in-docker:2": {
-		"moby": true,
-		"azureDnsAutoDetection": true,
-		"installDockerBuildx": true,
-		"version": "latest",
-		"dockerDashComposeVersion": "v1"
-	}
-  },
-"postCreateCommand": "bash scripts/install-dev-tools.sh",
-"customizations": {
-	"vscode": {
-		"extensions": [
-			"ms-mssql.sql-database-projects-vscode",
-			"ms-azuretools.vscode-azurefunctions",
-			"ms-vscode.azure-account",
-			"ms-azuretools.vscode-azureresourcegroups"
-		]
-	}
-}
-}
-```
+    ![A picture of clicking on the green Code button, then clicking the Create codespace on master button](./media/ch1/start1.png)
 
-Script contains:
+    and the codespace will start setting itself up
 
-```bash
-dotnet tool install -g microsoft.sqlpackage
-dotnet new install Microsoft.Build.Sql.Templates
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-sudo apt-get update
-sudo apt-get install azure-functions-core-tools-4
-sudo apt install dotnet-sdk-6.0 -y
-npm install -g @azure/static-web-apps-cli
-dotnet tool install --global Microsoft.DataApiBuilder
-sudo apt-get update
-sudo apt-get install sqlcmd
-dab --version 
-func version 
-dotnet --version
-echo "rm packages-microsoft-prod.deb"
-rm packages-microsoft-prod.deb
-echo "rm microsoft.gpg"
-rm microsoft.gpg
-ls
-```
+    ![A picture of the codespace setting up](./media/ch1/start2.png)
+
+1. After the codespace editor window appears, in a minute or so, the post-scripts will start installing the necessary extensions, plugins and software needed for this workshop.
+
+    ![A picture of the post create scripts running](./media/ch1/start3.png)
+
+1. Once the scripts have finished, you will be brought back to a prompt in the codespace terminal
+
+    ![A picture of a prompt in the codespace terminal](./media/ch1/start4.png)
 
 ### If on the desktop/local environment (we can put these links/requirements out before the workshop) 
 
