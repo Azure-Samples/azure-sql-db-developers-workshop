@@ -2,13 +2,11 @@
 
 # Getting started with your development environment
 
-For this workshop, we will be using GitHuv codespace. This environment will provide us with all the necessary tools to run this lab completely in a cloud development space.
+For this workshop, we will be using GitHub codespace. This environment will provide us with all the necessary tools to run this lab completely in a cloud development space.
 
 ## Clone/fork repository with necessary files
 
 * Repository at https://github.com/Azure-Samples/azure-sql-db-developers-workshop/
-
-This will also bring with it a pre-configured codespace with some tools pre-installed
 
 ### Repository Contents
 
