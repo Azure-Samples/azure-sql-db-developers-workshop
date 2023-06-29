@@ -6,8 +6,7 @@ For this workshop, we will be using GitHuv code space. This environment will pro
 
 ## Clone/fork repository with necessary files
 
-* Repository at https://github.com/Azure-Samples/XXXXX
-* Private working repository at https://github.com/JetterMcTedder/azure-sql-db-developers-workshop
+* Repository at https://github.com/Azure-Samples/azure-sql-db-developers-workshop/
 
 This will also bring with it a pre-configured code spaces with some tools pre-installed
 
