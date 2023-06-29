@@ -12,14 +12,14 @@ This will also bring with it a pre-configured codespace with some tools pre-inst
 
 ### Repository Contents
 
-1. scripts
-    1. Installs all the needed dev tools
+1. .devcontainer
+    1. Codespace docker config
 1. app
     1. contains the sample HTML/JavaScript application for use with Data API builder and SWA
 1. docs
     1. Has all the chapters/lessons of the workshop
-1. .devcontainer
-    1. Codespace docker config
+1. scripts
+    1. Installs all the needed dev tools
 
 ### Free accounts needed for the workshop
 
@@ -46,7 +46,9 @@ This will also bring with it a pre-configured codespace with some tools pre-inst
 
     ![A picture of a prompt in the codespace terminal](./media/ch1/start4.png)
 
-### If on the desktop/local environment (we can put these links/requirements out before the workshop) 
+### If on the desktop/local environment
+
+1. If using your local machine for this workshop, please ensure you have all the listed software installed and the repository cloned/downloaded.
 
 * [VS Code](https://code.visualstudio.com/)
 * [Azure Data Studio](https://learn.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
@@ -56,11 +58,3 @@ This will also bring with it a pre-configured codespace with some tools pre-inst
 * [SqlPackage](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-download)
 * [Data API Builder](https://github.com/Azure/data-api-builder)
 * [Docker desktop](https://www.docker.com/products/docker-desktop/)
-
-After desktop install, have series of checks to ensure its installed and ready (Winget listing for example)
-
-```bash
-dab --version
-func version
-dotnet --version
-```
