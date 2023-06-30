@@ -97,12 +97,13 @@
     namespace Person.Function;
     public class Customer
     {
-        public int customer_id { get; set; }
-        public string customer_name { get; set; }
-        public string customer_email { get; set; }
-        public string customer_address { get; set; }
+        public int person_id { get; set; }
+        public string person_name { get; set; }
+        public string person_email { get; set; }
+        public string pet_preference { get; set; }
     }
     ```
+
 and SAVE the file.
 
 ### Create the SQL trigger function
@@ -155,14 +156,14 @@ and SAVE the file.
     {
         [FunctionName("changeDataStream")]
         public static async Task RunAsync(
-            [SqlTrigger("[dbo].[customer]", "SqlConnectionString")]
-                IReadOnlyList<SqlChange<Customer>> changes,
+            [SqlTrigger("[dbo].[person]", "SqlConnectionString")]
+                IReadOnlyList<SqlChange<Person>> changes,
             ILogger logger)
        {
-          foreach (SqlChange<Customer> change in changes)
+          foreach (SqlChange<Person> change in changes)
           {
-              var customer = JsonSerializer.Serialize(change.Item);
-              var message = $"{change.Operation} {customer}";
+              var person = JsonSerializer.Serialize(change.Item);
+              var message = $"{change.Operation} {person}";
               logger.LogInformation(message);
             }
         }
@@ -171,32 +172,46 @@ and SAVE the file.
 
     and SAVE the file.
 
-1. This code uses the SQL trigger binding to watch the customer table for changes. When it sees a change, it will fire and so something for each change. Here, in this code, we are just logging the data change to the terminal.
-Now that the function code is done, we need to provide it a value for SqlConnectionString. This variable can be places in the local.settings.json file and contain the connect string for our locally running database.
-Image Screenshot 2023 05 12 112130
-Open the local.settings.json file and add the following line just below the “Values”: { section:
-"SqlConnectionString": "Server=localhost,1433;Database=devDB;User ID=vscode;Password=XXXXX;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;",
-Image Screenshot 2023 05 12 112130 8211 Copy
+    This code uses the SQL trigger binding to watch the cuperson stomer table for changes. When it sees a change, it will fire and capture each change. Here, in this code, we are just logging the data change to the terminal.
 
-and be sure to replace the XXXXX with the password of the database that was created before. If you forgot the password, run the following in the terminal to find it again:
+1. Now that the function code is done, we need to provide it a value for SqlConnectionString. This variable can be placed in the local.settings.json file and contain the connect string for our locally running database.
 
-sqlcmd config connection-strings
-And remember to SAVE the file when done.
+    Open the local.settings.json file and add the following line just below the “Values”: { section:
 
-Test the trigger
-Time to test the trigger and see if it catches changes to the customer table in the database. At the terminal run the following command to start the Azure Function:
+    ```JSON
+    "SqlConnectionString": "Server=localhost,1433;Database=devDB;User ID=vscode;Password=XXXXX;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;",
+    ```
 
-func host start
-Image Screenshot 2023 05 12 112618
+    PICTURE HERE
 
-and once the function is started, open a new query sheet for the devDB database
+    and be sure to replace the XXXXX with the password of the database that was created before. If you forgot the password, run the following in the terminal to find it again:
 
-Image Screenshot 2023 05 12 095051
+    ```bash
+    sqlcmd config connection-strings
+    ```
 
-and issue the following SQL insert statement:
+    And remember to SAVE the file when done.
 
-insert into dbo.customer values(N'Bill', N'bill@computer.commm', N'Anytown, Anycity 12345');
-You should see the following in the terminal window indicating the trigger binding did see the change:
+### Testing the trigger
+
+1. At the terminal run the following command to start the Azure Function:
+
+    ```bash
+    func host start
+    ```
+
+    and once the function is started, open a new query sheet for the Local Database.
+
+    PICTURE HERE
+
+1. Issue the following SQL insert statement:
+
+    ```SQL
+    insert into dbo.person values(N'Ellie', N'ellie@computer.commm', N'Cats');
+    ```
+
+    You should see the following in the terminal window indicating the trigger binding did see the change:
+
 [2023-05-11T19:18:03.124Z] Executing 'changeDataStream' (Reason='New change detected on table '[dbo].[customer]' at 2023-05-11T19:18:03.0902305Z.', Id=541ff09e-54ac-48e8-8d17-bbcc9a451432)
 [2023-05-11T19:18:03.176Z] Insert{"customer_id":1,"customer_name":"Bill","customer_email":"bill@computer.commm","customer_address":"Anytown, Anycity 12345"}
 [2023-05-11T19:18:03.195Z] Executed 'changeDataStream' (Succeeded, Id=541ff09e-54ac-48e8-8d17-bbcc9a451432, Duration=93ms)
