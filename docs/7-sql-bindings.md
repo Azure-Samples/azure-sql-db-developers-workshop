@@ -30,7 +30,7 @@
 
 1. Back in the terminal at the bottom of the page,
 
-PICTURE HERE
+    PICTURE HERE
 
     issue the following command to change the directory back to the top level of this project:
 
