@@ -1,9 +1,14 @@
 ![A picture of the Microsoft Logo](./media/graphics/microsoftlogo.png)
 
-# Implement Change Data Streams with Azure SQL Database, Change Tracking, and Azure SQL Bindings
+# Azure SQL bindings for Azure Functions
 
-Enable change tracking
-In the SQL Server extension, right click on the connection profile and select New Query.
+## About HERE
+
+## SQL Bindings workshop tasks
+
+### Enable change tracking
+
+1. In the SQL Server extension, right click on the connection profile and select New Query.
 Image Screenshot 2023 05 12 095051
 This will open up a new query sheet where SQL commands can be run. The table needs change tracking enabled for the SQL bindings trigger to work correctly.
 The first command to be run will enable change tracking in the database.

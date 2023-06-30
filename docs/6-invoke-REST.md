@@ -19,11 +19,12 @@ REST Endpoint Invocation can be called in an Azure SQL Database using the sp_inv
                                 ○ Overview
                                 ○ Security 
                                 ○ Samples calling a function
-                                ○ New support for XML and plain TEXT 
+                                ○ New support for XML and plain TEXT
                                 ○ Sample calling storage
 
+## REST Endpoint Invocation workshop tasks
 
-## Call an Azure Function with REST Endpoint Invocation
+### Call an Azure Function with REST Endpoint Invocation
 
 In the first example, a sample Azure Function has been created to be used. The function takes in a JSON payload with a name and responds with that name and an additional JSON element of location that is static. This example illustrates how REST Endpoint Invocation can POST a JSON payload to an endpoint and recieve JSON in return. By default, REST Endpoint Invocation expects a JSON payload in the response but this can be overridden to be XML or text.
 
@@ -134,7 +135,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
       @payload = N'{"name":"Sea Bass"}'
     ```
 
-## Using Azure OpenAI Service and REST Endpoint Invocation
+### Using Azure OpenAI Service and REST Endpoint Invocation
 
 Azure OpenAI Service provides REST API access to OpenAI's powerful language models including ChatGPT, Codex and Embeddings model series. These new services can be accessed through REST APIs, Python SDK, or our web-based interface in the Azure OpenAI Studio. GPT-3, GPT-3.5, and GPT-4 models from OpenAI are prompt-based; the user interacts with the model by entering a text prompt, to which the model responds with a text completion. The following examples will use the chat service REST APIs.
 
