@@ -19,7 +19,7 @@
     GO
     ```
 
-    then enable change tracking on the customer table:
+    then enable change tracking on the person table:
 
     ```SQL
     ALTER TABLE [dbo].[person] ENABLE CHANGE_TRACKING;
@@ -91,11 +91,11 @@
 
     PICTURE HERE
 
-1. If the new file has not opened up for you in codespaces, select this file by right clicking on it. Copy and paste the following code into the Person.cs file to create the customer class object.
+1. If the new file has not opened up for you in codespaces, select this file by right clicking on it. Copy and paste the following code into the Person.cs file to create the person class object.
 
     ```C#
     namespace Person.Function;
-    public class Customer
+    public class person
     {
         public int person_id { get; set; }
         public string person_name { get; set; }
@@ -207,11 +207,13 @@ and SAVE the file.
 1. Issue the following SQL insert statement:
 
     ```SQL
-    insert into dbo.person values(N'Ellie', N'ellie@computer.commm', N'Cats');
+    insert into dbo.person values(N'Ellie', N'ellie@contoso.com', N'Cats');
     ```
 
     You should see the following in the terminal window indicating the trigger binding did see the change:
 
-[2023-05-11T19:18:03.124Z] Executing 'changeDataStream' (Reason='New change detected on table '[dbo].[customer]' at 2023-05-11T19:18:03.0902305Z.', Id=541ff09e-54ac-48e8-8d17-bbcc9a451432)
-[2023-05-11T19:18:03.176Z] Insert{"customer_id":1,"customer_name":"Bill","customer_email":"bill@computer.commm","customer_address":"Anytown, Anycity 12345"}
-[2023-05-11T19:18:03.195Z] Executed 'changeDataStream' (Succeeded, Id=541ff09e-54ac-48e8-8d17-bbcc9a451432, Duration=93ms)
+    ```bash
+    [2023-07-11T19:18:03.124Z] Executing 'changeDataStream' (Reason='New change detected on table '[dbo].[person]' at 2023-05-11T19:18:03.0902305Z.', Id=541ff09e-54ac-48e8-8d17-bbcc9a451432)
+    [2023-07-11T19:18:03.176Z] Insert{"person_id":6,"person_name":"Ellie","person_email":"ellie@contoso.com","pet_preference":"Cats"}
+    [2023-07-11T19:18:03.195Z] Executed 'changeDataStream' (Succeeded, Id=541ff09e-54ac-48e8-8d17-bbcc9a451432, Duration=93ms)
+    ```
