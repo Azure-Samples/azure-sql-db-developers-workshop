@@ -37,6 +37,7 @@
     ```bash
     cd /workspaces/azure-sql-db-developers-workshop
     ```
+
 1. Next, issue the following command to start the function creation process:
 
     ```bash
