@@ -8,113 +8,169 @@
 
 ### Enable change tracking
 
-1. In the SQL Server extension, right click on the connection profile and select New Query.
-Image Screenshot 2023 05 12 095051
-This will open up a new query sheet where SQL commands can be run. The table needs change tracking enabled for the SQL bindings trigger to work correctly.
-The first command to be run will enable change tracking in the database.
-ALTER DATABASE [devDB]
-SET CHANGE_TRACKING = ON;
-GO
-then enable change tracking on the customer table:
-ALTER TABLE [dbo].[customer] ENABLE CHANGE_TRACKING;
-GO
-In this section, you created a SQL Database project, created a database right in your codespace with a single command, and published objects from the SQL Database project directly into the locally running database. The next section will create an Azure Function in which to house the SQL Bindings Trigger to watch for data changes.
-Create an Azure Function
-Back in the terminal at the bottom of the page,
-Back to the terminal
+1. In the SQL Server extension, right click on the Local Database connection profile and select New Query.
 
-You may have to click the terminal tab on the window bar on the bottom of the page. When you deployed the SQL Database Project, it may have moved from the terminal window to the Output window.
-Image Screenshot 2023 05 12 100117
-issue the following command to change the directory back to the top level of this project:
-cd /workspaces/codespace-for-DB-Devs
-Image Screenshot 2023 05 12 100517
-then, issue the following command to start the function creation process:
-func init
-Upon issuing that command, you will be presented with a choice of frameworks for this function to use.
-Image Screenshot 2023 05 12 100727
-The framework/runtime for this project is dotnet so enter 1, then press enter.
-Image Screenshot 2023 05 12 100604
-The next option is to choose a language.
-Image Screenshot 2023 05 12 100959
-C# is used for this project so again, enter 1, then press enter.
-Image Screenshot 2023 05 12 101054
-When this process is finished, click the File Explorer extension to see the new files that were created for you.
-Image Screenshot 2023 05 12 101239
-Adding necessary libraries to the project
-Next, we need to add some package references to the project (for SQL Bindings and Azure Event Hub). The following commands will add these references to the codespace-for-DB-Devs.csproj file.
-Run the following commands in the terminal:
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Sql --prerelease
-Image Screenshot 2023 05 12 101626
+1. The person table needs change tracking enabled for the SQL bindings trigger to work correctly.
+    The first command to be run will enable change tracking in the database.
 
-dotnet add package Azure.Messaging.EventHubs
-dotnet add package Microsoft.Azure.WebJobs.Extensions.EventHubs
-Image Screenshot 2023 05 12 101700
+    ```SQL
+    ALTER DATABASE [devDB]
+    SET CHANGE_TRACKING = ON;
+    GO
+    ```
 
-Create the customer class object
-We are going to create a customer class object file. To create a new file in codespaces, right click below the files in the file explorer extension and select New File.
+    then enable change tracking on the customer table:
 
-Image Screenshot 2023 05 12 102750
+    ```SQL
+    ALTER TABLE [dbo].[person] ENABLE CHANGE_TRACKING;
+    GO
+    ```
 
-Name this file Customer.cs and press enter.
+### Create an Azure Function
 
-Image Screenshot 2023 05 12 102912
+1. Back in the terminal at the bottom of the page,
 
-If the new file has not opened up for you in codespaces, select this file by right clicking on it. Copy and paste the following code into the Customer.cs file to create the customer class object.
+PICTURE HERE
 
-namespace Company.Function;
-public class Customer
-{
-    public int customer_id { get; set; }
-    public string customer_name { get; set; }
-    public string customer_email { get; set; }
-    public string customer_address { get; set; }
-}
-Image Screenshot 2023 05 12 130007
-Image Screenshot 2023 05 12 103252
+    issue the following command to change the directory back to the top level of this project:
+
+    ```bash
+    cd /workspaces/azure-sql-db-developers-workshop
+    ```
+1. Next, issue the following command to start the function creation process:
+
+    ```bash
+    func init
+    ```
+
+    Upon issuing that command, you will be presented with a choice of frameworks for this function to use.
+
+    PICTURE HERE
+
+    The framework/runtime for this project is dotnet so enter 1, then press enter.
+
+    PICTURE HERE
+
+    The next option is to choose a language.
+
+    PICTURE HERE
+
+    C# is used for this project so again, enter 1, then press enter.
+
+    PICTURE HERE
+
+1. When this process is finished, click the File Explorer extension to see the new files that were created for you.
+
+    PICTURE HERE
+
+### Adding libraries to the project
+
+1. Next, we need to add some package references to the project (for SQL Bindings and Azure Event Hub). The following commands will add these references to the azure-sql-db-developers-workshop.csproj file.
+
+    Run the following commands in the terminal:
+
+    ```bash
+    dotnet add package Microsoft.Azure.WebJobs.Extensions.Sql --prerelease
+    ```
+
+    ```bash
+    dotnet add package Azure.Messaging.EventHubs
+    ```
+
+    ```bash
+    dotnet add package Microsoft.Azure.WebJobs.Extensions.EventHubs
+    ```
+### Create the person class object
+
+1. We are going to create a person class object file. To create a new file in codespaces, right click below the files in the file explorer extension and select New File.
+
+    PICTURE HERE
+
+1. Name this file Person.cs and press enter.
+
+    PICTURE HERE
+
+1. If the new file has not opened up for you in codespaces, select this file by right clicking on it. Copy and paste the following code into the Person.cs file to create the customer class object.
+
+    ```C#
+    namespace Person.Function;
+    public class Customer
+    {
+        public int customer_id { get; set; }
+        public string customer_name { get; set; }
+        public string customer_email { get; set; }
+        public string customer_address { get; set; }
+    }
+    ```
 and SAVE the file.
-Create the SQL trigger function
-The next step is to create an Azure Function. Start by pressing F1 or Shift-Ctrl-P to bring up the command palette.
-Image Screenshot 2023 05 12 105414
-Enter “create function” into the text field and then select Azure Functions: Create Function.
-Image Screenshot 2023 05 12 105520
-A dialog box will appear in the center of the screen asking to “Initialize project for use with VS Code?”. Click Yes in the dialog box.
-Image Screenshot 2023 05 12 105712
-In the following dialog box, Select “HTTP Trigger” as the function template.
-Image Screenshot 2023 05 12 110427
-Now, on step 2, name the Function changeDataStreams in the next dialog box, and then press Enter.
-Image Screenshot 2023 05 12 110556
-Step 3 is for the function namespace. Accept the default namespace of Company.Function, and then press Enter.
-Image Screenshot 2023 05 12 110711
-In step four, select “Anonymous” for AccessRights.
-Image Screenshot 2023 05 12 110726
-Looking at the file explorer, there will be a new file called changeDataStream.cs which should also automatically open up in codespaces for you.
-Image Screenshot 2023 05 12 110941
-Adding the SQL Bindings code
-If the file is not already open, open the file by right clicking on it. Replace the code in the file with the following:
-using System.Collections.Generic;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Microsoft.Azure.WebJobs.Extensions.Sql;
-using System.Threading.Tasks;
-using System.Text.Json;
-namespace Company.Function;
-public static class streamCustomers
-{
-    [FunctionName("changeDataStream")]
-    public static async Task RunAsync(
-        [SqlTrigger("[dbo].[customer]", "SqlConnectionString")]
-            IReadOnlyList<SqlChange<Customer>> changes,
-        ILogger logger)
-   {
-      foreach (SqlChange<Customer> change in changes)
-      {
-          var customer = JsonSerializer.Serialize(change.Item);
-          var message = $"{change.Operation} {customer}";
-          logger.LogInformation(message);
+
+### Create the SQL trigger function
+
+1. The next step is to create an Azure Function. Start by pressing F1 or Shift-Ctrl-P to bring up the command palette.
+
+    PICTURE HERE
+
+1. Enter “create function” into the text field and then select Azure Functions: Create Function.
+
+    PICTURE HERE
+
+1. A dialog box will appear in the center of the screen asking to “Initialize project for use with VS Code?”. Click Yes in the dialog box.
+
+    PICTURE HERE
+
+1. In the following dialog box, Select “HTTP Trigger” as the function template.
+
+    PICTURE HERE
+
+1. Now, on step 2, name the Function changeDataStreams in the next dialog box, and then press Enter.
+
+    PICTURE HERE
+
+1. Step 3 is for the function namespace. Accept the default namespace of Person.Function, and then press Enter.
+
+    PICTURE HERE
+
+1. In step four, select “Anonymous” for AccessRights.
+
+    PICTURE HERE
+
+1. Looking at the file explorer, there will be a new file called changeDataStream.cs which should also automatically open up in codespace for you.
+
+    PICTURE HERE
+
+### Adding the SQL Bindings code
+
+1. If the file is not already open, open the file by right clicking on it. Replace the code in the file with the following:
+
+    ```C#
+    using System.Collections.Generic;
+    using Microsoft.Azure.WebJobs;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Azure.WebJobs.Extensions.Sql;
+    using System.Threading.Tasks;
+    using System.Text.Json;
+    namespace Person.Function;
+    public static class streamPeople
+    {
+        [FunctionName("changeDataStream")]
+        public static async Task RunAsync(
+            [SqlTrigger("[dbo].[customer]", "SqlConnectionString")]
+                IReadOnlyList<SqlChange<Customer>> changes,
+            ILogger logger)
+       {
+          foreach (SqlChange<Customer> change in changes)
+          {
+              var customer = JsonSerializer.Serialize(change.Item);
+              var message = $"{change.Operation} {customer}";
+              logger.LogInformation(message);
+            }
         }
     }
-}
-and SAVE the file. This code uses the SQL trigger binding to watch the customer table for changes. When it sees a change, it will fire and so something for each change. Here, in this code, we are just logging the data change to the terminal.
+    ```
+
+    and SAVE the file.
+
+1. This code uses the SQL trigger binding to watch the customer table for changes. When it sees a change, it will fire and so something for each change. Here, in this code, we are just logging the data change to the terminal.
 Now that the function code is done, we need to provide it a value for SqlConnectionString. This variable can be places in the local.settings.json file and contain the connect string for our locally running database.
 Image Screenshot 2023 05 12 112130
 Open the local.settings.json file and add the following line just below the “Values”: { section:
