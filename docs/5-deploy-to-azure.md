@@ -18,19 +18,19 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
 1. Use the following values for the Create Connection dialog boxes:
 
-    * Use “vslivedemos2023.database.windows.net” as the server name, then press Enter.
+    * Use “**vslivedemo.database.windows.net**” as the server name, then press Enter.
         ![A picture of using localhost as the server name](./media/ch5/deploy3.png)
 
-    * Use “vslivedemodb**X**” as the database name, **replacing X with the number of the database you were given**, then press Enter.
-        ![A picture of using vslivedemodbX as the database name](./media/ch5/deploy4.png)
+    * Use “**vslivedemo**” as the database name, then press Enter.
+        ![A picture of using vslivedemo as the database name](./media/ch5/deploy4.png)
 
     * In the Authentication Type dialog box, select “SQL Login“.
         ![A picture of using SQL Login as as the Authentication Type](./media/ch5/deploy5.png)
 
-    * Refer back to the credentials supplied for you for the demo database to find the username and password. It would be in the format of “vslivedemodb**X**” as the user name, **replacing X with the number of the database user you were given**
+    * Refer back to the credentials supplied to you for the username and password. It would be in the format of “vsliveuser**X**” as the user name, **replacing X with the number of the database user you were given**
 
         In the User name (SQL Login) dialog box, enter the user from the supplied credentials, then press Enter.
-        ![A picture of entering vslivedemodbX as the database user](./media/ch5/deploy6.png)
+        ![A picture of entering vsliveuserX as the database user](./media/ch5/deploy6.png)
 
         and provide the password from the supplied credentials in the Password (SQL Login) dialog box, then press Enter.
         ![A picture of entering the password for the database user](./media/ch5/deploy7.png)
@@ -99,7 +99,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of selecting the Azure Database connection in the publish database modal flow](./media/ch5/deploy19.png)
 
-1. Choose **vslivedemodbX** as the database, where X is the number you were given when creating the connection profile.
+1. Choose **vslivedemo** as the database.
 
     ![A picture of selecting the database named devDB in the publish database modal flow](./media/ch5/deploy20.png)
 
