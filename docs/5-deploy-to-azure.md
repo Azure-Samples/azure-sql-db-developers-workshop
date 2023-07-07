@@ -89,7 +89,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
 1. Select "Publish to an existing Azure SQL logical server" on the first step
 
-    ![A picture of selecting Publish to an existing Azure SQL logical server in the publish database modal flow](./media/ch7/deploy17.png)
+    ![A picture of selecting Publish to an existing Azure SQL logical server in the publish database modal flow](./media/ch5/deploy17.png)
 
 1. Next, select "Don't use profile"
 
