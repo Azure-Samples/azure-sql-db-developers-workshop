@@ -150,7 +150,7 @@ http://localhost:5000/api/person/person_id/1
     {
       "person_id": 1,
       "person_name": "Bill",
-      "person_email": "bill@computer.com",
+      "person_email": "bill@contoso.com",
       "pet_preference": "Dogs"
     }
   ]
@@ -172,15 +172,15 @@ http://localhost:5000/api/person?$select=person_email
 {
   "value": [
     {
-      "person_email": "bill@computer.com",
+      "person_email": "bill@contoso.com",
       "person_id": 1
     },
     {
-      "person_email": "frank@computer.com",
+      "person_email": "frank@contoso.com",
       "person_id": 2
     },
     {
-      "person_email": "Riley@computer.com",
+      "person_email": "Riley@contoso.com",
       "person_id": 3
     }
   ]
@@ -205,7 +205,7 @@ http://localhost:5000/api/person?$filter=person_name eq 'bill'
     {
       "person_id": 1,
       "person_name": "Bill",
-      "person_email": "bill@computer.com",
+      "person_email": "bill@contoso.com",
       "pet_preference": "Dogs"
     }
   ]
@@ -226,13 +226,13 @@ http://localhost:5000/api/person?$filter=person_name ne 'bill'
     {
       "person_id": 2,
       "person_name": "Frank",
-      "person_email": "frank@computer.com",
+      "person_email": "frank@contoso.com",
       "pet_preference": "Cats"
     },
     {
       "person_id": 3,
       "person_name": "Riley",
-      "person_email": "Riley@computer.com",
+      "person_email": "Riley@contoso.com",
       "pet_preference": "Cats"
     }
   ]
@@ -257,19 +257,19 @@ http://localhost:5000/api/person?$orderby=person_id desc
     {
       "person_id": 3,
       "person_name": "Riley",
-      "person_email": "Riley@computer.com",
+      "person_email": "Riley@contoso.com",
       "pet_preference": "Cats"
     },
     {
       "person_id": 2,
       "person_name": "Frank",
-      "person_email": "frank@computer.com",
+      "person_email": "frank@contoso.com",
       "pet_preference": "Cats"
     },
     {
       "person_id": 1,
       "person_name": "Bill",
-      "person_email": "bill@computer.com",
+      "person_email": "bill@contoso.com",
       "pet_preference": "Dogs"
     }
   ]
@@ -289,7 +289,7 @@ content-type: application/json
 
 {
     "person_name": "Joel",
-    "person_email": "joel@computer.com",
+    "person_email": "joel@contoso.com",
     "pet_preference": "Dogs"
 }
 ```
@@ -302,7 +302,7 @@ content-type: application/json
     {
       "person_id": 4,
       "person_name": "Joel",
-      "person_email": "joel@computer.com",
+      "person_email": "joel@contoso.com",
       "pet_preference": "Dogs"
     }
   ]
@@ -396,17 +396,17 @@ X-Request-Type: GraphQL
         {
           "person_id": 1,
           "person_name": "Bill",
-          "person_email": "bill@computer.com"
+          "person_email": "bill@contoso.com"
         },
         {
           "person_id": 2,
           "person_name": "Frank",
-          "person_email": "frank@computer.com"
+          "person_email": "frank@contoso.com"
         },
         {
           "person_id": 4,
           "person_name": "Joel",
-          "person_email": "joel@computer.com"
+          "person_email": "joel@contoso.com"
         }
       ]
     }
@@ -447,17 +447,17 @@ X-Request-Type: GraphQL
         {
           "person_id": 4,
           "person_name": "Joel",
-          "person_email": "joel@computer.com"
+          "person_email": "joel@contoso.com"
         },
         {
           "person_id": 2,
           "person_name": "Frank",
-          "person_email": "frank@computer.com"
+          "person_email": "frank@contoso.com"
         },
         {
           "person_id": 1,
           "person_name": "Bill",
-          "person_email": "bill@computer.com"
+          "person_email": "bill@contoso.com"
         }
       ]
     }
@@ -494,7 +494,7 @@ X-Request-Type: GraphQL
     "person_by_pk": {
       "person_id": 1,
       "person_name": "Bill",
-      "person_email": "bill@computer.com",
+      "person_email": "bill@contoso.com",
       "pet_preference": "Dogs"
     }
   }
@@ -584,7 +584,7 @@ X-Request-Type: GraphQL
         {
           "person_id": 1,
           "person_name": "Bill",
-          "person_email": "bill@computer.com",
+          "person_email": "bill@contoso.com",
           "pet_preference": "Dogs",
           "address": {
             "items": [
@@ -597,7 +597,7 @@ X-Request-Type: GraphQL
         {
           "person_id": 2,
           "person_name": "Frank",
-          "person_email": "frank@computer.com",
+          "person_email": "frank@contoso.com",
           "pet_preference": "Cats",
           "address": {
             "items": [
@@ -610,7 +610,7 @@ X-Request-Type: GraphQL
         {
           "person_id": 4,
           "person_name": "Joel",
-          "person_email": "joel@computer.com",
+          "person_email": "joel@contoso.com",
           "pet_preference": "Dogs",
           "address": {
             "items": []
@@ -744,7 +744,7 @@ X-Request-Type: GraphQL
 mutation {
   createperson(item: {
     person_name: "Elle",
-    person_email: "elle@computer.com"
+    person_email: "elle@contoso.com"
     pet_preference: "Cats"
   }) {
     person_id
@@ -763,7 +763,7 @@ mutation {
     "createperson": {
       "person_id": 5,
       "person_name": "Elle",
-      "person_email": "elle@computer.com",
+      "person_email": "elle@contoso.com",
       "pet_preference": "Cats"
     }
   }
@@ -783,7 +783,7 @@ X-Request-Type: GraphQL
 
 mutation {
   updateperson(person_id: 4, item: {
-    person_email: "joel22@computer.com"
+    person_email: "joel22@contoso.com"
   }) {
     person_id
     person_name
@@ -800,7 +800,7 @@ mutation {
     "updateperson": {
       "person_id": 4,
       "person_name": "Joel",
-      "person_email": "joel22@computer.com"
+      "person_email": "joel22@contoso.com"
     }
   }
 }
@@ -909,13 +909,13 @@ http://localhost:5000/api/getPersonByPet?pet=Dogs
     {
       "person_id": 1,
       "person_name": "Bill",
-      "person_email": "bill@computer.com",
+      "person_email": "bill@contoso.com",
       "pet_preference": "Dogs"
     },
     {
       "person_id": 4,
       "person_name": "Joel",
-      "person_email": "joel22@computer.com",
+      "person_email": "joel22@contoso.com",
       "pet_preference": "Dogs"
     }
   ]
@@ -954,7 +954,7 @@ query {
       {
         "person_id": 2,
         "person_name": "Frank",
-        "person_email": "frank@computer.com",
+        "person_email": "frank@contoso.com",
         "pet_preference": "Cats"
       }
     ]

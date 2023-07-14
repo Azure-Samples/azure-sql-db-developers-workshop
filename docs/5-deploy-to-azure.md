@@ -69,9 +69,9 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 1. Replace the files contents with the following SQL statements
 
     ```SQL
-    insert into dbo.person(person_name, person_email, pet_preference) values('Bill','bill@computer.com','Dogs');
-    insert into dbo.person(person_name, person_email, pet_preference) values('Frank', 'frank@computer.com','Cats');
-    insert into dbo.person(person_name, person_email, pet_preference) values('Riley', 'Riley@computer.com','Cats');
+    insert into dbo.person(person_name, person_email, pet_preference) values('Bill','bill@contoso.com','Dogs');
+    insert into dbo.person(person_name, person_email, pet_preference) values('Frank', 'frank@contoso.com','Cats');
+    insert into dbo.person(person_name, person_email, pet_preference) values('Riley', 'Riley@contoso.com','Cats');
     insert into address (person_id, address) values (1, 'Lincoln, MA');
     insert into address (person_id, address) values (2, 'Baltimore, MD');
     GO
