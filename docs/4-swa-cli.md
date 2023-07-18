@@ -98,7 +98,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     This uses the stored procedure that was REST enabled in the previous chapter.
 
-1. Back in the codespace, open the index.html file located in the app directory.
+1. Back in the codespace, open the index.html file located in the app directory and click on it.
+
+    ![A picture of opening the index.html file located in the app directory by clicking on it](./media/ch4/swa6i.png)
 
 1. Looking at this file in the editor, first there is a call to the Static Web Apps authentication service at /.auth/me
 
@@ -274,8 +276,6 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 1. In the sample application, again, enter Dogs into the Pet Preference text field and click submit. There will no longer be a 403 Status Error and the table will contain data returned by the REST enabled stored procedure.
 
-    PICTURE HERE
+    ![A picture of entering Dogs into the Pet Preference text field and click submit without an auth error](./media/ch4/swa13.png)
 
-### What is happening here?
-
-xxxx
+1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.
