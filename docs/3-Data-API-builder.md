@@ -28,7 +28,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
 ### REST/GraphQL enable a table
 
-> Step one is important. Be sure to be back in the main directory for this section of the workshop.
+> **Step one is important. Be sure to be back in the main directory for this section of the workshop.**
 
 1. Back in your code space, at the terminal at the bottom of the page, **return to the main directory**
 
