@@ -16,19 +16,6 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
 ### Create a SQL Database Project
 
-    Create free Azure SQL Database/create local DB on docker
-    Log into the database with Azure Data Studio/VS Code/Code spaces
-    Create and use SQL/Database Projects
-    Create application tables (table designer?) in SQL Project
-    Data Types
-    Primary Keys/ID columns
-    Default Values
-    Foreign Keys
-    Deploy objects to database via SQL Projects Publish
-    Database Security tasks
-    Create application users
-    Apply roles/Grants to application users 
-
 1. Source the .bashrc file to uptake the changes in the codespace
 
     ```bash
