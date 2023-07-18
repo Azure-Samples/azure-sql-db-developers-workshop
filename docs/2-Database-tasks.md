@@ -60,7 +60,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     ![A picture of creating a database with sqlcmd](./media/ch2/database4.png)
 
 
-1. Using sqlcmd, view the connection string information with the following sqlcmd command
+1. Using sqlcmd, view the connection string information with the following command
 
     ```bash
     sqlcmd config connection-strings
@@ -70,15 +70,15 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     Take note of the user (vscode) and the password that follows.
 
-1. Using the extensions panel, select the SQL Server connections extension 
+1. Using the extensions panel, select the **SQL Server connections extension**.
 
     ![A picture of selecting the SQL Server connection extension in code spaces](./media/ch2/database6.png)
 
-    and create a new connection by clicking either the Add Connection label or the plus sign on the upper right in the extension.
+    and **create a new connection** by clicking either the **Add Connection** label or the **plus sign** on the upper right in the extension.
 
     ![A picture of creating a new connection by clicking either the Add Connection label or the plus sign on the upper right in the extension](./media/ch2/database7.png)
 
-1. Use the following values for the Create Connection dialog boxes:
+1. Use the following values for the **Create Connection dialog** boxes:
 
     * Use “localhost” as the server name, then press Enter.
         ![A picture of using localhost as the server name](./media/ch2/database8.png)
@@ -112,7 +112,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
         ![A picture of code spaces indicating a successful connection](./media/ch2/database16.png)
 
-### Create two tables and a stored procedure
+### Create two tables (🔘) and a stored procedure (🎤)
 
 1. Back in the Database Projects extension, right click the project name (devDB) and select **Add Table**
 
