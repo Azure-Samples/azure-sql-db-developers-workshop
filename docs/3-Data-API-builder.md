@@ -985,3 +985,5 @@ Now that the APIs have been created, they might be handed off to a development t
 1. This is the swagger user interface where you can browse and try out all the APIs that were just created.
 
     ![A picture of the swagger user interface where you can browse and try out all the APIs that were just create](./media/ch3/dab20.png)
+
+1. Stop Data API builder in the terminal with Ctrl-C.

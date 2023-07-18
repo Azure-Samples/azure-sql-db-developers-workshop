@@ -40,7 +40,7 @@ This workshop will use SWA CLI for Data API builder and authentication.
 
 ## SWA CLI workshop tasks
 
-The following tasks will show you how to integrate a local Static Web Apps environment right in the code space.
+The following tasks will show you how to integrate a local Static Web Apps environment right in the codespace.
 
 Static Web Apps has built in [integration with the Azure SQL Database/Local SQL Server (and other Azure Databases)](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview). SWA CLI uses a config file located in the swa-db-connections directory. Seeing Static Web Apps utilizes Data API builder, we can just copy the dab-config.json file right into that directory and have all the entities we added just work on startup.
 
@@ -70,31 +70,35 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     swa init
     ```
 
-1. Followed by starting Static Web Apps in your code space. The following command indicates that our app location is at /app and the database connections are located in the swa-db-connections directory.
+    Accept the **default** for the swa init question and answer "? Choose a configuration name: › azure-sql-db-developers-workshop". Press enter/return to accept the default.
+
+    For the next question, "? Are these settings correct? › (Y/n)", **enter Y**.
+    
+1. Start Static Web Apps in your codespace. The following command indicates that our app location is at /app and the database connections are located in the swa-db-connections directory.
 
     ```bash
     swa start --app-location ./app --data-api-location ./swa-db-connections
     ```
  
-1. Once Static Web Apps has started, you will get a message in the code space on the bottom right indicating that it's running on port 4280.
+1. Once Static Web Apps has started, you will get a message in the codespace on the bottom right indicating that it's running on port 4280.
 
-    ![A picture of the code space indicating SWA has started on port 4280 in a dialog box](./media/ch4/swa3.png)
+    ![A picture of the codespace indicating SWA has started on port 4280 in a dialog box](./media/ch4/swa3.png)
 
 1. Click the **Open in Browser** green button to access the sample application in the same dialog box
 
     ![A picture of clicking the Open in Browser green button to access the sample application in the same dialog box as was referenced in the previous step](./media/ch4/swa4.png)
 
-    to access the sample application in the same dialog box
+1. The sample JavaScript application uses Static Web Apps for the HTML and CSS files as well as uses the built in Data API builder integration for all the REST calls. 
 
-    PICTURE HERE
+    ![A picture of the sample javascript application](./media/ch4/swa5.png)
 
-1. The sample JavaScript application uses Static Web Apps for the HTML and CSS files as well as uses the built in Data API builder integration for all the REST calls. Give the application a try by **entering Cats into the Pet Preference** field and **clicking Submit**.
+    Give the application a try by **entering Cats into the Pet Preference** field and **clicking Submit**.
 
-    PICTURE HERE
+    ![A picture of entering Cats into the Pet Preference field and clicking Submit](./media/ch4/swa6.png)
 
     This uses the stored procedure that was REST enabled in the previous chapter.
 
-1. Back in the code space, open the index.html file located in the app directory.
+1. Back in the codespace, open the index.html file located in the app directory.
 
 1. Looking at this file in the editor, first there is a call to the Static Web Apps authentication service at /.auth/me
 
@@ -238,7 +242,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     and save the file.
 
-1. Stop SWA CLI in the terminal in the code space with a Ctrl-C. Then restart with the command:
+1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C. Then restart with the command:
 
     ```bash
     swa start --app-location ./app --data-api-location ./swa-db-connections
