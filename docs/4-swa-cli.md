@@ -179,9 +179,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     You may notice that we catch 403 HTTP Status codes. This will be used in the next section.
 
-1. Open the staticwebapp.database.config.json in the swa-db-connections directory and open it in the code editor by clicking on it.
+1. Open the staticwebapp.database.config.json in the swa-db-connections directory in the code editor by clicking on it.
 
-    PICTURE HERE
+    ![A picture of opening the staticwebapp.database.config.json in the swa-db-connections directory in the code editor by clicking on it](./media/ch4/swa7.png)
 
 1. Scroll down in the code editor to find the getPersonByPet section.
 
@@ -242,7 +242,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     and save the file.
 
-1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C. Then restart with the command:
+1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.
+
+    Then restart with the command:
 
     ```bash
     swa start --app-location ./app --data-api-location ./swa-db-connections
@@ -250,15 +252,15 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 1. Back in the browser where the sample application is, reload the page. Now, enter Dogs into the Pet Preference text field and click submit.
 
-    PICTURE HERE
+    ![A picture of entering Dogs into the Pet Preference field and clicking Submit](./media/ch4/swa8.png)
 
-    A browser pop will appear indicating a 403 status error and suggesting you log into the application.
+    A browser pop-up will appear indicating a 403 status error and suggesting you log into the application.
 
-    PICTURE HERE
+    ![A picture of a browser pop-up appearing indicating a 403 status error and suggesting you log into the application](./media/ch4/swa9.png)
 
 1. Close the dialog and click the login link on the bottom of the application
 
-    PICTURE HERE
+    ![A picture of clicking the login link on the bottom of the application](./media/ch4/swa10.png)
 
 1. On the Azure Static Web Apps Auth page, give yourself a username in the Username text field.
 
