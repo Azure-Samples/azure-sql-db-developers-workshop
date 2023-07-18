@@ -16,13 +16,13 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
 ### Create a SQL Database Project
 
-1. Source the .bashrc file to uptake the changes in the codespace
+1. Using the codespace termnal, source the .bashrc file to uptake any changes the install may have made to the path
 
     ```bash
     . ~/.bashrc
     ```
 
-1. Start at a command terminal and create the project directory
+1. Create the project directory in the terminal using the following command:
 
     ```bash
     mkdir database
@@ -44,7 +44,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of the side extensions panel in VS Code with SQL Database Projects highlighted](./media/ch2/database1.png)
 
-    If your project is not automatically opened in the Database Projects extension, you can find it by clicking the Open existing green button
+    If your project is not automatically opened in the Database Projects extension, you can find it by clicking the **Open existing** green button
 
     ![A picture of clicking the Open existing green button](./media/ch2/database2.png)
 
@@ -52,7 +52,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of selecting the devDB.sqlproj file located at /workspaces/codespace-for-DB-Devs/database/devDB/](./media/ch2/database3.png)
 
-1. Next, create a database locally with go-sqlcmd and Docker. This command will download the image from the Microsoft container repository and create a full SQL Server 2022 instance (Developer Edition) on your local machine or in the code space.
+1. Next, using the terminal again, create a database locally with go-sqlcmd and Docker. This command will download the image from the Microsoft container repository and create a full SQL Server 2022 instance (Developer Edition) on your local machine or in the code space.
 
     ```bash
     sqlcmd create mssql -u devDB --accept-eula
