@@ -264,11 +264,11 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 1. On the Azure Static Web Apps Auth page, give yourself a username in the Username text field.
 
-    PICTURE HERE
+    ![A picture of using the Azure Static Web Apps Auth page to give yourself a username in the Username text field](./media/ch4/swa11.png)
 
-1. Click the Login button on the bottom right of the page. 
+1. Click the Login button on the bottom right of the page.
 
-    PICTURE HERE
+    ![A picture of clicking the Login button on the bottom right of the Azure Static Web Apps Auth page](./media/ch4/swa12.png)
 
     This will take you back to the sample application.
 
