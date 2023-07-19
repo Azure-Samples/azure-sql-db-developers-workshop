@@ -4,18 +4,22 @@
 
 ## JSON in the Azure SQL Database
 
-Transact-SQL supports various functions and operators that can be used to work with JSON documents in the Azure SQL database. The available functions are:
+Along with the the new JSON data type, transact-SQL supports various functions and operators that can be used to work with JSON documents in the Azure SQL database. The available functions are:
 
-1. ISJSON
-1. JSON\_PATH\_EXISTS
-1. JSON\_MODIFY
-1. ANSI SQL JSON functions - JSON\_VALUE & JSON\_QUERY
-1. ANSI SQL JSON constructors - JSON\_OBJECT & JSON\_ARRAY
+1. **ISJSON**: Tests whether a string contains valid JSON.
+1. **JSON\_PATH\_EXISTS**: Tests whether a specified SQL/JSON path exists in the input JSON string.
+1. **JSON\_MODIFY**: Updates the value of a property in a JSON string and returns the updated JSON string.
+1. ANSI SQL JSON functions
+    * **JSON\_VALUE**: Extracts a scalar value from a JSON string.
+    * **JSON\_QUERY**: Extracts an object or an array from a JSON string.
+1. ANSI SQL JSON constructors
+    * **JSON\_OBJECT**: Constructs JSON object text from zero or more expressions.
+    * **JSON\_ARRAY**: Constructs JSON array text from zero or more expressions.
 
 The available operators are:
 
-1. FOR JSON
-1. OPENJSON
+1. **FOR JSON**: Converts SQL Server data types to JSON types.
+1. **OPENJSON**: Converts JSON text into a set of rows and columns.
 
 ## JSON in the Azure SQL Database workshop tasks
 
@@ -71,4 +75,18 @@ The available operators are:
 
     ![A picture of the JSON in the JSON type column](./media/ch7/json4.png)
 
-1.
+1. Using [JSON_VALUE](https://learn.microsoft.com/sql/t-sql/functions/json-value-transact-sql) and [JSON_QUERY](https://learn.microsoft.com/sql/t-sql/functions/json-query-transact-sql), JSON stored in the database can be extracted as a relational result set. Using the query sheet, issue the following command:
+
+    ```SQL
+    SELECT o.order_id
+         , JSON_VALUE(o.order_info, '$.AccountNumber') AS account_number
+         , JSON_QUERY(o.order_info, '$.Address') AS address_info
+      FROM dbo.Orders as o;
+    ```
+
+
+
+    ```SQL
+SELECT SUM(CAST(JSON_VALUE(o.order_info, '$.Price') as float)) AS total_price
+     , SUM(CAST(JSON_VALUE(o.order_info, '$.Quantity') as int)) AS total_orders
+  FROM dbo.Orders as o;
