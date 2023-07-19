@@ -57,7 +57,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
 }
 ```
 
-1. Start in the **SQL Server Connections extension** and right click the database profile name,** Azure Database**, and select **New Query**. This will bring up a new query sheet.
+1. Start in the **SQL Server Connections extension** and right click the database profile name,**Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
     ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch6/rest2.png)
 
