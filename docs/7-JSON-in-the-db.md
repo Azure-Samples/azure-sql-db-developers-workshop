@@ -21,7 +21,7 @@ The available operators are:
 1. **FOR JSON**: Converts SQL Server data types to JSON types.
 1. **OPENJSON**: Converts JSON text into a set of rows and columns.
 
-New in the Azure SQL Database:
+**New** in the Azure SQL Database:
 
 1. **JSON\_OBJECTAGG**: Construct a JSON object value from relational data
 1. **JSON\_ARRAYAGG**: Construct a JSON array value from relational data
