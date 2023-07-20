@@ -203,16 +203,27 @@ The available operators are:
 
     ![A picture of the JSON in the OrderDetails JSON type column](./media/ch7/json6.png)  
 
-1. -- JSON_OBJECTAGG with JSON_OBJECT/JSON_ARRAY constructors
+1. Using JSON_OBJECTAGG with JSON_OBJECT/JSON_ARRAY constructors, relation data can be returned from multiple tables as a complete JSON document. Using the query sheet, issue the following command:
 
     ```SQL
-    SELECT JSON_OBJECTAGG(OrderNumber:JSON_OBJECT('Date':o.OrderTime, 'Price':o.Price, 'Quantity':o.Quantity,
-                                                    'AccountDetails':JSON_OBJECT('AccountNumber':o.AccountNumber,
-                                                        'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)))) AS Orders
-      FROM Orders AS o
-      JOIN Accounts AS a
+    SELECT JSON_OBJECTAGG(
+                    OrderNumber:JSON_OBJECT(
+                            'Date':o.OrderTime, 'Price':o.Price, 'Quantity':o.Quantity,
+                            'AccountDetails':JSON_OBJECT('AccountNumber':o.AccountNumber,
+                            'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)))) 
+            AS Orders
+    FROM OrdersR AS o
+        JOIN Accounts AS a
         ON a.AccountNumber = o.AccountNumber;
     ```
+1. Click the Orders data cell
+
+    ![A picture of clicking on the Orders data cell in the JSON type column](./media/ch7/json7.png)
+
+    to see the JSON in the Orders column in a new window.
+
+    ![A picture of the JSON in the Orders JSON type column](./media/ch7/json8.png)  
+
 
 1.-- JSON_ARRAYAGG with JSON_ARRAY constructor
 
