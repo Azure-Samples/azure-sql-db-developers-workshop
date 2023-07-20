@@ -204,9 +204,11 @@ and SAVE the file.
     func host start
     ```
 
+    ![A picture of ](./media/ch8/bind19.png)  
+
     and once the function is started, open a new query sheet for the Local Database.
 
-    ![A picture of ](./media/ch8/bind19.png)  
+    ![A picture of ](./media/ch8/bind20.png)  
 
 1. Issue the following SQL insert statement:
 
