@@ -197,21 +197,29 @@ The available operators are:
     ```
 
 1. -- JSON_OBJECTAGG with JSON_OBJECT/JSON_ARRAY constructors
-SELECT JSON_OBJECTAGG(OrderNumber:JSON_OBJECT('Date':o.OrderTime, 'Price':o.Price, 'Quantity':o.Quantity,
-                                                'AccountDetails':JSON_OBJECT('AccountNumber':o.AccountNumber,
-                                                    'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)))) AS Orders
-  FROM Orders AS o
-  JOIN Accounts AS a
-    ON a.AccountNumber = o.AccountNumber;
+
+    ```SQL
+    SELECT JSON_OBJECTAGG(OrderNumber:JSON_OBJECT('Date':o.OrderTime, 'Price':o.Price, 'Quantity':o.Quantity,
+                                                    'AccountDetails':JSON_OBJECT('AccountNumber':o.AccountNumber,
+                                                        'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)))) AS Orders
+      FROM Orders AS o
+      JOIN Accounts AS a
+        ON a.AccountNumber = o.AccountNumber;
+    ```
 
 1.-- JSON_ARRAYAGG with JSON_ARRAY constructor
-SELECT JSON_ARRAYAGG(JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)) AS Phones
-  FROM Orders AS o
-  JOIN Accounts AS a
-    ON a.AccountNumber = o.AccountNumber;
+
+    ```SQL
+    SELECT JSON_ARRAYAGG(JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)) AS Phones
+      FROM Orders AS o
+      JOIN Accounts AS a
+        ON a.AccountNumber = o.AccountNumber;
+    ```
 
 1. **Scenario #7:**  Use the JSON aggregates with GROUP BY clause like any aggregate.
 
-SELECT schema_id, JSON_OBJECTAGG(name:object_id), JSON_ARRAYAGG(object_id), COUNT(*)
-FROM sys.all_objects
-GROUP BY schema_id
+    ```SQL
+    SELECT schema_id, JSON_OBJECTAGG(name:object_id), JSON_ARRAYAGG(object_id), COUNT(*)
+    FROM sys.all_objects
+    GROUP BY schema_id;
+    ```
