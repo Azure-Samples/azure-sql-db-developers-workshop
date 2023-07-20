@@ -321,11 +321,11 @@ NOTE: When you are using a primary key with managed identity, PUT will result in
 **Request:**
 
 ```bash
-PATCH http://localhost:5000/api/person/person_id/2
+PATCH http://localhost:5000/api/person/person_id/3
 content-type: application/json
 
 {
-    "person_email": "frank@computercat5.com"
+    "person_email": "Riley@contososales.com"
 }
 ```
 
@@ -336,8 +336,8 @@ content-type: application/json
   "value": [
     {
       "person_id": 2,
-      "person_name": "Frank",
-      "person_email": "frank@computercat5.com",
+      "person_name": "Riley",
+      "person_email": "riley@contososales.com",
       "pet_preference": "Cats"
     }
   ]
