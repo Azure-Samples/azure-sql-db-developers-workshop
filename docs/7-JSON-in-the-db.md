@@ -7,7 +7,7 @@
 Along with the the new JSON data type, transact-SQL supports various functions and operators that can be used to work with JSON documents in the Azure SQL database. The available functions are:
 
 1. **ISJSON**: Tests whether a string contains valid JSON.
-1. **JSON\_PATH\_EXISTS**: Tests whether a specified SQL/JSON path exists in the input JSON string.
+1. **[JSON_PATH_EXISTS](https://learn.microsoft.com/sql/t-sql/functions/json-path-exists-transact-sql)**: Tests whether a specified SQL/JSON path exists in the input JSON string.
 1. **JSON\_MODIFY**: Updates the value of a property in a JSON string and returns the updated JSON string.
 1. ANSI SQL JSON functions
     * **JSON\_VALUE**: Extracts a scalar value from a JSON string.
@@ -90,12 +90,36 @@ The available operators are:
     FROM dbo.Orders as o;
     ```
 
-1. With the next query, JSON_VALUE is combined with the analytical function sum to total values that are found within a JSON document stored in the database. Using the query sheet, issue the following command:
+1. With the next query, [JSON_VALUE](https://learn.microsoft.com/sql/t-sql/functions/json-value-transact-sql) is combined with the aggregate function [sum](https://learn.microsoft.com/sql/t-sql/functions/sum-transact-sql), to total values that are found within a JSON document stored in the database. Using the query sheet, issue the following command:
 
     ```SQL
     SELECT SUM(CAST(JSON_VALUE(o.order_info, '$.Price') as float)) AS total_price
          , SUM(CAST(JSON_VALUE(o.order_info, '$.Quantity') as int)) AS total_orders
       FROM dbo.Orders as o;
+    ```
+
+1. JSON can also be used as a parameter or variable with T-SQL. In the following example, JSON is used as a parameter to query. The function [JSON_PATH_EXISTS](https://learn.microsoft.com/sql/t-sql/functions/json-path-exists-transact-sql) is also used to check if a value/path exists in a JSON document.
+
+    ```SQL
+    DECLARE @json JSON = N'
+    [
+        {
+            "OrderNumber": "S043659",
+            "Date":"2022-05-24T08:01:00",
+            "AccountNumber":"AW29825",
+            "Price":59.99,
+            "Quantity":1
+        },
+        {
+            "OrderNumber": "S043661",
+            "Date":"2022-05-20T12:20:00",
+            "AccountNumber":"AW73565",
+            "Price":24.99,
+            "Quantity":3
+        }
+    ]';
+    SELECT @json, JSON_PATH_EXISTS(@json, '$[0].OrderNumber') AS OrderNumberExists
+        , JSON_QUERY(@json, '$[0]') as FirstOrder, JSON_Value(@json, '$[0].AccountNumber') as Account#;
     ```
 
 1. 
