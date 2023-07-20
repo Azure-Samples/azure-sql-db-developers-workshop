@@ -30,7 +30,7 @@
 
 1. Back in the terminal at the bottom of the page,
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind1.png)  
 
     issue the following command to change the directory back to the top level of this project:
 
@@ -62,7 +62,7 @@
 
 1. When this process is finished, click the File Explorer extension to see the new files that were created for you.
 
-    PICTURE HERE
+        ![A picture of ](./media/ch8/bind6.png)  
 
 ### Adding libraries to the project
 
@@ -85,11 +85,11 @@
 
 1. We are going to create a person class object file. To create a new file in codespaces, right click below the files in the file explorer extension and select New File.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind7.png)  
 
 1. Name this file Person.cs and press enter.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind8.png)  
 
 1. If the new file has not opened up for you in codespaces, select this file by right clicking on it. Copy and paste the following code into the Person.cs file to create the person class object.
 
@@ -110,35 +110,35 @@ and SAVE the file.
 
 1. The next step is to create an Azure Function. Start by pressing F1 or Shift-Ctrl-P to bring up the command palette.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind9.png)  
 
 1. Enter “create function” into the text field and then select Azure Functions: Create Function.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind10.png)  
 
 1. A dialog box will appear in the center of the screen asking to “Initialize project for use with VS Code?”. Click Yes in the dialog box.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind11.png)  
 
 1. In the following dialog box, Select “HTTP Trigger” as the function template.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind12.png)  
 
 1. Now, on step 2, name the Function changeDataStreams in the next dialog box, and then press Enter.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind13.png)  
 
 1. Step 3 is for the function namespace. Accept the default namespace of Person.Function, and then press Enter.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind14.png)  
 
 1. In step four, select “Anonymous” for AccessRights.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind15.png)  
 
 1. Looking at the file explorer, there will be a new file called changeDataStream.cs which should also automatically open up in codespace for you.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind16.png)  
 
 ### Adding the SQL Bindings code
 
