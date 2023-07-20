@@ -64,7 +64,9 @@ The available operators are:
     }');
     ```
 
-    Issue this select statement to see the inserted rows
+### Querying JSON Data
+
+1. Issue this select statement to see the inserted rows
 
     ```SQL
     SELECT * FROM dbo.Orders;
@@ -98,7 +100,7 @@ The available operators are:
       FROM dbo.Orders as o;
     ```
 
-1. JSON can also be used as a parameter or variable with T-SQL. In the following example, JSON is used as a parameter to query. The function [JSON_PATH_EXISTS](https://learn.microsoft.com/sql/t-sql/functions/json-path-exists-transact-sql) is also used to check if a value/path exists in a JSON document.
+1. JSON can also be used as a parameter or variable with T-SQL. In the following example, JSON is used as a parameter to query. The function [JSON_PATH_EXISTS](https://learn.microsoft.com/sql/t-sql/functions/json-path-exists-transact-sql) is also used to check if a value/path exists in a JSON document. Using the query sheet, issue the following command:
 
     ```SQL
     DECLARE @json JSON = N'
@@ -121,5 +123,7 @@ The available operators are:
     SELECT @json, JSON_PATH_EXISTS(@json, '$[0].OrderNumber') AS OrderNumberExists
         , JSON_QUERY(@json, '$[0]') as FirstOrder, JSON_Value(@json, '$[0].AccountNumber') as Account#;
     ```
+
+### Working with JSON Data
 
 1. 
