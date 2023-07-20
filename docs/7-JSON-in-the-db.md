@@ -126,4 +126,92 @@ The available operators are:
 
 ### Working with JSON Data
 
-1. 
+1. For this next section, 2 tables need to be created first. Using the query sheet, issue the following command:
+
+    ```SQL
+    CREATE TABLE Accounts (
+    	AccountNumber varchar(10) NOT NULL PRIMARY KEY,
+    	Phone1 varchar(20) NULL,
+    	Phone2 varchar(20) NULL,
+    	Phone3 varchar(20) NULL
+    );
+    INSERT INTO Accounts (AccountNumber, Phone1, Phone2, Phone3)
+    VALUES('AW29825', '(123)456-7890', '(123)567-8901', NULL),
+    	('AW73565', '(234)0987-654', NULL, NULL);
+    
+    CREATE TABLE OrdersR (
+    	OrderNumber varchar(10) NOT NULL PRIMARY KEY,
+    	OrderTime datetime2 NOT NULL,
+    	AccountNumber varchar(10) NOT NULL,
+    	Price decimal(10, 2) NOT NULL,
+    	Quantity int NOT NULL
+    );
+    GO
+    ```
+
+1. Next, while using a JSON document as a variable as was done in the previous step, this T-SQL statement will insert values into the OrdersR table. This example will transform the JSON string into relational data using the [OPENJSON](https://learn.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server) operator. It then inserts the rows into the OrdersR table and displays the inserted rows.
+
+    ```SQL
+    DECLARE @json nvarchar(1000) = N'
+    [
+        {
+            "OrderNumber": "S043659",
+            "Date":"2022-05-24T08:01:00",
+            "AccountNumber":"AW29825",
+            "Price":59.99,
+            "Quantity":1
+        },
+        {
+            "OrderNumber": "S043661",
+            "Date":"2022-05-20T12:20:00",
+            "AccountNumber":"AW73565",
+            "Price":24.99,
+            "Quantity":3
+        }
+    ]';
+    
+    INSERT INTO OrdersR (OrderNumber, OrderTime, AccountNumber, Price, Quantity)
+    OUTPUT inserted.*
+    SELECT T.OrderNumber, T.OrderTime, T.AccountNumber, T.Price, T.Quantity
+        FROM OPENJSON(@json)
+        WITH (
+            OrderNumber varchar(10) '$.OrderNumber', -- Use SQL/JSON path to extract a specific property from the JSON document and convert to a SQL value
+            OrderTime datetime2 '$.Date',
+            AccountNumber varchar(10) '$.AccountNumber',
+            Price decimal(10, 2) '$.Price',
+            Quantity int '$.Quantity'
+        ) AS T;
+    ```
+
+1. -- Transform relational data into a JSON string using the new JSON_OBJECT & JSON_ARRAY functions. The new JSON_ARRAY function takes
+-- N values that can be specified as a constant or expression or variable or column reference and formats them into a JSON array value.
+
+    ```SQL
+    SELECT o.OrderNumber,
+    		JSON_OBJECT('Date':o.OrderTime, 'Price':o.Price, 'Quantity':o.Quantity, 
+    			'AccountDetails':JSON_OBJECT('AccountNumber':o.AccountNumber,
+                'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3))) AS OrderDetails
+      FROM OrdersR AS o
+      JOIN Accounts AS a
+        ON a.AccountNumber = o.AccountNumber;
+    ```
+
+1. -- JSON_OBJECTAGG with JSON_OBJECT/JSON_ARRAY constructors
+SELECT JSON_OBJECTAGG(OrderNumber:JSON_OBJECT('Date':o.OrderTime, 'Price':o.Price, 'Quantity':o.Quantity,
+                                                'AccountDetails':JSON_OBJECT('AccountNumber':o.AccountNumber,
+                                                    'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)))) AS Orders
+  FROM Orders AS o
+  JOIN Accounts AS a
+    ON a.AccountNumber = o.AccountNumber;
+
+1.-- JSON_ARRAYAGG with JSON_ARRAY constructor
+SELECT JSON_ARRAYAGG(JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)) AS Phones
+  FROM Orders AS o
+  JOIN Accounts AS a
+    ON a.AccountNumber = o.AccountNumber;
+
+1. **Scenario #7:**  Use the JSON aggregates with GROUP BY clause like any aggregate.
+
+SELECT schema_id, JSON_OBJECTAGG(name:object_id), JSON_ARRAYAGG(object_id), COUNT(*)
+FROM sys.all_objects
+GROUP BY schema_id
