@@ -21,6 +21,11 @@ The available operators are:
 1. **FOR JSON**: Converts SQL Server data types to JSON types.
 1. **OPENJSON**: Converts JSON text into a set of rows and columns.
 
+New in the Azure SQL Database:
+
+1. **JSON\_OBJECTAGG**: Construct a JSON object value from relational data
+1. **JSON\_ARRAYAGG**: Construct a JSON array value from relational data
+
 ## JSON in the Azure SQL Database workshop tasks
 
 1. Start in the **SQL Server Connections extension** and right click the database profile name, **Azure Database**, and select **New Query**. This will bring up a new query sheet.
@@ -79,14 +84,18 @@ The available operators are:
 
     ```SQL
     SELECT o.order_id
-         , JSON_VALUE(o.order_info, '$.AccountNumber') AS account_number
-         , JSON_QUERY(o.order_info, '$.Address') AS address_info
+        , JSON_VALUE(o.order_info, '$.AccountNumber') AS account_number
+        , JSON_VALUE(o.order_info, '$.Address.Line1') AS address_line1
+        , JSON_QUERY(o.order_info, '$.Address') AS address_info
+    FROM dbo.Orders as o;
+    ```
+
+1. With the next query, JSON_VALUE is combined with the analytical function sum to total values that are found within a JSON document stored in the database. Using the query sheet, issue the following command:
+
+    ```SQL
+    SELECT SUM(CAST(JSON_VALUE(o.order_info, '$.Price') as float)) AS total_price
+         , SUM(CAST(JSON_VALUE(o.order_info, '$.Quantity') as int)) AS total_orders
       FROM dbo.Orders as o;
     ```
 
-
-
-    ```SQL
-SELECT SUM(CAST(JSON_VALUE(o.order_info, '$.Price') as float)) AS total_price
-     , SUM(CAST(JSON_VALUE(o.order_info, '$.Quantity') as int)) AS total_orders
-  FROM dbo.Orders as o;
+1. 
