@@ -2,7 +2,7 @@
 
 # Azure SQL bindings for Azure Functions
 
-## About HERE
+## Work in progress/Extra credit
 
 ## SQL Bindings workshop tasks
 
