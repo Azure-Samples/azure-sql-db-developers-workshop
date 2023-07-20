@@ -6,25 +6,25 @@
 
 Along with the the new JSON data type, transact-SQL supports various functions and operators that can be used to work with JSON documents in the Azure SQL database. The available functions are:
 
-1. **ISJSON**: Tests whether a string contains valid JSON.
+1. **[ISJSON](https://learn.microsoft.com/sql/t-sql/functions/isjson-transact-sql)**: Tests whether a string contains valid JSON.
 1. **[JSON_PATH_EXISTS](https://learn.microsoft.com/sql/t-sql/functions/json-path-exists-transact-sql)**: Tests whether a specified SQL/JSON path exists in the input JSON string.
-1. **JSON\_MODIFY**: Updates the value of a property in a JSON string and returns the updated JSON string.
+1. **[JSON_MODIFY](https://learn.microsoft.com/sql/t-sql/functions/json-modify-transact-sql)**: Updates the value of a property in a JSON string and returns the updated JSON string.
 1. ANSI SQL JSON functions
-    * **JSON\_VALUE**: Extracts a scalar value from a JSON string.
-    * **JSON\_QUERY**: Extracts an object or an array from a JSON string.
+    * **[JSON_VALUE](https://learn.microsoft.com/sql/t-sql/functions/json-value-transact-sql)**: Extracts a scalar value from a JSON string.
+    * **[JSON_QUERY](https://learn.microsoft.com/sql/t-sql/functions/json-query-transact-sql)**: Extracts an object or an array from a JSON string.
 1. ANSI SQL JSON constructors
-    * **JSON\_OBJECT**: Constructs JSON object text from zero or more expressions.
-    * **JSON\_ARRAY**: Constructs JSON array text from zero or more expressions.
+    * **[JSON_OBJECT](https://learn.microsoft.com/sql/t-sql/functions/json-object-transact-sql)**: Constructs JSON object text from zero or more expressions.
+    * **[JSON_ARRAY](https://learn.microsoft.com/sql/t-sql/functions/json-array-transact-sql)**: Constructs JSON array text from zero or more expressions.
 
 The available operators are:
 
-1. **FOR JSON**: Converts SQL Server data types to JSON types.
-1. **OPENJSON**: Converts JSON text into a set of rows and columns.
+1. **[FOR JSON](https://learn.microsoft.com/sql/relational-databases/json/how-for-json-converts-sql-server-data-types-to-json-data-types-sql-server)**: Converts SQL Server data types to JSON types.
+1. **[OPENJSON](https://learn.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)**: Converts JSON text into a set of rows and columns.
 
 **New** in the Azure SQL Database:
 
-1. **JSON\_OBJECTAGG**: Construct a JSON object value from relational data
-1. **JSON\_ARRAYAGG**: Construct a JSON array value from relational data
+1. **JSON_OBJECTAGG**: Construct a JSON object value from relational data
+1. **JSON_ARRAYAGG**: Construct a JSON array value from relational data
 
 ## JSON in the Azure SQL Database workshop tasks
 
