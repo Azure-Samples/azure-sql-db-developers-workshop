@@ -76,11 +76,11 @@ The available operators are:
 
 1. Click the order_info data cell 
 
-    ![A picture of clicking on the a data cell in the JSON type column](./media/ch7/json3.png)
+    ![A picture of clicking on the order_info data cell in the JSON type column](./media/ch7/json3.png)
 
-    to see the JSON in the column in a new window.
+    to see the JSON in the order_info column in a new window.
 
-    ![A picture of the JSON in the JSON type column](./media/ch7/json4.png)
+    ![A picture of the JSON in the order_info JSON type column](./media/ch7/json4.png)
 
 1. Using [JSON_VALUE](https://learn.microsoft.com/sql/t-sql/functions/json-value-transact-sql) and [JSON_QUERY](https://learn.microsoft.com/sql/t-sql/functions/json-query-transact-sql), JSON stored in the database can be extracted as a relational result set. Using the query sheet, issue the following command:
 
@@ -149,7 +149,7 @@ The available operators are:
     GO
     ```
 
-1. Next, while using a JSON document as a variable as was done in the previous step, this T-SQL statement will insert values into the OrdersR table. This example will transform the JSON string into relational data using the [OPENJSON](https://learn.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server) operator. It then inserts the rows into the OrdersR table and displays the inserted rows.
+1. Next, while using a JSON document as a variable as was done in the previous step, this T-SQL statement will insert values into the OrdersR table. This example will transform the JSON string into relational data using the [OPENJSON](https://learn.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server) operator. It then inserts the rows into the OrdersR table and displays the inserted rows. Using the query sheet, issue the following command:
 
     ```SQL
     DECLARE @json nvarchar(1000) = N'
@@ -183,8 +183,7 @@ The available operators are:
         ) AS T;
     ```
 
-1. -- Transform relational data into a JSON string using the new JSON_OBJECT & JSON_ARRAY functions. The new JSON_ARRAY function takes
--- N values that can be specified as a constant or expression or variable or column reference and formats them into a JSON array value.
+1. Relational data can bw transformed into a JSON string using the new JSON_OBJECT and JSON_ARRAY functions. The new JSON_ARRAY function takes N values that can be specified as a constant, expression, variable, or column reference and formats them into a JSON array value. Using the query sheet, issue the following command:
 
     ```SQL
     SELECT o.OrderNumber,
@@ -195,6 +194,14 @@ The available operators are:
       JOIN Accounts AS a
         ON a.AccountNumber = o.AccountNumber;
     ```
+
+1. Click the OrderDetails data cell 
+
+    ![A picture of clicking on the OrderDetails data cell in the JSON type column](./media/ch7/json5.png)
+
+    to see the JSON in the OrderDetails column in a new window.
+
+    ![A picture of the JSON in the OrderDetails JSON type column](./media/ch7/json6.png)  
 
 1. -- JSON_OBJECTAGG with JSON_OBJECT/JSON_ARRAY constructors
 
