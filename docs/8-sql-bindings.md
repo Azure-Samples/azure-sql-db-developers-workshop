@@ -176,13 +176,17 @@ and SAVE the file.
 
 1. Now that the function code is done, we need to provide it a value for SqlConnectionString. This variable can be placed in the local.settings.json file and contain the connect string for our locally running database.
 
-    Open the local.settings.json file and add the following line just below the “Values”: { section:
+    Open the local.settings.json file 
+
+    ![A picture of ](./media/ch8/bind17.png)  
+
+    and add the following line just below the “Values”: { section:
 
     ```JSON
     "SqlConnectionString": "Server=localhost,1433;Database=devDB;User ID=vscode;Password=XXXXX;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;",
     ```
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind18.png)  
 
     and be sure to replace the XXXXX with the password of the database that was created before. If you forgot the password, run the following in the terminal to find it again:
 
@@ -202,7 +206,7 @@ and SAVE the file.
 
     and once the function is started, open a new query sheet for the Local Database.
 
-    PICTURE HERE
+    ![A picture of ](./media/ch8/bind19.png)  
 
 1. Issue the following SQL insert statement:
 
