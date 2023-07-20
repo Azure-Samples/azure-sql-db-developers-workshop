@@ -224,17 +224,16 @@ The available operators are:
 
     ![A picture of the JSON in the Orders JSON type column](./media/ch7/json8.png)  
 
-
-1.-- JSON_ARRAYAGG with JSON_ARRAY constructor
+1. In this example, JSON_ARRAYAGG is used with the JSON_ARRAY constructor to create a nested JSON array in an array. Using the query sheet, issue the following command:
 
     ```SQL
     SELECT JSON_ARRAYAGG(JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)) AS Phones
-      FROM Orders AS o
+      FROM OrdersR AS o
       JOIN Accounts AS a
         ON a.AccountNumber = o.AccountNumber;
     ```
 
-1. **Scenario #7:**  Use the JSON aggregates with GROUP BY clause like any aggregate.
+1. In the last example,  a JSON aggregates is used with a GROUP BY clause like any aggregate that exists in Azure SQL Database today. Using the query sheet, issue the following command:
 
     ```SQL
     SELECT schema_id, JSON_OBJECTAGG(name:object_id), JSON_ARRAYAGG(object_id), COUNT(*)
