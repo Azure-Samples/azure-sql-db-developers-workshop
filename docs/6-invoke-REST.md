@@ -161,7 +161,7 @@ Additional Best Practices from the documentation:
     case when pet_preference = 'Cats' then 'Dogs' 
          when pet_preference = 'Dogs' then 'Cats' 
     end
-    from dbo.person
+    from person
     where person_id = 1);
     ```
 
@@ -210,7 +210,7 @@ Additional Best Practices from the documentation:
     case when pet_preference = 'Cats' then 'Dogs' 
          when pet_preference = 'Dogs' then 'Cats' 
     end
-    from dbo.person
+    from person
     where person_id = 1);
     
     declare @url nvarchar(4000) = N'https://vslive-openai.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-06-01-preview';
