@@ -35,7 +35,7 @@ The available operators are:
 1. In the empty query sheet, enter the following SQL code. This statement creates the **Orders** table with the new **JSON** data type.
 
     ```SQL
-    CREATE TABLE dbo.Orders (
+    CREATE TABLE Orders (
         order_id int NOT NULL IDENTITY,
         order_info JSON NOT NULL
     );
@@ -44,7 +44,7 @@ The available operators are:
 1. Next, issue the following insert statements. They will be inserting JSON into the JSON type columns:
 
     ```SQL
-    INSERT INTO dbo.Orders (order_info)
+    INSERT INTO Orders (order_info)
     VALUES ('
     {
         "OrderNumber":"S043659",
@@ -69,7 +69,7 @@ The available operators are:
 1. Issue this select statement to see the inserted rows
 
     ```SQL
-    SELECT * FROM dbo.Orders;
+    SELECT * FROM Orders;
     ```
 
     ![A picture of the inserted rows with the JSON type column](./media/ch7/json2.png)
@@ -89,7 +89,7 @@ The available operators are:
         , JSON_VALUE(o.order_info, '$.AccountNumber') AS account_number
         , JSON_VALUE(o.order_info, '$.Address.Line1') AS address_line1
         , JSON_QUERY(o.order_info, '$.Address') AS address_info
-    FROM dbo.Orders as o;
+    FROM Orders as o;
     ```
 
 1. With the next query, [JSON_VALUE](https://learn.microsoft.com/sql/t-sql/functions/json-value-transact-sql) is combined with the aggregate function [sum](https://learn.microsoft.com/sql/t-sql/functions/sum-transact-sql), to total values that are found within a JSON document stored in the database. Using the query sheet, issue the following command:
@@ -97,7 +97,7 @@ The available operators are:
     ```SQL
     SELECT SUM(CAST(JSON_VALUE(o.order_info, '$.Price') as float)) AS total_price
          , SUM(CAST(JSON_VALUE(o.order_info, '$.Quantity') as int)) AS total_orders
-      FROM dbo.Orders as o;
+      FROM Orders as o;
     ```
 
 1. JSON can also be used as a parameter or variable with T-SQL. In the following example, JSON is used as a parameter to query. The function [JSON_PATH_EXISTS](https://learn.microsoft.com/sql/t-sql/functions/json-path-exists-transact-sql) is also used to check if a value/path exists in a JSON document. Using the query sheet, issue the following command:
