@@ -6,13 +6,25 @@
 
 ![A picture of the flow of the workshop](./docs/media/flow1.png)
 
-* Learn how to create a full development environment locally or via codespace
-* Deploy a database and create tables with Visual Studio Code or in a codespace
-* Utilize a Database Project for deployment into Azure SQL Database and CI/CD flows
+* Learn how to create a full local development environment
+* Deploy a database and create tables with Visual Studio Code
+* Utilize a Database Project for deployment into Azure SQL Database via CI/CD flows
 * Expose data in your database via REST and GraphQL with Data API Builder
 * Native integration with Azure Functions and other Azure Services from within the Azure SQL Database
 
 ## What you will be building
+
+You are an application developer and have been asked to create a To-do list for your company. This application has the following requirements:
+
+* Ability for users to login and create personal tasks
+* Ability to mark a task as completed
+* Ability to delete tasks
+* The database needs to detect newly created tasks for microservices integration to other systems
+* The application need to be able to translate tasks into any language
+
+Just a reminder, users should not be able to see other users tasks.
+
+### The Workshop
 
 In today's workshop, you will be creating an environment for database application development. This environment will consist of a database, a framework to expose the database, and an application front end. You can accomplish this task in two ways. First, you can run every component locally on your laptop/desktop. In fact, you might even have most of the required components already installed and are using daily. The second method is to run this development environment in a GitHub codespace. By forking the sample repository, you can create a codespace will all the necessary development tools preinstalled for you. Codespace even will allow docker in docker so that a development database can be created with a single command.
 
