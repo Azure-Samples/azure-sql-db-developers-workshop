@@ -16,6 +16,6 @@ rm microsoft.gpg
 ls
 mkdir -p /home/vscode/.swa/dataApiBuilder/0.7.6/
 cd /home/vscode/.swa/dataApiBuilder/0.7.6/
-wget https://github.com/Azure/data-api-builder/releases/download/v0.7.6/dab_linux-x64-0.7.6.zip
-unzip dab_linux-x64-0.7.6.zip
+wget https://github.com/Azure/data-api-builder/releases/download/v0.8.52/dab_linux-x64-0.8.52.zip
+unzip dab_linux-x64-0.8.52.zip
 chmod 777 *

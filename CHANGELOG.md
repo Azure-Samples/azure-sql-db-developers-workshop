@@ -1,5 +1,18 @@
 ## Azure SQL Database Developer Workshop Changelog
 
+<a name="1.5.0"></a>
+# 1.5.0 (2023-10-10)
+
+*Features*
+
+* Version 1.5.0 of the Azure SQL Database Developer Workshop.
+
+For PASS 2023
+
+Includes:
+
+* XXXX
+
 <a name="1.0.0"></a>
 # 1.0.0 (2023-07-22)
 
