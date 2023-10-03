@@ -169,15 +169,15 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     CREATE PROCEDURE dbo.insert_todo
         @title nvarchar(1000),
         @owner_id [varchar](128),
-        @position int
+        @order int
     AS
 
         DECLARE @output table(id uniqueidentifier);
 
     BEGIN
-        insert into dbo.todos (title, owner_id, [order])
+        insert into dbo.todos (title, owner_id, position)
         OUTPUT INSERTED.id into @output
-        values (@title, @owner_id, @position);
+        values (@title, @owner_id, @order);
 
         select * from dbo.todos where id = (select id from @output);
 
