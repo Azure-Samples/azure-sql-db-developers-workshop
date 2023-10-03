@@ -112,76 +112,75 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
         ![A picture of code spaces indicating a successful connection](./media/ch2/database16.png)
 
-### Create two tables (🔘) and a stored procedure (🎤)
+### Create a table and stored procedures (🎤)
 
 1. Back in the Database Projects extension, right click the project name (devDB) and select **Add Table**
 
     ![A picture of right clicking the project name and selecting Add Table](./media/ch2/database17.png)
 
-1. In the New Table name box on the top of VS Code, enter **person** as the table name. Then press Enter.
+1. In the New Table name box on the top of VS Code, enter **todo** as the table name. Then press Enter.
 
-    ![A picture of entering person as the new table name](./media/ch2/database18.png)
+    ![A picture of entering todo as the new table name](./media/ch2/.png)
 
-1. We now have a simple create table script (person.sql) with a single column in our Database Project.
+1. We now have a simple create table script (todo.sql) with a single column in our Database Project.
 
-    ![A picture of the new person.sql script and the script contents](./media/ch2/database19.png)
+    ![A picture of the new todo.sql script and the script contents](./media/ch2/.png)
 
-1. To speed things along, we can use some pre-created code for the person table. Replace the code with the following:
+1. To speed things along, we can use some pre-created code for the todo table. Replace the code with the following:
 
     ```SQL
-    CREATE TABLE [dbo].[person] (
-        [person_id]        INT IDENTITY (1, 1) NOT NULL PRIMARY KEY CLUSTERED ([person_id] ASC),
-        [person_name]      NVARCHAR (200)      NOT NULL,
-        [person_email]     NVARCHAR (200)      NOT NULL,
-        [pet_preference]   NVARCHAR (100)      NOT NULL
-    );
+    CREATE TABLE [dbo].[todos]
+    (
+    	[id] [uniqueidentifier] NOT NULL,
+    	[title] [nvarchar](1000) NOT NULL,
+    	[completed] [bit] NOT NULL,
+    	[owner_id] [varchar](128) NOT NULL,
+    	[position] INT NULL
+    ) 
+    GO
+    ALTER TABLE [dbo].[todos] ADD PRIMARY KEY NONCLUSTERED 
+    (
+    	[id] ASC
+    )
+    GO
+    ALTER TABLE [dbo].[todos] ADD  DEFAULT (newid()) FOR [id]
+    GO
+    ALTER TABLE [dbo].[todos] ADD  DEFAULT ((0)) FOR [completed]
+    GO
+    ALTER TABLE [dbo].[todos] ADD  DEFAULT ('public') FOR [owner_id]
+    GO
     ```
 
     and **save the file**.
 
-    ![A picture of the copy and pasted code into the person.sql script](./media/ch2/database20.png)
+    ![A picture of the copy and pasted code into the todo.sql script](./media/ch2/.png)
 
-1. Create another table by **right clicking** the project name again and select **Add Table**.
-
-    ![A picture of right clicking the project name and selecting Add Table](./media/ch2/database21.png)
-
-1. In the New Table name box on the top of the code space, enter **address** as the table name. Then press Enter.
-
-    ![A picture of entering address as the new table name](./media/ch2/database22.png)
-
-1. Replace the code in the editor with the following code:
-
-    ```SQL
-    CREATE TABLE [dbo].[address] (
-        [address_id]  INT            IDENTITY (1, 1) NOT NULL PRIMARY KEY CLUSTERED ([address_id] ASC),
-        [person_id] INT            NOT NULL,
-        [address]     NVARCHAR (200) NOT NULL,
-        CONSTRAINT [FK_address_person] FOREIGN KEY ([person_id]) REFERENCES [dbo].[person] ([person_id])
-    );
-    ```
-
-    and **save the file**.
-
-    ![A picture of the copy and pasted code into the address.sql script](./media/ch2/database23.png)
-
-1. Now that we have the two tables for the workshop, we can create a simple stored procedure. Right click on the project and select **Add Stored Procedure**.
+1. Now that we have the table for the workshop, we can create stored procedures. Right click on the project and select **Add Stored Procedure**.
 
     ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
 
-1. Name the new stored procedure get_person_by_pet and press enter
+1. Name the new stored procedure insert_todo and press enter
 
-    ![A picture of entering get_person_by_pet as the new stored procedure name](./media/ch2/database25.png)
+    ![A picture of entering insert_todo as the new stored procedure name](./media/ch2/.png)
 
 1. Replace the sample code with the following:
 
     ```SQL
-    CREATE PROCEDURE dbo.get_person_by_pet
-        @pet nvarchar(100)
+    CREATE PROCEDURE dbo.insert_todo
+        @title nvarchar(1000),
+        @owner_id [varchar](128),
+        @position int
     AS
+
+        DECLARE @output table(id uniqueidentifier);
+
     BEGIN
-        select *
-        from dbo.person
-        where pet_preference = iif(NULLIF(@pet, '') IS NOT NULL,@pet,pet_preference);
+        insert into dbo.todos (title, owner_id, [order])
+        OUTPUT INSERTED.id into @output
+        values (@title, @owner_id, @position);
+
+        select * from dbo.todos where id = (select id from @output);
+
     END;
     GO
     ```

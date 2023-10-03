@@ -850,7 +850,7 @@ Data API builder can also REST/GraphQL enable stored procedures in the database.
 Next, issue the following command in the same terminal window.
 
 ```bash
-dab add getPersonByPet --source dbo.get_person_by_pet --source.type "stored-procedure" --source.params "pet:" --permissions "anonymous:execute" --rest.methods "get" --graphql.operation "query"
+dab add insert_todo --source dbo.insert_todo --source.type "stored-procedure" --source.params "title:,owner_id:,position:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
 ```
 
 ![A picture of running the dab add command to enable a stored procedure](./media/ch3/dab16.png)
