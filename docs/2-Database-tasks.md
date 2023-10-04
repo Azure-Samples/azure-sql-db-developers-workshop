@@ -175,11 +175,10 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
         DECLARE @output table(id uniqueidentifier);
 
     BEGIN
-        insert into dbo.todos (title, owner_id, position)
-        OUTPUT INSERTED.id into @output
-        values (@title, @owner_id, @order);
 
-        select * from dbo.todos where id = (select id from @output);
+        insert into dbo.todos (title, owner_id, position)
+        OUTPUT INSERTED.*
+        values (@title, @owner_id, @order);
 
     END;
     GO
