@@ -11,7 +11,11 @@ For PASS 2023
 
 Includes:
 
-* XXXX
+* Using MVC Todo app
+* Move to table APIs for insert/update/delete to accommodate outbox patterns
+* Added SQL Trigger Binding for Azure Functions
+* Added the usage of the Always Free Azure SQL Database
+
 
 <a name="1.0.0"></a>
 # 1.0.0 (2023-07-22)
