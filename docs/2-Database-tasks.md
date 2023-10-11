@@ -4,7 +4,7 @@
 
 ## Using Azure SQL Database and Visual Studio Code
 
-This workshop will use SQL Server 2022 and the Azure SQL Database for the backends. We can create a full instance of SQL Server 2022 locally with docker for free as well as create a free Azure SQL Database in the Azure Cloud; we will use both and seamlessly deploy our database objects with Database Projects from our local docker instance to the cloud.
+This workshop will use SQL Server 2022 and the Azure SQL Database for the backend database. We can create a full instance of SQL Server 2022 locally with docker for free as well as create a free Azure SQL Database in the Azure Cloud; we will use both and seamlessly deploy our database objects with Database Projects from our local docker instance to the cloud.
 
 The SQL Database gives us the ability to store data not only in the traditional relational database format (tables/rows/columns), but also in JSON as well as graph relationships. This flexibility of data storage and deployment options, all while being free to use gives developers a compelling option for their backend database. Azure SQL Database goes beyond a basic cloud database by being a modern, fully managed platform as a service (PaaS) that handles database management functions such as upgrading, patching, backups, and monitoring without developer involvement.
 
@@ -112,7 +112,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
         ![A picture of code spaces indicating a successful connection](./media/ch2/database16.png)
 
-### Create a table and stored procedures (🎤)
+### Create a table and stored procedures
 
 1. Back in the Database Projects extension, right click the project name (devDB) and select **Add Table**
 
@@ -172,7 +172,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
         @order int
     AS
 
-        DECLARE @output table(id uniqueidentifier);
+    --    DECLARE @output table(id uniqueidentifier);
 
     BEGIN
 
@@ -186,7 +186,74 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     and **save the file**.
 
-    ![A picture of the copy and pasted code into the get_person_by_pet.sql script](./media/ch2/database26.png)
+    ![A picture of the copy and pasted code into the insert_todo.sql script](./media/ch2/.png)
+
+1. As before, right click on the project and select **Add Stored Procedure**.
+
+    ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
+
+1. Name the new stored procedure update_todo and press enter
+
+    ![A picture of entering update_todo as the new stored procedure name](./media/ch2/.png)
+
+1. Replace the sample code with the following:
+
+    ```SQL
+    CREATE PROCEDURE dbo.update_todo
+        @id uniqueidentifier,
+        @title nvarchar(1000),
+        @owner_id [varchar](128),
+        @completed bit,
+        @order int
+    AS
+
+    BEGIN
+
+        update dbo.todos 
+           set title = @title,
+               completed = @completed,
+               position = @order
+        OUTPUT INSERTED.*
+         where id = @id
+           and owner_id = @owner_id;
+
+    END;
+    GO
+    ```
+
+    and **save the file**.
+
+    ![A picture of the copy and pasted code into the update_todo.sql script](./media/ch2/.png)
+
+And again for the final procedure, right click on the project and select **Add Stored Procedure**.
+
+    ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
+
+1. Name the new stored procedure delete_todo and press enter
+
+    ![A picture of entering delete_todo as the new stored procedure name](./media/ch2/.png)
+
+1. Replace the sample code with the following:
+
+    ```SQL
+    CREATE PROCEDURE dbo.delete_todo
+        @id uniqueidentifier,
+        @owner_id [varchar](128)
+    AS
+
+    BEGIN
+
+        delete from dbo.todos
+        where id = @id
+        and owner_id = @owner_id;
+
+    END;
+    GO
+    ```
+
+    and **save the file**.
+
+    ![A picture of the copy and pasted code into the delete_todo.sql script](./media/ch2/.png)
 
 ### Publish to the local database
 
