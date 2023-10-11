@@ -12,8 +12,8 @@ For this workshop, we will be using GitHub codespace. This environment will prov
 
 1. .devcontainer
     1. Codespace docker config
-1. app
-    1. contains the sample HTML/JavaScript application for use with Data API builder and SWA
+1. client
+    1. contains the Todo application for use with Data API builder and SWA
 1. docs
     1. Has all the chapters/lessons of the workshop
 1. scripts
@@ -23,6 +23,7 @@ For this workshop, we will be using GitHub codespace. This environment will prov
 
 1. GitHub account
 1. Azure account
+    1. Free Azure SQL Database
 
 ## Install necessary software components or start codespace with specialized container
 
