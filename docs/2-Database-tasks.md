@@ -81,29 +81,37 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 1. Use the following values for the **Create Connection dialog** boxes:
 
     * Use “localhost” as the server name, then press Enter.
+
         ![A picture of using localhost as the server name](./media/ch2/database8.png)
 
     * Use “devDB” as the database name, then press Enter.
+
         ![A picture of using devDB as the database name](./media/ch2/database9.png)
 
     * In the Authentication Type dialog box, select “SQL Login“.
+
         ![A picture of using SQL Login as as the Authentication Type](./media/ch2/database10.png)
 
     * Here is where it is best to refer back to the command “sqlcmd config connection-strings” to find the username and password. Run it again at the terminal to get the values if needed.
 
         In the User name (SQL Login) dialog box, enter the user from the connect strings. It should be vscode, then press Enter.
+
         ![A picture of entering vscode as the database user](./media/ch2/database11.png)
 
         and provide the password from the connect strings in the Password (SQL Login) dialog box, then press Enter.
+
         ![A picture of entering the password for the database user](./media/ch2/database12.png)
 
     * Select “Yes” so that the password is saved (encrypted) on the connection profile
+
         ![A picture of selecting Yes so that the password is saved on the connection profile](./media/ch2/database13.png)
 
     * Provide the profile name of "Local Database" in the last dialog box for this step. Press Enter to finish the connection profile process.
+
         ![A picture of using Local Database as the connection profile name](./media/ch2/database14.png)
 
     * After pressing Enter and the connection profile is verified, a warning box will appear on the lower right of the screen. This warning is indicating that due to new security features within the database, you need to enable the self-signed certificate.
+
         Click the Enable Trust Server Certificate green button to continue.
 
         ![A picture of clicking the Enable Trust Server Certificate green button to continue](./media/ch2/database15.png)
@@ -201,18 +209,18 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     ```SQL
     CREATE PROCEDURE dbo.update_todo
         @id uniqueidentifier,
-        @title nvarchar(1000),
+        @title nvarchar(1000) = NULL,
         @owner_id [varchar](128),
-        @completed bit,
-        @order int
+        @completed bit = NULL,
+        @order int = NULL
     AS
 
     BEGIN
 
         update dbo.todos 
-           set title = @title,
-               completed = @completed,
-               position = @order
+           set title = ISNULL(@title,title),
+               completed = ISNULL(@completed,completed),
+               position = ISNULL(@order,position)
         OUTPUT INSERTED.*
          where id = @id
            and owner_id = @owner_id;
@@ -302,20 +310,41 @@ And again for the final procedure, right click on the project and select **Add S
 1. Run the following code in the query sheet:
 
     ```SQL
-    insert into dbo.person(person_name, person_email, pet_preference) values('Bill','bill@contoso.com','Dogs');
-    insert into dbo.person(person_name, person_email, pet_preference) values('Frank', 'frank@contoso.com','Cats');
-    insert into dbo.person(person_name, person_email, pet_preference) values('Riley', 'Riley@contoso.com','Cats');
-    select * from person
-    insert into address (person_id, address) values (1, 'Lincoln, MA');
-    insert into address (person_id, address) values (2, 'Baltimore, MD');
-    select p.person_name, a.address
-    from person p, address a
-    where p.person_id = a.person_id;
-    go
+    insert into dbo.todos 
+    (
+        [id],
+        [title],
+        [completed],
+        [owner_id],
+        [position]
+    ) 
+    values
+        ('00000000-0000-0000-0000-000000000001', N'Hello world', 0, 'public', 1),
+        ('00000000-0000-0000-0000-000000000002', N'This is done', 1, 'public', 2),
+        ('00000000-0000-0000-0000-000000000003', N'And this is not done (yet!)', 0, 'public', 4),
+        ('00000000-0000-0000-0000-000000000004', N'This is a ☆☆☆☆☆ tool!', 0, 'public', 3),
+        ('00000000-0000-0000-0000-000000000005', N'Add support for sorting', 1, 'public', 5)
+    ;
+    select * from dbo.todos;
+    GO
     ```
 
-1. You can also test out the stored procedure with the following code:
+1. You can also test out the stored procedures with the following code:
 
     ```SQL
-    exec dbo.get_person_by_pet 'Dogs';
+    select * from dbo.todos;
+    exec dbo.insert_todo @title = 'My Test Todo', @owner_id = '1001001', @order = 1;
+    ```
+
+    Copy and paste the resulting ID from the result set and use it in the next stored procedure example:
+
+    ```SQL
+    exec dbo.update_todo @id = 'COPIED ID FROM RESULT SET', @title = 'zzzz', @owner_id = '1001001';
+    ```
+
+    And again, use the copied ID in the next statement:
+
+    ```SQL
+    exec dbo.delete_todo @id = 'COPIED ID FROM RESULT SET', @owner_id = '1001001';
+    select * from dbo.todos;
     ```
