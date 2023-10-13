@@ -55,23 +55,12 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     ![A picture of the new file named dab-config.json opened in the code space editor ](./media/ch3/dab3.png)
 
-1. To add a table to the dab-config.json file, the **dab add TABLE_NAME** command is used. Run the following 2 commands to add the person and address tables to the dab-config.json file. Have the dab-config.json file opened in the editor so you can see the entries being added as the commands are run.
+1. To add a table to the dab-config.json file, the **dab add TABLE_NAME** command is used. Run the following command to add the todo table to the dab-config.json file. Have the dab-config.json file opened in the editor so you can see the entry being added as the commands are run.
 
     For the **person** table:
     ```bash
-    dab add person --source dbo.person --permissions "anonymous:*"
+    dab add todo --source dbo.todo --permissions "anonymous:*"
     ```
-    ---
-    ![A picture of adding the person table to the dab-config.json file](./media/ch3/dab4.png)
-
-    For the **address** table:
-    ```bash
-    dab add address --source dbo.address --permissions "anonymous:*"
-    ```
-    ---
-    ![A picture of adding the address table to the dab-config.json file](./media/ch3/dab5.png)
-
-    As seen in the above 2 screenshots, the tables are added to the entities section in the dab-config.json file.
 
 1. Now that we have 2 tables added to the file, Data API builder can be started and the endpoints tested. Use the following command to start Data API builder locally in the code space:
 

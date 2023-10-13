@@ -184,7 +184,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     BEGIN
 
-        insert into dbo.todos (title, owner_id, position)
+        insert into dob.todo (title, owner_id, position)
         OUTPUT INSERTED.*
         values (@title, @owner_id, @order);
 
@@ -217,7 +217,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     BEGIN
 
-        update dbo.todos 
+        update dob.todo 
            set title = ISNULL(@title,title),
                completed = ISNULL(@completed,completed),
                position = ISNULL(@order,position)
@@ -251,7 +251,7 @@ And again for the final procedure, right click on the project and select **Add S
 
     BEGIN
 
-        delete from dbo.todos
+        delete from dob.todo
         where id = @id
         and owner_id = @owner_id;
 
@@ -310,7 +310,7 @@ And again for the final procedure, right click on the project and select **Add S
 1. Run the following code in the query sheet:
 
     ```SQL
-    insert into dbo.todos 
+    insert into dbo.todo 
     (
         [id],
         [title],
@@ -325,14 +325,14 @@ And again for the final procedure, right click on the project and select **Add S
         ('00000000-0000-0000-0000-000000000004', N'This is a ☆☆☆☆☆ tool!', 0, 'public', 3),
         ('00000000-0000-0000-0000-000000000005', N'Add support for sorting', 1, 'public', 5)
     ;
-    select * from dbo.todos;
+    select * from dob.todo;
     GO
     ```
 
 1. You can also test out the stored procedures with the following code:
 
     ```SQL
-    select * from dbo.todos;
+    select * from dob.todo;
     exec dbo.insert_todo @title = 'My Test Todo', @owner_id = '1001001', @order = 1;
     ```
 
@@ -346,5 +346,5 @@ And again for the final procedure, right click on the project and select **Add S
 
     ```SQL
     exec dbo.delete_todo @id = 'COPIED ID FROM RESULT SET', @owner_id = '1001001';
-    select * from dbo.todos;
+    select * from dob.todo;
     ```
