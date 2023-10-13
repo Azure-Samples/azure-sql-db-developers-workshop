@@ -55,7 +55,29 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     ![A picture of the new file named dab-config.json opened in the code space editor ](./media/ch3/dab3.png)
 
-1. To add a table to the dab-config.json file, the **dab add TABLE_NAME** command is used. Run the following command to add the todo table to the dab-config.json file. Have the dab-config.json file opened in the editor so you can see the entry being added as the commands are run.
+### Adding entries for testing
+
+1. To add a table to the dab-config.json file, the **dab add TABLE_NAME** command is used. Run the following 2 commands to add the person and address tables to the dab-config.json file. Have the dab-config.json file opened in the editor so you can see the entries being added as the commands are run.
+
+    For the **person** table:
+    ```bash
+    dab add person --source dbo.person --permissions "anonymous:*"
+    ```
+    ---
+    ![A picture of adding the person table to the dab-config.json file](./media/ch3/dab4.png)
+
+    For the **address** table:
+    ```bash
+    dab add address --source dbo.address --permissions "anonymous:*"
+    ```
+    ---
+    ![A picture of adding the address table to the dab-config.json file](./media/ch3/dab5.png)
+
+    As seen in the above 2 screenshots, the tables are added to the entities section in the dab-config.json file.
+
+### Adding entries for the Todo Application
+
+1. Run the following command to add the todo table to the dab-config.json file. Have the dab-config.json file opened in the editor so you can see the entry being added as the commands are run.
 
     For the **person** table:
     ```bash
@@ -77,7 +99,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
    ![A picture of code space informing the user about the new open port for data API builder](./media/ch3/dab6.png)
 
-### Working with the endpoints 
+### Working with the endpoints
 
 In this next section, you will be working with the endpoints created by Data API builder. The first section uses REST calls with the second section switching to using GraphQL.
 
@@ -836,10 +858,12 @@ Data API builder can also REST/GraphQL enable stored procedures in the database.
 
 ![A picture of stopping dab with ctrl-C in the terminal in code spaces](./media/ch3/dab14.png)
 
+#### Adding stored procedures for testing
+
 Next, issue the following command in the same terminal window.
 
 ```bash
-dab add insert_todo --source dbo.insert_todo --source.type "stored-procedure" --source.params "title:,owner_id:,position:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
+dab add getPersonByPet --source dbo.get_person_by_pet --source.type "stored-procedure" --source.params "pet:" --permissions "anonymous:execute" --rest.methods "get" --graphql.operation "query"
 ```
 
 ![A picture of running the dab add command to enable a stored procedure](./media/ch3/dab16.png)
@@ -873,6 +897,24 @@ After running the command, the dab-config.json file will contain the new entity:
   }
 }
 ```
+
+#### Adding stored procedures for the Todo Application
+
+Issue the following commands in the same terminal window.
+
+```bash
+dab add insert_todo --source dbo.insert_todo --source.type "stored-procedure" --source.params "title:,owner_id:,position:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
+```
+
+```bash
+dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:,position:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
+```
+
+```bash
+dab add delete_todo --source dbo.delete_todo --source.type "stored-procedure" --source.params "id:,owner_id:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
+```
+
+### Testing the stored procedures
 
 Finally, restart DAB with the following command and continue with the examples.
 

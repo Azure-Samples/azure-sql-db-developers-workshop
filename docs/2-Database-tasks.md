@@ -120,7 +120,85 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
         ![A picture of code spaces indicating a successful connection](./media/ch2/database16.png)
 
-### Create a table and stored procedures
+### Create two tables and a stored procedure for testing
+
+1. Back in the Database Projects extension, right click the project name (devDB) and select **Add Table**
+
+    ![A picture of right clicking the project name and selecting Add Table](./media/ch2/database17.png)
+
+1. In the New Table name box on the top of VS Code, enter **person** as the table name. Then press Enter.
+
+    ![A picture of entering person as the new table name](./media/ch2/database18.png)
+
+1. We now have a simple create table script (person.sql) with a single column in our Database Project.
+
+    ![A picture of the new person.sql script and the script contents](./media/ch2/database19.png)
+
+1. To speed things along, we can use some pre-created code for the person table. Replace the code with the following:
+
+    ```SQL
+    CREATE TABLE [dbo].[person] (
+        [person_id]        INT IDENTITY (1, 1) NOT NULL PRIMARY KEY CLUSTERED ([person_id] ASC),
+        [person_name]      NVARCHAR (200)      NOT NULL,
+        [person_email]     NVARCHAR (200)      NOT NULL,
+        [pet_preference]   NVARCHAR (100)      NOT NULL
+    );
+    ```
+
+    and **save the file**.
+
+    ![A picture of the copy and pasted code into the person.sql script](./media/ch2/database20.png)
+
+1. Create another table by **right clicking** the project name again and select **Add Table**.
+
+    ![A picture of right clicking the project name and selecting Add Table](./media/ch2/database21.png)
+
+1. In the New Table name box on the top of the code space, enter **address** as the table name. Then press Enter.
+
+    ![A picture of entering address as the new table name](./media/ch2/database22.png)
+
+1. Replace the code in the editor with the following code:
+
+    ```SQL
+    CREATE TABLE [dbo].[address] (
+        [address_id]  INT            IDENTITY (1, 1) NOT NULL PRIMARY KEY CLUSTERED ([address_id] ASC),
+        [person_id] INT            NOT NULL,
+        [address]     NVARCHAR (200) NOT NULL,
+        CONSTRAINT [FK_address_person] FOREIGN KEY ([person_id]) REFERENCES [dbo].[person] ([person_id])
+    );
+    ```
+
+    and **save the file**.
+
+    ![A picture of the copy and pasted code into the address.sql script](./media/ch2/database23.png)
+
+1. Now that we have the two tables for the workshop, we can create a simple stored procedure. Right click on the project and select **Add Stored Procedure**.
+
+    ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
+
+1. Name the new stored procedure get_person_by_pet and press enter
+
+    ![A picture of entering get_person_by_pet as the new stored procedure name](./media/ch2/database25.png)
+
+1. Replace the sample code with the following:
+
+    ```SQL
+    CREATE PROCEDURE dbo.get_person_by_pet
+        @pet nvarchar(100)
+    AS
+    BEGIN
+        select *
+        from dbo.person
+        where pet_preference = iif(NULLIF(@pet, '') IS NOT NULL,@pet,pet_preference);
+    END;
+    GO
+    ```
+
+    and **save the file**.
+
+    ![A picture of the copy and pasted code into the get_person_by_pet.sql script](./media/ch2/database26.png)
+
+### Create a table and stored procedures for the Todo application
 
 1. Back in the Database Projects extension, right click the project name (devDB) and select **Add Table**
 
@@ -301,7 +379,34 @@ And again for the final procedure, right click on the project and select **Add S
 
     ![A picture of the Tables and Programmability folders to and the deployed objects](./media/ch2/database35.png)
 
-### Work with the database objects
+### Work with the database objects for testing
+
+1. While still on the **SQL Server Connections extension**, right click the database profile name, Local Database, and select **New Query**. This will bring up a new query sheet.
+
+    ![A picture of right clicking the database profile name and selecting New Query](./media/ch2/database36.png)
+
+1. Run the following code in the query sheet:
+
+    ```SQL
+    insert into dbo.person(person_name, person_email, pet_preference) values('Bill','bill@computer.com','Dogs');
+    insert into dbo.person(person_name, person_email, pet_preference) values('Frank', 'frank@computer.com','Cats');
+    insert into dbo.person(person_name, person_email, pet_preference) values('Riley', 'Riley@computer.com','Cats');
+    select * from person
+    insert into address (person_id, address) values (1, 'Lincoln, MA');
+    insert into address (person_id, address) values (2, 'Baltimore, MD');
+    select p.person_name, a.address
+    from person p, address a
+    where p.person_id = a.person_id;
+    go
+    ```
+
+1. You can also test out the stored procedure with the following code:
+
+    ```SQL
+    exec dbo.get_person_by_pet 'Dogs';
+    ```
+
+### Work with the database objects for the Todo Application
 
 1. While still on the **SQL Server Connections extension**, right click the database profile name, Local Database, and select **New Query**. This will bring up a new query sheet.
 
