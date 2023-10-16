@@ -25,7 +25,8 @@
 			  "ms-azuretools.vscode-azurefunctions",
 			  "ms-vscode.azure-account",
 			  "ms-azuretools.vscode-azureresourcegroups",
-			  "humao.rest-client"
+			  "humao.rest-client",
+			  "Vue.volar"
 		  ]
 	  }
   }
