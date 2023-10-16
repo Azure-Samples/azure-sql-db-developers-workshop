@@ -437,7 +437,7 @@ And again for the final procedure, right click on the project and select **Add S
 1. You can also test out the stored procedures with the following code:
 
     ```SQL
-    select * from dob.todo;
+    select * from dbo.todo;
     exec dbo.insert_todo @title = 'My Test Todo', @owner_id = '1001001', @order = 1;
     ```
 
@@ -451,5 +451,5 @@ And again for the final procedure, right click on the project and select **Add S
 
     ```SQL
     exec dbo.delete_todo @id = 'COPIED ID FROM RESULT SET', @owner_id = '1001001';
-    select * from dob.todo;
+    select * from dbo.todo;
     ```
