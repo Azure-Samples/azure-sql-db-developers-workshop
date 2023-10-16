@@ -262,7 +262,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     BEGIN
 
-        insert into dob.todo (title, owner_id, position)
+        insert into dbo.todo (title, owner_id, position)
         OUTPUT INSERTED.*
         values (@title, @owner_id, @order);
 
@@ -295,7 +295,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     BEGIN
 
-        update dob.todo 
+        update dbo.todo 
            set title = ISNULL(@title,title),
                completed = ISNULL(@completed,completed),
                position = ISNULL(@order,position)
@@ -329,7 +329,7 @@ And again for the final procedure, right click on the project and select **Add S
 
     BEGIN
 
-        delete from dob.todo
+        delete from dbo.todo
         where id = @id
         and owner_id = @owner_id;
 
