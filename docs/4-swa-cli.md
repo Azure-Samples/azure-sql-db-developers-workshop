@@ -44,7 +44,23 @@ The following tasks will show you how to integrate a local Static Web Apps envir
 
 Static Web Apps has built in [integration with the Azure SQL Database/Local SQL Server (and other Azure Databases)](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview). SWA CLI uses a config file located in the swa-db-connections directory. Seeing Static Web Apps utilizes Data API builder, we can just copy the dab-config.json file right into that directory and have all the entities we added just work on startup.
 
-1. Start by creating a directory called swa-db-connections in the top level directory. Use the following commands:
+1. The first task to perform is adding a mapping to our dab-config.json file. The scenario is that you want to expose a field in an application but use a different name. Maybe the database field is an internal complex name and you wanted to make it easier for the developers to use. We can use the **map** option in dba cli to add a mapping. In this example, we are going to expose the **position database column** to the application as **order**.
+
+    Run the following command:
+
+    ```bash
+    dab update todo --map "position:order" 
+    ```
+
+    and looking at the dab-config.json file, we can see the added mapping to our configuration.
+
+    ```bash
+    "mappings": {
+      "position": "order"
+    } 
+    ```
+
+1. Next, create a directory called swa-db-connections in the top level directory. Use the following commands:
 
     Be at the top level directory for the project
 
@@ -67,7 +83,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 1. Next, we need to initialize the Static Web Apps environment.
 
     ```bash
-    swa init
+    swa build
     ```
 
     Accept the **default** for the swa init question and answer "? Choose a configuration name: › azure-sql-db-developers-workshop". Press enter/return to accept the default.
@@ -77,7 +93,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 1. Start Static Web Apps in your codespace. The following command indicates that our app location is at /app and the database connections are located in the swa-db-connections directory.
 
     ```bash
-    swa start --app-location ./app --data-api-location ./swa-db-connections
+    swa start --data-api-location ./swa-db-connections
     ```
  
 1. Once Static Web Apps has started, you will get a message in the codespace on the bottom right indicating that it's running on port 4280.
