@@ -215,7 +215,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 1. To speed things along, we can use some pre-created code for the todo table. Replace the code with the following:
 
     ```SQL
-    CREATE TABLE [dbo].[todos]
+    CREATE TABLE [dbo].[todo]
     (
     	[id] [uniqueidentifier] NOT NULL,
     	[title] [nvarchar](1000) NOT NULL,
@@ -224,16 +224,16 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     	[position] INT NULL
     ) 
     GO
-    ALTER TABLE [dbo].[todos] ADD PRIMARY KEY NONCLUSTERED 
+    ALTER TABLE [dbo].[todo] ADD PRIMARY KEY NONCLUSTERED 
     (
     	[id] ASC
     )
     GO
-    ALTER TABLE [dbo].[todos] ADD  DEFAULT (newid()) FOR [id]
+    ALTER TABLE [dbo].[todo] ADD  DEFAULT (newid()) FOR [id]
     GO
-    ALTER TABLE [dbo].[todos] ADD  DEFAULT ((0)) FOR [completed]
+    ALTER TABLE [dbo].[todo] ADD  DEFAULT ((0)) FOR [completed]
     GO
-    ALTER TABLE [dbo].[todos] ADD  DEFAULT ('public') FOR [owner_id]
+    ALTER TABLE [dbo].[todo] ADD  DEFAULT ('public') FOR [owner_id]
     GO
     ```
 
@@ -430,7 +430,7 @@ And again for the final procedure, right click on the project and select **Add S
         ('00000000-0000-0000-0000-000000000004', N'This is a ☆☆☆☆☆ tool!', 0, 'public', 3),
         ('00000000-0000-0000-0000-000000000005', N'Add support for sorting', 1, 'public', 5)
     ;
-    select * from dob.todo;
+    select * from dbo.todo;
     GO
     ```
 
