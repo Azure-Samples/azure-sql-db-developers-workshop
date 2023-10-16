@@ -54,7 +54,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     and looking at the dab-config.json file, we can see the added mapping to our configuration.
 
-    ```bash
+    ```JSON
     "mappings": {
       "position": "order"
     } 
