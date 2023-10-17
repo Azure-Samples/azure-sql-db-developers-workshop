@@ -14,10 +14,14 @@ For this workshop, we will be using GitHub codespace. This environment will prov
     1. Codespace docker config
 1. client
     1. contains the Todo application for use with Data API builder and SWA
+1. app
+    1. contains the simple JavaScript test application for use with Data API builder and SWA
 1. docs
     1. Has all the chapters/lessons of the workshop
 1. scripts
     1. Installs all the needed dev tools
+1. labFiles
+    1. contains files to be used with the workshop in various chapters
 
 ### Free accounts needed for the workshop
 
