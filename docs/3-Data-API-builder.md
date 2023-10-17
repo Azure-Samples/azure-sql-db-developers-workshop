@@ -911,7 +911,7 @@ dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --
 ```
 
 ```bash
-dab add delete_todo --source dbo.delete_todo --source.type "stored-procedure" --source.params "id:,owner_id:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
+dab add delete_todo --source dbo.delete_todo --source.type "stored-procedure" --source.params "id:,owner_id:" --permissions "anonymous:execute" --rest.methods "delete" --graphql.operation "query"
 ```
 
 ### Testing the stored procedures

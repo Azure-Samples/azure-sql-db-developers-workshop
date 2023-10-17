@@ -286,7 +286,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ```SQL
     CREATE PROCEDURE dbo.update_todo
-        @id uniqueidentifier,
+        @id nvarchar(100),
         @title nvarchar(1000) = NULL,
         @owner_id [varchar](128),
         @completed bit = NULL,
@@ -323,7 +323,7 @@ And again for the final procedure, right click on the project and select **Add S
 
     ```SQL
     CREATE PROCEDURE dbo.delete_todo
-        @id uniqueidentifier,
+        @id nvarchar(100),
         @owner_id [varchar](128)
     AS
 
