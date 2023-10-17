@@ -42,7 +42,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     command again. Once you have your database password, replace **PASSWORD** in the following command and then run it at the terminal prompt:
 
     ```bash
-    dab init --database-type "mssql" --connection-string "Server=localhost;Database=devDB;User ID=vscode;Password="'PASSWORD'";TrustServerCertificate=true" --host-mode "Development"
+    dab init --database-type "mssql" --connection-string "Server=localhost;Database=devDB;User ID=vscode;Password="'PASSWORD'";TrustServerCertificate=true" --host-mode "Development" --rest.path "rest"
     ```
 
     ![A picture of creating the data API builder initialization file using the code space terminal ](./media/ch3/dab1.png)
@@ -124,14 +124,14 @@ In this next section, you will be working with the endpoints created by Data API
 1. For testing the REST endpoints, 2 URLs will be used:
 
     ```
-    http://localhost:5000/api/person
-    http://localhost:5000/api/address
+    http://localhost:5000/rest/person
+    http://localhost:5000/rest/address
     ```
 
 1. To start, in the **testing.rest file**, add the following text:
 
     ```
-    http://localhost:5000/api/person
+    http://localhost:5000/rest/person
     ```
 
     and you will see a **"send request"** link appear just above it.
@@ -152,7 +152,7 @@ In this next section, you will be working with the endpoints created by Data API
 **Request:**
 
 ```bash
-http://localhost:5000/api/person/person_id/1
+http://localhost:5000/rest/person/person_id/1
 ```
 
 **Response:**
@@ -176,7 +176,7 @@ http://localhost:5000/api/person/person_id/1
 **Request:**
 
 ```bash
-http://localhost:5000/api/person?$select=person_email
+http://localhost:5000/rest/person?$select=person_email
 ```
 
 **Response:**
@@ -207,7 +207,7 @@ http://localhost:5000/api/person?$select=person_email
 **Request:**
 
 ```bash
-http://localhost:5000/api/person?$filter=person_name eq 'bill'
+http://localhost:5000/rest/person?$filter=person_name eq 'bill'
 ```
 
 **Response:**
@@ -228,7 +228,7 @@ http://localhost:5000/api/person?$filter=person_name eq 'bill'
 **Request:**
 
 ```bash
-http://localhost:5000/api/person?$filter=person_name ne 'bill'
+http://localhost:5000/rest/person?$filter=person_name ne 'bill'
 ```
 
 **Response:**
@@ -259,7 +259,7 @@ http://localhost:5000/api/person?$filter=person_name ne 'bill'
 **Request:**
 
 ```bash
-http://localhost:5000/api/person?$orderby=person_id desc
+http://localhost:5000/rest/person?$orderby=person_id desc
 ```
 
 **Response:**
@@ -297,7 +297,7 @@ http://localhost:5000/api/person?$orderby=person_id desc
 **Request:**
 
 ```bash
-POST http://localhost:5000/api/person
+POST http://localhost:5000/rest/person
 content-type: application/json
 
 {
@@ -332,7 +332,7 @@ NOTE: When you are using a primary key with managed identity, PUT will result in
 **Request:**
 
 ```bash
-PATCH http://localhost:5000/api/person/person_id/3
+PATCH http://localhost:5000/rest/person/person_id/3
 content-type: application/json
 
 {
@@ -362,7 +362,7 @@ content-type: application/json
 **Request:**
 
 ```bash
-DELETE http://localhost:5000/api/person/person_id/3
+DELETE http://localhost:5000/rest/person/person_id/3
 ```
 
 **Response:**
@@ -931,7 +931,7 @@ Use the procedure’s REST endpoint and pass "Dogs" into the pet parameter.
 **Request:**
 
 ```bash
-http://localhost:5000/api/getPersonByPet?pet=Dogs
+http://localhost:5000/rest/getPersonByPet?pet=Dogs
 ```
 
 **Response:**

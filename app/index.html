@@ -12,7 +12,7 @@ fetch('/.auth/me')
   });
 
 // on load, get the data
-fetch('/data-api/api/person')
+fetch('/data-api/rest/person')
     .then(res => res.text())
     .then((out) => {
       let jsonData = JSON.parse(out);
@@ -28,7 +28,7 @@ fetch('/data-api/api/person')
 
 // Get the data from a stored procedure
   function getPref(ppref) {
-    fetch('/data-api/api/getPersonByPet?pet=' + ppref)
+    fetch('/data-api/rest/getPersonByPet?pet=' + ppref)
     .then(res => {
       if (res.status== '403') {
         alert('403 - forbidden, try logging in')
