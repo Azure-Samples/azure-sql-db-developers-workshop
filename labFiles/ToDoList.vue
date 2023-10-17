@@ -157,7 +157,7 @@ export default {
       fetch(API_UPDATE, {
           headers: HEADERS,
           method: "POST",
-          body: JSON.stringify({ order: destTodo.order, owner_id: userId, id: sourceId, completed: destTodo.completed, title: destTodo.title })
+          body: JSON.stringify({ order: destTodo.order, owner_id: userId, id: destTodo.id, completed: destTodo.completed, title: destTodo.title })
         });
 
       fetch(API_UPDATE, {
