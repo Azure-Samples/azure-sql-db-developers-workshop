@@ -907,7 +907,7 @@ dab add insert_todo --source dbo.insert_todo --source.type "stored-procedure" --
 ```
 
 ```bash
-dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
+dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:false,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
 ```
 
 ```bash
