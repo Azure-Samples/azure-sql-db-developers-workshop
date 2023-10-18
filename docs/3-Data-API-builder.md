@@ -42,7 +42,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     command again. Once you have your database password, replace **PASSWORD** in the following command and then run it at the terminal prompt:
 
     ```bash
-    dab init --database-type "mssql" --connection-string "Server=localhost;Database=devDB;User ID=vscode;Password="'PASSWORD'";TrustServerCertificate=true" --host-mode "Development" --rest.path "rest"
+    dab init --database-type "mssql" --connection-string "Server=localhost;Database=devDB;User ID=vscode;Password="'PASSWORD'";TrustServerCertificate=true" --host-mode "Development" --rest.path "rest" --set-session-context true
     ```
 
     ![A picture of creating the data API builder initialization file using the code space terminal ](./media/ch3/dab1.png)
@@ -907,7 +907,7 @@ dab add insert_todo --source dbo.insert_todo --source.type "stored-procedure" --
 ```
 
 ```bash
-dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:false,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
+dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:false,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query" 
 ```
 
 ```bash
