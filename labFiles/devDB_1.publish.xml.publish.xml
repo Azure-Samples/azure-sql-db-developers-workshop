@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetDatabaseName>devDB</TargetDatabaseName>
+    <TargetConnectionString>Data Source=freedbtestserver1.database.windows.net;Initial Catalog=freedbtest;User ID=sqladmin;Password=******;Connect Timeout=30;Authentication=SqlPassword;Application Name=sqltools;Command Timeout=30</TargetConnectionString>
+    <AllowIncompatiblePlatform>True</AllowIncompatiblePlatform>
+    <DropPermissionsNotInSource>False</DropPermissionsNotInSource>
+    <DropObjectsNotInSource>False</DropObjectsNotInSource>
+    <DropRoleMembersNotInSource>False</DropRoleMembersNotInSource>
+    <IgnoreKeywordCasing>False</IgnoreKeywordCasing>
+    <IgnoreSemicolonBetweenStatements>False</IgnoreSemicolonBetweenStatements>
+    <AllowDropBlockingAssemblies>False</AllowDropBlockingAssemblies>
+    <ExcludeAudits>True</ExcludeAudits>
+    <ExcludeCredentials>True</ExcludeCredentials>
+    <ExcludeDatabaseScopedCredentials>True</ExcludeDatabaseScopedCredentials>
+    <ExcludeCryptographicProviders>True</ExcludeCryptographicProviders>
+    <ExcludeDatabaseAuditSpecifications>True</ExcludeDatabaseAuditSpecifications>
+    <ExcludeEndpoints>True</ExcludeEndpoints>
+    <ExcludeErrorMessages>True</ExcludeErrorMessages>
+    <ExcludeEventNotifications>True</ExcludeEventNotifications>
+    <ExcludeEventSessions>True</ExcludeEventSessions>
+    <ExcludeFiles>True</ExcludeFiles>
+    <ExcludeLinkedServerLogins>True</ExcludeLinkedServerLogins>
+    <ExcludeLinkedServers>True</ExcludeLinkedServers>
+    <ExcludeLogins>True</ExcludeLogins>
+    <ExcludeRoutes>True</ExcludeRoutes>
+    <ExcludeServerAuditSpecifications>True</ExcludeServerAuditSpecifications>
+    <ExcludeServerRoleMembership>True</ExcludeServerRoleMembership>
+    <ExcludeServerRoles>True</ExcludeServerRoles>
+    <ExcludeServerTriggers>True</ExcludeServerTriggers>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+  </PropertyGroup>
+</Project>
