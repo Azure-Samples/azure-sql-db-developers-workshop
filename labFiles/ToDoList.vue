@@ -199,7 +199,7 @@ export default {
           return res.json();
         }
       }).then(res => {
-        this.todos.push(res.value[0]);
+        this.getTodos();
       })
     },
 
