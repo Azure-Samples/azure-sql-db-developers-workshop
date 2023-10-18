@@ -348,13 +348,12 @@ ALTER PROCEDURE dbo.insert_todo
 AS
 
 	declare @translated_task VARCHAR(1000);
-
-BEGIN
-
-	declare @url nvarchar(4000) = N'https://XXXXX.openai.azure.com/openai/deployments/chattykathy/chat/completions?api-version=2023-07-01-preview';
-    declare @headers nvarchar(102) = N'{"api-key":"589ca34db9d0458db6a67137716e6258"}'
+	declare @url nvarchar(4000) = N'https://skynetbeta.openai.azure.com/openai/deployments/chattykathy/chat/completions?api-version=2023-07-01-preview';
+    declare @headers nvarchar(102) = N'{"api-key":"XXXXX"}'
 	declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into german, only respond with the translation"}]}'
 	declare @ret int, @response nvarchar(max);
+
+BEGIN
 
 	exec @ret = sp_invoke_external_rest_endpoint 
 		@url = @url,
