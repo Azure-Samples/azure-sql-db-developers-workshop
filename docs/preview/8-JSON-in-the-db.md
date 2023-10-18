@@ -1,6 +1,6 @@
 ![A picture of the Microsoft Logo](./media/graphics/microsoftlogo.png)
 
-# Azure SQL Database Preview - JSON in the database
+# Azure SQL Database - JSON in the database - IN PRIVATE PREVIEW
 
 ## JSON in the Azure SQL Database
 
