@@ -120,7 +120,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
         ![A picture of code spaces indicating a successful connection](./media/ch2/database16.png)
 
-### Create two tables and a stored procedure for testing
+### Create two tables and a stored procedure for testing the simple JavaScript Application
 
 1. Back in the Database Projects extension, right click the project name (devDB) and select **Add Table**
 
