@@ -44,6 +44,8 @@
     func init
     ```
 
+func init triggerBinding --worker-runtime dotnet
+
     Upon issuing that command, you will be presented with a choice of frameworks for this function to use.
 
     PICTURE HERE
@@ -69,6 +71,8 @@
 1. Next, we need to add some package references to the project (for SQL Bindings and Azure Event Hub). The following commands will add these references to the azure-sql-db-developers-workshop.csproj file.
 
     Run the following commands in the terminal:
+
+    cd triggerBinding
 
     ```bash
     dotnet add package Microsoft.Azure.WebJobs.Extensions.Sql --prerelease
