@@ -202,15 +202,15 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
 1. Back in the Database Projects extension, right click the project name (devDB) and select **Add Table**
 
-    ![A picture of right clicking the project name and selecting Add Table](./media/ch2/database17.png)
+    ![A picture of right clicking the project name and selecting Add Table](./media/ch2/database17a.png)
 
 1. In the New Table name box on the top of VS Code, enter **todo** as the table name. Then press Enter.
 
-    ![A picture of entering todo as the new table name](./media/ch2/.png)
+    ![A picture of entering todo as the new table name](./media/ch2/database17b.png)
 
 1. We now have a simple create table script (todo.sql) with a single column in our Database Project.
 
-    ![A picture of the new todo.sql script and the script contents](./media/ch2/.png)
+    ![A picture of the new todo.sql script and the script contents](./media/ch2/database17c.png)
 
 1. To speed things along, we can use some pre-created code for the todo table. Replace the code with the following:
 
@@ -239,15 +239,15 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     and **save the file**.
 
-    ![A picture of the copy and pasted code into the todo.sql script](./media/ch2/.png)
+    ![A picture of the copy and pasted code into the todo.sql script](./media/ch2/database17d.png)
 
-1. Now that we have the table for the workshop, we can create stored procedures. Right click on the project and select **Add Stored Procedure**.
+1. Now that we have the table for the todo app, we can create stored procedures. Right click on the project and select **Add Stored Procedure**.
 
     ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
 
-1. Name the new stored procedure insert_todo and press enter
+1. Name the new stored procedure **insert_todo** and press enter
 
-    ![A picture of entering insert_todo as the new stored procedure name](./media/ch2/.png)
+    ![A picture of entering insert_todo as the new stored procedure name](./media/ch2/database24a.png)
 
 1. Replace the sample code with the following:
 
@@ -257,8 +257,6 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
         @owner_id [varchar](128),
         @order int
     AS
-
-    --    DECLARE @output table(id uniqueidentifier);
 
     BEGIN
 
@@ -272,15 +270,15 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     and **save the file**.
 
-    ![A picture of the copy and pasted code into the insert_todo.sql script](./media/ch2/.png)
+    ![A picture of the copy and pasted code into the insert_todo.sql script](./media/ch2/database24b.png)
 
 1. As before, right click on the project and select **Add Stored Procedure**.
 
     ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
 
-1. Name the new stored procedure update_todo and press enter
+1. Name the new stored procedure **update_todo** and press enter
 
-    ![A picture of entering update_todo as the new stored procedure name](./media/ch2/.png)
+    ![A picture of entering update_todo as the new stored procedure name](./media/ch2/database24c.png)
 
 1. Replace the sample code with the following:
 
@@ -309,15 +307,15 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     and **save the file**.
 
-    ![A picture of the copy and pasted code into the update_todo.sql script](./media/ch2/.png)
+    ![A picture of the copy and pasted code into the update_todo.sql script](./media/ch2/database24d.png)
 
 And again for the final procedure, right click on the project and select **Add Stored Procedure**.
 
     ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
 
-1. Name the new stored procedure delete_todo and press enter
+1. Name the new stored procedure **delete_todo** and press enter
 
-    ![A picture of entering delete_todo as the new stored procedure name](./media/ch2/.png)
+    ![A picture of entering delete_todo as the new stored procedure name](./media/ch2/database24e.png)
 
 1. Replace the sample code with the following:
 
@@ -339,7 +337,7 @@ And again for the final procedure, right click on the project and select **Add S
 
     and **save the file**.
 
-    ![A picture of the copy and pasted code into the delete_todo.sql script](./media/ch2/.png)
+    ![A picture of the copy and pasted code into the delete_todo.sql script](./media/ch2/database24f.png)
 
 ### Create a post-deployment script
 
