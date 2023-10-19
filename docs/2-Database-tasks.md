@@ -427,12 +427,7 @@ And again for the final procedure, right click on the project and select **Add S
 1. Run the following code in the query sheet:
 
     ```SQL
-    insert into dbo.person(person_name, person_email, pet_preference) values('Bill','bill@computer.com','Dogs');
-    insert into dbo.person(person_name, person_email, pet_preference) values('Frank', 'frank@computer.com','Cats');
-    insert into dbo.person(person_name, person_email, pet_preference) values('Riley', 'Riley@computer.com','Cats');
     select * from person
-    insert into address (person_id, address) values (1, 'Lincoln, MA');
-    insert into address (person_id, address) values (2, 'Baltimore, MD');
     select p.person_name, a.address
     from person p, address a
     where p.person_id = a.person_id;
@@ -454,21 +449,6 @@ And again for the final procedure, right click on the project and select **Add S
 1. Run the following code in the query sheet:
 
     ```SQL
-    insert into dbo.todo 
-    (
-        [id],
-        [title],
-        [completed],
-        [owner_id],
-        [position]
-    ) 
-    values
-        ('00000000-0000-0000-0000-000000000001', N'Hello world', 0, 'public', 1),
-        ('00000000-0000-0000-0000-000000000002', N'This is done', 1, 'public', 2),
-        ('00000000-0000-0000-0000-000000000003', N'And this is not done (yet!)', 0, 'public', 4),
-        ('00000000-0000-0000-0000-000000000004', N'This is a ☆☆☆☆☆ tool!', 0, 'public', 3),
-        ('00000000-0000-0000-0000-000000000005', N'Add support for sorting', 1, 'public', 5)
-    ;
     select * from dbo.todo;
     GO
     ```
@@ -481,7 +461,7 @@ And again for the final procedure, right click on the project and select **Add S
     GO    
     ```
 
-    Copy and paste the resulting ID from the result set and use it in the next stored procedure example:
+    Copy and paste the resulting ID from the result set into the area marked **COPIED ID FROM RESULT SET** and use it in the next stored procedure example:
 
     ```SQL
     exec dbo.update_todo @id = 'COPIED ID FROM RESULT SET', @title = 'zzzz', @owner_id = '1001001';
@@ -489,7 +469,7 @@ And again for the final procedure, right click on the project and select **Add S
     GO    
     ```
 
-    And again, use the copied ID in the next statement:
+    And again, copy and paste the resulting ID from the result set into the area marked **COPIED ID FROM RESULT SET** and use it in the next stored procedure example:
 
     ```SQL
     exec dbo.delete_todo @id = 'COPIED ID FROM RESULT SET', @owner_id = '1001001';
