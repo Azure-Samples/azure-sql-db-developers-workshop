@@ -903,15 +903,15 @@ After running the command, the dab-config.json file will contain the new entity:
 Issue the following commands in the same terminal window.
 
 ```bash
-dab add insert_todo --source dbo.insert_todo --source.type "stored-procedure" --source.params "title:,owner_id:,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query"
+dab add insert_todo --source dbo.insert_todo --source.type "stored-procedure" --source.params "title:,owner_id:,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql false
 ```
 
 ```bash
-dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:false,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql.operation "query" 
+dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:false,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql false 
 ```
 
 ```bash
-dab add delete_todo --source dbo.delete_todo --source.type "stored-procedure" --source.params "id:,owner_id:" --permissions "anonymous:execute" --rest.methods "delete" --graphql.operation "query"
+dab add delete_todo --source dbo.delete_todo --source.type "stored-procedure" --source.params "id:,owner_id:" --permissions "anonymous:execute" --rest.methods "delete" --graphql false
 ```
 
 ### Testing the stored procedures
