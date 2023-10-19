@@ -144,7 +144,7 @@ In this next section, you will be working with the endpoints created by Data API
 
 1. For the following REST examples in this exercise, use the testing.rest file for the requests. Replace the existing text in the file with each example because the extension can only have one endpoint in the file at any one time.
 
-   ![A picture of replacing text in the testing.rest file](./media/ch3/dab13.gif)
+   ![A picture of replacing text in the testing.rest file](./media/ch3/dab13.png)
 
 ---
 
