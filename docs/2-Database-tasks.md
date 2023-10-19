@@ -341,6 +341,16 @@ And again for the final procedure, right click on the project and select **Add S
 
 ### Create a post-deployment script
 
+1. So that we have some data in the database when we deploy the objects, we can create a **Post-Deployment Script**. To create this script, right click on the project and select **Add Post-Deployment Script**.
+
+    ![A picture of right clicking on the project and selecting Add Post-Deployment Script](./media/ch2/database24g.png)
+
+1. Leave the default name of the script as **Script.PostDeployment1** and press enter to create it.
+
+    ![A picture of leaveing the default name of the script as Script.PostDeployment1 and pressing enter to create it](./media/ch2/database24h.png)
+
+1. Copy and paste the following text into the post-deployment script body in the editor:
+
     ```SQL
     -- This file contains SQL statements that will be executed after the build script.
     insert into dbo.person(person_name, person_email, pet_preference) values('Bill','bill@computer.com','Dogs');
@@ -365,6 +375,10 @@ And again for the final procedure, right click on the project and select **Add S
     ;
     GO
     ```
+
+    and **save the file**.
+
+    ![A picture of the copy and pasted code into the Script.PostDeployment1.sql script](./media/ch2/database24i.png)
 
 ### Publish to the local database
 
