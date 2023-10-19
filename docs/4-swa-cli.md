@@ -96,6 +96,8 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     swa start --data-api-location ./swa-db-connections
     ```
  
+swa start --app-location ./app --data-api-location ./swa-db-connections
+
 1. Once Static Web Apps has started, you will get a message in the codespace on the bottom right indicating that it's running on port 4280.
 
     ![A picture of the codespace indicating SWA has started on port 4280 in a dialog box](./media/ch4/swa3.png)
