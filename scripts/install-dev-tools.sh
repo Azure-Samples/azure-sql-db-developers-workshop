@@ -7,15 +7,12 @@ dotnet tool install -g microsoft.sqlpackage
 dotnet new -i Microsoft.Build.Sql.Templates
 dotnet tool install --global Microsoft.DataApiBuilder
 sudo apt-get update
-sudo apt-get install sqlcmd
-sudo mkdir sqlinstall
-sudo cd sqlinstall
 sudo wget https://github.com/microsoft/go-sqlcmd/releases/download/v1.4.0/sqlcmd-v1.4.0-linux-amd64.tar.bz2
 sudo bunzip2 sqlcmd-v1.4.0-linux-amd64.tar.bz2
 sudo tar xvf sqlcmd-v1.4.0-linux-amd64.tar
 sudo mv sqlcmd /usr/bin/sqlcmd
-sudo ..
-sudo rm -rf sqlinstall
+sudo rm -rf sqlcmd-v1.4.0-linux-amd64.tar
+sudo rm -rf sqlcmd_debug
 echo 'PATH=$PATH:$HOME/.dotnet/tools' >> ~/.bashrc
 echo "rm packages-microsoft-prod.deb"
 rm packages-microsoft-prod.deb
