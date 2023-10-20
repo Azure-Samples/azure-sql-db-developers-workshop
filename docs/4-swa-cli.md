@@ -82,16 +82,6 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 ### Working with the sample JavaScript Application
 
-1. Next, we need to initialize the Static Web Apps environment.
-
-    ```bash
-    swa build
-    ```
-
-    Accept the **default** for the swa init question and answer "? Choose a configuration name: › azure-sql-db-developers-workshop". Press enter/return to accept the default.
-
-    For the next question, "? Are these settings correct? › (Y/n)", **enter Y**.
-    
 1. Start Static Web Apps in your codespace. The following command indicates that our app location is at /app and the database connections are located in the swa-db-connections directory.
 
     ```bash
@@ -296,8 +286,58 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     ![A picture of entering Dogs into the Pet Preference text field and click submit without an auth error](./media/ch4/swa13.png)
 
+1. Click the Logoff link
+
+    ![A picture of clicking the logoff link](./media/ch4/swa14.png)
+
 1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.
 
 ### Working with the ToDo Application
+
+1. Now that you see how SWA CLI works, it's time to try the more complex Todo application. We are going to use 2 versions of this. The first one will use only the /rest/todo REST endpoint with the second one adding the stored procedure table APIs for inserts, updates, and deletes. This using of these table API/Stored procedures will become more clear once we deploy onto Azure SQL Database in the Azure Cloud.
+
+1. With SWA CLI stopped, the **swa-cli.config.json** file needs to be swapped with the one in the labFiles folder. Run the following commands at the terminal to do just that.
+
+    Start in the /workspaces/azure-sql-db-developers-workshop directory
+
+    ```bash
+    cd /workspaces/azure-sql-db-developers-workshop
+    ```
+
+    Then, move the original file into the labFiles directory
+
+    ```bash
+    mv swa-cli.config.json labFiles/swa-cli.config.json.sampleJSapp
+    ```
+
+    Now, move the new file from the labFiles directory into the home directory
+
+    ```bash
+    mv labFiles/swa-cli.config.json.todo ./swa-cli.config.json
+    ```
+
+1. Next, build the project with the following command at the terminal
+
+    ```bash
+    swa build
+    ```
+
+1. And start swa cli, again at the terminal
+
+    ```bash
+    swa start --data-api-location ./swa-db-connections
+    ```
+
+1. As with the sample JavaScript application, once Static Web Apps has started, you will get a message in the codespace on the bottom right indicating that it's running on port 4280.
+
+    ![A picture of the codespace indicating SWA has started on port 4280 in a dialog box](./media/ch4/swa3.png)
+
+1. Click the **Open in Browser** green button to access the sample application in the same dialog box
+
+    ![A picture of clicking the Open in Browser green button to access the sample application in the same dialog box as was referenced in the previous step](./media/ch4/swa4.png)
+
+1. The ToDo application is now running in the browser
+
+    ![A picture of the ToDo application running in the browser](./media/ch4/swa15.png)
 
 1. XXX
