@@ -362,7 +362,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     in the terminal, you can watch as the REST endpoints are called for each of these activities
 
-    ![A picture of REST endpoints are called for each of these activities in the terminal](./media/ch4/swa21.png)
+    ![A picture of REST endpoints being called for each of these activities in the terminal](./media/ch4/swa21.png)
 
 #### Authentication and the Todo application
 
@@ -478,4 +478,10 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     swa start --data-api-location ./swa-db-connections
     ```
 
-1. Once swa cli has started, you can go back to the application in the browser and refresh the page. All the features of the application should function normally but are now using REST enabled stored procedures. Moving to stored procedures/table APIs will allow us to insert some logic before or after DML in the code. More on this in a later chapter.
+1. Once swa cli has started, you can go back to the application in the browser and refresh the page. All the features of the application should function normally but are now using REST enabled stored procedures.
+
+    You can see the new calls in the terminal to the REST enabled stored procedure endpoints
+
+    ![A picture of REST endpoints for the stored procedures being called for each of these activities in the terminal](./media/ch4/swa28.png)
+
+    Moving to stored procedures/table APIs will allow us to insert some logic before or after DML in the code. More on this in a later chapter.
