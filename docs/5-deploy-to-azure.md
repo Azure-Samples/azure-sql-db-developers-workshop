@@ -82,9 +82,12 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
 1. Once the deployment is done, click the blue **Go to resource** button to see your database details.
 
-    ![A picture of clicking the blue Go to resource button to see your database details on the database deployment progress page](./media/ch5/deploy1q.png)
+    ![A picture of clicking the blue Go to resource button to see your database details on the database deployment progress page](./media/ch5/deploy1r.png)
+
+#### Network access to the database
 
 1.
+
 ### Create a connection profile
 
 1. Using the extensions panel, select the **SQL Server connections extension**
