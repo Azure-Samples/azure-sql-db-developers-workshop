@@ -340,4 +340,28 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     ![A picture of the ToDo application running in the browser](./media/ch4/swa15.png)
 
-1. XXX
+1. In the ToDo application, you can mark tasks completed
+
+    ![A picture of marking a task completed in the ToDo application](./media/ch4/swa16.png)
+
+    add tasks
+
+    ![A picture of adding a new task in the ToDo application](./media/ch4/swa17.png)
+
+    delete tasks
+
+    ![A picture of deleting a task in the ToDo application](./media/ch4/swa18.png)
+
+    edit task titles by clicking on the title
+
+    ![A picture of editing a task in the ToDo application](./media/ch4/swa19.png)
+
+    and reposition tasks by dragging and dropping
+
+    ![A picture of reposition tasks by dragging and dropping them in the ToDo application](./media/ch4/swa20.png)
+
+    in the terminal, you can watch as the REST endpoints are called for each of these activities
+
+    ![A picture of REST endpoints are called for each of these activities in the terminal](./media/ch4/swa21.png)
+
+1. 
