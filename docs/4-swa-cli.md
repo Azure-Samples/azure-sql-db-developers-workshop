@@ -80,6 +80,8 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     cp dab-config.json ./swa-db-connections/staticwebapp.database.config.json
     ```
 
+### Working with the simple JavaScript Application
+
 1. Next, we need to initialize the Static Web Apps environment.
 
     ```bash
@@ -93,11 +95,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 1. Start Static Web Apps in your codespace. The following command indicates that our app location is at /app and the database connections are located in the swa-db-connections directory.
 
     ```bash
-    swa start --data-api-location ./swa-db-connections
+    swa start --app-location ./app --data-api-location ./swa-db-connections
     ```
  
-swa start --app-location ./app --data-api-location ./swa-db-connections
-
 1. Once Static Web Apps has started, you will get a message in the codespace on the bottom right indicating that it's running on port 4280.
 
     ![A picture of the codespace indicating SWA has started on port 4280 in a dialog box](./media/ch4/swa3.png)
@@ -297,3 +297,7 @@ swa start --app-location ./app --data-api-location ./swa-db-connections
     ![A picture of entering Dogs into the Pet Preference text field and click submit without an auth error](./media/ch4/swa13.png)
 
 1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.
+
+### Working with the ToDo Application
+
+1. XXX
