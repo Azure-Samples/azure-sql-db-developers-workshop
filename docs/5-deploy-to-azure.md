@@ -98,7 +98,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of clicking the radio button next to Selected networks on the networking page](./media/ch5/deploy1u.png)
 
-1. In the **Firewall rules** section, click the button labeled "Add your client IPv4 address (X.X.X.X)" to add your local IP address for database access.
+1. In the **Firewall rules** section, click the button labeled **"Add your client IPv4 address (X.X.X.X)"** to add your local IP address for database access.
 
     ![A picture of clicking the button labeled "Add your client IPv4 address (X.X.X.X)" to add your local IP address for database access](./media/ch5/deploy1v.png)
 
