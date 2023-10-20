@@ -428,7 +428,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 1. You can use the login link to authenticate 
 
-    ![A picture of logging into the Todo application using the login link](./media/ch4/swa21.png)
+    ![A picture of logging into the Todo application using the login link](./media/ch4/swa24.png)
 
     and create tasks that are specific to the user logged in. You can see the owner_id in the Todo table in the database
 
