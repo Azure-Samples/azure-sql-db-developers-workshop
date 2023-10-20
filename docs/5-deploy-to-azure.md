@@ -86,7 +86,12 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
 #### Network access to the database
 
-1.
+1. On the database details page, the right hand side, you will see the **Server name** field with a link the your database server. Click the server name link.
+
+    ![A picture of clicking the server name link on the database details page](./media/ch5/deploy1s.png)
+
+1. 
+1. 
 
 ### Create a connection profile
 
