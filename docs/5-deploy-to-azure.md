@@ -12,11 +12,23 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
 1. Navigate to the [Azure Portal](https://portal.azure.com/#home), and in the upper left corner, click the menu button.
 
-    ![A picture of selecting the SQL Server connection extension in code spaces](./media/ch5/deploy1.png)
+    ![A picture of selecting the menu in the upper left corner of the Azure Portal](./media/ch5/deploy1a.png)
 
 1. Then, select **Create a Resource**.
 
+    ![A picture of selecting Create a Resource from the Azure Portal menu](./media/ch5/deploy1b.png)
 
+1. In the category menu, select **Database**.
+
+    ![A picture of selecting Database from the category menu](./media/ch5/deploy1c.png)
+
+1. Then click **create** for **SQL Database**.
+
+    ![A picture of selecting create for SQL Database](./media/ch5/deploy1d.png)
+
+1. On the **Create SQL Database** page, click the **Apply offer (Preview)** button for the free Azure SQL Database.
+
+    ![A picture of clicking the Apply offer (Preview) button for the free Azure SQL Database on the Create SQL Database page](./media/ch5/deploy1e.png)
 
 1. 
 
