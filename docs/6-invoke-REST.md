@@ -355,6 +355,8 @@ In this next section, we will be using the Todo application against our Free Azu
 
     and **save the file**.
 
+    ![A picture of the new file named staticwebapp.database.config.json opened in the code space editor and looking at the connection-string pointing to the Free Azure SQL Database](./media/ch6/rest8a.png)
+
 1. Back in the **SQL Server Connections extension**, right click the database profile name,**Free Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
     ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch6/rest9.png)
