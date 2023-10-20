@@ -364,4 +364,71 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     ![A picture of REST endpoints are called for each of these activities in the terminal](./media/ch4/swa21.png)
 
-1. 
+#### Authentication and the Todo application
+
+1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.
+
+1. Open the **staticwebapp.database.config.json** file (in the swa-db-connections folder) and replace the permissions section for the Todo table
+
+    ```JSON
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*"
+            }
+          ]
+        }
+      ],
+    ```
+
+    ![A picture of the todo table permissions code in the staticwebapp.database.config.json file](./media/ch4/swa22.png)
+
+    with the following code:
+
+    ```JSON
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "policy": {
+                "database": "@item.owner_id eq 'public'"
+              }
+            }            
+          ]
+        },
+        {
+          "role": "authenticated",
+          "actions": [
+            {
+              "action": "*",
+              "policy": {
+                "database": "@item.owner_id eq @claims.userId"
+              }
+            }            
+          ]
+        }        
+      ],
+    ```
+
+    and **save the file**.
+
+    ![A picture of the new todo table permissions code in the staticwebapp.database.config.json file](./media/ch4/swa23.png)
+
+1. Start swa cli, again at the terminal
+
+    ```bash
+    swa start --data-api-location ./swa-db-connections
+    ```
+
+1. Open the Todo application in the browser if not already open. If opened, refresh the page.
+
+1. You can use the login link to authenticate 
+
+    ![A picture of logging into the Todo application using the login link](./media/ch4/swa21.png)
+
+    and create tasks that are specific to the user logged in. You can see the owner_id in the Todo table in the database
+
