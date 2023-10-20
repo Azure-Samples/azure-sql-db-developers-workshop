@@ -430,5 +430,16 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     ![A picture of logging into the Todo application using the login link](./media/ch4/swa24.png)
 
-    and create tasks that are specific to the user logged in. You can see the owner_id in the Todo table in the database
+    and create tasks that are specific to the user logged in.
 
+    ![A picture of a personal task in the Todo application](./media/ch4/swa25.png)
+
+    And you can see the owner_id in the Todo table in the database as the tasks are created
+
+    ![A picture of the todo table in the database showing a personal task and the owner_id indicating that](./media/ch4/swa26.png)
+
+1. logout
+1. stop swa
+1. cnag out the app files
+1. start swa
+1. test the app
