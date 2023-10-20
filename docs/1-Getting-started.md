@@ -15,7 +15,7 @@ For this workshop, we will be using GitHub codespace. This environment will prov
 1. client
     1. contains the Todo application for use with Data API builder and SWA
 1. app
-    1. contains the simple JavaScript test application for use with Data API builder and SWA
+    1. contains the sample JavaScript test application for use with Data API builder and SWA
 1. docs
     1. Has all the chapters/lessons of the workshop
 1. scripts

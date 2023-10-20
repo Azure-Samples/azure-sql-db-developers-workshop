@@ -80,7 +80,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     cp dab-config.json ./swa-db-connections/staticwebapp.database.config.json
     ```
 
-### Working with the simple JavaScript Application
+### Working with the sample JavaScript Application
 
 1. Next, we need to initialize the Static Web Apps environment.
 
