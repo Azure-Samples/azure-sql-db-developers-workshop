@@ -110,7 +110,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of clicking the save button in the lower left of the page](./media/ch5/deploy1x.png)
 
-### Create a connection profile
+### Create a connection profile to the free Azure SQL Database
 
 1. Using the extensions panel, select the **SQL Server connections extension**
 
@@ -122,28 +122,26 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
 1. Use the following values for the Create Connection dialog boxes:
 
-    * Use “**vslivedemo.database.windows.net**” as the server name, then press Enter.
-        ![A picture of using localhost as the server name](./media/ch5/deploy3.png)
+    * Use the name of the server you created in the previous section as the server name, then press Enter.
+        ![A picture of using the free sql db server name as the server name](./media/ch5/deploy3.png)
 
-    * Use “**vslivedemo**” as the database name, then press Enter.
-        ![A picture of using vslivedemo as the database name](./media/ch5/deploy4.png)
+    * Use the name of the database you created for the free Azure SQL Database as the database name, then press Enter.
+        ![A picture of using the free database as the database name](./media/ch5/deploy4.png)
 
     * In the Authentication Type dialog box, select “SQL Login“.
         ![A picture of using SQL Login as as the Authentication Type](./media/ch5/deploy5.png)
 
-    * Refer back to the credentials supplied to you for the username and password. It would be in the format of “vsliveuser**X**” as the user name, **replacing X with the number of the database user you were given**
+    * In the User name (SQL Login) dialog box, enter **sqladmin**, then press Enter.
+        ![A picture of entering sqladmin as the database user](./media/ch5/deploy6.png)
 
-        In the User name (SQL Login) dialog box, enter the user from the supplied credentials, then press Enter.
-        ![A picture of entering vsliveuserX as the database user](./media/ch5/deploy6.png)
-
-        and provide the password from the supplied credentials in the Password (SQL Login) dialog box, then press Enter.
+        and provide the password you used when creating the free Azure SQL Database, then press Enter.
         ![A picture of entering the password for the database user](./media/ch5/deploy7.png)
 
-    * Select “Yes” so that the password is saved (encrypted) on the connection profile
+    * Select **Yes** so that the password is saved (encrypted) on the connection profile
         ![A picture of selecting Yes so that the password is saved on the connection profile](./media/ch5/deploy8.png)
 
-    * Provide the profile name of "Azure Database" in the last dialog box for this step. Press Enter to finish the connection profile process.
-        ![A picture of using Azure Database as the connection profile name](./media/ch5/deploy9.png)
+    * Provide the profile name of "Free Azure Database" in the last dialog box for this step. Press Enter to finish the connection profile process.
+        ![A picture of using Free Azure Database as the connection profile name](./media/ch5/deploy9.png)
 
     * After pressing Enter and the connection profile is verified, a warning box **may** appear on the lower right of the screen. This warning is indicating that due to new security features within the database, you need to enable the self-signed certificate.
         Click the Enable Trust Server Certificate green button to continue.
