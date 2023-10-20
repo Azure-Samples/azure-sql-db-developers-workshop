@@ -46,8 +46,45 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of naming your database with the Database name field in the Database details section of the page](./media/ch5/deploy1i.png)
 
-1. 
-1. 
+1. On the **Create SQL Database Server** page, enter a **server name** and choose a **Location** using the dropdown menu.
+
+    ![A picture of entering a server name and choosing a Location using the dropdown menu on the Create SQL Database Server page](./media/ch5/deploy1j.png)
+
+1. Now, in the **Authentication** section, select the **radio button** for **Use both SQL and Microsoft Entra authentication**.
+
+    ![A picture of selecting the radio button for Use both SQL and Microsoft Entra authentication in the authentication section](./media/ch5/deploy1k.png)
+
+1. Click the **Set admin** link in the **Set Microsoft Entra admin** section. 
+
+    ![A picture of clicking the Set admin link in the Set Microsoft Entra admin section](./media/ch5/deploy1l.png)
+
+1. Using the **Microsoft Entra ID** blade, find your user account and select it as an admin. Then click the **Select** button on the bottom left.
+
+    ![A picture of select your account as the Entra ID admin](./media/ch5/deploy1m.png)
+
+1. Set the **Server admin login** as sqladmin and then enter a strong password for the password fields.
+
+    ![A picture of setting the Server admin login as sqladmin and then entering a strong password for the password fields](./media/ch5/deploy1n.png)
+
+1. Click the **OK** button on the bottom left of the page.
+
+1. Back on the **Create a SQL Database** page, verify the values you entered and that the free database offer has been applied. Then click the **Review + create** button in the lower left of the page.
+
+    ![A picture of verifying the values and that the free database offer has been applied and clicking the Review + create button in the lower left of the page](./media/ch5/deploy1o.png)
+
+1. On the following page, click the **Create** button in the lower left.
+
+    ![A picture of clicking the Create button in the lower left](./media/ch5/deploy1p.png)
+
+1. The following page will detail the deployments progress.
+
+    ![A picture of the database deployment progress page](./media/ch5/deploy1q.png)
+
+1. Once the deployment is done, click the blue **Go to resource** button to see your database details.
+
+    ![A picture of clicking the blue Go to resource button to see your database details on the database deployment progress page](./media/ch5/deploy1q.png)
+
+1.
 ### Create a connection profile
 
 1. Using the extensions panel, select the **SQL Server connections extension**
