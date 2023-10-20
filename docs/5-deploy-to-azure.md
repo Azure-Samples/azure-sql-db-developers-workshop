@@ -18,7 +18,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of selecting Create a Resource from the Azure Portal menu](./media/ch5/deploy1b.png)
 
-1. In the category menu, select **Database**.
+1. In the category menu, select **Databases**.
 
     ![A picture of selecting Database from the category menu](./media/ch5/deploy1c.png)
 
@@ -30,8 +30,24 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of clicking the Apply offer (Preview) button for the free Azure SQL Database on the Create SQL Database page](./media/ch5/deploy1e.png)
 
-1. 
+1. In the **Project details** section of the page, select a subscription and a Resource group if you have an existing one. 
 
+    ![A picture of select a subscription and a Resource group on the Project details section of the page](./media/ch5/deploy1f.png)
+
+    Otherwise you can create a Resource group by clicking the **Create new** button.
+
+    ![A picture of creating a Resource group by clicking the **Create new** button](./media/ch5/deploy1g.png)
+
+1. Next, in the **Database details** section of the page, name your database with the **Database name** field.
+
+    ![A picture of naming your database with the Database name field in the Database details section of the page](./media/ch5/deploy1h.png)
+
+1. For the **Server**, click the **Create new** button.
+
+    ![A picture of naming your database with the Database name field in the Database details section of the page](./media/ch5/deploy1i.png)
+
+1. 
+1. 
 ### Create a connection profile
 
 1. Using the extensions panel, select the **SQL Server connections extension**
