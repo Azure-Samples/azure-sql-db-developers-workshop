@@ -399,7 +399,7 @@ In this next section, we will be using the Todo application against our Free Azu
     GO
     ```
 
-1. 1. Next, start swa cli, again at the terminal
+1. Next, start swa cli, again at the terminal
 
     ```bash
     swa start --data-api-location ./swa-db-connections
