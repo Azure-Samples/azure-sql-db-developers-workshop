@@ -1,18 +1,18 @@
 ![A picture of the Microsoft Logo](./media/graphics/microsoftlogo.png)
 
-# Call REST services from the Azure SQL Database with REST Endpoint Invocation
+# Call REST services from the Azure SQL Database with External REST Endpoint Invocation
 
-![A picture of multiple Azure Services that REST Endpoint Invocation can use](./media/ch6/rest1.png)
+![A picture of multiple Azure Services that External REST Endpoint Invocation can use](./media/ch6/rest1.png)
 
-## REST Endpoint Invocation
+## External REST Endpoint Invocation
 
-Azure SQL Database REST Endpoint Invocation provides the ability to call REST endpoints from other Azure services such as OpenAI, communications, Azure Functions, PowerBI and more. Common use cases for developers to use REST Endpoint Invocation are:
+Azure SQL Database External REST Endpoint Invocation provides the ability to call REST endpoints from other Azure services such as OpenAI, communications, Azure Functions, PowerBI and more. Common use cases for developers to use External REST Endpoint Invocation are:
 
 * Ability to push business logic out of the database and into Azure Functions
 * Pull/push data to/from external sources (including Azure Blob Storage) for ETL or derived data stores
 * Participate in event based architectures with Azure Event Hub or Kafka
 
-REST Endpoint Invocation can be called in an Azure SQL Database using the sp_invoke_external_rest_endpoint stored procedure. The following exercises and examples will guide you through calling various Azure Services and seeing how you can integrate REST into your applications and database development implementations.
+External REST Endpoint Invocation can be called in an Azure SQL Database using the sp_invoke_external_rest_endpoint stored procedure. The following exercises and examples will guide you through calling various Azure Services and seeing how you can integrate REST into your applications and database development implementations.
 
 - Native integration with Azure Functions and other Azure Services
                 ○ sp_invoke_external_rest_endpoint 
@@ -22,11 +22,11 @@ REST Endpoint Invocation can be called in an Azure SQL Database using the sp_inv
                                 ○ New support for XML and plain TEXT
                                 ○ Sample calling storage
 
-## REST Endpoint Invocation workshop tasks
+## External REST Endpoint Invocation workshop tasks
 
-### Call an Azure Function with REST Endpoint Invocation
+### Call an Azure Function with External REST Endpoint Invocation
 
-In the first example, a sample Azure Function has been created to be used. The function takes in a JSON payload with a name and responds with that name and an additional JSON element of location that is static. This example illustrates how REST Endpoint Invocation can POST a JSON payload to an endpoint and recieve JSON in return. By default, REST Endpoint Invocation expects a JSON payload in the response but this can be overridden to be XML or text.
+In the first example, a sample Azure Function has been created to be used. The function takes in a JSON payload with a name and responds with that name and an additional JSON element of location that is static. This example illustrates how External REST Endpoint Invocation can POST a JSON payload to an endpoint and recieve JSON in return. By default, External REST Endpoint Invocation expects a JSON payload in the response but this can be overridden to be XML or text.
 
 The pre-created function is as follows:
 
@@ -75,7 +75,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
     SELECT @ret AS ReturnCode, @response AS Response;
     ```
 
-    This T-SQL code calls the REST Endpoint Invocation stored procedure (sp_invoke_external_rest_endpoint) and passes it the following values:
+    This T-SQL code calls the External REST Endpoint Invocation stored procedure (sp_invoke_external_rest_endpoint) and passes it the following values:
 
     * **ret**: The **return value** of the REST call. It will be 0 if the call is a success (status 200), or the status code if not successful. If the call to the endpoint cannot by done, it will throw an exception.
     * **url**: This is the URL endpoint of the REST service we want to use
@@ -135,7 +135,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
       @payload = N'{"name":"Sea Bass"}'
     ```
 
-### Using Azure OpenAI Service and REST Endpoint Invocation
+### Using Azure OpenAI Service and External REST Endpoint Invocation
 
 Azure OpenAI Service provides REST API access to OpenAI's powerful language models including ChatGPT, Codex and Embeddings model series. These new services can be accessed through REST APIs, Python SDK, or our web-based interface in the Azure OpenAI Studio. GPT-3, GPT-3.5, and GPT-4 models from OpenAI are prompt-based; the user interacts with the model by entering a text prompt, to which the model responds with a text completion. The following examples will use the chat service REST APIs.
 
@@ -171,7 +171,7 @@ Additional Best Practices from the documentation:
     "You are an experienced marketing expert named Don Chase Katz. Generate 200 letters of ad copy to Bill to convince them to love Cats"
     ```
 
-    The next section of the code builds the REST call to Azure OpenAI using REST Endpoint Invocation. 
+    The next section of the code builds the REST call to Azure OpenAI using External REST Endpoint Invocation. 
 
     ```SQL
     declare @url nvarchar(4000) = N'https://vslive-openai.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-06-01-preview';
@@ -192,7 +192,7 @@ Additional Best Practices from the documentation:
 
     The important point to note here is that the headers are being used to pass an API Key for authentication.
 
-### Sending the prompt text with REST Endpoint Invocation
+### Sending the prompt text with External REST Endpoint Invocation
 
 1. Open a new query sheet
 
@@ -339,38 +339,71 @@ Additional Best Practices from the documentation:
 
     ```
 
+### The Todo application, SWA, and External REST Endpoint Invocation
 
+In this next section, we will be using the Todo application against our Free Azure SQL Database. Then, we will be adding to the insert_todo stored procedure to call OpenAI via External REST endpoint invocation. We will be asking OpenAI to translate the Todo task's title into german and then insert that value into the table.
 
-ALTER PROCEDURE dbo.insert_todo
-    @title nvarchar(1000),
-    @owner_id [varchar](128),
-    @order int
-AS
+1. To start, we need to change the database connection in the **staticwebapp.database.config.json** file to use our Free Azure SQL Database. Select the file in codespace and on the top, find the **connection-string**.
 
-	declare @translated_task VARCHAR(1000);
-	declare @url nvarchar(4000) = N'https://skynetbeta.openai.azure.com/openai/deployments/chattykathy/chat/completions?api-version=2023-07-01-preview';
-    declare @headers nvarchar(102) = N'{"api-key":"XXXXX"}'
-	declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into german, only respond with the translation"}]}'
-	declare @ret int, @response nvarchar(max);
+    ![A picture of the new file named staticwebapp.database.config.json opened in the code space editor and looking at the connection-string](./media/ch3/rest8.png)
 
-BEGIN
+1. Change the connection-string values to reflect the server name, database name of freeDB, User ID of sqladmin, and the password you used when you created the database. It should look similar to the following:
 
-	exec @ret = sp_invoke_external_rest_endpoint 
-		@url = @url,
-    	@headers = @headers,
-		@method = 'POST',
-		@payload = @payload,
-		@timeout = 230,
-		@response = @response output;
+    ```JSON
+    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freeDB;User ID=sqladmin;Password=PASSWORD;TrustServerCertificate=true",
+    ```
 
-	set @translated_task = 
-	(SELECT [translated_task]
-	FROM OPENJSON(@response,'$.result.choices')
-	WITH ([translated_task] NVARCHAR(100) '$.message.content'));
+    and **save the file**.
 
-    insert into dbo.todo (title, owner_id, position)
-    OUTPUT INSERTED.*
-    values (ISNULL(@translated_task,@title), @owner_id, @order);
+1. Back in the **SQL Server Connections extension**, right click the database profile name,**Free Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
-END;
-GO
+    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch5/rest9.png)
+
+1. Copy and paste the following code, then run it in the Query editor.
+
+    ```SQL
+    ALTER PROCEDURE dbo.insert_todo
+        @title nvarchar(1000),
+        @owner_id [varchar](128),
+        @order int
+    AS
+    
+    	declare @translated_task VARCHAR(1000);
+    	declare @url nvarchar(4000) = N'https://skynetbeta.openai.azure.com/openai/deployments/chattykathy/chat/completions?api-version=2023-07-01-preview';
+        declare @headers nvarchar(102) = N'{"api-key":"XXXXX"}'
+    	declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into german, only respond with the translation"}]}'
+    	declare @ret int, @response nvarchar(max);
+    
+    BEGIN
+    
+    	exec @ret = sp_invoke_external_rest_endpoint 
+    		@url = @url,
+        	@headers = @headers,
+    		@method = 'POST',
+    		@payload = @payload,
+    		@timeout = 230,
+    		@response = @response output;
+    
+    	set @translated_task = 
+    	(SELECT [translated_task]
+    	FROM OPENJSON(@response,'$.result.choices')
+    	WITH ([translated_task] NVARCHAR(100) '$.message.content'));
+    
+        insert into dbo.todo (title, owner_id, position)
+        OUTPUT INSERTED.*
+        values (ISNULL(@translated_task,@title), @owner_id, @order);
+    
+    END;
+    GO
+    ```
+
+1. 1. Next, start swa cli, again at the terminal
+
+    ```bash
+    swa start --data-api-location ./swa-db-connections
+    ```
+
+1. Open the Todo application in a browser if not already opened, or refresh the current browser page where it was running.
+
+1. Enter a task name and see the title instantly transformed into german.
+ 

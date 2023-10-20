@@ -192,9 +192,9 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
 ### Verify the deployed database objects and data
 
-1. While still on the **SQL Server Connections extension**, right click the database profile name,** Azure Database**, and select **New Query**. This will bring up a new query sheet.
+1. While still on the **SQL Server Connections extension**, right click the database profile name,**Free Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
-    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch5/deploy25.png)
+    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch5/deploy25.png)
 
 1. Run the following code in the query sheet:
 
