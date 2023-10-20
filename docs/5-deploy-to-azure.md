@@ -90,8 +90,25 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of clicking the server name link on the database details page](./media/ch5/deploy1s.png)
 
-1. 
-1. 
+1. Click the **Networking** link on the left hand side menu in the **Security** section.
+
+    ![A picture of clicking the Networking link on the left hand side menu in the Security section](./media/ch5/deploy1t.png)
+
+1. On the **Networking** page, click the **radio button** next to **Selected networks**.
+
+    ![A picture of clicking the radio button next to Selected networks on the networking page](./media/ch5/deploy1u.png)
+
+1. In the **Firewall rules** section, click the button labeled "Add your client IPv4 address (X.X.X.X)" to add your local IP address for database access.
+
+    ![A picture of clicking the button labeled "Add your client IPv4 address (X.X.X.X)" to add your local IP address for database access](./media/ch5/deploy1v.png)
+
+1. Click the **checkbox** for **Allow Azure services and resources to access this server** in the **Exceptions** section.
+
+    ![A picture of clicking the checkbox for Allow Azure services and resources to access this server in the Exceptions section](./media/ch5/deploy1w.png)
+
+1. Finally, click the **Save** button in the lower left of the page.
+
+    ![A picture of clicking the save button in the lower left of the page](./media/ch5/deploy1x.png)
 
 ### Create a connection profile
 
