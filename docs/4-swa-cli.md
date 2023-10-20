@@ -439,6 +439,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     ![A picture of the todo table in the database showing a personal task and the owner_id indicating that](./media/ch4/swa26.png)
 
 1. logout
+
+    ![A picture of logging off the Todo application using the logoff link](./media/ch4/swa27.png)
+
 1. stop swa
 1. cnag out the app files
 1. start swa
