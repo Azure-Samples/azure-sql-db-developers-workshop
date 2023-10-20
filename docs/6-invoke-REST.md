@@ -345,7 +345,7 @@ In this next section, we will be using the Todo application against our Free Azu
 
 1. To start, we need to change the database connection in the **staticwebapp.database.config.json** file to use our Free Azure SQL Database. Select the file in codespace and on the top, find the **connection-string**.
 
-    ![A picture of the new file named staticwebapp.database.config.json opened in the code space editor and looking at the connection-string](./media/ch3/rest8.png)
+    ![A picture of the new file named staticwebapp.database.config.json opened in the code space editor and looking at the connection-string](./media/ch6/rest8.png)
 
 1. Change the connection-string values to reflect the server name, database name of freeDB, User ID of sqladmin, and the password you used when you created the database. It should look similar to the following:
 
@@ -357,7 +357,7 @@ In this next section, we will be using the Todo application against our Free Azu
 
 1. Back in the **SQL Server Connections extension**, right click the database profile name,**Free Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
-    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch5/rest9.png)
+    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch6/rest9.png)
 
 1. Copy and paste the following code, then run it in the Query editor.
 
@@ -407,4 +407,4 @@ In this next section, we will be using the Todo application against our Free Azu
 
 1. Enter a task name and see the title instantly transformed into german.
  
-    ![A picture of a todo task being translated into german upon entry in the todo application](./media/ch5/rest10.png)
+    ![A picture of a todo task being translated into german upon entry in the todo application](./media/ch6/rest10.png)
