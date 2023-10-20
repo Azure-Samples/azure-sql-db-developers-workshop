@@ -22,3 +22,7 @@
   border-left-style: solid;
   border-left-color: rgba(175, 47, 47, 0.15);
 }
+
+.info {
+  font-size: 18px;
+}

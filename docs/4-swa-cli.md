@@ -426,7 +426,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 1. Open the Todo application in the browser if not already open. If opened, refresh the page.
 
-1. You can use the login link to authenticate 
+1. You can use the login link to authenticate
 
     ![A picture of logging into the Todo application using the login link](./media/ch4/swa24.png)
 
@@ -438,11 +438,44 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     ![A picture of the todo table in the database showing a personal task and the owner_id indicating that](./media/ch4/swa26.png)
 
-1. logout
+#### Using REST enabled stored procedures with the Todo application
+
+1. Start by logging out of the Todo application with the logoff link.
 
     ![A picture of logging off the Todo application using the logoff link](./media/ch4/swa27.png)
 
-1. stop swa
-1. cnag out the app files
-1. start swa
-1. test the app
+1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.
+
+1. For this next step, we are going to swap out the ToDoList.vue file in the client/src/components directory with the one in the labFiles folder. Run the following commands at the terminal to swap the files.
+
+    ```bash
+    cd /workspaces/azure-sql-db-developers-workshop
+    ```
+
+    Then, move the original file into the labFiles directory
+
+    ```bash
+    mv client/src/components/ToDoList.vue labFiles/ToDoList.vue.DAB1
+    ```
+
+    Now, move the new file from the labFiles directory into the components directory
+
+    ```bash
+    mv labFiles/ToDoList.vue.SP client/src/components/ToDoList.vue
+    ```
+
+    This new ToDoList.vue file has moved away from using the table endpoint we created with Data API builder to using the REST enabled stored procedures. This can be seen in the section here:
+
+    ```vue
+    const API_INSERT = "/data-api/rest/insert_todo";
+    const API_UPDATE = "/data-api/rest/update_todo";
+    const API_DELETE = "/data-api/rest/delete_todo";
+    ```
+
+1. Start swa cli, again at the terminal. This will now use the new ToDoList.vue file.
+
+    ```bash
+    swa start --data-api-location ./swa-db-connections
+    ```
+
+1. Once swa cli has started, you can go back to the application in the browser and refresh the page. All the features of the application should function normally but are now using REST enabled stored procedures. Moving to stored procedures/table APIs will allow us to insert some logic before or after DML in the code. More on this in a later chapter.
