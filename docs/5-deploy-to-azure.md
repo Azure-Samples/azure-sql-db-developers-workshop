@@ -38,7 +38,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of creating a Resource group by clicking the **Create new** button](./media/ch5/deploy1g.png)
 
-1. Next, in the **Database details** section of the page, name your database with the **Database name** field.
+1. Next, in the **Database details** section of the page, name your database **freeDB** with the **Database name** field.
 
     ![A picture of naming your database with the Database name field in the Database details section of the page](./media/ch5/deploy1h.png)
 
@@ -152,40 +152,9 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
         ![A picture of code spaces indicating a successful connection](./media/ch5/deploy11.png)
 
-### Create a post deployment script
-
-1. Return to the Database Projects extension, 
-
-    ![A picture of right clicking the database project extension](./media/ch5/deploy12.png)
-
-
-    and right click the project name (devDB) and select **Add Post-Deployment Script**
-
-    ![A picture of right clicking the project name and selecting Add Post-Deployment Script](./media/ch5/deploy13.png)
-
-1. Keep the default name of **Script.PostDeployment1** and press enter/return.
-
-    ![A picture of keeping the default name of Script.PostDeployment1 for the Post-Deployment Script](./media/ch5/deploy14.png)
-
-
-1. Replace the files contents with the following SQL statements
-
-    ```SQL
-    insert into person(person_name, person_email, pet_preference) values('Bill','bill@contoso.com','Dogs');
-    insert into person(person_name, person_email, pet_preference) values('Frank', 'frank@contoso.com','Cats');
-    insert into person(person_name, person_email, pet_preference) values('Riley', 'Riley@contoso.com','Cats');
-    insert into address (person_id, address) values (1, 'Lincoln, MA');
-    insert into address (person_id, address) values (2, 'Baltimore, MD');
-    GO
-    ```
-
-    and **SAVE** the file.
-
-    ![A picture of replacing the files contents with insert SQL statements](./media/ch5/deploy15.png)
-
 ### Publish to an Azure SQL Database
 
-1. To publish the database code to the local database, **right click** on the project and select **Publish**.
+1. To publish the database code to the Free Azure SQL Database, **right click** on the project and select **Publish**.
 
     ![A picture of right clicking the project name and selecting Publish](./media/ch5/deploy16.png)
 
@@ -197,13 +166,13 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of selecting Don't use profile in the publish database modal flow](./media/ch5/deploy18.png)
 
-1. Choose the **Azure Database** connection you created previously for the connection profile step
+1. Choose the **Free Azure Database** connection you created previously for the connection profile step
 
-    ![A picture of selecting the Azure Database connection in the publish database modal flow](./media/ch5/deploy19.png)
+    ![A picture of selecting the Free Azure Database connection in the publish database modal flow](./media/ch5/deploy19.png)
 
-1. Choose **vslivedemo** as the database.
+1. Choose **freeDB** as the database.
 
-    ![A picture of selecting the database named devDB in the publish database modal flow](./media/ch5/deploy20.png)
+    ![A picture of selecting the database named freeDB in the publish database modal flow](./media/ch5/deploy20.png)
 
 1. And finally, for the action, choose **Publish**.
 
@@ -234,6 +203,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
     select p.person_name, a.address
     from person p, address a
     where p.person_id = a.person_id;
+    select * from dbo.todo;
     go
     ```
 
