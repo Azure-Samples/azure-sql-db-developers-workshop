@@ -6,6 +6,20 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
 ## Deploy to Azure workshop tasks
 
+### Create a free Azure SQL Database
+
+1. Ensure you have an Azure account to log into the Azure Portal. Need a free account? Sign up for one [here](https://azure.microsoft.com/en-us/free).
+
+1. Navigate to the [Azure Portal](https://portal.azure.com/#home), and in the upper left corner, click the menu button.
+
+    ![A picture of selecting the SQL Server connection extension in code spaces](./media/ch5/deploy1.png)
+
+1. Then, select **Create a Resource**.
+
+
+
+1. 
+
 ### Create a connection profile
 
 1. Using the extensions panel, select the **SQL Server connections extension**
