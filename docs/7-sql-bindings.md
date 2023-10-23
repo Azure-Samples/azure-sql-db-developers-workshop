@@ -112,6 +112,51 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18.png)
 
+1. There are a few quick changes we need to make in this file. The boilerplate code that has been created has a ToDoItem class. We need to change this to the person class object. Replace the ToDoItem class
+
+    ```c#
+    public class ToDoItem
+    {
+        public string Id { get; set; }
+        public int Priority { get; set; }
+        public string Description { get; set; }
+    }
+    ```
+
+    with the person class
+
+    ```c#
+    public class person
+    {
+        public int person_id { get; set; }
+        public string person_name { get; set; }
+        public string person_email { get; set; }
+        public string pet_preference { get; set; }
+    }
+    ```
+
+    ![A picture of the replaced person class in the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18a.png)
+
+1. Another edit is on the line 
+
+    ```c#
+        public static void Run(
+                [SqlTrigger("[dbo].[person]", "connection-string")] IReadOnlyList<SqlChange<ToDoItem>> changes,
+                ILogger log)
+    ```
+
+    again, the boilerplate has the ToDoItem class referenced. Just change the ToDoItem with person
+
+    ```c#
+        public static void Run(
+                [SqlTrigger("[dbo].[person]", "connection-string")] IReadOnlyList<SqlChange<person>> changes,
+                ILogger log)
+    ```
+
+    ![A picture of the editing the SqlChange method with the person class in the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18b.png)
+
+    and **save the file**.
+
 # MAYBE TODO: CHANGE using Microsoft.Azure.WebJobs.Extensions.Http; to using Microsoft.Azure.WebJobs.Extensions.Sql;
 
 ### Testing the trigger
@@ -163,7 +208,7 @@ In this section, you will create a change data stream using Change Tracking, the
     You should see the following in the terminal window indicating the trigger binding did see the change:
 
     ```bash
-    [2023-10-23T21:21:56.080Z] Executing 'SqlTriggerBindingCSharp1' (Reason='New change detected on table '[dbo].[person]' at 2023-10-23T21:21:56.0537479Z.', Id=9710b7a1-15f7-4c06-9364-0643c789b1ff)
-    [2023-10-23T21:21:56.096Z] SQL Changes: [{"Operation":0,"Item":{"Id":null,"Priority":0,"Description":null}}]
-    [2023-10-23T21:21:56.115Z] Executed 'SqlTriggerBindingCSharp1' (Succeeded, Id=9710b7a1-15f7-4c06-9364-0643c789b1ff, Duration=49ms)
+    [2023-10-23T21:39:06.343Z] Executing 'SqlTriggerBindingCSharp1' (Reason='New change detected on table '[dbo].[person]' at 2023-10-23T21:39:06.3169380Z.', Id=89d5f873-9535-4658-a69f-01e2f0d80fe1)
+    [2023-10-23T21:39:06.359Z] SQL Changes: [{"Operation":0,"Item":{"person_id":6,"person_name":"Ellie","person_email":"ellie@contoso.com","pet_preference":"Cats"}}]
+    [2023-10-23T21:39:06.376Z] Executed 'SqlTriggerBindingCSharp1' (Succeeded, Id=89d5f873-9535-4658-a69f-01e2f0d80fe1, Duration=48ms)
     ```
