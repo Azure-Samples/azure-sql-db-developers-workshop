@@ -8,7 +8,7 @@ In this section, you will create a change data stream using Change Tracking, the
 
 ### Enable change tracking
 
-1. In the SQL Server extension, right click on the Local Database connection profile and select New Query.
+1. In the SQL Server extension, right click on the Free Azure Database connection profile and select New Query.
 
     ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch7/bind1a.png)
 
@@ -43,26 +43,8 @@ In this section, you will create a change data stream using Change Tracking, the
 1. Next, issue the following command to start the function creation process:
 
     ```bash
-    func init
+    func init triggerBinding --worker-runtime dotnet
     ```
-
-func init triggerBinding --worker-runtime dotnet
-
-    Upon issuing that command, you will be presented with a choice of frameworks for this function to use.
-
-    PICTURE HERE
-
-    The framework/runtime for this project is dotnet so enter 1, then press enter.
-
-    PICTURE HERE
-
-    The next option is to choose a language.
-
-    PICTURE HERE
-
-    C# is used for this project so again, enter 1, then press enter.
-
-    PICTURE HERE
 
 1. When this process is finished, click the File Explorer extension to see the new files that were created for you.
 
