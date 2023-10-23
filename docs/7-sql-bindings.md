@@ -148,11 +148,9 @@ In this section, you will create a change data stream using Change Tracking, the
     func host start
     ```
 
-    ![A picture of ](./media/ch7/bind19.png)  
+    and once the function is started, right click on the Free Azure Database connection profile and select New Query.
 
-    and once the function is started, open a new query sheet for the Local Database.
-
-    ![A picture of ](./media/ch7/bind20.png)  
+    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch7/bind1a.png)
 
 1. Issue the following SQL insert statement:
 
