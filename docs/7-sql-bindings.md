@@ -10,6 +10,8 @@ In this section, you will create a change data stream using Change Tracking, the
 
 1. In the SQL Server extension, right click on the Local Database connection profile and select New Query.
 
+    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch7/bind1a.png)
+
 1. The person table needs change tracking enabled for the SQL bindings trigger to work correctly.
     The first command to be run will enable change tracking in the database.
 
