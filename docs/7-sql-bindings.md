@@ -2,7 +2,7 @@
 
 # Azure SQL bindings for Azure Functions
 
-## Work in progress/Extra credit
+In this section, you will create a change data stream using Change Tracking, the Azure SQL Database, and the Azure SQL bindings for Azure Functions. The trigger will fire when an insert, update or delete is done on a table in the database. Once that change happens, the SQL binding will pick up the row and pass it to our Azure Function. In this lab, it will just display the row to the console log, but you can see how other Azure services like Event Hub, Blob storage, or Stream Processing can be used for event-based architecture application development.
 
 ## SQL Bindings workshop tasks
 
