@@ -36,7 +36,7 @@ In this section, you will create a change data stream using Change Tracking, the
 
 1. Back in the terminal at the bottom of the page,
 
-    ![A picture of ](./media/ch7/bind1.png)  
+    ![A picture of the terminal at the bottom of the codespace window ](./media/ch7/bind1.png)  
 
     issue the following command to change the directory back to the top level of this project:
 
@@ -50,53 +50,25 @@ In this section, you will create a change data stream using Change Tracking, the
     func init triggerBinding --worker-runtime dotnet
     ```
 
-1. When this process is finished, click the File Explorer extension to see the new files that were created for you.
+1. When this process is finished, click the File Explorer extension to see the new files that were created.
 
-        ![A picture of ](./media/ch7/bind6.png)  
+    ![A picture of clicking the File Explorer extension to see the new files that were created when creating the function project](./media/ch7/bind6.png)  
 
 ### Adding libraries to the project
 
-1. Next, we need to add some package references to the project (for SQL Bindings and Azure Event Hub). The following commands will add these references to the azure-sql-db-developers-workshop.csproj file.
+1. Next, we need to add a package reference to the project (for Azure SQL Bindings). The following command will add this reference to the triggerBinding.csproj file.
 
-    Run the following commands in the terminal:
+    Run the following command in the terminal:
 
+    ```bash
     cd triggerBinding
+    ```
+
+    then
 
     ```bash
     dotnet add package Microsoft.Azure.WebJobs.Extensions.Sql --prerelease
     ```
-
-    ```bash
-    dotnet add package Azure.Messaging.EventHubs
-    ```
-
-    ```bash
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.EventHubs
-    ```
-### Create the person class object
-
-1. We are going to create a person class object file. To create a new file in codespaces, right click below the files in the file explorer extension and select New File.
-
-    ![A picture of ](./media/ch7/bind7.png)  
-
-1. Name this file Person.cs and press enter.
-
-    ![A picture of ](./media/ch7/bind8.png)  
-
-1. If the new file has not opened up for you in codespaces, select this file by right clicking on it. Copy and paste the following code into the Person.cs file to create the person class object.
-
-    ```C#
-    namespace Person.Function;
-    public class person
-    {
-        public int person_id { get; set; }
-        public string person_name { get; set; }
-        public string person_email { get; set; }
-        public string pet_preference { get; set; }
-    }
-    ```
-
-and SAVE the file.
 
 ### Create the SQL trigger function
 
