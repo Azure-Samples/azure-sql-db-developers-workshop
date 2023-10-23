@@ -112,6 +112,8 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18.png)
 
+# MAYBE TODO: CHANGE using Microsoft.Azure.WebJobs.Extensions.Http; to using Microsoft.Azure.WebJobs.Extensions.Sql;
+
 ### Testing the trigger
 
 1. Now that the function code is done, we need to provide it a value for connection-string. If you remember, back in the staticwebapp.database.config.json in the swa-db-connections directory,
@@ -161,7 +163,7 @@ In this section, you will create a change data stream using Change Tracking, the
     You should see the following in the terminal window indicating the trigger binding did see the change:
 
     ```bash
-    [2023-07-11T19:18:03.124Z] Executing 'changeDataStream' (Reason='New change detected on table '[dbo].[person]' at 2023-05-11T19:18:03.0902305Z.', Id=541ff09e-54ac-48e8-8d17-bbcc9a451432)
-    [2023-07-11T19:18:03.176Z] Insert{"person_id":6,"person_name":"Ellie","person_email":"ellie@contoso.com","pet_preference":"Cats"}
-    [2023-07-11T19:18:03.195Z] Executed 'changeDataStream' (Succeeded, Id=541ff09e-54ac-48e8-8d17-bbcc9a451432, Duration=93ms)
+    [2023-10-23T21:21:56.080Z] Executing 'SqlTriggerBindingCSharp1' (Reason='New change detected on table '[dbo].[person]' at 2023-10-23T21:21:56.0537479Z.', Id=9710b7a1-15f7-4c06-9364-0643c789b1ff)
+    [2023-10-23T21:21:56.096Z] SQL Changes: [{"Operation":0,"Item":{"Id":null,"Priority":0,"Description":null}}]
+    [2023-10-23T21:21:56.115Z] Executed 'SqlTriggerBindingCSharp1' (Succeeded, Id=9710b7a1-15f7-4c06-9364-0643c789b1ff, Duration=49ms)
     ```
