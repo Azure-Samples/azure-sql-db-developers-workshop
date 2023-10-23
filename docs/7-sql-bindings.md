@@ -16,10 +16,12 @@ In this section, you will create a change data stream using Change Tracking, the
     The first command to be run will enable change tracking in the database.
 
     ```SQL
-    ALTER DATABASE [devDB]
+    ALTER DATABASE CURRENT
     SET CHANGE_TRACKING = ON;
     GO
     ```
+
+    ![A picture of enabling change tracking on the current database](./media/ch7/bind1b.png)
 
     then enable change tracking on the person table:
 
@@ -27,6 +29,8 @@ In this section, you will create a change data stream using Change Tracking, the
     ALTER TABLE [dbo].[person] ENABLE CHANGE_TRACKING;
     GO
     ```
+
+    ![A picture of enabling change tracking on the person table](./media/ch7/bind1c.png)
 
 ### Create an Azure Function
 
