@@ -112,7 +112,9 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18.png)
 
-1. There are a few quick changes we need to make in this file. The boilerplate code that has been created has a ToDoItem class. We need to change this to the person class object. Replace the ToDoItem class
+1. There are a few quick changes we need to make in this file. The boilerplate code that has been created has a ToDoItem class. We need to change this to the **person class object**.
+
+    Replace the ToDoItem class
 
     ```c#
     public class ToDoItem
@@ -123,7 +125,7 @@ In this section, you will create a change data stream using Change Tracking, the
     }
     ```
 
-    with the person class
+    with the **person** class
 
     ```c#
     public class person
@@ -135,9 +137,7 @@ In this section, you will create a change data stream using Change Tracking, the
     }
     ```
 
-    ![A picture of the replaced person class in the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18a.png)
-
-1. Another edit is on the line 
+1. Another edit is on this line
 
     ```c#
         public static void Run(
@@ -145,7 +145,9 @@ In this section, you will create a change data stream using Change Tracking, the
                 ILogger log)
     ```
 
-    again, the boilerplate has the ToDoItem class referenced. Just change the ToDoItem with person
+    again, the boilerplate has the ToDoItem class referenced.
+
+    Just change the ToDoItem with **person**
 
     ```c#
         public static void Run(
