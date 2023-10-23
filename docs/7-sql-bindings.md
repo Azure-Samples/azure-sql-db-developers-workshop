@@ -114,7 +114,23 @@ In this section, you will create a change data stream using Change Tracking, the
 
 ### Testing the trigger
 
-1. Now that the function code is done, we need to provide it a value for SqlConnectionString. This variable can be placed in the local.settings.json file and contain the connect string for our locally running database.
+1. Now that the function code is done, we need to provide it a value for connection-string. If you remember, back in the staticwebapp.database.config.json in the swa-db-connections directory,
+
+    ![A picture of opening the staticwebapp.database.config.json in the swa-db-connections directory](./media/ch7/bind19a.png)
+
+    we had a parameter named connection-string with our Free Azure SQL Database connection. Open the staticwebapp.database.config.json file and copy the connection-string entry.
+
+    ```JSON
+    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freeDB;User ID=sqladmin;Password=PASSWORD;TrustServerCertificate=true",
+    ```
+
+    ![A picture of opening the staticwebapp.database.config.json and copying the connection-string entry](./media/ch7/bind19.png)
+
+1. Now, open the 
+
+
+1. 
+1.  This variable can be placed in the local.settings.json file and contain the connect string for our locally running database.
 
     Open the local.settings.json file 
 
