@@ -2,6 +2,12 @@
 
 # Known issues and troubleshooting
 
+## codespace terminal is not responding
+
+If the codespace terminal is not responding to typing, delete the session and re-create a new one. Use the kill terminal icon to kill the session and create a new one.
+
+![A picture of using the kill terminal icon to kill the session](./media/cht/trouble1a.png)
+
 ## codespace pauses/shuts down
 
 If your codespace shuts down, you can restart it by refreshing the page. After the codespace comes back up, remember to restart the local database in the docker extension by right clicking on it and selecting start.
