@@ -2,6 +2,10 @@
 
 # Known issues and troubleshooting
 
+## SQL server in docker is not starting as the container was marked as shutting down
+
+If the SQL Server in docker instance is not starting after repeated attempts to start with the Docker Extension in codespace, stop and restart the code space. To stop the codespace, press F1 and type stop into the text field. Find and select **Codespaces: Stop Current Codespace**.
+
 ## codespace terminal is not responding
 
 If the codespace terminal is not responding to typing, delete the session and re-create a new one. Use the kill terminal icon to kill the session and create a new one.
