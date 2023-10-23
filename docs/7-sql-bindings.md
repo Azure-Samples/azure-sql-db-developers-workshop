@@ -30,7 +30,7 @@ In this section, you will create a change data stream using Change Tracking, the
 
 1. Back in the terminal at the bottom of the page,
 
-    ![A picture of ](./media/ch8/bind1.png)  
+    ![A picture of ](./media/ch7/bind1.png)  
 
     issue the following command to change the directory back to the top level of this project:
 
@@ -64,7 +64,7 @@ func init triggerBinding --worker-runtime dotnet
 
 1. When this process is finished, click the File Explorer extension to see the new files that were created for you.
 
-        ![A picture of ](./media/ch8/bind6.png)  
+        ![A picture of ](./media/ch7/bind6.png)  
 
 ### Adding libraries to the project
 
@@ -89,11 +89,11 @@ func init triggerBinding --worker-runtime dotnet
 
 1. We are going to create a person class object file. To create a new file in codespaces, right click below the files in the file explorer extension and select New File.
 
-    ![A picture of ](./media/ch8/bind7.png)  
+    ![A picture of ](./media/ch7/bind7.png)  
 
 1. Name this file Person.cs and press enter.
 
-    ![A picture of ](./media/ch8/bind8.png)  
+    ![A picture of ](./media/ch7/bind8.png)  
 
 1. If the new file has not opened up for you in codespaces, select this file by right clicking on it. Copy and paste the following code into the Person.cs file to create the person class object.
 
@@ -114,35 +114,35 @@ and SAVE the file.
 
 1. The next step is to create an Azure Function. Start by pressing F1 or Shift-Ctrl-P to bring up the command palette.
 
-    ![A picture of ](./media/ch8/bind9.png)  
+    ![A picture of ](./media/ch7/bind9.png)  
 
 1. Enter “create function” into the text field and then select Azure Functions: Create Function.
 
-    ![A picture of ](./media/ch8/bind10.png)  
+    ![A picture of ](./media/ch7/bind10.png)  
 
 1. A dialog box will appear in the center of the screen asking to “Initialize project for use with VS Code?”. Click Yes in the dialog box.
 
-    ![A picture of ](./media/ch8/bind11.png)  
+    ![A picture of ](./media/ch7/bind11.png)  
 
 1. In the following dialog box, Select “HTTP Trigger” as the function template.
 
-    ![A picture of ](./media/ch8/bind12.png)  
+    ![A picture of ](./media/ch7/bind12.png)  
 
 1. Now, on step 2, name the Function changeDataStreams in the next dialog box, and then press Enter.
 
-    ![A picture of ](./media/ch8/bind13.png)  
+    ![A picture of ](./media/ch7/bind13.png)  
 
 1. Step 3 is for the function namespace. Accept the default namespace of Person.Function, and then press Enter.
 
-    ![A picture of ](./media/ch8/bind14.png)  
+    ![A picture of ](./media/ch7/bind14.png)  
 
 1. In step four, select “Anonymous” for AccessRights.
 
-    ![A picture of ](./media/ch8/bind15.png)  
+    ![A picture of ](./media/ch7/bind15.png)  
 
 1. Looking at the file explorer, there will be a new file called changeDataStream.cs which should also automatically open up in codespace for you.
 
-    ![A picture of ](./media/ch8/bind16.png)  
+    ![A picture of ](./media/ch7/bind16.png)  
 
 ### Adding the SQL Bindings code
 
@@ -182,7 +182,7 @@ and SAVE the file.
 
     Open the local.settings.json file 
 
-    ![A picture of ](./media/ch8/bind17.png)  
+    ![A picture of ](./media/ch7/bind17.png)  
 
     and add the following line just below the “Values”: { section:
 
@@ -190,7 +190,7 @@ and SAVE the file.
     "SqlConnectionString": "Server=localhost,1433;Database=devDB;User ID=vscode;Password=XXXXX;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;",
     ```
 
-    ![A picture of ](./media/ch8/bind18.png)  
+    ![A picture of ](./media/ch7/bind18.png)  
 
     and be sure to replace the XXXXX with the password of the database that was created before. If you forgot the password, run the following in the terminal to find it again:
 
@@ -208,11 +208,11 @@ and SAVE the file.
     func host start
     ```
 
-    ![A picture of ](./media/ch8/bind19.png)  
+    ![A picture of ](./media/ch7/bind19.png)  
 
     and once the function is started, open a new query sheet for the Local Database.
 
-    ![A picture of ](./media/ch8/bind20.png)  
+    ![A picture of ](./media/ch7/bind20.png)  
 
 1. Issue the following SQL insert statement:
 
