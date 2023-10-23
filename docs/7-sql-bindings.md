@@ -72,13 +72,45 @@ In this section, you will create a change data stream using Change Tracking, the
 
 ### Create the SQL trigger function
 
-1. The next step is to create an Azure Function. Start by pressing F1 or Shift-Ctrl-P to bring up the command palette.
+1. The next step is to create an Azure Function. Start by **pressing F1 or Shift-Ctrl-P** to bring up the command palette.
 
-    ![A picture of ](./media/ch7/bind9.png)  
+    ![A picture of pressing F1 or Shift-Ctrl-P to bring up the command palette](./media/ch7/bind9.png)  
 
-1. Enter “create function” into the text field and then select Azure Functions: Create Function.
+1. Enter **create function** into the text field and then select **Azure Functions: Create Function**.
 
-    ![A picture of ](./media/ch7/bind10.png)  
+    ![A picture of entering create function into the text field and then selecting Azure Functions: Create Function](./media/ch7/bind10.png)  
+
+1.  A dialog box will appear asking to **“Select a template for your function”**. Go to the bottom of the list and select **"Change template filter"**.
+
+    ![A picture of going to the bottom of the template list and selecting Change template filter](./media/ch7/bind11.png)
+
+1.  In the **“Select a template filter”** dialog box, **"All"**.
+
+    ![A picture of selecting all in the Select a template filter dialog box](./media/ch7/bind12.png)
+
+1.  Returning to the **“Select a template for your function”** dialog box, enter **"sql"** into the text field and select **SqlTriggerBinding**
+
+    ![A picture of entering SQL into the text field in the Select a template for your function dialog box and select **SqlTriggerBinding](./media/ch7/bind13.png)
+
+1. On the next step, "Create new SqlTriggerBinding (2/5)", keep the default value of **SqlTriggerBindingCSharp1** and press enter.
+
+    ![A picture of keeping the default value of SqlTriggerBindingCSharp1 and pressing enter](./media/ch7/bind14.png)
+
+1. On step 3 of the Create new SqlTriggerBinding flow, keep the default namespace of **"Company.Function"** and press enter.
+
+    ![A picture of keeping the default namespace of Company.Function and pressing enter](./media/ch7/bind15.png)
+
+1. On step 4 of the Create new SqlTriggerBinding flow, use the value of **"connection-string"** for the app setting name for the SQL database connection and press enter.
+
+    ![A picture of using the value of connection-string for the app setting name for your SQL Connection and pressing enter](./media/ch7/bind16.png)
+
+1. And in step 5, use the value of **"[dbo].[person]"** for the database table name that the SQL Binding trigger will watch (and the table that Change Tracking was enabled previously). Then press enter.
+
+    ![A picture of use the value of [dbo].[person] for the database table name then pressing enter](./media/ch7/bind17.png)
+
+1. The SqlTriggerBindingCSharp1.cs file has been created and is in the editor for review.
+
+    ![A picture of the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18.png)
 
 1. A dialog box will appear in the center of the screen asking to “Initialize project for use with VS Code?”. Click Yes in the dialog box.
 
@@ -104,39 +136,7 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of ](./media/ch7/bind16.png)  
 
-### Adding the SQL Bindings code
-
-1. If the file is not already open, open the file by right clicking on it. Replace the code in the file with the following:
-
-    ```C#
-    using System.Collections.Generic;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Azure.WebJobs.Extensions.Sql;
-    using System.Threading.Tasks;
-    using System.Text.Json;
-    namespace Person.Function;
-    public static class streamPeople
-    {
-        [FunctionName("changeDataStream")]
-        public static async Task RunAsync(
-            [SqlTrigger("[dbo].[person]", "SqlConnectionString")]
-                IReadOnlyList<SqlChange<Person>> changes,
-            ILogger logger)
-       {
-          foreach (SqlChange<Person> change in changes)
-          {
-              var person = JsonSerializer.Serialize(change.Item);
-              var message = $"{change.Operation} {person}";
-              logger.LogInformation(message);
-            }
-        }
-    }
-    ```
-
-    and SAVE the file.
-
-    This code uses the SQL trigger binding to watch the cuperson stomer table for changes. When it sees a change, it will fire and capture each change. Here, in this code, we are just logging the data change to the terminal.
+### Testing the trigger
 
 1. Now that the function code is done, we need to provide it a value for SqlConnectionString. This variable can be placed in the local.settings.json file and contain the connect string for our locally running database.
 
@@ -159,8 +159,6 @@ In this section, you will create a change data stream using Change Tracking, the
     ```
 
     And remember to SAVE the file when done.
-
-### Testing the trigger
 
 1. At the terminal run the following command to start the Azure Function:
 
