@@ -112,30 +112,6 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18.png)
 
-1. A dialog box will appear in the center of the screen asking to “Initialize project for use with VS Code?”. Click Yes in the dialog box.
-
-    ![A picture of ](./media/ch7/bind11.png)  
-
-1. In the following dialog box, Select “HTTP Trigger” as the function template.
-
-    ![A picture of ](./media/ch7/bind12.png)  
-
-1. Now, on step 2, name the Function changeDataStreams in the next dialog box, and then press Enter.
-
-    ![A picture of ](./media/ch7/bind13.png)  
-
-1. Step 3 is for the function namespace. Accept the default namespace of Person.Function, and then press Enter.
-
-    ![A picture of ](./media/ch7/bind14.png)  
-
-1. In step four, select “Anonymous” for AccessRights.
-
-    ![A picture of ](./media/ch7/bind15.png)  
-
-1. Looking at the file explorer, there will be a new file called changeDataStream.cs which should also automatically open up in codespace for you.
-
-    ![A picture of ](./media/ch7/bind16.png)  
-
 ### Testing the trigger
 
 1. Now that the function code is done, we need to provide it a value for SqlConnectionString. This variable can be placed in the local.settings.json file and contain the connect string for our locally running database.
