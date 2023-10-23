@@ -159,6 +159,8 @@ In this section, you will create a change data stream using Change Tracking, the
 
     and **save the file**.
 
+1. If you didn't already, **save the file**.
+
 # MAYBE TODO: CHANGE using Microsoft.Azure.WebJobs.Extensions.Http; to using Microsoft.Azure.WebJobs.Extensions.Sql;
 
 ### Testing the trigger
@@ -190,6 +192,8 @@ In this section, you will create a change data stream using Change Tracking, the
     ![A picture of pasting the connection-string entry copied from the staticwebapp.database.config.json file just below the “Values”: { section in the local.settings.json file ](./media/ch7/bind21.png)
 
     and **save the file**.
+
+1. If you didn't already, **save the file**.
 
 1. Back in the terminal, run the following command to start the Azure Function:
 

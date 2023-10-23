@@ -250,7 +250,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
       ],
     ```
 
-    and save the file.
+    and **save the file**.
+
+1. If you didn't already, **save the file**.
 
 1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.
 
@@ -417,6 +419,8 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     and **save the file**.
 
     ![A picture of the new todo table permissions code in the staticwebapp.database.config.json file](./media/ch4/swa23.png)
+
+1. If you didn't already, **save the file**.
 
 1. Start swa cli, again at the terminal
 

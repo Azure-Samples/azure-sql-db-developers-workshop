@@ -149,6 +149,8 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of the copy and pasted code into the person.sql script](./media/ch2/database20.png)
 
+1. If you didn't already, **save the file**.
+
 1. Create another table by **right clicking** the project name again and select **Add Table**.
 
     ![A picture of right clicking the project name and selecting Add Table](./media/ch2/database21.png)
@@ -171,6 +173,8 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     and **save the file**.
 
     ![A picture of the copy and pasted code into the address.sql script](./media/ch2/database23.png)
+
+1. If you didn't already, **save the file**.
 
 1. Now that we have the two tables for the workshop, we can create a simple stored procedure. Right click on the project and select **Add Stored Procedure**.
 
@@ -197,6 +201,8 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     and **save the file**.
 
     ![A picture of the copy and pasted code into the get_person_by_pet.sql script](./media/ch2/database26.png)
+
+1. If you didn't already, **save the file**.
 
 ### Create a table and stored procedures for the Todo application
 
@@ -241,6 +247,8 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of the copy and pasted code into the todo.sql script](./media/ch2/database17d.png)
 
+1. If you didn't already, **save the file**.
+
 1. Now that we have the table for the todo app, we can create stored procedures. Right click on the project and select **Add Stored Procedure**.
 
     ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
@@ -271,6 +279,8 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     and **save the file**.
 
     ![A picture of the copy and pasted code into the insert_todo.sql script](./media/ch2/database24b.png)
+
+1. If you didn't already, **save the file**.
 
 1. As before, right click on the project and select **Add Stored Procedure**.
 
@@ -309,9 +319,11 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of the copy and pasted code into the update_todo.sql script](./media/ch2/database24d.png)
 
-And again for the final procedure, right click on the project and select **Add Stored Procedure**.
+    And again for the final procedure, right click on the project and select **Add Stored Procedure**.
 
     ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
+
+1. If you didn't already, **save the file**.
 
 1. Name the new stored procedure **delete_todo** and press enter
 
@@ -338,6 +350,8 @@ And again for the final procedure, right click on the project and select **Add S
     and **save the file**.
 
     ![A picture of the copy and pasted code into the delete_todo.sql script](./media/ch2/database24f.png)
+
+1. If you didn't already, **save the file**.
 
 ### Create a post-deployment script
 
@@ -379,6 +393,8 @@ And again for the final procedure, right click on the project and select **Add S
     and **save the file**.
 
     ![A picture of the copy and pasted code into the Script.PostDeployment1.sql script](./media/ch2/database24i.png)
+
+1. If you didn't already, **save the file**.
 
 ### Publish to the local database
 
