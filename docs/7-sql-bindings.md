@@ -126,33 +126,23 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of opening the staticwebapp.database.config.json and copying the connection-string entry](./media/ch7/bind19.png)
 
-1. Now, open the 
+1. The connection-string parameter can now be placed in the local.settings.json file in the functions project directory. Open the local.settings.json file in the triggerBinding directory.
 
+    Open the local.settings.json file:
 
-1. 
-1.  This variable can be placed in the local.settings.json file and contain the connect string for our locally running database.
+    ![A picture of opening the local.settings.json file in the triggerBinding directory](./media/ch7/bind20.png)
 
-    Open the local.settings.json file 
-
-    ![A picture of ](./media/ch7/bind17.png)  
-
-    and add the following line just below the “Values”: { section:
+1. Paste the connection-string entry copied from the staticwebapp.database.config.json file just below the **“Values”: {** section in the local.settings.json file
 
     ```JSON
-    "SqlConnectionString": "Server=localhost,1433;Database=devDB;User ID=vscode;Password=XXXXX;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;",
+    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freeDB;User ID=sqladmin;Password=PASSWORD;TrustServerCertificate=true",
     ```
 
-    ![A picture of ](./media/ch7/bind18.png)  
+    ![A picture of pasting the connection-string entry copied from the staticwebapp.database.config.json file just below the “Values”: { section in the local.settings.json file ](./media/ch7/bind21.png)
 
-    and be sure to replace the XXXXX with the password of the database that was created before. If you forgot the password, run the following in the terminal to find it again:
+    and **save the file**.
 
-    ```bash
-    sqlcmd config connection-strings
-    ```
-
-    And remember to SAVE the file when done.
-
-1. At the terminal run the following command to start the Azure Function:
+1. Back in the terminal, run the following command to start the Azure Function:
 
     ```bash
     func host start
