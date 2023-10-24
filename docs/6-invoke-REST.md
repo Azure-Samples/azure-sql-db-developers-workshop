@@ -26,7 +26,9 @@ External REST Endpoint Invocation can be called in an Azure SQL Database using t
 
 ### Call an Azure Function with External REST Endpoint Invocation
 
-In the first example, a sample Azure Function has been created to be used. The function takes in a JSON payload with a name and responds with that name and an additional JSON element of location that is static. This example illustrates how External REST Endpoint Invocation can POST a JSON payload to an endpoint and recieve JSON in return. By default, External REST Endpoint Invocation expects a JSON payload in the response but this can be overridden to be XML or text.
+In the first example, a sample Azure Function has been created to be used. The function takes in a JSON payload with a currency type and responds with a conversion rate. This example illustrates how External REST Endpoint Invocation can use a web service in queries and reporting.
+
+By default, External REST Endpoint Invocation expects a JSON payload in the response but this can be overridden to be XML or text.
 
 The pre-created function is as follows:
 
@@ -43,13 +45,30 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
 
-    string name = req.Query["name"];
+    string currency = req.Query["currency"];
+    
+    double conversion = 1;
 
     string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
     dynamic data = JsonConvert.DeserializeObject(requestBody);
-    name = name ?? data?.name ?? "Jet Jaguar";
+    currency = currency ?? data?.currency ?? "USD";
 
-    var myObj = new {name = $"{name}", location = "Earth"};
+    
+    if (currency == "JPY")
+    {
+        conversion = 147.81;
+    }
+    else if (currency == "EUR")
+    {
+        conversion = 0.93;
+    }
+    else
+    {
+        conversion = 1;
+    }
+
+
+    var myObj = new {currency = $"{currency}", priceConversion = $"{conversion}"};
     var jsonToReturn = JsonConvert.SerializeObject(myObj);
     return new HttpResponseMessage(HttpStatusCode.OK) {
         Content = new StringContent(jsonToReturn, Encoding.UTF8, "application/json")
@@ -61,18 +80,56 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
 
     ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch6/rest2.png)
 
-1. In the empty query sheet, enter the following SQL code:
+1. We are going to start by creating a sample table. Copy and paste the following code into the query sheet
 
     ```SQL
-    DECLARE @ret INT, @response NVARCHAR(MAX);
+    CREATE TABLE [dbo].[products]
+    (
+        [product_id] [int] NOT NULL,
+        [product_name] [nvarchar](1000) NOT NULL,
+        [ListPrice] [money] NOT NULL
+    ) 
+    GO
+    
+    insert into dbo.products (product_id, product_name, ListPrice)
+    values 
+        (1,N'Candy',1.99),
+        (2,N'Bike',100.00),
+        (3,N'Doll',15.99),
+        (4,N'Goo',189.50);
+    GO
+
+    select * from dbo.products;
+    GO
+    ```
+
+1. To execute the code, **left click the green arrow** on the top right of the query sheet.
+
+    ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch6/rest2a.png)
+
+1. Next, in the query sheet, copy and paste the following SQL code:
+
+    ```SQL
+    DECLARE @ret INT, @response NVARCHAR(MAX), @priceConversion float;
     
     EXEC @ret = sp_invoke_external_rest_endpoint
-      @url = N'https://vslivedemofunction.azurewebsites.net/api/HttpTrigger',
-      @payload = N'{"name":"test"}',
+      @url = N'https://ereidemo.azurewebsites.net/api/HttpTriggerFunction',
+      @payload = N'{"currency":"JPY"}',
       @method = N'POST',
       @response = @response OUTPUT;
     
     SELECT @ret AS ReturnCode, @response AS Response;
+    
+    -- Select JSON values
+    select 
+        JSON_VALUE( @response,'$.result.currency') AS currency,
+        JSON_VALUE( @response,'$.result.priceConversion') AS priceConversion;
+
+    -- Use in a query
+    set @priceConversion = (select JSON_VALUE( @response,'$.result.priceConversion') AS priceConversion);
+    
+    select product_id, product_name, ListPrice, cast(round(ListPrice*@priceConversion,2,1) as money) AS convertedPriceInYen
+    from dbo.products
     ```
 
     This T-SQL code calls the External REST Endpoint Invocation stored procedure (sp_invoke_external_rest_endpoint) and passes it the following values:
@@ -88,6 +145,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
     * **headers**: These are name and value pairs that represent meta-data for a request.  Headers can contain information for content type of the request, authentication and authorization, character sets and even cache control.
     * **credentials**: Indicates which **DATABASE SCOPED CREDENTIAL** object is used to inject authentication info in the HTTPS request. These are placed in the header of the request.
     * **timeout**: Time in seconds allowed for the HTTPS call to run. The default value 30 and accepted values are 1 through 230.
+
+
+
+############################################################################
+
 
 1. To execute the code, **left click the green arrow** on the top right of the query sheet.
 
