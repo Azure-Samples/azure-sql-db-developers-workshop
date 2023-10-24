@@ -46,27 +46,24 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string currency = req.Query["currency"];
-    
     double conversion = 1;
-
     string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     currency = currency ?? data?.currency ?? "USD";
 
     
     if (currency == "JPY")
-    {
-        conversion = 147.81;
-    }
+        {
+            conversion = 147.81;
+        }
     else if (currency == "EUR")
-    {
-        conversion = 0.93;
-    }
+        {
+            conversion = 0.93;
+        }
     else
-    {
-        conversion = 1;
-    }
-
+        {
+            conversion = 1;
+        }
 
     var myObj = new {currency = $"{currency}", priceConversion = $"{conversion}"};
     var jsonToReturn = JsonConvert.SerializeObject(myObj);
