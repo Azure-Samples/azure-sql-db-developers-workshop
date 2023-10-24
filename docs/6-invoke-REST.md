@@ -143,11 +143,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
     * **credentials**: Indicates which **DATABASE SCOPED CREDENTIAL** object is used to inject authentication info in the HTTPS request. These are placed in the header of the request.
     * **timeout**: Time in seconds allowed for the HTTPS call to run. The default value 30 and accepted values are 1 through 230.
 
-
-
-############################################################################
-
-
 1. To execute the code, **left click the green arrow** on the top right of the query sheet.
 
     ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch6/rest3.png)
@@ -160,11 +155,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
 
     ![A picture of clicking on the response text in the Results table](./media/ch6/rest5.png)
 
-1. A new editor sheet will open with the results of the REST call
-
-    ![A picture of the JSON returned by the function](./media/ch6/rest6.png)
-
-    with a response similar to this JSON
+1. A new editor sheet will open with the results of the REST call which will look similar to this JSON:
 
     ```JSON
     {
@@ -176,22 +167,39 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
                 }
             },
             "headers": {
-                "Date": "Fri, 23 Jun 2023 22:20:08 GMT",
-                "Content-Length": "34",
+                "Date": "Tue, 24 Oct 2023 19:08:50 GMT",
+                "Content-Length": "45",
                 "Content-Type": "application/json; charset=utf-8"
             }
         },
         "result": {
-            "name": "test",
-            "location": "Earth"
+            "currency": "JPY",
+            "priceConversion": "147.81"
         }
     }
     ```
 
-1. The name payload that was POSTed to the endpoint was returned in the result as expected. Experiment with the function by sending no payload or enter your name into the JSON payload.
+1. Looking at the 2 returned tables,
+
+    ![A picture of the 2 returned tables from the SQL queries using the JSON response](./media/ch6/rest6.png)
+
+    the first one contains the extracted JSON values from the SQL
 
     ```SQL
-      @payload = N'{"name":"Sea Bass"}'
+    -- Select JSON values
+    select 
+        JSON_VALUE( @response,'$.result.currency') AS currency,
+        JSON_VALUE( @response,'$.result.priceConversion') AS priceConversion;
+    ```
+
+    And the last table shows how you can use extracted values from a REST endpoint response in queries and reports to augment values.
+    
+    ```SQL
+    -- Use in a query
+    set @priceConversion = (select JSON_VALUE( @response,'$.result.priceConversion') AS priceConversion);
+    
+    select product_id, product_name, ListPrice, cast(round(ListPrice*@priceConversion,2,1) as money) AS convertedPriceInYen
+    from dbo.products
     ```
 
 ### Using Azure OpenAI Service and External REST Endpoint Invocation
