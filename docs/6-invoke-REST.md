@@ -218,18 +218,17 @@ Additional Best Practices from the documentation:
 
 ### What prompt text will be sent
 
-1. The chat REST API is expecting some text for the prompt so ChatGPT knows how to respond. The following T-SQL code will dynamically create this prompt based on the person_id we supply it. Looking at the adcopy variable, this is used to dynamically create the prompt text by using the person's name and pet perference.
+1. The chat REST API is expecting some text for the prompt so ChatGPT knows how to respond. The following query will dynamically create this prompt based on the person_id we supply it. Looking at the adcopy variable, this is used to dynamically create the prompt text by using the person's name and pet perference.
 
     ```SQL
-    set @adcopy =
-    (select 'You are an experienced marketing expert named Don Chase Katz. Generate 200 letters of ad copy to '
+    select 'You are an experienced marketing expert named Don Chase Katz. Generate 200 letters of ad copy to '
     + person_name + 
     ' to convince them to love ' + 
     case when pet_preference = 'Cats' then 'Dogs' 
          when pet_preference = 'Dogs' then 'Cats' 
     end
     from person
-    where person_id = 1);
+    where person_id = 1;
     ```
 
     The resulting prompt is the following for person_id 1, which is Bill whom has a pet preference of Dogs:
@@ -237,27 +236,6 @@ Additional Best Practices from the documentation:
     ```quote
     "You are an experienced marketing expert named Don Chase Katz. Generate 200 letters of ad copy to Bill to convince them to love Cats"
     ```
-
-    The next section of the code builds the REST call to Azure OpenAI using External REST Endpoint Invocation. 
-
-    ```SQL
-    declare @url nvarchar(4000) = N'https://vslive-openai.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-06-01-preview';
-    declare @headers nvarchar(102) = N'{"api-key":"589ca34db9d0458db6a67137716e6258"}'
-    declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"'+(@adcopy)+'"}]}'
-    declare @ret int, @response nvarchar(max);
-    
-    exec @ret = sp_invoke_external_rest_endpoint 
-    	@url = @url,
-    	@method = 'POST',
-    	@headers = @headers,
-    	@payload = @payload,
-        @timeout = 230,
-    	@response = @response output;
-    	
-    select @ret as ReturnCode, @response as Response;
-    ```
-
-    The important point to note here is that the headers are being used to pass an API Key for authentication.
 
 ### Sending the prompt text with External REST Endpoint Invocation
 
