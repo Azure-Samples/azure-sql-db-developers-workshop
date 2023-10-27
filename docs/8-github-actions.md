@@ -16,6 +16,24 @@ https://github.com/Azure/sql-action
 
 ### Create the workflows directory
 
+1. Back in your codespace, at the terminal at the bottom of the page, **return to the main directory**
+
+    ```bash
+    cd /workspaces/azure-sql-db-developers-workshop
+    ```
+
+1. Next, create the workflows directory in the .github directory using the following command in the terminal
+
+    ```bash
+    mkdir .github/workflows/
+    ```
+
+1. Once the directory is created, enter it with the following command in the terminal
+
+    ```bash
+    cd .github/workflows/
+    ```
+
 ### Create the .yml file
 
 ### Test the workflow with a push

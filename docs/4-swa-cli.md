@@ -48,6 +48,15 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     Run the following command:
 
+    **return to the main directory**
+
+    ```bash
+    cd /workspaces/azure-sql-db-developers-workshop
+    ```
+
+    update the dab config file
+
+
     ```bash
     dab update todo --map "position:order" 
     ```
