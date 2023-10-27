@@ -91,7 +91,7 @@ https://github.com/Azure/sql-action
               set -o pipefail -e
     
           - name: 'Create and setup database'
-            uses: azure/sql-action@v2
+            uses: azure/sql-action@v2.2
             with:
               connection-string: "Server=localhost;Initial Catalog=master;User ID=sa;Password=P@ssw0rd;Encrypt=False;TrustServerCertificate=False;"  # the local connection string
               path: './labFiles/setupDatabase.sql' # the sql script to create db and configure for clr
