@@ -54,6 +54,7 @@ For this workshop, we will be using GitHub codespace. This environment will prov
 1. If using your local machine for this workshop, please ensure you have all the listed software installed and the repository cloned/downloaded.
 
 * [VS Code](https://code.visualstudio.com/)
+* [git](https://git-scm.com/downloads)
 * [Azure Data Studio](https://learn.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Azure Functions Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
 * [.NET SDK 6+](https://dotnet.microsoft.com/download/dotnet/7.0)

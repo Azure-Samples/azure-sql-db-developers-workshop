@@ -24,6 +24,19 @@ You are an application developer and have been asked to create a To-do list for 
 
 Just a reminder, users should not be able to see other users tasks.
 
+### The Workshop: TLDR Edition
+
+Workshop Tasks
+
+* Setup your environment
+* Create database and objects
+* Use Data API builder
+* Applications with SWA
+* Deploy to Azure SQL Database
+* Invoke REST endpoints in the database
+* Create a change data stream
+* CICD with GitHub Actions
+
 ### The Workshop
 
 In today's workshop, you will be creating an environment for database application development. This environment will consist of a database, a framework to expose the database, and an application front end. You can accomplish this task in two ways. First, you can run every component locally on your laptop/desktop. In fact, you might even have most of the required components already installed and are using daily. The second method is to run this development environment in a GitHub codespace. By forking the sample repository, you can create a codespace will all the necessary development tools preinstalled for you. Codespace even will allow docker in docker so that a development database can be created with a single command.
