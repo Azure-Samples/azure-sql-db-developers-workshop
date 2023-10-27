@@ -46,4 +46,66 @@ https://github.com/Azure/sql-action
 
 1. Open the file in the code editor by clicking on it if not already opened.
 
+1. Copy and paste the following code into the editor for the sql-actions.yml file
+
+    ```yml
+    # .github/workflows/sql-actions.yml
+    
+    name: SQL Server container in deployment test pipeline
+    on: [push]
+    
+    jobs:
+      build-and-deploy:
+        # Containers must run in Linux based operating systems
+        runs-on: ubuntu-latest
+    
+        # service/sidecar container for azure-sql-2022
+        services:
+          mssql:
+            image: mcr.microsoft.com/mssql/server:2022-latest
+            env:
+              ACCEPT_EULA: 1
+              SA_PASSWORD: P@ssw0rd
+            ports:
+              - 1433:1433
+    
+        steps:
+          - name: 'Checkout GitHub Action'
+            uses: actions/checkout@v4
+    
+          - name: 'wait for sql to be ready'
+            run: |
+              set +o pipefail +e
+              for i in {1..60};
+              do
+                  sqlcmd -S localhost -U sa -P P@ssw0rd -d master -Q "select getdate()"
+                  if [ $? -eq 0 ]
+                  then
+                      echo "sql server ready"
+                      break
+                  else
+                      echo "not ready yet..."
+                      sleep 1
+                  fi
+              done
+              set -o pipefail -e
+    
+          - name: 'Create and setup database'
+            uses: azure/sql-action@v2
+            with:
+              connection-string: "Server=localhost;Initial Catalog=master;User ID=sa;Password=P@ssw0rd;Encrypt=False;TrustServerCertificate=False;"  # the local connection string
+              path: './labFiles/setupDatabase.sql' # the sql script to create db and configure for clr
+    
+          - name: 'Deploy Database Project'
+            uses: azure/sql-action@v2.2
+            with:
+              connection-string: "Server=localhost;Initial Catalog=testingDB;User ID=sa;Password=P@ssw0rd;Encrypt=False;TrustServerCertificate=False;"  # the local connection string
+              path: './database/devDB/devDB.sqlproj' # the SQLproj file
+              action: 'Publish'
+    ```
+
+    and **save the file**.
+
+1. If you didn't already, **save the file**.
+
 ### Test the workflow with a push

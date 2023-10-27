@@ -26,6 +26,7 @@
 			  "ms-vscode.azure-account",
 			  "ms-azuretools.vscode-azureresourcegroups",
 			  "humao.rest-client",
+			  "github.vscode-github-actions",
 			  "Vue.volar"
 		  ]
 	  }
