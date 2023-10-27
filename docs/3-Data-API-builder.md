@@ -30,22 +30,25 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
 > **Step one is important. Be sure to be back in the main directory for this section of the workshop.**
 
-1. Back in your code space, at the terminal at the bottom of the page, **return to the main directory**
+1. Back in your codespace, at the terminal at the bottom of the page, **return to the main directory**
 
     ```bash
     cd /workspaces/azure-sql-db-developers-workshop
     ```
+
 1. Next step is to create the Data API Builder initialization file. Be sure to replace **PASSWORD** with the password of your database. If you need to find the password again, you can run the
+
     ```bash
     sqlcmd config connection-strings
-    ``` 
+    ```
+
     command again. Once you have your database password, replace **PASSWORD** in the following command and then run it at the terminal prompt:
 
     ```bash
     dab init --database-type "mssql" --connection-string "Server=localhost;Database=devDB;User ID=vscode;Password="'PASSWORD'";TrustServerCertificate=true" --host-mode "Development" --rest.path "rest" --set-session-context true
     ```
 
-    ![A picture of creating the data API builder initialization file using the code space terminal ](./media/ch3/dab1.png)
+    ![A picture of creating the data API builder initialization file using the codespace terminal ](./media/ch3/dab1.png)
 
 1. Once the command completes, there will be a new file created named **dab-config.json**.
 
@@ -53,7 +56,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     If you open this file by clicking on it, you will see the connect string for the database but no entities that are REST enabled.
 
-    ![A picture of the new file named dab-config.json opened in the code space editor ](./media/ch3/dab3.png)
+    ![A picture of the new file named dab-config.json opened in the codespace editor ](./media/ch3/dab3.png)
 
 ### Adding entries for testing
 
@@ -84,7 +87,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     dab add todo --source dbo.todo --permissions "anonymous:*"
     ```
 
-1. Now that we have 2 tables added to the file, Data API builder can be started and the endpoints tested. Use the following command to start Data API builder locally in the code space:
+1. Now that we have 2 tables added to the file, Data API builder can be started and the endpoints tested. Use the following command to start Data API builder locally in the codespace:
 
     ```bash
     dab start
@@ -95,15 +98,15 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     If you get an error with the user not being able to login, open the dab-config.json file and replace the password with what it there. Once the password is replaced and the file is saved, try the dab start command again.
 
 
-    If Data API builder has started successfully, code space will show you that it opened up port 5000 in a dialog box in the lower right of the page.
+    If Data API builder has started successfully, codespace will show you that it opened up port 5000 in a dialog box in the lower right of the page.
 
-   ![A picture of code space informing the user about the new open port for data API builder](./media/ch3/dab6.png)
+   ![A picture of codespace informing the user about the new open port for data API builder](./media/ch3/dab6.png)
 
 ### Working with the endpoints
 
 In this next section, you will be working with the endpoints created by Data API builder. The first section uses REST calls with the second section switching to using GraphQL.
 
-1. The endpoints will be tested in a .rest file right in the code space editor. Start by **right clicking** under your files in the Explorer extension and selecting **New File...**.
+1. The endpoints will be tested in a .rest file right in the codespace editor. Start by **right clicking** under your files in the Explorer extension and selecting **New File...**.
 
    ![A picture of right clicking in the explorer extension and selecting new file](./media/ch3/dab7.png)
 
@@ -115,7 +118,7 @@ In this next section, you will be working with the endpoints created by Data API
 
    ![A picture of naming the file testing.rest](./media/ch3/dab9.png)
 
-    Now left click the file if it is not already opened in the code space editor
+    Now left click the file if it is not already opened in the codespace editor
 
    ![A picture of clicking on the new file testing.rest](./media/ch3/dab10.png)
 
@@ -517,9 +520,9 @@ X-Request-Type: GraphQL
 ---
 
 #### Create a relationship - one to many 
-To create a GraphQL relationship, first stop DAB via the terminal in code spaces. This can be done by issuing a Ctrl-C in the terminal window where Data API builder was started.
+To create a GraphQL relationship, first stop DAB via the terminal in codespaces. This can be done by issuing a Ctrl-C in the terminal window where Data API builder was started.
 
-![A picture of stopping dab with ctrl-C in the terminal in code spaces](./media/ch3/dab14.png)
+![A picture of stopping dab with ctrl-C in the terminal in codespaces](./media/ch3/dab14.png)
 
 Next, issue the following command in the same terminal window.
 
@@ -856,7 +859,7 @@ mutation {
 
 Data API builder can also REST/GraphQL enable stored procedures in the database. To enable the get_person_by_pet stored procedure, again stop Data API builder in the terminal with Ctrl-C.
 
-![A picture of stopping dab with ctrl-C in the terminal in code spaces](./media/ch3/dab14.png)
+![A picture of stopping dab with ctrl-C in the terminal in codespaces](./media/ch3/dab14.png)
 
 #### Adding stored procedures for testing
 
@@ -1001,9 +1004,9 @@ query {
 
 Now that the APIs have been created, they might be handed off to a development team. To aid in this, Data API builder has built in swagger support that will render all APIs in a graphical user interface to be discovered and used.
 
-1. To see this interface, start by clicking on the Ports tab on the bottom of the code space page.
+1. To see this interface, start by clicking on the Ports tab on the bottom of the codespace page.
 
-    ![A picture of clicking on the Ports tab on the bottom of the code space page](./media/ch3/dab17.png)
+    ![A picture of clicking on the Ports tab on the bottom of the codespace page](./media/ch3/dab17.png)
 
 1. Next, hover over the local address for port 5000 where Data API builder is running. Then left click the world icon to open the URL in a new browser tab.
 

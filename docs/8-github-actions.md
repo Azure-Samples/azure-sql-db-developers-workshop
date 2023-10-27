@@ -36,4 +36,10 @@ https://github.com/Azure/sql-action
 
 ### Create the .yml file
 
+1. Now, we need to create the .yml file that will contain the instructions on what to do everytime you do X in GitHub. In the File Explorer, open the .githuv -> workflows directory. Then, right click on the workflows directory and select **"New File..."**.
+
+    ![A picture of right clicking on the workflows directory and selecting New File...](./media/ch8/act1.png)
+
+1. 
+
 ### Test the workflow with a push

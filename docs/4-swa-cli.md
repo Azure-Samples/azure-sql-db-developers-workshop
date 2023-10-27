@@ -56,7 +56,6 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     update the dab config file
 
-
     ```bash
     dab update todo --map "position:order" 
     ```
