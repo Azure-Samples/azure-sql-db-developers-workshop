@@ -42,7 +42,7 @@ https://github.com/Azure/sql-action
 
 1. Name the file **sql-actions.yml**
 
-    ![A picture of naming the file sql-actions.yml](./media/ch8/act1.png)
+    ![A picture of naming the file sql-actions.yml](./media/ch8/act2.png)
 
 1. Open the file in the code editor by clicking on it if not already opened.
 
@@ -109,3 +109,33 @@ https://github.com/Azure/sql-action
 1. If you didn't already, **save the file**.
 
 ### Test the workflow with a push
+
+1. To start the workflow, commit and push the changes you have made to the code back to the repository. To do this, run the following commands at the terminal:
+
+    **return to the main directory**
+
+    ```bash
+    cd /workspaces/azure-sql-db-developers-workshop
+    ```
+
+    Add the changes to the push
+
+    ```bash
+    git add .
+    ```
+
+    Create a commit
+
+    ```bash
+    git commit -m "my cool changes"
+    ```
+
+    Add push the code back to the repository
+
+    ```bash
+    git push
+    ```
+
+1. The GitHub Actions workflow will start which you can follow on the **Actions** tab back in the repository page in your browser.
+
+    ![A picture of the actions tab on the repository page in the browser](./media/ch8/act3.png)
