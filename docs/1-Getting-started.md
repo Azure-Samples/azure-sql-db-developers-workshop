@@ -49,7 +49,7 @@ For this workshop, we will be using GitHub codespace. This environment will prov
 
     ![A picture of a prompt in the codespace terminal](./media/ch1/start4.png)
 
-#### Quick Version Checks
+#### Utility Version Checks
 
 To check to ensure all major utilities are installed, you can run the following version checks:
 
