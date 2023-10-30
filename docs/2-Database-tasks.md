@@ -16,6 +16,12 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
 ### Create a SQL Database Project
 
+1. In the codespace, at the terminal at the bottom of the page, return to the main directory
+
+    ```bash
+    cd /workspaces/azure-sql-db-developers-workshop
+    ```
+
 1. Using the codespace termnal, source the .bashrc file to uptake any changes the install may have made to the path
 
     ```bash
