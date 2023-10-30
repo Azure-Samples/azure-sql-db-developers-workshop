@@ -133,3 +133,19 @@ https://github.com/Azure/sql-action
 1. The GitHub Actions workflow will start which you can follow on the **Actions** tab back in the repository page in your browser.
 
     ![A picture of the actions tab on the repository page in the browser](./media/ch8/act3.png)
+
+1. You will see the workflow launched from the sql-actions.yml file on a code push running on the page.
+
+    ![A picture of the running workflow in the actions tab](./media/ch8/act4.png)
+
+1. Clicking on the workflow will show the details and progress. Click on the build-and-deploy job in the middle of the page.
+
+    ![A picture of clicking on the build-and-deploy job in the middle of the page](./media/ch8/act5.png)
+
+1. Here, on the job details page, you can look into each step of the workflow and see the progress.
+
+    ![A picture of each step of the workflow and see the progress](./media/ch8/act6.png)
+
+1. Once the workflow is done, you can expand the Deploy Database Project section and see the output and the successful deployment of the database objects to the test SQL Server 2022 in a docker container for this GitHub Workflow.
+
+    ![A picture of the database deployment in github actions to the SQL Server in docker in codespaces](./media/ch8/act7.png)

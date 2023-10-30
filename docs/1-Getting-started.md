@@ -41,7 +41,11 @@ For this workshop, we will be using GitHub codespace. This environment will prov
 
     ![A picture of the codespace setting up](./media/ch1/start2.png)
 
-1. After the codespace editor window appears, in a minute or so, the post-scripts will start installing the necessary extensions, plugins and software needed for this workshop.
+1. After the codespace editor window and terminal appears,  
+
+    ![A picture of the codespace terminal on startup](./media/ch1/start2a.png)
+
+    in a minute or so, the post-scripts will start installing the necessary extensions, plugins and software needed for this workshop.
 
     ![A picture of the post create scripts running](./media/ch1/start3.png)
 
