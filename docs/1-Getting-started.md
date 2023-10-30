@@ -71,6 +71,12 @@ for sqlcmd
 sqlcmd --version
 ```
 
+for swa
+
+```bash
+swa --version
+```
+
 ### If on the desktop/local environment
 
 1. If using your local machine for this workshop, please ensure you have all the listed software installed and the repository cloned/downloaded.

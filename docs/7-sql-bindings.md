@@ -80,15 +80,17 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of entering create function into the text field and then selecting Azure Functions: Create Function](./media/ch7/bind10.png)  
 
-1.  A dialog box will appear asking to **“Select a template for your function”**. Go to the bottom of the list and select **"Change template filter"**.
+1. If you get a modal window asking you to initialize the project for VS Code, select **Yes**.
+
+1. A dialog box will appear asking to **“Select a template for your function”**. Go to the bottom of the list and select **"Change template filter"**.
 
     ![A picture of going to the bottom of the template list and selecting Change template filter](./media/ch7/bind11.png)
 
-1.  In the **“Select a template filter”** dialog box, **"All"**.
+1. In the **“Select a template filter”** dialog box, **"All"**.
 
     ![A picture of selecting all in the Select a template filter dialog box](./media/ch7/bind12.png)
 
-1.  Returning to the **“Select a template for your function”** dialog box, enter **"sql"** into the text field and select **SqlTriggerBinding**
+1. Returning to the **“Select a template for your function”** dialog box, enter **"sql"** into the text field and select **SqlTriggerBinding**
 
     ![A picture of entering SQL into the text field in the Select a template for your function dialog box and select **SqlTriggerBinding](./media/ch7/bind13.png)
 
@@ -218,3 +220,5 @@ In this section, you will create a change data stream using Change Tracking, the
     [2023-10-23T21:39:06.359Z] SQL Changes: [{"Operation":0,"Item":{"person_id":6,"person_name":"Ellie","person_email":"ellie@contoso.com","pet_preference":"Cats"}}]
     [2023-10-23T21:39:06.376Z] Executed 'SqlTriggerBindingCSharp1' (Succeeded, Id=89d5f873-9535-4658-a69f-01e2f0d80fe1, Duration=48ms)
     ```
+
+1. Stop the local function in the terminal in the codespace with a Ctrl-C.

@@ -497,3 +497,5 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     ![A picture of REST endpoints for the stored procedures being called for each of these activities in the terminal](./media/ch4/swa28.png)
 
     Moving to stored procedures/table APIs will allow us to insert some logic before or after DML in the code. More on this in a later chapter.
+
+1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.

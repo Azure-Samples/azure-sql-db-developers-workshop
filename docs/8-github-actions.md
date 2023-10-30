@@ -28,12 +28,6 @@ https://github.com/Azure/sql-action
     mkdir .github/workflows/
     ```
 
-1. Once the directory is created, enter it with the following command in the terminal
-
-    ```bash
-    cd .github/workflows/
-    ```
-
 ### Create the .yml file
 
 1. Now, we need to create the .yml file that will contain the instructions on what to do everytime you do X in GitHub. In the File Explorer, open the .github -> workflows directory. Then, right click on the workflows directory and select **"New File..."**.
