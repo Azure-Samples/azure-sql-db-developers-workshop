@@ -418,7 +418,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of selecting the database named devDB in the publish database modal flow](./media/ch2/database31.png)
 
-    Note: You may get a dialog box on the bottom right asking you "Would you like to save the settings in a profile (.publish.xml)?". Select **No**.
+    **Note**: You may get a dialog box on the bottom right asking you "Would you like to save the settings in a profile (.publish.xml)?". Select **No**.
 
     ![A picture of selecting No for the save settings to a profile dialog box](./media/ch2/database31a.png)
 
