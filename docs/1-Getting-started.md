@@ -49,6 +49,28 @@ For this workshop, we will be using GitHub codespace. This environment will prov
 
     ![A picture of a prompt in the codespace terminal](./media/ch1/start4.png)
 
+#### Quick Version Checks
+
+To check to ensure all major utilities are installed, you can run the following version checks:
+
+for function core tools:
+
+    ```bash
+    func --version
+    ```
+
+for Data API builder
+
+    ```bash
+    dab --version
+    ```
+
+for sqlcmd
+
+    ```bash
+    sqlcmd --version
+    ```
+
 ### If on the desktop/local environment
 
 1. If using your local machine for this workshop, please ensure you have all the listed software installed and the repository cloned/downloaded.
