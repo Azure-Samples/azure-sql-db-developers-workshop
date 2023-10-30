@@ -55,21 +55,21 @@ To check to ensure all major utilities are installed, you can run the following 
 
 for function core tools:
 
-    ```bash
-    func --version
-    ```
+```bash
+func --version
+```
 
 for Data API builder
 
-    ```bash
-    dab --version
-    ```
+```bash
+dab --version
+```
 
 for sqlcmd
 
-    ```bash
-    sqlcmd --version
-    ```
+```bash
+sqlcmd --version
+```
 
 ### If on the desktop/local environment
 
