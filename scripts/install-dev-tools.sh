@@ -17,6 +17,7 @@ sudo tar xvf sqlcmd-v1.4.0-linux-amd64.tar
 sudo mv sqlcmd /usr/bin/sqlcmd
 sudo rm -rf sqlcmd-v1.4.0-linux-amd64.tar
 sudo rm -rf sqlcmd_debug
+sudo rm -rf NOTICE.md
 echo 'PATH=$PATH:$HOME/.dotnet/tools' >> ~/.bashrc
 echo "rm packages-microsoft-prod.deb"
 rm packages-microsoft-prod.deb
