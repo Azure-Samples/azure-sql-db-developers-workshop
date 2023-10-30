@@ -8,7 +8,7 @@ sudo apt install dotnet-sdk-6.0 -y
 npm install -g @azure/static-web-apps-cli
 dotnet tool install -g microsoft.sqlpackage
 dotnet new -i Microsoft.Build.Sql.Templates
-dotnet tool install --global Microsoft.DataApiBuilder
+dotnet tool install --global Microsoft.DataApiBuilder --version 0.9.6-rc
 sudo apt-get update
 sudo apt-get install sqlcmd
 sudo wget https://github.com/microsoft/go-sqlcmd/releases/download/v1.4.0/sqlcmd-v1.4.0-linux-amd64.tar.bz2
