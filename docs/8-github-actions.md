@@ -146,6 +146,10 @@ https://github.com/Azure/sql-action
 
     ![A picture of each step of the workflow and see the progress](./media/ch8/act6.png)
 
-1. Once the workflow is done, you can expand the Deploy Database Project section and see the output and the successful deployment of the database objects to the test SQL Server 2022 in a docker container for this GitHub Workflow.
+1. Once the workflow is done, you can expand the Deploy Database Project section
 
-    ![A picture of the database deployment in github actions to the SQL Server in docker in codespaces](./media/ch8/act7.png)
+    ![A picture of expanding the Deploy Database Project section](./media/ch8/act7.png)
+
+    and see the output and the successful deployment of the database objects to the test SQL Server 2022 in a docker container for this GitHub Workflow.
+
+    ![A picture of the database deployment in github actions to the SQL Server in docker in codespaces](./media/ch8/act8.png)
