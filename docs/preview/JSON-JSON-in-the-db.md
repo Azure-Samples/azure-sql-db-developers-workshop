@@ -1,4 +1,4 @@
-![A picture of the Microsoft Logo](../../media/graphics/microsoftlogo.png)
+![A picture of the Microsoft Logo](../../docs/media/graphics/microsoftlogo.png)
 
 # Azure SQL Database - JSON in the database - IN PRIVATE PREVIEW
 
