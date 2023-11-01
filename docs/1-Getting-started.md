@@ -2,7 +2,7 @@
 
 # Getting started with your development environment
 
-For this workshop, we will be using GitHub codespace. This environment will provide us with all the necessary tools to run this lab completely in a cloud development space.
+For this workshop, we will be using GitHub codespaces. This environment will provide us with all the necessary tools to run this lab completely in a cloud development space.
 
 ## Clone/fork repository with necessary files
 
@@ -29,9 +29,9 @@ For this workshop, we will be using GitHub codespace. This environment will prov
 1. Azure account
     1. Free Azure SQL Database
 
-## Install necessary software components or start codespace with specialized container
+## Install necessary software components or start codespaces with specialized container
 
-### If using codespace:
+### If using codespaces:
 
 1. Start/Create a codespace from the forked repository. Click on the **green Code button**, then click the **Create codespace on master** button.
 
