@@ -258,8 +258,8 @@ Additional Best Practices from the documentation:
     from person
     where person_id = 1);
     
-    declare @url nvarchar(4000) = N'https://vslive-openai.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-06-01-preview';
-    declare @headers nvarchar(102) = N'{"api-key":"589ca34db9d0458db6a67137716e6258"}'
+    declare @url nvarchar(4000) = N'https://pass2023demo.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-07-01-preview';
+    declare @headers nvarchar(102) = N'{"api-key":"9b83fdec53e64e928098d235e82c0692"}'
     declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"'+(@adcopy)+'"}]}'
     declare @ret int, @response nvarchar(max);
     
@@ -416,8 +416,8 @@ In this next section, we will be using the Todo application against our Free Azu
     AS
     
         declare @translated_task VARCHAR(1000);
-        declare @url nvarchar(4000) = N'https://skynetbeta.openai.azure.com/openai/deployments/chattykathy/chat/completions?api-version=2023-07-01-preview';
-        declare @headers nvarchar(102) = N'{"api-key":"XXXXX"}'
+        declare @url nvarchar(4000) = N'https://pass2023demo.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-07-01-preview';
+        declare @headers nvarchar(102) = N'{"api-key":"9b83fdec53e64e928098d235e82c0692"}'
         declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into german, only respond with the translation"}]}'
         declare @ret int, @response nvarchar(max);
     

@@ -15,6 +15,7 @@ Includes:
 * Move to table APIs for insert/update/delete
 * Added SQL Trigger Binding for Azure Functions
 * Added the usage of the Always Free Azure SQL Database
+* CI/CD via GitHub Actions
 
 
 <a name="1.0.0"></a>
