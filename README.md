@@ -2,11 +2,6 @@
 
 # Azure SQL Database Developer Workshop Overview
 
-## What you need to get started
-
-* A [free Azure Account](https://azure.microsoft.com/en-us/free)
-* A [GitHub Account](https://github.com/signup)
-
 ## Workshop Goals
 
 ![A picture of the flow of the workshop](./docs/media/flow1.png)
@@ -16,6 +11,12 @@
 * Utilize a Database Project for deployment into Azure SQL Database via CI/CD flows
 * Expose data in your database via REST and GraphQL with Data API Builder
 * Native integration with Azure Functions and other Azure Services from within the Azure SQL Database
+
+## What you need to get started
+
+* A [free Azure Account](https://azure.microsoft.com/en-us/free)
+* A [GitHub Account](https://github.com/signup)
+
 
 ## What you will be building
 
