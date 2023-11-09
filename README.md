@@ -2,6 +2,11 @@
 
 # Azure SQL Database Developer Workshop Overview
 
+## What you need to get started
+
+* A [free Azure Account](https://azure.microsoft.com/en-us/free)
+* A [GitHub Account](https://github.com/signup)
+
 ## Workshop Goals
 
 ![A picture of the flow of the workshop](./docs/media/flow1.png)
