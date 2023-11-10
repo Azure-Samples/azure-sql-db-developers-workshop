@@ -212,3 +212,24 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
     ```SQL
     exec get_person_by_pet 'Dogs';
     ```
+
+## Would you like to know more? 🪲
+
+### Azure SQL migration extension for Azure Data Studio
+
+The Azure SQL migration extension for Azure Data Studio enables you to assess, get right-sized Azure recommendations and migrate your SQL Server databases to Azure. You can use the Azure SQL Migration extension to assess SQL Server databases running on Windows or Linux.
+
+The Azure SQL Migration extension for Azure Data Studio offers these key benefits:
+
+* A responsive UI for an end-to-end migration experience. The extension starts with a migration readiness assessment and SKU recommendation (preview) (based on performance data).
+* An enhanced assessment mechanism that can evaluate SQL Server instances. The extension identifies databases that are ready to migrate to Azure SQL targets.
+* An SKU recommendation engine that collects performance data from the on-premises source SQL Server instance and then generates right-sized SKU recommendations based on your Azure SQL target.
+* A reliable Azure service powered by Azure Database Migration Service that orchestrates data movement activities to deliver a seamless migration experience.
+* You can run your migration online (for migrations that require minimal downtime) or offline (for migrations where downtime persists throughout the migration) depending on your business requirements.
+* You can configure a self-hosted integration runtime to use your own compute resources to access the source SQL Server instance backup files in your on-premises environment.
+* Provides a secure and improved user experience for migrating TDE databases and SQL/Windows logins to Azure SQL.
+
+### Proof of concepts and samples
+
+* [SQL Server migration one-click PoC to Azure SQL](https://aka.ms/SQLMigrationPoC)
+* [Migrate databases at scale using Azure Database Migration automation](https://github.com/Azure-Samples/data-migration-sql)
