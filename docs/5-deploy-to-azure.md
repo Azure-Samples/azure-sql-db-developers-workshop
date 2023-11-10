@@ -213,7 +213,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
     exec get_person_by_pet 'Dogs';
     ```
 
-## Would you like to know more? 🪲
+## Would you like to know more? 🦟
 
 ### Azure SQL migration extension for Azure Data Studio
 
