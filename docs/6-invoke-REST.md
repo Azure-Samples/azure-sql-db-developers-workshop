@@ -14,14 +14,6 @@ Azure SQL Database External REST Endpoint Invocation provides the ability to cal
 
 External REST Endpoint Invocation can be called in an Azure SQL Database using the sp_invoke_external_rest_endpoint stored procedure. The following exercises and examples will guide you through calling various Azure Services and seeing how you can integrate REST into your applications and database development implementations.
 
-- Native integration with Azure Functions and other Azure Services
-                ○ sp_invoke_external_rest_endpoint 
-                                ○ Overview
-                                ○ Security 
-                                ○ Samples calling a function
-                                ○ New support for XML and plain TEXT
-                                ○ Sample calling storage
-
 ## External REST Endpoint Invocation workshop tasks
 
 ### Call an Azure Function with External REST Endpoint Invocation
