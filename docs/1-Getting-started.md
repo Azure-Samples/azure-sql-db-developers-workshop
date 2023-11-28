@@ -22,6 +22,8 @@ For this workshop, we will be using GitHub codespaces. This environment will pro
     1. Installs all the needed dev tools
 1. labFiles
     1. contains files to be used with the workshop in various chapters
+1. presentation_slides
+    1. Slides for the PASS 2023 Monday pre-conference workshop
 
 ### Free accounts needed for the workshop
 
