@@ -92,6 +92,10 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
     GO
     ```
 
+> [!NOTE]
+> The server name in the next example is functionsdemo. Please change this name to align with your server name in your account.
+> 
+
 1. To execute the code, **left click the green arrow** on the top right of the query sheet.
 
     ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch6/rest2a.png)
@@ -102,7 +106,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
     DECLARE @ret INT, @response NVARCHAR(MAX), @priceConversion float;
     
     EXEC @ret = sp_invoke_external_rest_endpoint
-      @url = N'https://ereidemo.azurewebsites.net/api/HttpTriggerFunction',
+      @url = N'https://functionsdemo.azurewebsites.net/api/HttpTriggerFunction',
       @payload = N'{"currency":"JPY"}',
       @method = N'POST',
       @response = @response OUTPUT;
@@ -231,6 +235,10 @@ Additional Best Practices from the documentation:
 
 ### Sending the prompt text with External REST Endpoint Invocation
 
+> [!NOTE]
+> The server name in the next example is aidemo and the api-key is 1234567890. Please change this name and key to align with the values in your account.
+> 
+
 1. Open a new query sheet
 
     ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch6/rest2.png)
@@ -250,8 +258,8 @@ Additional Best Practices from the documentation:
     from person
     where person_id = 1);
     
-    declare @url nvarchar(4000) = N'https://pass2023demo.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-07-01-preview';
-    declare @headers nvarchar(102) = N'{"api-key":"9b83fdec53e64e928098d235e82c0692"}'
+    declare @url nvarchar(4000) = N'https://aidemo.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-07-01-preview';
+    declare @headers nvarchar(102) = N'{"api-key":"1234567890"}'
     declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"'+(@adcopy)+'"}]}'
     declare @ret int, @response nvarchar(max);
     
@@ -378,6 +386,10 @@ Additional Best Practices from the documentation:
 
 ### The Todo application, SWA, and External REST Endpoint Invocation
 
+> [!NOTE]
+> The server name in the next example is aidemo and the api-key is 1234567890. Please change this name and key to align with the values in your account.
+> 
+
 In this next section, we will be using the Todo application against our Free Azure SQL Database. Then, we will be adding to the insert_todo stored procedure to call OpenAI via External REST endpoint invocation. We will be asking OpenAI to translate the Todo task's title into german and then insert that value into the table.
 
 1. To start, we need to change the database connection in the **staticwebapp.database.config.json** file to use our Free Azure SQL Database. Select the file in codespace and on the top, find the **connection-string**.
@@ -408,8 +420,8 @@ In this next section, we will be using the Todo application against our Free Azu
     AS
     
         declare @translated_task VARCHAR(1000);
-        declare @url nvarchar(4000) = N'https://pass2023demo.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-07-01-preview';
-        declare @headers nvarchar(102) = N'{"api-key":"9b83fdec53e64e928098d235e82c0692"}'
+        declare @url nvarchar(4000) = N'https://aidemo.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-07-01-preview';
+        declare @headers nvarchar(102) = N'{"api-key":"1234567890"}'
         declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into german, only respond with the translation"}]}'
         declare @ret int, @response nvarchar(max);
     
