@@ -10,20 +10,20 @@ For this workshop, we will be using GitHub codespaces. This environment will pro
 
 ### Repository Contents
 
-1. .devcontainer
-    1. Codespace docker config
-1. client
-    1. contains the Todo application for use with Data API builder and SWA
-1. app
-    1. contains the sample JavaScript test application for use with Data API builder and SWA
-1. docs
-    1. Has all the chapters/lessons of the workshop
-1. scripts
-    1. Installs all the needed dev tools
-1. labFiles
-    1. contains files to be used with the workshop in various chapters
-1. presentation_slides
-    1. Slides for the PASS 2023 Monday pre-conference workshop
+* .devcontainer
+    - Codespace docker config
+* client
+    - contains the Todo application for use with Data API builder and SWA
+* app
+    - contains the sample JavaScript test application for use with Data API builder and SWA
+* docs
+    - Has all the chapters/lessons of the workshop
+* scripts
+    - Installs all the needed dev tools
+* labFiles
+    - contains files to be used with the workshop in various chapters
+* presentation_slides
+    - Slides for the PASS 2023 Monday pre-conference workshop
 
 ### Free accounts needed for the workshop
 
