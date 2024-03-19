@@ -36,27 +36,43 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     cd /workspaces/azure-sql-db-developers-workshop
     ```
 
-1. Next step is to create the Data API Builder initialization file. Be sure to replace **PASSWORD** with the password of your database. If you need to find the password again, you can run the
+1. Next step is to create the Data API Builder initialization file. You need to get the connection string to connect to the `devDB` database that you created before. Since Data API builder is a .NET application, you can get the correct connection string using the following command:
 
     ```bash
-    sqlcmd config connection-strings
+    sqlcmd config connection-strings --database devDB | grep ADO.NET
     ```
 
-    command again. Once you have your database password, replace **PASSWORD** in the following command and then run it at the terminal prompt:
+    Now, since the connection string is using a login/password pair, we're going to use environment variables to avoid storing the connection string in the Data API Builder configuration file.
+
+    Create an environment file:
 
     ```bash
-    dab init --database-type "mssql" --connection-string "Server=localhost;Database=devDB;User ID=vscode;Password="'PASSWORD'";TrustServerCertificate=true" --host-mode "Development" --rest.path "rest" --set-session-context true
+    touch .env
+    ```
+
+    and then add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in the previous step:
+
+    ```text
+    MSSQL='Server=tcp:127.0.0.1,1433;Initial Catalog=devDB;Persist Security Info=False;User ID=vscode;Password=...;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;'
+    ```
+
+    ![The connection string saved in the environment file](./media/ch3/dab0.png)
+
+    Then, you can use the Data API Builder (DAB) CLI to initialize the configuration file:
+
+    ```bash
+    dab init --database-type "mssql" --connection-string "@env('MSSQL')" --host-mode "Development" --rest.path "rest"
     ```
 
     ![A picture of creating the data API builder initialization file using the codespace terminal ](./media/ch3/dab1.png)
 
 1. Once the command completes, there will be a new file created named **dab-config.json**.
 
-    ![A picture of the new file named dab-config.json that was created using the dab init command ](./media/ch3/dab2.png)
+    ![A picture of the new file named dab-config.json that was created using the dab init command](./media/ch3/dab2.png)
 
     If you open this file by clicking on it, you will see the connect string for the database but no entities that are REST enabled.
 
-    ![A picture of the new file named dab-config.json opened in the codespace editor ](./media/ch3/dab3.png)
+    ![A picture of the new file named dab-config.json opened in the codespace editor](./media/ch3/dab3.png)
 
 ### Adding entries for testing
 
@@ -64,18 +80,17 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     For the **person** table:
     ```bash
-    dab add person --source dbo.person --permissions "anonymous:*"
+    dab add Person --source dbo.person --permissions "anonymous:*" --rest "person"
     ```
     ---
     ![A picture of adding the person table to the dab-config.json file](./media/ch3/dab4.png)
 
     For the **address** table:
     ```bash
-    dab add address --source dbo.address --permissions "anonymous:*"
+    dab add Address --source dbo.address --permissions "anonymous:*" --rest "address"
     ```
     ---
     ![A picture of adding the address table to the dab-config.json file](./media/ch3/dab5.png)
-
     As seen in the above 2 screenshots, the tables are added to the entities section in the dab-config.json file.
 
 ### Adding entries for the Todo Application
@@ -84,7 +99,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     For the **person** table:
     ```bash
-    dab add todo --source dbo.todo --permissions "anonymous:*"
+    dab add Todo --source dbo.todo --permissions "anonymous:*" --rest "todo"
     ```
 
 1. Now that we have 2 tables added to the file, Data API builder can be started and the endpoints tested. Use the following command to start Data API builder locally in the codespace:
@@ -188,16 +203,13 @@ http://localhost:5000/rest/person?$select=person_email
 {
   "value": [
     {
-      "person_email": "bill@contoso.com",
-      "person_id": 1
+      "person_email": "bill@contoso.com"
     },
     {
-      "person_email": "frank@contoso.com",
-      "person_id": 2
+      "person_email": "frank@contoso.com"
     },
     {
-      "person_email": "Riley@contoso.com",
-      "person_id": 3
+      "person_email": "Riley@contoso.com"
     }
   ]
 }
@@ -349,7 +361,7 @@ content-type: application/json
 {
   "value": [
     {
-      "person_id": 2,
+      "person_id": 3,
       "person_name": "Riley",
       "person_email": "riley@contososales.com",
       "pet_preference": "Cats"
@@ -381,6 +393,34 @@ x-ms-correlation-id: 383d79b4-1646-4828-b66d-60fb0afcc14b
 ---
 
 ### GraphQL Endpoints
+
+To test the GraphQL endpoints you can either use the `testing.rest` or you can use the interactive playground (enabled as Data API Builder has been configured to run in `development` mode) by opening the website associated with your codespace environment:
+
+![Visual Studio code showing the list of forwarded ports](../docs/media/ch3/dab-port.png)
+
+Click on the world icon and then once you see the "Healthy" text in your browser, add `/graphql` to the url, for example:
+
+```http
+https://superior-barnacle-s3xwx94xyqhpzv-5000.app.github.dev/graphql/
+```
+
+so that you'll see the GraphQL playground:
+
+![The welcome page of Banana Cake Pop GraphQL interactive playground](../docs/media/ch3/dab-bcp.png)
+
+If you are using Banana Cake Pop, in the next samples you only need to copy the text between the curly graph, for example:
+
+```graphql
+{
+  people(first: 5) {
+    items {
+      person_id
+      person_name
+      person_email
+    }
+  }
+}
+```
 
 #### Get the first 5 records
 
@@ -442,7 +482,7 @@ Content-Type: application/json
 X-Request-Type: GraphQL
 
 {
-  people(orderBy: {person_id: DESC} )
+  people(orderBy: { person_id: DESC } )
   {
     items {
       person_id
@@ -494,11 +534,11 @@ X-Request-Type: GraphQL
 
 {
   person_by_pk(person_id: 1) {
-      person_id
-      person_name
-      person_email
-      pet_preference
-    }
+    person_id
+    person_name
+    person_email
+    pet_preference
+  }
 }
 ```
 
@@ -527,7 +567,7 @@ To create a GraphQL relationship, first stop DAB via the terminal in codespaces.
 Next, issue the following command in the same terminal window.
 
 ```bash
-dab update person --relationship "address" --cardinality "many" --target.entity "address"
+dab update person --relationship "addresses" --cardinality "many" --target.entity "Address"
 ```
 
 ![A picture of running the dab update command to create a relationship between the person and address entities](./media/ch3/dab15.png)
@@ -536,7 +576,7 @@ After running the command, the dab-config.json file will contain a new relations
 
 ```JSON
 "entities": {
-  "person": {
+  "Person": {
     "source": "dbo.person",
     "permissions": [
       {
@@ -547,9 +587,9 @@ After running the command, the dab-config.json file will contain a new relations
       }
     ],
     "relationships": {
-      "address": {
+      "Addresses": {
         "cardinality": "many",
-        "target.entity": "address"
+        "target.entity": "Address"
       }
     }
   },
@@ -580,7 +620,7 @@ X-Request-Type: GraphQL
      person_name 
      person_email
      pet_preference 
-     address {
+     addresses {
        items { 
          address
        } 
@@ -602,7 +642,7 @@ X-Request-Type: GraphQL
           "person_name": "Bill",
           "person_email": "bill@contoso.com",
           "pet_preference": "Dogs",
-          "address": {
+          "addresses": {
             "items": [
               {
                 "address": "Lincoln, MA"
@@ -615,7 +655,7 @@ X-Request-Type: GraphQL
           "person_name": "Frank",
           "person_email": "frank@contoso.com",
           "pet_preference": "Cats",
-          "address": {
+          "addresses": {
             "items": [
               {
                 "address": "Baltimore, MD"
@@ -628,7 +668,7 @@ X-Request-Type: GraphQL
           "person_name": "Joel",
           "person_email": "joel@contoso.com",
           "pet_preference": "Dogs",
-          "address": {
+          "addresses": {
             "items": []
           }
         }
@@ -703,7 +743,7 @@ X-Request-Type: GraphQL
       person_id
       person_name
       pet_preference
-      address {
+      addresses {
         items {
             address
         }
@@ -724,7 +764,7 @@ X-Request-Type: GraphQL
           "person_id": 1,
           "person_name": "Bill",
           "pet_preference": "Dogs",
-          "address": {
+          "addresses": {
             "items": [
               {
                 "address": "Lincoln, MA"
@@ -736,7 +776,7 @@ X-Request-Type: GraphQL
           "person_id": 4,
           "person_name": "Joel",
           "pet_preference": "Dogs",
-          "address": {
+          "addresses": {
             "items": []
           }
         }
@@ -758,7 +798,7 @@ Content-Type: application/json
 X-Request-Type: GraphQL
 
 mutation {
-  createperson(item: {
+  createPerson(item: {
     person_name: "Elle",
     person_email: "elle@contoso.com"
     pet_preference: "Cats"
@@ -776,7 +816,7 @@ mutation {
 ```JSON
 {
   "data": {
-    "createperson": {
+    "createPerson": {
       "person_id": 5,
       "person_name": "Elle",
       "person_email": "elle@contoso.com",
@@ -798,7 +838,7 @@ Content-Type: application/json
 X-Request-Type: GraphQL
 
 mutation {
-  updateperson(person_id: 4, item: {
+  updatePerson(person_id: 4, item: {
     person_email: "joel22@contoso.com"
   }) {
     person_id
@@ -813,7 +853,7 @@ mutation {
 ```JSON
 {
   "data": {
-    "updateperson": {
+    "updatePerson": {
       "person_id": 4,
       "person_name": "Joel",
       "person_email": "joel22@contoso.com"
@@ -834,7 +874,7 @@ Content-Type: application/json
 X-Request-Type: GraphQL
 
 mutation {
-  deleteperson(person_id: 5)
+  deletePerson(person_id: 5)
   {
     person_id
   }  
@@ -846,7 +886,7 @@ mutation {
 ```JSON
 {
   "data": {
-    "deleteperson": {
+    "deletePerson": {
       "person_id": 5
     }
   }
@@ -866,7 +906,7 @@ Data API builder can also REST/GraphQL enable stored procedures in the database.
 Next, issue the following command in the same terminal window.
 
 ```bash
-dab add getPersonByPet --source dbo.get_person_by_pet --source.type "stored-procedure" --source.params "pet:" --permissions "anonymous:execute" --rest.methods "get" --graphql.operation "query"
+dab add GetPersonByPet --source dbo.get_person_by_pet --source.type "stored-procedure" --source.params "pet:" --permissions "anonymous:execute" --rest.methods "get" --graphql.operation "query"
 ```
 
 ![A picture of running the dab add command to enable a stored procedure](./media/ch3/dab16.png)
@@ -874,7 +914,7 @@ dab add getPersonByPet --source dbo.get_person_by_pet --source.type "stored-proc
 After running the command, the dab-config.json file will contain the new entity:
 
 ```JSON
-"getPersonByPet": {
+"GetPersonByPet": {
   "source": {
     "type": "stored-procedure",
     "object": "dbo.get_person_by_pet",
@@ -906,15 +946,15 @@ After running the command, the dab-config.json file will contain the new entity:
 Issue the following commands in the same terminal window.
 
 ```bash
-dab add insert_todo --source dbo.insert_todo --source.type "stored-procedure" --source.params "title:,owner_id:,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql false
+dab add InsertTodo --source dbo.insert_todo --source.type "stored-procedure" --source.params "title:,owner_id:,order:" --permissions "anonymous:execute" --rest "insert_todo" --rest.methods "post" --graphql false
 ```
 
 ```bash
-dab add update_todo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:false,order:" --permissions "anonymous:execute" --rest.methods "post" --graphql false 
+dab add UpdateTodo --source dbo.update_todo --source.type "stored-procedure" --source.params "id:,title:,owner_id:,completed:false,order:" --permissions "anonymous:execute" --rest "update_todo" --rest.methods "post" --graphql false 
 ```
 
 ```bash
-dab add delete_todo --source dbo.delete_todo --source.type "stored-procedure" --source.params "id:,owner_id:" --permissions "anonymous:execute" --rest.methods "delete" --graphql false
+dab add DeleteTodo --source dbo.delete_todo --source.type "stored-procedure" --source.params "id:,owner_id:" --permissions "anonymous:execute" --rest "delete_todo" --rest.methods "delete" --graphql false
 ```
 
 ### Testing the stored procedures
@@ -934,7 +974,7 @@ Use the procedure’s REST endpoint and pass "Dogs" into the pet parameter.
 **Request:**
 
 ```bash
-http://localhost:5000/rest/getPersonByPet?pet=Dogs
+http://localhost:5000/rest/GetPersonByPet?pet=Dogs
 ```
 
 **Response:**
@@ -971,7 +1011,7 @@ Content-Type: application/json
 X-Request-Type: GraphQL
 
 query {
-  executegetPersonByPet(pet:"Cats")
+  executeGetPersonByPet(pet:"Cats")
    {
     person_id
     person_name
@@ -986,7 +1026,7 @@ query {
 ```JSON
 {
   "data": {
-    "executegetPersonByPet": [
+    "executeGetPersonByPet": [
       {
         "person_id": 2,
         "person_name": "Frank",

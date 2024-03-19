@@ -3,6 +3,7 @@
   "configurations": {
     "dab-swa-todo": {
       "appLocation": "client",
+      "dataApiLocation": "swa-db-connections",
       "outputLocation": "dist",
       "appBuildCommand": "npm run build",
       "run": "npm run dev",

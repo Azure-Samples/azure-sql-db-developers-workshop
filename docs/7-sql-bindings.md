@@ -32,6 +32,24 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of enabling change tracking on the person table](./media/ch7/bind1c.png)
 
+1. The user used by the application to connect to database must also be granted the permission to read the change tracking information. Run the following command to grant the permission to the user:
+
+    ```SQL
+    GRANT VIEW CHANGE TRACKING ON SCHEMA::dbo TO [swaappuser]
+    GO
+    ```
+
+    ![A picture of granting the permission to read the change tracking information to the user](./media/ch7/bind1d.png)
+
+1. To keep track of that changes have been already notified, the Azure Functions needs to create some tables, and therefore needs to have permission to run Data Definition Language statements. Run the following command to grant the permission to the user:
+
+    ```SQL
+    ALTER ROLE db_ddladmin ADD MEMBER [swaappuser]
+    GO
+    ```
+
+    ![A picture of granting the permission to run Data Definition Language statements to the user](./media/ch7/bind1e.png)
+
 ### Create an Azure Function
 
 1. Back in the terminal at the bottom of the page,
@@ -67,7 +85,7 @@ In this section, you will create a change data stream using Change Tracking, the
     then
 
     ```bash
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.Sql --prerelease
+    dotnet add package Microsoft.Azure.WebJobs.Extensions.Sql
     ```
 
 ### Create the SQL trigger function
@@ -110,13 +128,13 @@ In this section, you will create a change data stream using Change Tracking, the
 
     ![A picture of use the value of [dbo].[person] for the database table name then pressing enter](./media/ch7/bind17.png)
 
-1. The SqlTriggerBindingCSharp1.cs file has been created and is in the editor for review.
+1. The `SqlTriggerBindingCSharp1.cs` file has been created and is in the editor for review.
 
     ![A picture of the SqlTriggerBindingCSharp1.cs file](./media/ch7/bind18.png)
 
-1. There are a few quick changes we need to make in this file. The boilerplate code that has been created has a ToDoItem class. We need to change this to the **person class object**.
+1. There are a few quick changes we need to make in this file. The boilerplate code that has been created has a ToDoItem class. We need to change this to the **`Person` class object**.
 
-    Replace the ToDoItem class
+    Replace the `ToDoItem` class
 
     ```c#
     public class ToDoItem
@@ -127,14 +145,14 @@ In this section, you will create a change data stream using Change Tracking, the
     }
     ```
 
-    with the **person** class
+    with the **`Person`** class
 
     ```c#
-    public class person
+    public class Person
     {
         public int person_id { get; set; }
         public string person_name { get; set; }
-        public string person_email { get; set; }
+        public string person_email { get; set; }      
         public string pet_preference { get; set; }
     }
     ```
@@ -149,11 +167,11 @@ In this section, you will create a change data stream using Change Tracking, the
 
     again, the boilerplate has the ToDoItem class referenced.
 
-    Just change the ToDoItem with **person**
+    Just change the `ToDoItem` with **`Person`**
 
     ```c#
         public static void Run(
-                [SqlTrigger("[dbo].[person]", "connection-string")] IReadOnlyList<SqlChange<person>> changes,
+                [SqlTrigger("[dbo].[person]", "connection-string")] IReadOnlyList<SqlChange<Person>> changes,
                 ILogger log)
     ```
 
@@ -163,32 +181,28 @@ In this section, you will create a change data stream using Change Tracking, the
 
 1. If you didn't already, **save the file**.
 
-# MAYBE TODO: CHANGE using Microsoft.Azure.WebJobs.Extensions.Http; to using Microsoft.Azure.WebJobs.Extensions.Sql;
-
 ### Testing the trigger
 
-1. Now that the function code is done, we need to provide it a value for connection-string. If you remember, back in the staticwebapp.database.config.json in the swa-db-connections directory,
+1. Now that the function code is done, we need to provide it a value for the `connection-string` Azure Function setting. If you remember, back in the `.env` in the root directory,
 
-    ![A picture of opening the staticwebapp.database.config.json in the swa-db-connections directory](./media/ch7/bind19a.png)
+    ![A picture of opening the .env in the root directory](./media/ch7/bind19a.png)
 
-    we had a parameter named connection-string with our Free Azure SQL Database connection. Open the staticwebapp.database.config.json file and copy the connection-string entry.
+    we stored the connection string for our Free Azure SQL Database connection. Open the `.env` file and copy the connection string entry
 
-    ```JSON
-    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freeDB;User ID=sqladmin;Password=PASSWORD;TrustServerCertificate=true",
+    ```text
+    Server=freedbsqlserver.database.windows.net;Initial Catalog=freeDB;User ID=swaappuser;Password=PASSWORD
     ```
 
-    ![A picture of opening the staticwebapp.database.config.json and copying the connection-string entry](./media/ch7/bind19.png)
+    in the clipboard.
 
-1. The connection-string parameter can now be placed in the local.settings.json file in the functions project directory. Open the local.settings.json file in the triggerBinding directory.
-
-    Open the local.settings.json file:
+1. The connection string can now be placed in the `local.settings.json` file in the functions project directory. Open the `local.settings.json` file in the `triggerBinding` directory.
 
     ![A picture of opening the local.settings.json file in the triggerBinding directory](./media/ch7/bind20.png)
 
-1. Paste the connection-string entry copied from the staticwebapp.database.config.json file just below the **“Values”: {** section in the local.settings.json file
+1. Paste the connection string entry copied from the `.env` into the `connection-string` property that you have to manually add to the opened JSON file, just below the **“Values”: {** section in the `local.settings.json` file
 
     ```JSON
-    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freeDB;User ID=sqladmin;Password=PASSWORD;TrustServerCertificate=true",
+    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freeDB;User ID=sqladmin;Password=PASSWORD;",
     ```
 
     ![A picture of pasting the connection-string entry copied from the staticwebapp.database.config.json file just below the “Values”: { section in the local.settings.json file ](./media/ch7/bind21.png)
@@ -200,7 +214,7 @@ In this section, you will create a change data stream using Change Tracking, the
 1. Back in the terminal, run the following command to start the Azure Function:
 
     ```bash
-    func host start
+    func start
     ```
 
     and once the function is started, right click on the Free Azure Database connection profile and select New Query.
