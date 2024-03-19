@@ -1,5 +1,5 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/dotnet:7.0",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:7.0-bookworm",
   "features": {
 	  "ghcr.io/devcontainers-contrib/features/npm-package:1": {
 		  "package": "typescript",
@@ -25,9 +25,13 @@
 			  "ms-azuretools.vscode-azurefunctions",
 			  "ms-vscode.azure-account",
 			  "ms-azuretools.vscode-azureresourcegroups",
+			  "ms-dotnettools.csdevkit",
+			  "ms-dotnettools.csharp",
 			  "humao.rest-client",
 			  "github.vscode-github-actions",
-			  "Vue.volar"
+			  "Vue.volar",
+			  "ms-dotnettools.csdevkit",
+			  "ms-dotnettools.csharp"
 		  ]
 	  }
   }

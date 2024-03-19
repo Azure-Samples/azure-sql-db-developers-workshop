@@ -28,7 +28,7 @@ fetch('/data-api/rest/person')
 
 // Get the data from a stored procedure
   function getPref(ppref) {
-    fetch('/data-api/rest/getPersonByPet?pet=' + ppref)
+    fetch('/data-api/rest/GetPersonByPet?pet=' + ppref)
     .then(res => {
       if (res.status== '403') {
         alert('403 - forbidden, try logging in')

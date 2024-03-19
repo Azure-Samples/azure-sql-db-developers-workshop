@@ -57,7 +57,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     update the dab config file
 
     ```bash
-    dab update todo --map "position:order" 
+    dab update Todo --map "position:order" 
     ```
 
     and looking at the dab-config.json file, we can see the added mapping to our configuration.
@@ -173,7 +173,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     ```javascript
       function getPref(ppref) {
-        fetch('/data-api/api/getPersonByPet?pet=' + ppref)
+        fetch('/data-api/api/GetPersonByPet?pet=' + ppref)
         .then(res => {
           if (res.status== '403') {
             alert('403 - forbidden, try logging in')
@@ -205,7 +205,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 
     ```JSON
-    "getPersonByPet": {
+    "GetPersonByPet": {
       "source": {
         "type": "stored-procedure",
         "object": "dbo.get_person_by_pet",
@@ -304,7 +304,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 ### Working with the ToDo Application
 
-1. Now that you see how SWA CLI works, it's time to try the more complex Todo application. We are going to use 2 versions of this. The first one will use only the /rest/todo REST endpoint with the second one adding the stored procedure table APIs for inserts, updates, and deletes. This using of these table API/Stored procedures will become more clear once we deploy onto Azure SQL Database in the Azure Cloud.
+1. Now that you see how SWA CLI works, it's time to try the more complex Todo application. We are going to use 2 versions of this. The first one will use only the `/rest/todo` REST endpoint with the second one adding the stored procedure table APIs for inserts, updates, and deletes. This using of these table API/Stored procedures will become more clear once we deploy onto Azure SQL Database in the Azure Cloud.
 
 1. With SWA CLI stopped, the **swa-cli.config.json** file needs to be swapped with the one in the labFiles folder. Run the following commands at the terminal to do just that.
 
@@ -335,7 +335,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 1. And start swa cli, again at the terminal
 
     ```bash
-    swa start --data-api-location ./swa-db-connections
+    swa start 
     ```
 
 1. As with the sample JavaScript application, once Static Web Apps has started, you will get a message in the codespace on the bottom right indicating that it's running on port 4280.
@@ -433,7 +433,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 1. Start swa cli, again at the terminal
 
     ```bash
-    swa start --data-api-location ./swa-db-connections
+    swa start
     ```
 
 1. Open the Todo application in the browser if not already open. If opened, refresh the page.
@@ -487,7 +487,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 1. Start swa cli, again at the terminal. This will now use the new ToDoList.vue file.
 
     ```bash
-    swa start --data-api-location ./swa-db-connections
+    swa start 
     ```
 
 1. Once swa cli has started, you can go back to the application in the browser and refresh the page. All the features of the application should function normally but are now using REST enabled stored procedures.

@@ -169,9 +169,9 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ```SQL
     CREATE TABLE [dbo].[address] (
-        [address_id]  INT            IDENTITY (1, 1) NOT NULL PRIMARY KEY CLUSTERED ([address_id] ASC),
-        [person_id] INT            NOT NULL,
-        [address]     NVARCHAR (200) NOT NULL,
+        [address_id]        INT            IDENTITY (1, 1) NOT NULL PRIMARY KEY CLUSTERED ([address_id] ASC),
+        [person_id]         INT            NOT NULL,
+        [address]           NVARCHAR (200) NOT NULL,
         CONSTRAINT [FK_address_person] FOREIGN KEY ([person_id]) REFERENCES [dbo].[person] ([person_id])
     );
     ```
@@ -373,11 +373,22 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ```SQL
     -- This file contains SQL statements that will be executed after the build script.
-    insert into dbo.person(person_name, person_email, pet_preference) values('Bill','bill@contoso.com','Dogs');
-    insert into dbo.person(person_name, person_email, pet_preference) values('Frank', 'frank@contoso.com','Cats');
-    insert into dbo.person(person_name, person_email, pet_preference) values('Riley', 'Riley@contoso.com','Cats');
-    insert into address (person_id, address) values (1, 'Lincoln, MA');
-    insert into address (person_id, address) values (2, 'Baltimore, MD');
+    
+    set identity_insert dbo.person on
+
+    insert into dbo.person(person_id, person_name, person_email, pet_preference) values(1,'Bill','bill@contoso.com','Dogs');
+    insert into dbo.person(person_id, person_name, person_email, pet_preference) values(2,'Frank', 'frank@contoso.com','Cats');
+    insert into dbo.person(person_id, person_name, person_email, pet_preference) values(3,'Riley', 'Riley@contoso.com','Cats');
+
+    set identity_insert dbo.person off
+
+    set identity_insert dbo.address on
+
+    insert into dbo.address (address_id, person_id, address) values (1, 1, 'Lincoln, MA');
+    insert into dbo.address (address_id, person_id, address) values (2, 2, 'Baltimore, MD');
+
+    set identity_insert dbo.address off
+
     insert into dbo.todo 
     (
         [id],
@@ -394,6 +405,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
         ('00000000-0000-0000-0000-000000000005', N'Add support for sorting', 1, 'public', 5)
     ;
     GO
+
     ```
 
     and **save the file**.

@@ -18,6 +18,12 @@ If your codespace shuts down, you can restart it by refreshing the page. After t
 
 ![A picture of restarting the database using the docker extension in codespace](./media/cht/trouble1.png)
 
+another option to do the same, if you prefer a command line approach, is to run, from the terminal, the following command:
+
+```bash
+sqlcmd start
+```
+
 ## Testing connection profile message on the bottom right of the codespace and an unexpected error message on reload
 
 If you see the testing connection profile message on the bottom right of the codespace constantly running 

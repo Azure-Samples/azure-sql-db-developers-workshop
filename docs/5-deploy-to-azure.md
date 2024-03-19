@@ -199,10 +199,12 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 1. Run the following code in the query sheet:
 
     ```SQL
-    select * from person;
+    select * from dbo.person;
+
     select p.person_name, a.address
-    from person p, address a
-    where p.person_id = a.person_id;
+    from dbo.person p inner join dbo.[address] a
+    on p.person_id = a.person_id;
+    
     select * from dbo.todo;
     go
     ```
@@ -213,7 +215,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
     exec get_person_by_pet 'Dogs';
     ```
 
-## Would you like to know more? 🦟
+## Would you like to know more?
 
 ### Azure SQL migration extension for Azure Data Studio
 

@@ -236,7 +236,7 @@ Additional Best Practices from the documentation:
 ### Sending the prompt text with External REST Endpoint Invocation
 
 > [!NOTE]
-> The server name in the URL parameter on the next example is aidemo and the headers parameter value for api-key is 1234567890.
+> The server name in the URL parameter on the next example is `aidemo` and the headers parameter value for api-key is `1234567890`.
 > Please change this name and key to align with the values in your account.
 > 
 
@@ -273,6 +273,8 @@ Additional Best Practices from the documentation:
     	@response = @response output;
     	
     select @ret as ReturnCode, @response as Response;
+
+    select json_value(@response, '$.result.choices[0].message.content') as [Message];
     ```
 
 1. Once the code is in the codespace query editor sheet, run it with the green run arrow in the upper right.
@@ -388,31 +390,29 @@ Additional Best Practices from the documentation:
 ### The Todo application, SWA, and External REST Endpoint Invocation
 
 > [!NOTE]
-> The server name in the URL parameter on the next example is aidemo and the headers parameter value for api-key is 1234567890.
+> The server name in the URL parameter on the next example is `aidemo` and the headers parameter value for api-key is `1234567890`.
 > Please change this name and key to align with the values in your account.
 > 
 
 In this next section, we will be using the Todo application against our Free Azure SQL Database. Then, we will be adding to the insert_todo stored procedure to call OpenAI via External REST endpoint invocation. We will be asking OpenAI to translate the Todo task's title into german and then insert that value into the table.
 
-1. To start, we need to change the database connection in the **staticwebapp.database.config.json** file to use our Free Azure SQL Database. Select the file in codespace and on the top, find the **connection-string**.
-
-    ![A picture of the new file named staticwebapp.database.config.json opened in the code space editor and looking at the connection-string](./media/ch6/rest8.png)
-
-1. Change the connection-string values to reflect the server name, database name of freeDB, User ID of sqladmin, and the password you used when you created the database. It should look similar to the following:
-
-    ```JSON
-    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freeDB;User ID=sqladmin;Password=PASSWORD;TrustServerCertificate=true",
-    ```
-
-    and **save the file**.
-
-    ![A picture of the new file named staticwebapp.database.config.json opened in the code space editor and looking at the connection-string pointing to the Free Azure SQL Database](./media/ch6/rest8a.png)
-
 1. Back in the **SQL Server Connections extension**, right click the database profile name,**Free Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
     ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch6/rest9.png)
 
-1. Copy and paste the following code, then run it in the Query editor.
+1. To avoid using an administrative account to allow the application to access the database, we will create a new user and grant it the necessary permissions. Copy and paste the following code into the query sheet, replacing `PASSWORD` with a password of your choice, then run it in the Query editor.
+
+    ```SQL
+    CREATE USER [swaappuser] WITH PASSWORD = 'PASSWORD';
+
+    ALTER ROLE db_datareader ADD MEMBER [swaappuser];
+    ALTER ROLE db_datawriter ADD MEMBER [swaappuser];
+    GRANT EXECUTE ON SCHEMA::dbo TO [swaappuser];
+
+    GRANT EXECUTE ANY EXTERNAL ENDPOINT TO [swaappuser];
+    ```
+
+1. Then, copy and paste the following code, then run it in the Query editor.
 
     ```SQL
     ALTER PROCEDURE dbo.insert_todo
@@ -450,10 +450,25 @@ In this next section, we will be using the Todo application against our Free Azu
     GO
     ```
 
+1. Now we need to change the database connection in the **.env** file to use our Free Azure SQL Database. Select the file in codespace and on the top, find the **MSSQL** variable that contains the connection string.
+
+    ![A picture of the file named .env opened in the code space editor and looking at the connection string](./media/ch6/rest8.png)
+
+1. Change the connection string value to reflect the server name, database name of `freeDB`, User ID of `swappuser` (if you used a different user name in the previous step), and the password you used when you created the database. It should look similar to the following:
+
+    ```bash
+    MSSQL='Server=freedbsqlserver.database.windows.net;Initial Catalog=freeDB;User ID=swappuser;Password=PASSWORD;',
+    ```
+
+    and **save the file**.
+
+    ![A picture of the new file named .env opened in the code space editor and looking at the connection string pointing to the Free Azure SQL Database](./media/ch6/rest8a.png)
+
+
 1. Next, start swa cli again at the terminal
 
     ```bash
-    swa start --data-api-location ./swa-db-connections
+    swa start
     ```
 
 1. Open the Todo application in a browser if not already opened, or refresh the current browser page where it was running.
