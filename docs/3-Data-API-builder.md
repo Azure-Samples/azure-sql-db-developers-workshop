@@ -97,7 +97,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
 1. Run the following command to add the todo table to the dab-config.json file. Have the dab-config.json file opened in the editor so you can see the entry being added as the commands are run.
 
-    For the **person** table:
+    For the **todo** table:
     ```bash
     dab add Todo --source dbo.todo --permissions "anonymous:*" --rest "todo"
     ```
@@ -567,7 +567,7 @@ To create a GraphQL relationship, first stop DAB via the terminal in codespaces.
 Next, issue the following command in the same terminal window.
 
 ```bash
-dab update person --relationship "addresses" --cardinality "many" --target.entity "Address"
+dab update Person --relationship "addresses" --cardinality "many" --target.entity "Address"
 ```
 
 ![A picture of running the dab update command to create a relationship between the person and address entities](./media/ch3/dab15.png)
