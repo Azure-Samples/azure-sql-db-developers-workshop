@@ -97,7 +97,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
 1. Run the following command to add the todo table to the dab-config.json file. Have the dab-config.json file opened in the editor so you can see the entry being added as the commands are run.
 
-    For the **person** table:
+    For the **todo** table:
     ```bash
     dab add Todo --source dbo.todo --permissions "anonymous:*" --rest "todo"
     ```
