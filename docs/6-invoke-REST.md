@@ -454,10 +454,10 @@ In this next section, we will be using the Todo application against our Free Azu
 
     ![A picture of the file named .env opened in the code space editor and looking at the connection string](./media/ch6/rest8.png)
 
-1. Change the connection string value to reflect the server name, database name of `freeDB`, User ID of `swappuser` (if you used a different user name in the previous step), and the password you used when you created the database. It should look similar to the following:
+1. Change the connection string value to reflect the server name, database name of `freeDB`, User ID of `swaappuser` (if you used a different user name in the previous step), and the password you used when you created the database. It should look similar to the following:
 
     ```bash
-    MSSQL='Server=freedbsqlserver.database.windows.net;Initial Catalog=freeDB;User ID=swappuser;Password=PASSWORD;',
+    MSSQL='Server=freedbsqlserver.database.windows.net;Initial Catalog=freeDB;User ID=swaappuser;Password=PASSWORD;',
     ```
 
     and **save the file**.
