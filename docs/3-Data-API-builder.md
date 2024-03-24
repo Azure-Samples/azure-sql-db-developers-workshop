@@ -567,7 +567,7 @@ To create a GraphQL relationship, first stop DAB via the terminal in codespaces.
 Next, issue the following command in the same terminal window.
 
 ```bash
-dab update person --relationship "addresses" --cardinality "many" --target.entity "Address"
+dab update Person --relationship "addresses" --cardinality "many" --target.entity "Address"
 ```
 
 ![A picture of running the dab update command to create a relationship between the person and address entities](./media/ch3/dab15.png)
