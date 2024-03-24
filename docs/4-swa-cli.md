@@ -114,7 +114,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     This uses the stored procedure that was REST enabled in the previous chapter.
 
-1. Back in the codespace, open the index.html file located in the app directory and click on it.
+1. Back in the codespace, open the `index.html` file located in the app directory and click on it.
 
     ![A picture of opening the index.html file located in the app directory by clicking on it](./media/ch4/swa6i.png)
 
@@ -149,7 +149,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     }
     ```
 
-    Next in the index.html file is a simple JavaScript fetch to the REST endpoint that was made on the person table. Once it gets the data from the REST endpoint, it loops through the rows and creates the HTML table seen on the page.
+    Next in the `index.html` file is a simple JavaScript fetch to the REST endpoint that was made on the person table. Once it gets the data from the REST endpoint, it loops through the rows and creates the HTML table seen on the page.
 
     ```javascript
     fetch('/data-api/api/person')
@@ -169,7 +169,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     To note, this initial calling of the person endpoint and the call to get the authentication object occurs on page load.
 
-    The next section of JavaScript in the index.html file is a function. This function is called when the Submit button is pressed and passes the text you enter into the Pet Preference text field to the REST enabled stored procedure that replaces the HTML table with a new one based on the result of the REST response.
+    The next section of JavaScript in the `index.html` file is a function. This function is called when the Submit button is pressed and passes the text you enter into the Pet Preference text field to the REST enabled stored procedure that replaces the HTML table with a new one based on the result of the REST response.
 
     ```javascript
       function getPref(ppref) {
@@ -458,7 +458,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 1. Stop SWA CLI in the terminal in the codespace with a Ctrl-C.
 
-1. For this next step, we are going to swap out the ToDoList.vue file in the client/src/components directory with the one in the labFiles folder. Run the following commands at the terminal to swap the files.
+1. For this next step, we are going to swap out the `ToDoList.vue` file in the client/src/components directory with the one in the labFiles folder. Run the following commands at the terminal to swap the files.
 
     ```bash
     cd /workspaces/azure-sql-db-developers-workshop
@@ -476,7 +476,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     mv labFiles/ToDoList.vue.SP client/src/components/ToDoList.vue
     ```
 
-    This new ToDoList.vue file has moved away from using the table endpoint we created with Data API builder to using the REST enabled stored procedures. This can be seen in the section here:
+    This new `ToDoList.vue` file has moved away from using the table endpoint we created with Data API builder to using the REST enabled stored procedures. This can be seen in the section here:
 
     ```vue
     const API_INSERT = "/data-api/rest/insert_todo";
@@ -484,7 +484,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     const API_DELETE = "/data-api/rest/delete_todo";
     ```
 
-1. Start swa cli, again at the terminal. This will now use the new ToDoList.vue file.
+1. Start swa cli, again at the terminal. This will now use the new `ToDoList.vue` file.
 
     ```bash
     swa start 
