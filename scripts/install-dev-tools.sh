@@ -1,7 +1,7 @@
 sudo cp ./scripts/ms-repo.pref /etc/apt/preferences.d/
 
 export dotnet_version="6.0"
-export dab_version="0.9.7"
+export dab_version="1.1.7"
 export sqlcmd_version="1.6.0"
 export func_version="4"
 export sqlprj_version="0.1.14-preview"
