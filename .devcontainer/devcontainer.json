@@ -31,7 +31,8 @@
 			  "github.vscode-github-actions",
 			  "Vue.volar",
 			  "ms-dotnettools.csdevkit",
-			  "ms-dotnettools.csharp"
+			  "ms-dotnettools.csharp",
+			  "ms-vsliveshare.vsliveshare"
 		  ]
 	  }
   }
