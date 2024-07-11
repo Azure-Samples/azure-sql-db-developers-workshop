@@ -96,3 +96,7 @@ swa --version
 * [SqlPackage](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-download)
 * [Data API Builder](https://github.com/Azure/data-api-builder)
 * [Docker desktop](https://www.docker.com/products/docker-desktop/)
+
+## Continue to chapter 2
+
+Click [here](./docs/2-Database-tasks.md) to continue to chapter 2, Database Tasks!
