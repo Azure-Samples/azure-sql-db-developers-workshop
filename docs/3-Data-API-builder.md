@@ -428,27 +428,27 @@ Click on the following links to use the the tool of your choice:
   > [!NOTE]  
   > If you are using Banana Cake Pop, in the following samples, you only need to copy the text after the header/POST information, for example:
 
-    ```graphql
-    POST http://localhost:5000/graphql/
-    Content-Type: application/json
-    X-Request-Type: GraphQL
+  ```graphql
+  POST http://localhost:5000/graphql/
+  Content-Type: application/json
+  X-Request-Type: GraphQL
 
-    -- ONLY COPY THE THE FOLLOWING, NOT WHAT IS ABOVE THIS LINE!
+  -- ONLY COPY THE THE FOLLOWING, NOT WHAT IS ABOVE THIS LINE!
 
-    {
-      people(first: 5) {
-        items {
-          person_id
-          person_name
-          person_email
-        }
+  {
+    people(first: 5) {
+      items {
+        person_id
+        person_name
+        person_email
       }
     }
-    ```
+  }
+  ```
 
-    For example, you would copy and paste the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button to execute the graphQL call
+  For example, you would copy and paste the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button to execute the graphQL call
 
-    ![A picture of copying and pasting the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button](../docs/media/ch3/dab-bcp3.png)
+  ![A picture of copying and pasting the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button](../docs/media/ch3/dab-bcp3.png)
 
 #### Using the testing.rest file
 
