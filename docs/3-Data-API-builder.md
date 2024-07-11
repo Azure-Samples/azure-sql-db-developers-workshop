@@ -166,6 +166,8 @@ In this next section, you will be working with the endpoints created by Data API
 
 ---
 
+### REST Examples
+
 #### Get person by Primary Key
 **Request:**
 
@@ -394,39 +396,67 @@ x-ms-correlation-id: 383d79b4-1646-4828-b66d-60fb0afcc14b
 
 ### GraphQL Endpoints
 
-To test the GraphQL endpoints you can either use the `testing.rest` or you can use the interactive playground (enabled as Data API Builder has been configured to run in `development` mode) by opening the website associated with your codespace environment:
+To test the GraphQL endpoints you can either use the `testing.rest` file or you can use the GraphQL interactive playground, Banana Cake Pop.  This playground is enabled as Data API Builder has been configured to run in `development` mode (The playgound will not be enabled when running DAB in other modes).
 
-![Visual Studio code showing the list of forwarded ports](../docs/media/ch3/dab-port.png)
+Click on the following links to use the the tool of your choice:
 
-Click on the world icon and then once you see the "Healthy" text in your browser, add `/graphql` to the url, for example:
+#### Using Banana Cake Pop
 
-```http
-https://superior-barnacle-s3xwx94xyqhpzv-5000.app.github.dev/graphql/
-```
+1. To use Banana Cake Pop, start by clicking on the Ports tab on the bottom of the codespace page.
 
-so that you'll see the GraphQL playground:
+    ![A picture of clicking on the Ports tab on the bottom of the codespace page](./media/ch3/dab17.png)
 
-![The welcome page of Banana Cake Pop GraphQL interactive playground](../docs/media/ch3/dab-bcp.png)
+1. Next, hover over the local address for port 5000 where Data API builder is running. Then left click the world icon to open the URL in a new browser tab.
 
-If you are using Banana Cake Pop, in the next samples you only need to copy the text between the curly graph, for example:
+    ![A picture of hovering over the local address for port 5000 where Data API builder is running and then left click the world icon to open the URL in a new browser tab](./media/ch3/dab18.png)
 
-```graphql
-{
-  people(first: 5) {
-    items {
-      person_id
-      person_name
-      person_email
+1. Once the new tab is opened, append `/graphql` at the end of the URL and then press enter/return.
+
+    ![A picture of appending /graphql at the end of the URL that was just opened in a new tab](./media/ch3/dab19a.png)
+
+  > [!NOTE]  
+  > Your URL will be different than the one in the above image excepting for the appending of `/graphql` at the end.
+
+1. You will now see the GraphQL playground, Banana Cake Pop:
+
+    ![A picture of the welcome page of Banana Cake Pop GraphQL interactive playground](../docs/media/ch3/dab-bcp.png)
+
+1. On the welcome page, click the **Create Document** blue button.
+
+    ![A picture of clicking the Create Document blue button on the welcome page of Banana Cake Pop GraphQL interactive playground](../docs/media/ch3/dab-bcp2.png)
+
+    > [!NOTE]  
+    > If you are using Banana Cake Pop, in the following samples, you only need to copy the text after the header/POST information, for example:
+
+    ```graphql
+    POST http://localhost:5000/graphql/
+    Content-Type: application/json
+    X-Request-Type: GraphQL
+
+    -- ONLY COPY THE THE FOLLOWING, NOT WHAT IS ABOVE THIS LINE!
+
+    {
+      people(first: 5) {
+        items {
+          person_id
+          person_name
+          person_email
+        }
+      }
     }
-  }
-}
-```
+    ```
+
+    For example, you would copy and paste the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button to execute the graphQL call
+
+    ![A picture of copying and pasting the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button](../docs/media/ch3/dab-bcp3.png)
+
+### GraphQL Examples
 
 #### Get the first 5 records
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
