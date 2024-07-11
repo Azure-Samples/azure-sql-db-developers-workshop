@@ -425,8 +425,8 @@ Click on the following links to use the the tool of your choice:
 
     ![A picture of clicking the Create Document blue button on the welcome page of Banana Cake Pop GraphQL interactive playground](../docs/media/ch3/dab-bcp2.png)
 
-    > [!NOTE]  
-    > If you are using Banana Cake Pop, in the following samples, you only need to copy the text after the header/POST information, for example:
+  > [!NOTE]  
+  > If you are using Banana Cake Pop, in the following samples, you only need to copy the text after the header/POST information, for example:
 
     ```graphql
     POST http://localhost:5000/graphql/
@@ -449,6 +449,14 @@ Click on the following links to use the the tool of your choice:
     For example, you would copy and paste the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button to execute the graphQL call
 
     ![A picture of copying and pasting the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button](../docs/media/ch3/dab-bcp3.png)
+
+#### Using the testing.rest file
+
+1. To run the following examples using the `testing.rest` file, just copy and paste the full code block, including the POST/header sections, into the file and click the **Send Request** link.
+
+    ![A picture of copying and pasting a geaphql request into the testing.rest file and clicking send request](./media/ch3/dab14a.png)
+
+--
 
 ### GraphQL Examples
 
