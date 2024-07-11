@@ -99,4 +99,4 @@ swa --version
 
 ## Continue to chapter 2
 
-Click [here](./docs/2-Database-tasks.md) to continue to chapter 2, Database Tasks!
+Click [here](./2-Database-tasks.md) to continue to chapter 2, Database Tasks!
