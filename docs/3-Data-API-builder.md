@@ -433,7 +433,7 @@ Click on the following links to use the the tool of your choice:
   Content-Type: application/json
   X-Request-Type: GraphQL
 
-  -- ONLY COPY THE THE FOLLOWING, NOT WHAT IS ABOVE THIS LINE!
+  # ONLY COPY THE THE FOLLOWING, NOT WHAT IS ABOVE THIS LINE!
 
   {
     people(first: 5) {
