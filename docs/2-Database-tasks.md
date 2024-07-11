@@ -74,7 +74,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of getting the database connection information with sqlcmd](./media/ch2/database5.png)
 
-    Take note of the user (vscode) and the password that follows.
+    Take note of the ADO.NET connection string. This will be used in the following steps.
 
 1. Using the extensions panel, select the **SQL Server connections extension**.
 
@@ -84,39 +84,19 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of creating a new connection by clicking either the Add Connection label or the plus sign on the upper right in the extension](./media/ch2/database7.png)
 
-1. Use the following values for the **Create Connection dialog** boxes:
+1. Copy the **ADO.NET connection string**
 
-    * Use “localhost” as the server name, then press Enter.
+    ![A picture of copying the ADO.NET database connection information](./media/ch2/database7a.png)
 
-        ![A picture of using localhost as the server name](./media/ch2/database8.png)
+    and paste it into the **Create Connection dialog** box:
 
-    * Use “devDB” as the database name, then press Enter.
+   ![A picture of pasting the ADO.NET database connection information into the Create Connection dialog box](./media/ch2/database7b.png)
 
-        ![A picture of using devDB as the database name](./media/ch2/database9.png)
+1. Provide the profile name of "Local Database" in the last dialog box for this step. Press Enter to finish the connection profile process.
 
-    * In the Authentication Type dialog box, select “SQL Login“.
+    ![A picture of using Local Database as the connection profile name](./media/ch2/database14.png)
 
-        ![A picture of using SQL Login as as the Authentication Type](./media/ch2/database10.png)
-
-    * Here is where it is best to refer back to the command “sqlcmd config connection-strings” to find the username and password. Run it again at the terminal to get the values if needed.
-
-        In the User name (SQL Login) dialog box, enter the user from the connect strings. It should be vscode, then press Enter.
-
-        ![A picture of entering vscode as the database user](./media/ch2/database11.png)
-
-        and provide the password from the connect strings in the Password (SQL Login) dialog box, then press Enter.
-
-        ![A picture of entering the password for the database user](./media/ch2/database12.png)
-
-    * Select “Yes” so that the password is saved (encrypted) on the connection profile
-
-        ![A picture of selecting Yes so that the password is saved on the connection profile](./media/ch2/database13.png)
-
-    * Provide the profile name of "Local Database" in the last dialog box for this step. Press Enter to finish the connection profile process.
-
-        ![A picture of using Local Database as the connection profile name](./media/ch2/database14.png)
-
-    * After pressing Enter and the connection profile is verified, a warning box will appear on the lower right of the screen. This warning is indicating that due to new security features within the database, you need to enable the self-signed certificate.
+    * After pressing Enter and the connection profile is verified, a warning box **MAY** will appear on the lower right of the screen. This warning is indicating that due to new security features within the database, you need to enable the self-signed certificate.
 
         Click the Enable Trust Server Certificate green button to continue.
 
