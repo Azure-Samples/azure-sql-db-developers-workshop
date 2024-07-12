@@ -1017,7 +1017,23 @@ dab start
 
 #### Call a stored procedure using REST and GraphQL
 
-Use the procedure’s REST endpoint and pass "Dogs" into the pet parameter.
+Seeing there are only 2 calls to try the stored procedures, you can use the **storedprocedureWorksheet.rest** file provided for you in the labFiles folder.
+
+1. To start working with the stored procedure endpoints, find the **storedprocedureWorksheet.rest** file in the labFiles folder and click on it to bring it up in the code editor.
+
+   ![A picture of clicking the storedprocedureWorksheet.rest file in the explorer extension](./media/ch3/dab16a1.png)
+
+1. Above the REST and GraphQL calls in the **storedprocedureWorksheet.rest** file, you will see a **"send request"** link.
+
+   ![A picture of the send request link above the URL entered into the storedprocedureWorksheet.rest file](./media/ch3/dab16a2.png)
+
+1. **Clicking** the send request link will issue a request to Data API builder and a response message will appear in a new window to the right in the editor
+
+   ![A picture of a successful GET REST request against the person table](./media/ch3/dab7c.png)
+
+---
+
+#### Use the procedure’s REST endpoint and pass "Dogs" into the pet parameter.
 
 **Request:**
 
@@ -1049,7 +1065,7 @@ http://localhost:5000/rest/GetPersonByPet?pet=Dogs
 ---
 
 
-Use the procedure’s GraphQL endpoint and pass "Cats" into the pet parameter.
+#### Use the procedure’s GraphQL endpoint and pass "Cats" into the pet parameter.
 
 **Request:**
 
