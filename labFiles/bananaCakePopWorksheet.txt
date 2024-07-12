@@ -1,9 +1,5 @@
 ### Get the first 5 records
 
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
-
 {
   people(first: 5) {
     items {
@@ -15,10 +11,6 @@ X-Request-Type: GraphQL
 }
 
 ### Using an orderBy to sort the results
-
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
 
 {
   people(orderBy: { person_id: DESC } )
@@ -32,10 +24,6 @@ X-Request-Type: GraphQL
 }
 
 ### Get a record by primary key
-
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
 
 {
   person_by_pk(person_id: 1) {
@@ -57,10 +45,6 @@ X-Request-Type: GraphQL
 
 ### Get the person and address entities using the GraphQL relationship
 
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
-
 { 
  people
  { 
@@ -80,10 +64,6 @@ X-Request-Type: GraphQL
 
 ### Limit results using a filter
 
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
-
 {
   people(filter: { person_name: { contains: "l" } })
   {
@@ -96,10 +76,6 @@ X-Request-Type: GraphQL
 }
 
 ### Limit results with a filter and using relationships
-
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
 
 {
   people(filter: { person_name: { contains: "l" } })
@@ -119,10 +95,6 @@ X-Request-Type: GraphQL
 
 ### Create person with a mutation
 
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
-
 mutation {
   createPerson(item: {
     person_name: "Elle",
@@ -138,10 +110,6 @@ mutation {
 
 ### Update person using mutation and GraphQL
 
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
-
 mutation {
   updatePerson(person_id: 4, item: {
     person_email: "joel22@contoso.com"
@@ -153,10 +121,6 @@ mutation {
 }
 
 ### Delete person using mutation and GraphQL
-
-POST http://localhost:5000/graphql/
-Content-Type: application/json
-X-Request-Type: GraphQL
 
 mutation {
   deletePerson(person_id: 5)

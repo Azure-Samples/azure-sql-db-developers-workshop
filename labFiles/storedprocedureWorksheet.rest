@@ -1,3 +1,12 @@
+###
+### STOP HERE!!!!
+###
+### Refer back to lab 3 for REST/GraphQL enabling a stored procedure
+###
+### Once the stored procedure is REST/GraphQL enabled and DAB is restarted, contunue the worksheet
+###
+###
+
 ### Call a stored procedure using REST and GraphQL
 
 ### Using REST to call a stored procedure
@@ -20,4 +29,16 @@ query {
   }
 }
 
-### 
+###
+### Use the following code to test using GraphQL to call a stored procedure with Banana Cake Pop
+###
+
+query {
+  executeGetPersonByPet(pet:"Cats")
+   {
+    person_id
+    person_name
+    person_email
+    pet_preference
+  }
+}
