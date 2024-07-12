@@ -214,29 +214,37 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     ```JSON
     "GetPersonByPet": {
       "source": {
-        "type": "stored-procedure",
         "object": "dbo.get_person_by_pet",
+        "type": "stored-procedure",
         "parameters": {
           "pet": ""
         }
+      },
+      "graphql": {
+        "enabled": true,
+        "operation": "query",
+        "type": {
+          "singular": "GetPersonByPet",
+          "plural": "GetPersonByPets"
+        }
+      },
+      "rest": {
+        "enabled": true,
+        "methods": [
+          "get"
+        ]
       },
       "permissions": [
         {
           "role": "anonymous",
           "actions": [
-            "execute"
+            {
+              "action": "execute"
+            }
           ]
         }
-      ],
-      "rest": {
-        "methods": [
-          "get"
-        ]
-      },
-      "graphql": {
-        "operation": "query"
-      }
-    }
+      ]
+    },
     ```
 
 1. In the permissions section, change the role from **anonymous**
@@ -246,10 +254,12 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
         {
           "role": "anonymous",
           "actions": [
-            "execute"
+            {
+              "action": "execute"
+            }
           ]
         }
-      ],
+      ]
     ```
 
     to **authenticated**
@@ -259,10 +269,12 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
         {
           "role": "authenticated",
           "actions": [
-            "execute"
+            {
+              "action": "execute"
+            }
           ]
         }
-      ],
+      ]
     ```
 
     and **save the file**.

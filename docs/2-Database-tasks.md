@@ -179,7 +179,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     BEGIN
         select *
         from dbo.person
-        where pet_preference = iif(NULLIF(@pet, '') IS NOT NULL,@pet,pet_preference);
+        where pet_preference = iif(NULLIF(@pet, '') IS NOT NULL,lower(@pet),lower(pet_preference));
     END;
     GO
     ```
