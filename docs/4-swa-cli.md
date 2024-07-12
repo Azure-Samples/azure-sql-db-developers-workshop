@@ -44,7 +44,7 @@ The following tasks will show you how to integrate a local Static Web Apps envir
 
 Static Web Apps has built in [integration with the Azure SQL Database/Local SQL Server (and other Azure Databases)](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview). SWA CLI uses a config file located in the swa-db-connections directory. Seeing Static Web Apps utilizes Data API builder, we can just copy the dab-config.json file right into that directory and have all the entities we added just work on startup.
 
-> [!WARNING]  
+> [!IMPORTANT]  
 > Please do this section first!
 
 1. The first task to perform is adding a mapping to our dab-config.json file. The scenario is that you want to expose a field in an application but use a different name. Maybe the database field is an internal complex name and you wanted to make it easier for the developers to use. We can use the **map** option in dba cli to add a mapping. In this example, we are going to expose the **position database column** to the application as **order**.
@@ -384,7 +384,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     ![A picture of deleting a task in the ToDo application](./media/ch4/swa18.png)
 
-    edit task titles by clicking on the title
+    edit task titles by double clicking on the title
 
     ![A picture of editing a task in the ToDo application](./media/ch4/swa19.png)
 
