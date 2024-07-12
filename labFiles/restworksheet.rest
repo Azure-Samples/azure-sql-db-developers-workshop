@@ -1,0 +1,45 @@
+GET http://localhost:5000/rest/person
+
+###
+
+GET http://localhost:5000/rest/person/person_id/1
+
+###
+
+http://localhost:5000/rest/person?$select=person_email
+
+###
+
+http://localhost:5000/rest/person?$filter=person_name eq 'bill'
+
+###
+
+http://localhost:5000/rest/person?$filter=person_name ne 'bill'
+
+###
+
+http://localhost:5000/rest/person?$orderby=person_id desc
+
+###
+
+POST http://localhost:5000/rest/person
+content-type: application/json
+
+{
+    "person_name": "Joel",
+    "person_email": "joel@contoso.com",
+    "pet_preference": "Dogs"
+}
+
+###
+
+PATCH http://localhost:5000/rest/person/person_id/3
+content-type: application/json
+
+{
+    "person_email": "Riley@contososales.com"
+}
+
+###
+
+DELETE http://localhost:5000/rest/person/person_id/3
