@@ -114,8 +114,8 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     This uses the stored procedure that was REST enabled in the previous chapter.
 
-> [!IMPORTANT]  
-> The following section is informational and does not require you to copy and paste any code. This section just walks you through what the web app is doing in preperation for authentication.
+    > [!IMPORTANT]  
+    > The following section is informational and does not require you to copy and paste any code. This section just walks you through what the web app is doing in preperation for authentication.
 
 1. Back in the codespace, open the `index.html` file located in the app directory and click on it.
 
