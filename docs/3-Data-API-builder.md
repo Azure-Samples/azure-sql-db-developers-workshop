@@ -119,54 +119,64 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
 ### Working with the endpoints
 
-In this next section, you will be working with the endpoints created by Data API builder. The first section uses REST calls with the second section switching to using GraphQL.
+In this next section, you will be working with the endpoints created by Data API builder. The first section uses REST calls, the second section switching to using GraphQL, and the final section using both.
 
-1. The endpoints will be tested in a .rest file right in the codespace editor. Start by **right clicking** under your files in the Explorer extension and selecting **New File...**.
+There are a few choices you have when working with the endpoints. There are a series a pre-created worksheets for you to use in the labFiles directory. 
 
-   ![A picture of right clicking in the explorer extension and selecting new file](./media/ch3/dab7.png)
+The worksheets included are:
+- restWorksheet.rest
+- graphqlWorksheet.rest
+- bananaCakePopWorksheet.txt
+- storeprocedureWorksheet.rest
 
-    A blank test field will appear amongst your files in the explorer extension
+The `.rest` files all use a VS Code extenstion that allows you to submit REST/GraphQL resuests right in the editor. The bananaCakePopWorksheet.txt can be used in the GraphQL section if you choose to use the GraphQL Playground, Banana Cake Pop, that gets deployed when using Data API builder. The worksheets allow you to concentrate on the content and structure of the calls executed rather than diverting your attenting to copy and paste activities.
 
-   ![A picture of the blank text field in the files extension for the new file to be named](./media/ch3/dab8.png)
+1. To start working with the REST endpoints, find the **restWorksheet.rest** file in the labFiles folder and click on it to bring it up in the code editor.
 
-    Enter **testing.rest** as the file name and press enter/return.
+   ![A picture of clicking the restWorkshop.rest file in the explorer extension](./media/ch3/dab7a.png)
 
-   ![A picture of naming the file testing.rest](./media/ch3/dab9.png)
+1. Above each REST call in the **restWorksheet.rest** file, you will see a **"send request"** link.
 
-    Now left click the file if it is not already opened in the codespace editor
 
-   ![A picture of clicking on the new file testing.rest](./media/ch3/dab10.png)
+   ![A picture of the send request link above the URL entered into the restWorksheet.rest file](./media/ch3/dab7b.png)
 
-    By using the .rest file extension and the REST VS Code extension, you can use this file to make calls directly to Data API builder right in the editor.
+1. **Clicking** the send request link will issue a request to Data API builder and a response message will appear in a new window to the right in the editor
 
-1. For testing the REST endpoints, 2 URLs will be used:
+   ![A picture of a successful GET REST request against the person table](./media/ch3/dab7c.png)
 
-    ```
-    http://localhost:5000/rest/person
-    http://localhost:5000/rest/address
-    ```
-
-1. To start, in the **testing.rest file**, add the following text:
-
-    ```
-    http://localhost:5000/rest/person
-    ```
-
-    and you will see a **"send request"** link appear just above it.
-
-   ![A picture of the send request link above the URL entered into the testing.rest file](./media/ch3/dab11.png)
-
-    **Click** the send request link and a response message will appear in a new window to the right in the editor
-
-   ![A picture of a successful GET REST request against the person table](./media/ch3/dab12.png)
-
-1. For the following REST examples in this exercise, use the testing.rest file for the requests. Replace the existing text in the file with each example because the extension can only have one endpoint in the file at any one time.
-
-   ![A picture of replacing text in the testing.rest file](./media/ch3/dab13.png)
+1. For the following REST examples in this exercise, use the **restWorksheet.rest** file for the requests.
 
 ---
 
 ### REST Examples
+
+#### Get all persons in the table
+**Request:**
+
+```bash
+http://localhost:5000/rest/person
+```
+
+**Response:**
+
+```JSON
+{
+  "value": [
+    {
+      "person_id": 1,
+      "person_name": "Bill",
+      "person_email": "bill@contoso.com",
+      "pet_preference": "Dogs"
+    },
+    {
+      "person_id": 2,
+      "person_name": "Frank",
+      "person_email": "frank@contoso.com",
+      "pet_preference": "Cats"
+    }...
+```
+
+---
 
 #### Get person by Primary Key
 **Request:**
