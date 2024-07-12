@@ -114,6 +114,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     This uses the stored procedure that was REST enabled in the previous chapter.
 
+  > [!IMPORTANT]  
+  > The following section is informational and does not require you to copy and paste any code. This section just walks you through what the web app is doing in preperation for authentication.
+
 1. Back in the codespace, open the `index.html` file located in the app directory and click on it.
 
     ![A picture of opening the index.html file located in the app directory by clicking on it](./media/ch4/swa6i.png)
@@ -196,6 +199,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     ```
 
     You may notice that we catch 403 HTTP Status codes. This will be used in the next section.
+
+  > [!IMPORTANT]  
+  > End of informational section
 
 1. Open the staticwebapp.database.config.json in the swa-db-connections directory in the code editor by clicking on it.
 
