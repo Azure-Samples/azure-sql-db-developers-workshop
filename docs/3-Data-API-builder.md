@@ -129,14 +129,13 @@ The worksheets included are:
 - bananaCakePopWorksheet.txt
 - storeprocedureWorksheet.rest
 
-The `.rest` files all use a VS Code extenstion that allows you to submit REST/GraphQL resuests right in the editor. The bananaCakePopWorksheet.txt can be used in the GraphQL section if you choose to use the GraphQL Playground, Banana Cake Pop, that gets deployed when using Data API builder. The worksheets allow you to concentrate on the content and structure of the calls executed rather than diverting your attenting to copy and paste activities.
+The `.rest` files all use a VS Code extenstion that allows you to submit REST/GraphQL resuests right in the editor. The bananaCakePopWorksheet.txt can be used in the GraphQL section if you choose to use the GraphQL Playground, Banana Cake Pop, that gets deployed when using Data API builder. The worksheets allow you to concentrate on the content and structure of the calls executed rather than diverting your attention to copy and paste activities.
 
 1. To start working with the REST endpoints, find the **restWorksheet.rest** file in the labFiles folder and click on it to bring it up in the code editor.
 
    ![A picture of clicking the restWorkshop.rest file in the explorer extension](./media/ch3/dab7a.png)
 
 1. Above each REST call in the **restWorksheet.rest** file, you will see a **"send request"** link.
-
 
    ![A picture of the send request link above the URL entered into the restWorksheet.rest file](./media/ch3/dab7b.png)
 
@@ -406,9 +405,23 @@ x-ms-correlation-id: 383d79b4-1646-4828-b66d-60fb0afcc14b
 
 ### GraphQL Endpoints
 
-To test the GraphQL endpoints you can either use the `testing.rest` file or you can use the GraphQL interactive playground, Banana Cake Pop.  This playground is enabled as Data API Builder has been configured to run in `development` mode (The playgound will not be enabled when running DAB in other modes).
+To test the GraphQL endpoints you can either use the `graphqlWorksheet.rest` file or you can use the GraphQL interactive playground, Banana Cake Pop.  This playground is enabled as Data API builder has been configured to run in `development` mode (The playgound will not be enabled when running DAB in other modes).
 
-Click on the following links to use the the tool of your choice:
+#### Using the graphqlWorksheet.rest file
+
+1. To start working with the GraphQL endpoints, find the **graphqlWorksheet.rest** file in the labFiles folder and click on it to bring it up in the code editor.
+
+   ![A picture of clicking the graphqlWorksheet.rest file in the explorer extension](./media/ch3/dab16a.png)
+
+1. Above each GraphQL call in the **graphqlWorksheet.rest** file, you will see a **"send request"** link.
+
+   ![A picture of the send request link above the URL entered into the graphqlWorksheet.rest file](./media/ch3/dab16b.png)
+
+1. **Clicking** the send request link will issue a request to Data API builder and a response message will appear in a new window to the right in the editor
+
+   ![A picture of a successful GraphQL request against the person table](./media/ch3/dab16c.png)
+
+1. For the following GraphQL examples in this exercise, use the **graphqlWorksheet.rest** file for the requests.
 
 #### Using Banana Cake Pop
 
@@ -435,36 +448,23 @@ Click on the following links to use the the tool of your choice:
 
     ![A picture of clicking the Create Document blue button on the welcome page of Banana Cake Pop GraphQL interactive playground](../docs/media/ch3/dab-bcp2.png)
 
-  > [!NOTE]  
-  > If you are using Banana Cake Pop, in the following samples, you only need to copy the text after the header/POST information, for example:
+1. Next, find the **bananaCakePopWorksheet.txt** file in the labFiles folder and click on it to bring it up in the code editor.
 
-  ```graphql
-  POST http://localhost:5000/graphql/
-  Content-Type: application/json
-  X-Request-Type: GraphQL
+   ![A picture of clicking the bananaCakePopWorksheet.txt file in the explorer extension](./media/ch3/dab-bcpa.png)
 
-  # ONLY COPY THE THE FOLLOWING, NOT WHAT IS ABOVE THIS LINE!
+1. Copy the contents of the **bananaCakePopWorksheet.txt** file and paste it into the newly created Banana Cake Pop Document
 
-  {
-    people(first: 5) {
-      items {
-        person_id
-        person_name
-        person_email
-      }
-    }
-  }
-  ```
+   ![A picture of copying the contents of the bananaCakePopWorksheet.txt file and paste it into the newly created Banana Cake Pop Document](./media/ch3/dab-bcpb.png)
 
-  For example, you would copy and paste the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button to execute the graphQL call
+1. To give yourself a bit more space on the document, you can click the **Operation Builder** icon to hide the swim lane area.
 
-  ![A picture of copying and pasting the above code starting and ending with the curly brackets, omiting the POST/header information into the Banana Cake Pop editor and click the run button](../docs/media/ch3/dab-bcp3.png)
+   ![A picture of clicking the Operation Builder icon to hide the swim lane area](./media/ch3/dab-bcpc.png)
 
-#### Using the testing.rest file
+1. Submitting requests in Bana Cake Pop is done by clicking the **run link** above each request or highlighting the request and clicking the **blue run button**.
 
-1. To run the following examples using the `testing.rest` file, just copy and paste the full code block, including the POST/header sections, into the file and click the **Send Request** link.
+   ![A picture of submitting requests in Bana Cake Pop by clicking the run link above each request or highlighting the request and clicking the blue run button](./media/ch3/dab-bcpd.png)
 
-    ![A picture of copying and pasting a geaphql request into the testing.rest file and clicking send request](./media/ch3/dab14a.png)
+1. For the following GraphQL examples in this exercise, you can use Banana Cake Pop if you wish.
 
 --
 
@@ -474,7 +474,7 @@ Click on the following links to use the the tool of your choice:
 
 **Request:**
 
-```graphql
+```graphql 
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
