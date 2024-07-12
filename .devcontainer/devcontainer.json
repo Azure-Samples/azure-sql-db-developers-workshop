@@ -1,5 +1,5 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/dotnet:7.0-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:8.0-bookworm",
   "features": {
 	  "ghcr.io/devcontainers-contrib/features/npm-package:1": {
 		  "package": "typescript",
