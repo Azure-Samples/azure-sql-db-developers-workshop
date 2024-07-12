@@ -1,26 +1,28 @@
-GET http://localhost:5000/rest/person
+### Get all person records
 
-###
+http://localhost:5000/rest/person
 
-GET http://localhost:5000/rest/person/person_id/1
+### Get person by Primary Key
 
-###
+http://localhost:5000/rest/person/person_id/1
+
+### Filter the columns using select
 
 http://localhost:5000/rest/person?$select=person_email
 
-###
+### Using operations: equals 
 
 http://localhost:5000/rest/person?$filter=person_name eq 'bill'
 
-###
+### Using operations: not equals
 
 http://localhost:5000/rest/person?$filter=person_name ne 'bill'
 
-###
+### Sort results with orderby
 
 http://localhost:5000/rest/person?$orderby=person_id desc
 
-###
+### Using POST to create a record
 
 POST http://localhost:5000/rest/person
 content-type: application/json
@@ -31,7 +33,7 @@ content-type: application/json
     "pet_preference": "Dogs"
 }
 
-###
+### Using PUT/PATCH to create or update a record
 
 PATCH http://localhost:5000/rest/person/person_id/3
 content-type: application/json
@@ -40,6 +42,6 @@ content-type: application/json
     "person_email": "Riley@contososales.com"
 }
 
-###
+### Using DELETE to delete a record
 
 DELETE http://localhost:5000/rest/person/person_id/3

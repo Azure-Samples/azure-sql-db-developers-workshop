@@ -1,0 +1,162 @@
+### Get the first 5 records
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  people(first: 5) {
+    items {
+      person_id
+      person_name
+      person_email
+    }
+  }
+}
+
+### Using an orderBy to sort the results
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  people(orderBy: { person_id: DESC } )
+  {
+    items {
+      person_id
+      person_name
+      person_email
+    }
+  }
+}
+
+### Get a record by primary key
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  person_by_pk(person_id: 1) {
+    person_id
+    person_name
+    person_email
+    pet_preference
+  }
+}
+
+### Create a relationship - one to many - refer back to the lab 3
+
+### Get the person and address entities using the GraphQL relationship
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{ 
+ people
+ { 
+   items { 
+     person_id 
+     person_name 
+     person_email
+     pet_preference 
+     addresses {
+       items { 
+         address
+       } 
+      }
+    } 
+  } 
+}
+
+### Limit results using a filter
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  people(filter: { person_name: { contains: "l" } })
+  {
+    items {
+      person_id
+      person_name
+      pet_preference
+    }
+  }
+}
+
+### Limit results with a filter and using relationships
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  people(filter: { person_name: { contains: "l" } })
+  {
+    items {
+      person_id
+      person_name
+      pet_preference
+      addresses {
+        items {
+            address
+        }
+      }
+    }
+  }
+}
+
+### Create person with a mutation
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation {
+  createPerson(item: {
+    person_name: "Elle",
+    person_email: "elle@contoso.com"
+    pet_preference: "Cats"
+  }) {
+    person_id
+    person_name
+    person_email
+    pet_preference
+  }  
+}
+
+### Update person using mutation and GraphQL
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation {
+  updatePerson(person_id: 4, item: {
+    person_email: "joel22@contoso.com"
+  }) {
+    person_id
+    person_name
+    person_email
+  }
+}
+
+### Delete person using mutation and GraphQL
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation {
+  deletePerson(person_id: 5)
+  {
+    person_id
+  }  
+}
+
+### Refer back to lab 3 for REST/GraphQL enabling a stored procedure
+

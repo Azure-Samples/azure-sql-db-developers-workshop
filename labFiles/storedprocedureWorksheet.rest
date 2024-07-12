@@ -1,0 +1,23 @@
+### Call a stored procedure using REST and GraphQL
+
+### Using REST to call a stored procedure
+
+http://localhost:5000/rest/GetPersonByPet?pet=Dogs
+
+### Using GraphQL to call a stored procedure
+
+POST http://localhost:5000/graphql/
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+query {
+  executeGetPersonByPet(pet:"Cats")
+   {
+    person_id
+    person_name
+    person_email
+    pet_preference
+  }
+}
+
+### 

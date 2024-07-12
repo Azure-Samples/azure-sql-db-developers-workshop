@@ -514,7 +514,7 @@ X-Request-Type: GraphQL
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
@@ -565,7 +565,7 @@ X-Request-Type: GraphQL
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
@@ -645,7 +645,7 @@ dab start
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
@@ -723,7 +723,7 @@ X-Request-Type: GraphQL
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
@@ -769,7 +769,7 @@ X-Request-Type: GraphQL
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
@@ -830,7 +830,7 @@ X-Request-Type: GraphQL
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
@@ -870,7 +870,7 @@ mutation {
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
@@ -906,7 +906,7 @@ mutation {
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
@@ -1043,7 +1043,7 @@ Use the procedure’s GraphQL endpoint and pass "Cats" into the pet parameter.
 
 **Request:**
 
-```bash
+```graphql
 POST http://localhost:5000/graphql/
 Content-Type: application/json
 X-Request-Type: GraphQL
