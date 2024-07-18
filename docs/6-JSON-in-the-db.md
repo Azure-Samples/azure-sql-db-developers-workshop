@@ -1,6 +1,6 @@
 ![A picture of the Microsoft Logo](../../docs/media/graphics/microsoftlogo.png)
 
-# Azure SQL Database - JSON in the database - IN PRIVATE PREVIEW
+# Azure SQL Database - JSON in the database
 
 ## JSON in the Azure SQL Database
 
@@ -30,7 +30,7 @@ The available operators are:
 
 1. Start in the **SQL Server Connections extension** and right click the database profile name, **Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
-    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/chJSON/json1.png)
+    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch6/json1.png)
 
 1. In the empty query sheet, enter the following SQL code. This statement creates the **Orders** table with the new **JSON** data type.
 
@@ -72,15 +72,15 @@ The available operators are:
     SELECT * FROM Orders;
     ```
 
-    ![A picture of the inserted rows with the JSON type column](./media/chJSON/json2.png)
+    ![A picture of the inserted rows with the JSON type column](./media/ch6/json2.png)
 
 1. Click the order_info data cell 
 
-    ![A picture of clicking on the order_info data cell in the JSON type column](./media/chJSON/json3.png)
+    ![A picture of clicking on the order_info data cell in the JSON type column](./media/ch6/json3.png)
 
     to see the JSON in the order_info column in a new window.
 
-    ![A picture of the JSON in the order_info JSON type column](./media/chJSON/json4.png)
+    ![A picture of the JSON in the order_info JSON type column](./media/ch6/json4.png)
 
 1. Using [JSON_VALUE](https://learn.microsoft.com/sql/t-sql/functions/json-value-transact-sql) and [JSON_QUERY](https://learn.microsoft.com/sql/t-sql/functions/json-query-transact-sql), JSON stored in the database can be extracted as a relational result set. Using the query sheet, issue the following command:
 
@@ -197,11 +197,11 @@ The available operators are:
 
 1. Click the OrderDetails data cell 
 
-    ![A picture of clicking on the OrderDetails data cell in the JSON type column](./media/chJSON/json5.png)
+    ![A picture of clicking on the OrderDetails data cell in the JSON type column](./media/ch6/json5.png)
 
     to see the JSON in the OrderDetails column in a new window.
 
-    ![A picture of the JSON in the OrderDetails JSON type column](./media/chJSON/json6.png)  
+    ![A picture of the JSON in the OrderDetails JSON type column](./media/ch6/json6.png)  
 
 1. Using JSON_OBJECTAGG with JSON_OBJECT/JSON_ARRAY constructors, relation data can be returned from multiple tables as a complete JSON document. Using the query sheet, issue the following command:
 
@@ -218,11 +218,11 @@ The available operators are:
     ```
 1. Click the Orders data cell
 
-    ![A picture of clicking on the Orders data cell in the JSON type column](./media/chJSON/json7.png)
+    ![A picture of clicking on the Orders data cell in the JSON type column](./media/ch6/json7.png)
 
     to see the JSON in the Orders column in a new window.
 
-    ![A picture of the JSON in the Orders JSON type column](./media/chJSON/json8.png)  
+    ![A picture of the JSON in the Orders JSON type column](./media/ch6/json8.png)  
 
 1. In this example, JSON_ARRAYAGG is used with the JSON_ARRAY constructor to create a nested JSON array in an array. Using the query sheet, issue the following command:
 

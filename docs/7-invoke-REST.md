@@ -2,7 +2,7 @@
 
 # Call REST services from the Azure SQL Database with External REST Endpoint Invocation
 
-![A picture of multiple Azure Services that External REST Endpoint Invocation can use](./media/ch6/rest1.png)
+![A picture of multiple Azure Services that External REST Endpoint Invocation can use](./media/ch7/rest1.png)
 
 ## External REST Endpoint Invocation
 
@@ -67,7 +67,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
 
 1. Start in the **SQL Server Connections extension** and right click the database profile name, **Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
-    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch6/rest2.png)
+    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch7/rest2.png)
 
 1. We are going to start by creating a sample table. Copy and paste the following code into the query sheet
 
@@ -98,7 +98,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
 
 1. To execute the code, **left click the green arrow** on the top right of the query sheet.
 
-    ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch6/rest2a.png)
+    ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch7/rest2a.png)
 
 1. Next, in the query sheet, copy and paste the following SQL code:
 
@@ -141,15 +141,15 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
 
 1. To execute the code, **left click the green arrow** on the top right of the query sheet.
 
-    ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch6/rest3.png)
+    ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch7/rest3.png)
 
 1. The result will appear in a new editor tab just to the right of the one that was used to execute the T-SQL code.
 
-    ![A picture of the result appearing in a new editor tab just to the right of the one that was used to execute the T-SQL code](./media/ch6/rest4.png)
+    ![A picture of the result appearing in a new editor tab just to the right of the one that was used to execute the T-SQL code](./media/ch7/rest4.png)
 
 1. Click on the response text in the Results table
 
-    ![A picture of clicking on the response text in the Results table](./media/ch6/rest5.png)
+    ![A picture of clicking on the response text in the Results table](./media/ch7/rest5.png)
 
 1. A new editor sheet will open with the results of the REST call which will look similar to this JSON:
 
@@ -177,7 +177,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
 
 1. Looking at the 2 returned tables,
 
-    ![A picture of the 2 returned tables from the SQL queries using the JSON response](./media/ch6/rest6.png)
+    ![A picture of the 2 returned tables from the SQL queries using the JSON response](./media/ch7/rest6.png)
 
     the first one contains the extracted JSON values from the SQL
 
@@ -242,7 +242,7 @@ Additional Best Practices from the documentation:
 
 1. Open a new query sheet
 
-    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch6/rest2.png)
+    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch7/rest2.png)
 
     and paste the following T-SQL code into a new query editor sheet in the codespace.
 
@@ -279,7 +279,7 @@ Additional Best Practices from the documentation:
 
 1. Once the code is in the codespace query editor sheet, run it with the green run arrow in the upper right.
 
-    ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch6/rest7.png)
+    ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch7/rest7.png)
 
     The response message will be similar to the following:
 
@@ -398,7 +398,7 @@ In this next section, we will be using the Todo application against our Free Azu
 
 1. Back in the **SQL Server Connections extension**, right click the database profile name,**Free Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
-    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch6/rest9.png)
+    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch7/rest9.png)
 
 1. To avoid using an administrative account to allow the application to access the database, we will create a new user and grant it the necessary permissions. Copy and paste the following code into the query sheet, replacing `PASSWORD` with a password of your choice, then run it in the Query editor.
 
@@ -452,7 +452,7 @@ In this next section, we will be using the Todo application against our Free Azu
 
 1. Now we need to change the database connection in the **.env** file to use our Free Azure SQL Database. Select the file in codespace and on the top, find the **MSSQL** variable that contains the connection string.
 
-    ![A picture of the file named .env opened in the code space editor and looking at the connection string](./media/ch6/rest8.png)
+    ![A picture of the file named .env opened in the code space editor and looking at the connection string](./media/ch7/rest8.png)
 
 1. Change the connection string value to reflect the server name, database name of `freeDB`, User ID of `swaappuser` (if you used a different user name in the previous step), and the password you used when you created the database. It should look similar to the following:
 
@@ -462,7 +462,7 @@ In this next section, we will be using the Todo application against our Free Azu
 
     and **save the file**.
 
-    ![A picture of the new file named .env opened in the code space editor and looking at the connection string pointing to the Free Azure SQL Database](./media/ch6/rest8a.png)
+    ![A picture of the new file named .env opened in the code space editor and looking at the connection string pointing to the Free Azure SQL Database](./media/ch7/rest8a.png)
 
 
 1. Next, start swa cli again at the terminal
@@ -475,4 +475,4 @@ In this next section, we will be using the Todo application against our Free Azu
 
 1. Enter a task name and see the title instantly transformed into german.
  
-    ![A picture of a todo task being translated into german upon entry in the todo application](./media/ch6/rest10.png)
+    ![A picture of a todo task being translated into german upon entry in the todo application](./media/ch7/rest10.png)

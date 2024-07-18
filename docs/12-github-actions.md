@@ -35,11 +35,11 @@ The two GitHub Actions that will be used in this chapter are:
 
 1. Now, we need to create the .yml file that will contain the instructions on what to do everytime you do X in GitHub. In the File Explorer, open the .github -> workflows directory. Then, right click on the workflows directory and select **"New File..."**.
 
-    ![A picture of right clicking on the workflows directory and selecting New File...](./media/ch8/act1.png)
+    ![A picture of right clicking on the workflows directory and selecting New File...](./media/ch12/act1.png)
 
 1. Name the file **sql-actions.yml**
 
-    ![A picture of naming the file sql-actions.yml](./media/ch8/act2.png)
+    ![A picture of naming the file sql-actions.yml](./media/ch12/act2.png)
 
 1. Open the file in the code editor by clicking on it if not already opened.
 
@@ -135,24 +135,24 @@ The two GitHub Actions that will be used in this chapter are:
 
 1. The GitHub Actions workflow will start which you can follow on the **Actions** tab back in the repository page in your browser.
 
-    ![A picture of the actions tab on the repository page in the browser](./media/ch8/act3.png)
+    ![A picture of the actions tab on the repository page in the browser](./media/ch12/act3.png)
 
 1. You will see the workflow launched from the sql-actions.yml file on a code push running on the page.
 
-    ![A picture of the running workflow in the actions tab](./media/ch8/act4.png)
+    ![A picture of the running workflow in the actions tab](./media/ch12/act4.png)
 
 1. Clicking on the workflow will show the details and progress. Click on the build-and-deploy job in the middle of the page.
 
-    ![A picture of clicking on the build-and-deploy job in the middle of the page](./media/ch8/act5.png)
+    ![A picture of clicking on the build-and-deploy job in the middle of the page](./media/ch12/act5.png)
 
 1. Here, on the job details page, you can look into each step of the workflow and see the progress.
 
-    ![A picture of each step of the workflow and see the progress](./media/ch8/act6.png)
+    ![A picture of each step of the workflow and see the progress](./media/ch12/act6.png)
 
 1. Once the workflow is done, you can expand the Deploy Database Project section
 
-    ![A picture of expanding the Deploy Database Project section](./media/ch8/act7.png)
+    ![A picture of expanding the Deploy Database Project section](./media/ch12/act7.png)
 
     and see the output and the successful deployment of the database objects to the test SQL Server 2022 in a docker container for this GitHub Workflow.
 
-    ![A picture of the database deployment in github actions to the SQL Server in docker in codespaces](./media/ch8/act8.png)
+    ![A picture of the database deployment in github actions to the SQL Server in docker in codespaces](./media/ch12/act8.png)
