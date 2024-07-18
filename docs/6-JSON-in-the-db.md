@@ -23,8 +23,8 @@ The available operators are:
 
 **New** in the Azure SQL Database:
 
-1. **JSON_OBJECTAGG**: Construct a JSON object value from relational data
-1. **JSON_ARRAYAGG**: Construct a JSON array value from relational data
+1. **[JSON_OBJECTAGG](https://learn.microsoft.com/sql/t-sql/functions/json-objectagg-transact-sql?view=azuresqldb-current)**: Construct a JSON object value from relational data
+1. **[JSON_ARRAYAGG](https://learn.microsoft.com/sql/t-sql/functions/json-arrayagg-transact-sql?view=azuresqldb-current)**: Construct a JSON array value from relational data
 
 ## JSON in the Azure SQL Database workshop tasks
 
