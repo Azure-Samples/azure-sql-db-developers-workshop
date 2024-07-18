@@ -27,16 +27,17 @@ Azure OpenAI Service is powered by a diverse set of models with different capabi
 
 An embedding is a special format of data representation that machine learning models and algorithms can easily use. The embedding is an information dense representation of the semantic meaning of a piece of text. Each embedding is a vector of floating-point numbers, such that the distance between two embeddings in the vector space is correlated with semantic similarity between two inputs in the original format. For example, if two texts are similar, then their vector representations should also be similar.
 
-1. Copy the following SQL and paste it into the SQL query editor. You can see from the T-SQL that we are going to create an embedding for a product name from data in the Azure SQL Database. The query `SELECT [Name] FROM [SalesLT].[Product] WHERE ProductID = 846` returns "**Taillights - Battery-Powered**" and will be sent to the OpenAI REST endpoint.
+1. Open a new query sheet
+
+    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch7/rest2.png)
+
+1. Copy the following SQL and paste it into the SQL query editor. You can see from the T-SQL that we are going to create an embedding for a text string.
 
     ```SQL
     declare @url nvarchar(4000) = N'https://build2024openai.openai.azure.com/openai/deployments/build2024-embeddings/embeddings?api-version=2024-02-01';
     declare @headers nvarchar(300) = N'{"api-key": "OPENAI_KEY"}';
     declare @message nvarchar(max);
-    SET @message = (SELECT [Description]
-                    FROM [SalesLT].[ProductDescription]
-                    WHERE ProductDescriptionID = 457);
-    declare @payload nvarchar(max) = N'{"input": "' + @message + '"}';
+    SET @message = N'{"input": "Nice to meet you, where you been? I could show you incredible things."}';
 
     declare @ret int, @response nvarchar(max);
 
