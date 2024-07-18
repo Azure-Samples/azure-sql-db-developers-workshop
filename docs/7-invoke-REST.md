@@ -25,43 +25,55 @@ By default, External REST Endpoint Invocation expects a JSON payload in the resp
 The pre-created function is as follows:
 
 ```C#
-#r "Newtonsoft.Json"
-
-using System.Net;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System.Text;
+using System.Net.Http;
 
-public static async Task<HttpResponseMessage> Run(HttpRequest req, ILogger log)
+namespace Company.Function
 {
-    log.LogInformation("C# HTTP trigger function processed a request.");
-
-    string currency = req.Query["currency"];
-    double conversion = 1;
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-    dynamic data = JsonConvert.DeserializeObject(requestBody);
-    currency = currency ?? data?.currency ?? "USD";
-
-    
-    if (currency == "JPY")
+    public static class HttpTriggerFunction
+    {
+        [FunctionName("HttpTriggerFunctionSQL")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            ILogger log)
         {
-            conversion = 147.81;
-        }
-    else if (currency == "EUR")
-        {
-            conversion = 0.93;
-        }
-    else
-        {
-            conversion = 1;
-        }
+            log.LogInformation("C# HTTP trigger function processed a request.");
 
-    var myObj = new {currency = $"{currency}", priceConversion = $"{conversion}"};
-    var jsonToReturn = JsonConvert.SerializeObject(myObj);
-    return new HttpResponseMessage(HttpStatusCode.OK) {
-        Content = new StringContent(jsonToReturn, Encoding.UTF8, "application/json")
-    };
+            string currency = req.Query["currency"];
+            double conversion = 1;
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            dynamic data = JsonConvert.DeserializeObject(requestBody);
+            currency = currency ?? data?.currency ?? "USD";
+
+            
+            if (currency == "JPY")
+                {
+                    conversion = 147.81;
+                }
+            else if (currency == "EUR")
+                {
+                    conversion = 0.93;
+                }
+            else
+                {
+                    conversion = 1;
+                }
+
+
+            var myObj = new {currency = $"{currency}", priceConversion = $"{conversion}"};
+            var jsonToReturn = JsonConvert.SerializeObject(myObj);
+
+            return new OkObjectResult(myObj);
+        }
+    }
 }
 ```
 
