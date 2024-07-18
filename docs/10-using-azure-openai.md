@@ -85,17 +85,14 @@ An embedding is a special format of data representation that machine learning mo
 
 The image generation API creates an image from a text prompt.
 
-1. Copy the following SQL and paste it into the SQL query editor. Like the previous example, the query here 'SELECT [Description] FROM [SalesLT].[ProductDescription] WHERE ProductDescriptionID = 457' returns a product description "**This bike is ridden by race winners. Developed with the Adventure Works Cycles professional race team, it has a extremely light heat-treated aluminum frame, and steering that allows precision control.**" which will be sent to the DALL-E 3 text to image endpoint.
+1. Copy the following SQL and paste it into the SQL query editor. We are going to use a product description from the adventure works dataset which will be sent to the DALL-E 3 text to image endpoint.
 
     ```SQL
     declare @url nvarchar(4000) = N'https://build2024openai.openai.azure.com/openai/deployments/build2024-dalle3/images/generations?api-version=2023-12-01-preview';
     declare @headers nvarchar(300) = N'{"api-key": "OPENAI_KEY"}';
     declare @message nvarchar(max);
-    SET @message = (SELECT [Description]
-                    FROM [SalesLT].[ProductDescription]
-                    WHERE ProductDescriptionID = 457);
-    declare @payload nvarchar(max) = N'{
-        "prompt": "' + @message + '",
+    SET @message = N'{
+        "prompt": "This bike is ridden by race winners. Developed with the Adventure Works Cycles professional race team, it has a extremely light heat-treated aluminum frame, and steering that allows precision control.",
         "size": "1024x1024",
         "n": 1,
         "quality": "hd", 
