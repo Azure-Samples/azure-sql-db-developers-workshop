@@ -28,9 +28,9 @@ The available operators are:
 
 ## JSON in the Azure SQL Database workshop tasks
 
-1. Start in the **SQL Server Connections extension** and right click the database profile name, **Azure Database**, and select **New Query**. This will bring up a new query sheet.
+1. Start in the **SQL Server Connections extension** and right click the database profile name, **Free Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
-    ![A picture of right clicking the Azure Database profile name and selecting New Query](./media/ch6/json1.png)
+    ![A picture of right clicking the Free Azure Database profile name and selecting New Query](./media/ch6/json1.png)
 
 1. In the empty query sheet, enter the following SQL code. This statement creates the **Orders** table with the new **JSON** data type.
 
