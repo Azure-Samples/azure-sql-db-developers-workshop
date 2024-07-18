@@ -132,7 +132,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of creating a new connection by clicking the plus sign on the upper right in the extension](./media/ch5/deploy2.png)
 
-1. In the Create Connection dialog box, **paste** in the **ADO.NET (SQL authentication)** connect string you copied. **Make sure you change the username and password to be the values you used when creating the database. (sqladmin and password you chose)**
+1. In the Create Connection dialog box, **paste** in the **ADO.NET (SQL authentication)** connect string you copied. **Make sure you change the username and password to be the values you used when creating the database. (sqladmin and password)**
 
     ![A picture of using the ADO.NET (SQL authentication)** connect string you copied](./media/ch5/deploy3.png)
 
