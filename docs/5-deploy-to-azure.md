@@ -38,7 +38,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of creating a Resource group by clicking the **Create new** button](./media/ch5/deploy1g.png)
 
-1. Next, in the **Database details** section of the page, name your database **freeDB** with the **Database name** field.
+1. Next, in the **Database details** section of the page, name your database **freedb** with the **Database name** field.
 
     ![A picture of naming your database with the Database name field in the Database details section of the page](./media/ch5/deploy1h.png)
 
@@ -102,17 +102,29 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of clicking the button labeled "Add your client IPv4 address (X.X.X.X)" to add your local IP address for database access](./media/ch5/deploy1v.png)
 
-1. Click the **checkbox** for **Allow Azure services and resources to access this server** in the **Exceptions** section.
-
-    ![A picture of clicking the checkbox for Allow Azure services and resources to access this server in the Exceptions section](./media/ch5/deploy1w.png)
-
 1. Finally, click the **Save** button in the lower left of the page.
 
     ![A picture of clicking the save button in the lower left of the page](./media/ch5/deploy1x.png)
 
 ### Create a connection profile to the free Azure SQL Database
 
-1. Using the extensions panel, select the **SQL Server connections extension**
+1. While still in the Azure Portal, using the menu on the left side, open the menu items under **Settings** if not already opened. Then select **SQL Databases** by clicking on it.
+
+    ![A picture of clicking the Azure SQL Databases option under settings](./media/ch5/deploy2a.png)
+
+1. Next, on the main page, find the freedb you created and click on it navigate to the database details page.
+
+    ![A picture of clicking the freedb SQL Databases](./media/ch5/deploy2b.png)
+
+1. On the database details page, using the menu bar on the left, find and click on **Connection strings** under the **Settings** menu. You may have to expand settings to find Connection strings under it.
+
+    ![A picture of finding and clicking on Connection strings under the Settings menu](./media/ch5/deploy2c.png)
+
+1. On the **ADO.NET** tab, find the **ADO.NET (SQL authentication)** entry and copy that connect string.
+
+    ![A picture of finding the ADO.NET (SQL authentication) entry and copying that connect string](./media/ch5/deploy2d.png)
+
+1. Back in the codespace, using the extensions panel, select the **SQL Server connections extension**
 
     ![A picture of selecting the SQL Server connection extension in code spaces](./media/ch5/deploy1.png)
 
@@ -120,28 +132,13 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of creating a new connection by clicking the plus sign on the upper right in the extension](./media/ch5/deploy2.png)
 
-1. Use the following values for the Create Connection dialog boxes:
+1. In the Create Connection dialog box, **paste** in the **ADO.NET (SQL authentication)** connect string you copied. **Make sure you change the username and password to be the values you used when creating the database. (sqladmin and password you chose)**
 
-    * Use the name of the server you created in the previous section as the server name, then press Enter.
-        ![A picture of using the free sql db server name as the server name](./media/ch5/deploy3.png)
+    ![A picture of using the ADO.NET (SQL authentication)** connect string you copied](./media/ch5/deploy3.png)
 
-    * Use the name of the database you created for the free Azure SQL Database as the database name, then press Enter.
-        ![A picture of using the free database as the database name](./media/ch5/deploy4.png)
+1. Provide the profile name of "Free Azure Database" in the last dialog box for this step. Press Enter to finish the connection profile process.
 
-    * In the Authentication Type dialog box, select “SQL Login“.
-        ![A picture of using SQL Login as as the Authentication Type](./media/ch5/deploy5.png)
-
-    * In the User name (SQL Login) dialog box, enter **sqladmin**, then press Enter.
-        ![A picture of entering sqladmin as the database user](./media/ch5/deploy6.png)
-
-        and provide the password you used when creating the free Azure SQL Database, then press Enter.
-        ![A picture of entering the password for the database user](./media/ch5/deploy7.png)
-
-    * Select **Yes** so that the password is saved (encrypted) on the connection profile
-        ![A picture of selecting Yes so that the password is saved on the connection profile](./media/ch5/deploy8.png)
-
-    * Provide the profile name of "Free Azure Database" in the last dialog box for this step. Press Enter to finish the connection profile process.
-        ![A picture of using Free Azure Database as the connection profile name](./media/ch5/deploy9.png)
+    ![A picture of using Free Azure Database as the connection profile name](./media/ch5/deploy9.png)
 
     * After pressing Enter and the connection profile is verified, a warning box **may** appear on the lower right of the screen. This warning is indicating that due to new security features within the database, you need to enable the self-signed certificate.
         Click the Enable Trust Server Certificate green button to continue.
@@ -170,9 +167,9 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of selecting the Free Azure Database connection in the publish database modal flow](./media/ch5/deploy19.png)
 
-1. Choose **freeDB** as the database.
+1. Choose **freedb** as the database.
 
-    ![A picture of selecting the database named freeDB in the publish database modal flow](./media/ch5/deploy20.png)
+    ![A picture of selecting the database named freedb in the publish database modal flow](./media/ch5/deploy20.png)
 
 1. And finally, for the action, choose **Publish**.
 
