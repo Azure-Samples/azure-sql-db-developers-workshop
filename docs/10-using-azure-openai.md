@@ -482,3 +482,7 @@ In this next section, we will be using the Todo application against our Free Azu
 1. Enter a task name and see the title instantly transformed into german.
  
     ![A picture of a todo task being translated into german upon entry in the todo application](./media/ch7/rest10.png)
+
+## Continue to chapter 11
+
+Click [here](./11-sql-bindings.md) to continue to chapter 1, Azure SQL Bindings for Azure Functions!

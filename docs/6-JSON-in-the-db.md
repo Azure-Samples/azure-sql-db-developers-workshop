@@ -240,3 +240,7 @@ The available operators are:
     FROM sys.all_objects
     GROUP BY schema_id;
     ```
+
+## Continue to chapter 7
+
+Click [here](./7-invoke-REST.md) to continue to chapter 7, Invoking REST endpoints from the database!

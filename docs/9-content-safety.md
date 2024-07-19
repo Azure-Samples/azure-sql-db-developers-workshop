@@ -169,3 +169,7 @@ Use protected material detection to detect and protect third-party text material
             }
         }
     ```
+
+## Continue to chapter 10
+
+Click [here](.//10-using-azure-openai.md) to continue to chapter 10, Azure OpenAI!

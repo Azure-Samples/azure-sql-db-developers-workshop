@@ -264,3 +264,7 @@ In this section, you will create a change data stream using Change Tracking, the
     ```
 
 1. Stop the local function in the terminal in the codespace with a Ctrl-C.
+
+## Continue to chapter 12
+
+Click [here](./12-github-actions.md) to continue to chapter 12, GitHub Actions!

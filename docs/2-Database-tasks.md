@@ -494,3 +494,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     select * from dbo.todo;
     GO    
     ```
+
+## Continue to chapter 3
+
+Click [here](./3-Data-API-builder.md) to continue to chapter 3, Data API Builder!

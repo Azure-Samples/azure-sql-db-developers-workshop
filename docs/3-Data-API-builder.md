@@ -1125,3 +1125,7 @@ Now that the APIs have been created, they might be handed off to a development t
     ![A picture of the swagger user interface where you can browse and try out all the APIs that were just create](./media/ch3/dab20.png)
 
 1. Stop Data API builder in the terminal with Ctrl-C.
+
+## Continue to chapter 4
+
+Click [here](./4-swa-cli.md) to continue to chapter 4, Static Web Apps!

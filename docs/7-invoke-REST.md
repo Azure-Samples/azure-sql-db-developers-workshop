@@ -256,3 +256,7 @@ The next few chapters will be using various Azure AI services such as AI Languag
     ```
 
 1. Copy these keys for use in later chapters.
+
+## Continue to chapter 8
+
+Click [here](./8-ai-language.md) to continue to chapter 8, AI Language!

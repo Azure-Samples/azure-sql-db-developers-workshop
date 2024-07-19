@@ -648,3 +648,7 @@ This prebuilt capability disambiguates the identity of an entity found in text b
             "dataSource": "Wikipedia"
         }
     ```
+
+## Continue to chapter 9
+
+Click [here](./9-content-safety.md) to continue to chapter 9, AI Content Safety!

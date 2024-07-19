@@ -232,3 +232,7 @@ The Azure SQL Migration extension for Azure Data Studio offers these key benefit
 
 * [SQL Server migration one-click PoC to Azure SQL](https://aka.ms/SQLMigrationPoC)
 * [Migrate databases at scale using Azure Database Migration automation](https://github.com/Azure-Samples/data-migration-sql)
+
+## Continue to chapter 6
+
+Click [here](./6-JSON-in-the-db.md) to continue to chapter 6, JSON in the database!
