@@ -148,12 +148,10 @@ The Answer Questions capability attempts to extract the answer to a given questi
 1. Copy the following SQL and paste it into the SQL query editor. This example uses a description from the Adventure Works ProductDescription table to seed the session.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://languagebuild2024.cognitiveservices.azure.com/language/:query-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:query-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @message nvarchar(max);
-    SET @message = (SELECT [Description]
-                    FROM [SalesLT].[ProductDescription]
-                    WHERE ProductDescriptionID = 457);
+    SET @message = N'This bike is ridden by race winners. Developed with the Adventure Works Cycles professional race team, it has a extremely light heat-treated aluminum frame, and steering that allows precision control.';
     declare @payload nvarchar(max) = N'{
     "question": "What is the bike made from?",
     "records": [
@@ -222,7 +220,7 @@ This prebuilt summarization API can produce a summary for a conversation or from
 1. Copy the following SQL and paste it into the SQL query editor.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://languagebuild2024.cognitiveservices.azure.com/language/analyze-text/jobs?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/analyze-text/jobs?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
     "displayName": "Document ext Summarization Task Example",
@@ -277,7 +275,7 @@ This prebuilt summarization API can produce a summary for a conversation or from
             "headers": {
                 "Date": "Fri, 03 May 2024 20:31:10 GMT",
                 "Content-Length": "0",
-                "operation-location": "https://languagebuild2024.cognitiveservices.azure.com/language/analyze-text/jobs/1111-2222-4444-111?api-version=2023-04-01",
+                "operation-location": "https://vslive2024language.cognitiveservices.azure.com/language/analyze-text/jobs/1111-2222-4444-111?api-version=2023-04-01",
                 "x-envoy-upstream-service-time": "238",
                 "apim-request-id": "abababab-abab-1234-1122-abababababab",
                 "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
@@ -360,7 +358,7 @@ Azure AI Language Sentiment Analysis feature provides sentiment labels (such as 
 1. Copy the following SQL and paste it into the SQL query editor.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://languagebuild2024.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "SentimentAnalysis",
@@ -450,13 +448,9 @@ The Language Detection feature of the Azure AI Language REST API evaluates text 
 
     ```SQL
     declare @message nvarchar(max);
-    SET @message = (SELECT top 1 d.[Description]
-                    FROM [SalesLT].[ProductDescription] d,
-                         [SalesLT].[ProductModelProductDescription] l
-                    WHERE d.ProductDescriptionID = l.ProductDescriptionID
-                    AND l.Culture = 'fr');
+    SET @message = N'Adapté à tous les usages, sur route ou tout-terrain. Pour toutes les bourses. Changement de braquet en douceur et conduite confortable.';
 
-    declare @url nvarchar(4000) = N'https://languagebuild2024.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "LanguageDetection",
@@ -504,18 +498,6 @@ The Language Detection feature of the Azure AI Language REST API evaluates text 
                 },
     ```
 
-1. You can try other languages by just altering the where clause in the SQL statement that set the @message variable. The accepted values you can use are: zh-cht, he, th, fr, ar, and en.     
-
-    ```SQL
-        SET @message = (SELECT top 1 d.[Description]
-                    FROM [SalesLT].[ProductDescription] d,
-                         [SalesLT].[ProductModelProductDescription] l
-                    WHERE d.ProductDescriptionID = l.ProductDescriptionID
-                    AND l.Culture = 'LANGUAGE-HERE');
-    ```
-
-    Replace the **LANGUAGE-HERE** with one of the above values and retry the request.
-
 ### Named Entity Recognition (NER)
 
 This prebuilt capability uses Named Entity Recognition (NER) to identify entities in text and categorize them into pre-defined classes or types such as: person, location, event, product, and organization. This request again pulls from the Adventure Works data for text analysis.
@@ -524,11 +506,9 @@ This prebuilt capability uses Named Entity Recognition (NER) to identify entitie
 
     ```SQL
     declare @message nvarchar(max);
-    SET @message = (SELECT [Description]
-        FROM [SalesLT].[ProductDescription]
-        WHERE ProductDescriptionID = 513);
+    SET @message = N'All-occasion value bike with our basic comfort and safety features. Offers wider, more stable tires for a ride around town or weekend trip.';
 
-    declare @url nvarchar(4000) = N'https://languagebuild2024.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "EntityRecognition",
@@ -610,11 +590,9 @@ This prebuilt capability disambiguates the identity of an entity found in text b
 
     ```SQL
     declare @message nvarchar(max);
-    SET @message = (SELECT [Description]
-        FROM [SalesLT].[ProductDescription]
-        WHERE ProductDescriptionID = 168);
+    SET @message = N'Top-of-the-line competition mountain bike. Performance-enhancing options include the innovative HL Frame, super-smooth front suspension, and traction for all terrain.';
 
-    declare @url nvarchar(4000) = N'https://languagebuild2024.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "EntityLinking",
