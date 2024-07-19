@@ -88,7 +88,7 @@ The image generation API creates an image from a text prompt.
 1. Copy the following SQL and paste it into the SQL query editor. We are going to use a product description from the adventure works dataset which will be sent to the DALL-E 3 text to image endpoint.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://build2024openai.openai.azure.com/openai/deployments/build2024-dalle3/images/generations?api-version=2023-12-01-preview';
+    declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024wallE/images/generations?api-version=2023-12-01-preview';
     declare @headers nvarchar(300) = N'{"api-key": "OPENAI_KEY"}';
     declare @message nvarchar(max);
     SET @message = N'{
@@ -105,7 +105,7 @@ The image generation API creates an image from a text prompt.
         @url = @url,
         @method = 'POST',
         @headers = @headers,
-        @payload = @payload,
+        @payload = @message,
         @timeout = 230,
         @response = @response output;
 
@@ -143,7 +143,7 @@ Let's use the new GPT-4o model for this next call. We are going to ask it to des
 1. Copy the following SQL and paste it into the SQL query editor. 
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://build2024openai.openai.azure.com/openai/models/2024-05-13/chat/completions?api-version=2024-05-13-preview';
+    declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
     declare @headers nvarchar(102) = N'{"api-key":"OPENAI_KEY"}';
     declare @payload nvarchar(max) = N'{
         "messages": [
@@ -258,7 +258,7 @@ Additional Best Practices from the documentation:
     from person
     where person_id = 1);
     
-    declare @url nvarchar(4000) = N'https://aidemo.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-07-01-preview';
+    declare @url nvarchar(4000) = N'hhttps://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
     declare @headers nvarchar(102) = N'{"api-key":"1234567890"}'
     declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"'+(@adcopy)+'"}]}'
     declare @ret int, @response nvarchar(max);
@@ -421,7 +421,7 @@ In this next section, we will be using the Todo application against our Free Azu
     AS
     
         declare @translated_task VARCHAR(1000);
-        declare @url nvarchar(4000) = N'https://aidemo.openai.azure.com/openai/deployments/chattycathy/chat/completions?api-version=2023-07-01-preview';
+        declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
         declare @headers nvarchar(102) = N'{"api-key":"1234567890"}'
         declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into german, only respond with the translation"}]}'
         declare @ret int, @response nvarchar(max);
