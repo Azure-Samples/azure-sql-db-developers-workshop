@@ -2,9 +2,9 @@ sudo cp ./scripts/ms-repo.pref /etc/apt/preferences.d/
 
 export dotnet_version="8.0"
 export dab_version="1.1.7"
-export sqlcmd_version="1.6.0"
+export sqlcmd_version="1.7.0"
 export func_version="4"
-export sqlprj_version="0.1.14-preview"
+export sqlprj_version="0.2.0-preview"
 
 export debian_version=$(if command -v lsb_release &> /dev/null; then lsb_release -r -s; else grep -oP '(?<=^VERSION_ID=).+' /etc/os-release | tr -d '"'; fi)
 
