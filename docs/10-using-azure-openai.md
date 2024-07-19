@@ -453,6 +453,9 @@ In this next section, we will be using the Todo application against our Free Azu
 
 1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
 
+> [!WARNING]  
+> Putting your authentication key in plain text in a procedure is not a best practice. We are only doing it here as an example but managed identies should be used here.
+
 1. Now we need to change the database connection in the **.env** file to use our Free Azure SQL Database. Select the file in codespace and on the top, find the **MSSQL** variable that contains the connection string.
 
     ![A picture of the file named .env opened in the code space editor and looking at the connection string](./media/ch7/rest8.png)
