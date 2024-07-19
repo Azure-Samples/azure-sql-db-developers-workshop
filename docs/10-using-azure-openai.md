@@ -259,7 +259,7 @@ Additional Best Practices from the documentation:
     where person_id = 1);
     
     declare @url nvarchar(4000) = N'hhttps://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
-    declare @headers nvarchar(102) = N'{"api-key":"1234567890"}'
+    declare @headers nvarchar(102) = N'{"api-key":"OPENAI_KEY"}'
     declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"'+(@adcopy)+'"}]}'
     declare @ret int, @response nvarchar(max);
     
@@ -275,6 +275,8 @@ Additional Best Practices from the documentation:
 
     select json_value(@response, '$.result.choices[0].message.content') as [Message];
     ```
+
+1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
 
 1. Once the code is in the codespace query editor sheet, run it with the green run arrow in the upper right.
 
@@ -422,7 +424,7 @@ In this next section, we will be using the Todo application against our Free Azu
     
         declare @translated_task VARCHAR(1000);
         declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
-        declare @headers nvarchar(102) = N'{"api-key":"1234567890"}'
+        declare @headers nvarchar(102) = N'{"api-key":"OPENAI_KEY"}'
         declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into german, only respond with the translation"}]}'
         declare @ret int, @response nvarchar(max);
     
@@ -448,6 +450,8 @@ In this next section, we will be using the Todo application against our Free Azu
     END;
     GO
     ```
+
+1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
 
 1. Now we need to change the database connection in the **.env** file to use our Free Azure SQL Database. Select the file in codespace and on the top, find the **MSSQL** variable that contains the connection string.
 
