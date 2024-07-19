@@ -42,7 +42,7 @@ The first endpoint we will use is the Personally Identifiable Information (PII) 
 1. Copy the following SQL and paste it into the SQL query editor.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://languagebuild2024.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "PiiEntityRecognition",

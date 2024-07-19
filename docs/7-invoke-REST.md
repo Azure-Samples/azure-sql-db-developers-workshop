@@ -104,10 +104,6 @@ namespace Company.Function
     GO
     ```
 
-> [!NOTE]
-> The server name in the URL parameter on the next example is functionsdemo. Please change this value to align with your server name in your account.
-> 
-
 1. To execute the code, **left click the green arrow** on the top right of the query sheet.
 
     ![A picture of left clicking the green arrow on the top right of the query sheet to execute the T-SQL code](./media/ch7/rest2a.png)
@@ -118,7 +114,7 @@ namespace Company.Function
     DECLARE @ret INT, @response NVARCHAR(MAX), @priceConversion float;
     
     EXEC @ret = sp_invoke_external_rest_endpoint
-      @url = N'https://functionsdemo.azurewebsites.net/api/HttpTriggerFunction',
+      @url = N'https://vsliveredmond2024.azurewebsites.net/api/HttpTriggerFunctionSQL',
       @payload = N'{"currency":"JPY"}',
       @method = N'POST',
       @response = @response OUTPUT;
@@ -209,3 +205,54 @@ namespace Company.Function
     select product_id, product_name, ListPrice, cast(round(ListPrice*@priceConversion,2,1) as money) AS convertedPriceInYen
     from dbo.products
     ```
+
+### Get your AI Keys
+
+The next few chapters will be using various Azure AI services such as AI Language, OpenAI, and Content Safety. To use these services, we will be sending keys for authentication. They keys you need to use are found by issueing the following command to contact an Azure Function that contains the keys.
+
+1. Copy and paste the following code into the query sheet
+
+    ```SQL
+        DECLARE @ret INT, @response NVARCHAR(MAX)
+        DECLARE @headers nvarchar(102) = N'{"Accept":"text/*"}'
+
+        EXEC @ret = sp_invoke_external_rest_endpoint
+        @url = N'https://vsliveredmond2024.azurewebsites.net/api/getKeys',
+        @method = 'GET',
+        @headers = @headers,
+        @response = @response OUTPUT;
+        
+        SELECT @ret AS ReturnCode, @response AS Response;
+    ```
+
+1. To execute the code, **left click the green arrow** on the top right of the query sheet.
+
+1. The result will appear in a new editor tab just to the right of the one that was used to execute the T-SQL code.
+
+1. Click on the response text in the Results table
+
+    ![A picture of clicking on the response text in the Results table](./media/ch7/rest5.png)
+
+1. A new editor sheet will open with the results of the REST call which will look similar to this JSON:
+
+    ```JSON
+    {
+        "response": {
+            "status": {
+                "http": {
+                    "code": 200,
+                    "description": "OK"
+                }
+            },
+            "headers": {
+                "Date": "Fri, 19 Jul 2024 12:18:03 GMT",
+                "Transfer-Encoding": "chunked",
+                "Content-Type": "text/plain; charset=utf-8",
+                "Request-Context": "appId=cid-v1:084b659d-747a-401e-a1c9-73a5ebb356ee"
+            }
+        },
+        "result": "The key for OpenAI is XXXXXX. The key for AI Language is XXXXXX. The key for Content Safety is XXXXXX."
+    }
+    ```
+
+1. Copy these keys for use in later chapters.
