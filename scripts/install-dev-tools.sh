@@ -26,7 +26,7 @@ dotnet new install Microsoft.Build.Sql.Templates::$sqlprj_version
 dotnet tool install -g Microsoft.DataApiBuilder --version $dab_version
 
 sudo apt-get install sqlcmd
-sudo wget https://github.com/microsoft/go-sqlcmd/releases/download/v$sqlcmd_version/sqlcmd-v$sqlcmd_version-linux-amd64.tar.bz2
+sudo wget https://github.com/microsoft/go-sqlcmd/releases/download/v$sqlcmd_version/sqlcmd-linux-amd64.tar.bz2
 sudo bunzip2 sqlcmd-v$sqlcmd_version-linux-amd64.tar.bz2
 sudo tar xvf sqlcmd-v$sqlcmd_version-linux-amd64.tar
 sudo mv sqlcmd /usr/bin/sqlcmd
