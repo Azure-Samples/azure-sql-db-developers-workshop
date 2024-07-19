@@ -34,10 +34,10 @@ An embedding is a special format of data representation that machine learning mo
 1. Copy the following SQL and paste it into the SQL query editor. You can see from the T-SQL that we are going to create an embedding for a text string.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://build2024openai.openai.azure.com/openai/deployments/build2024-embeddings/embeddings?api-version=2024-02-01';
+    declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024embeddings/embeddings?api-version=2024-02-01';
     declare @headers nvarchar(300) = N'{"api-key": "OPENAI_KEY"}';
     declare @message nvarchar(max);
-    SET @message = N'{"input": "Nice to meet you, where you been? I could show you incredible things."}';
+    SET @message = N'{"input": "Its me Hi Im the problem, its me At teatime Everybody agrees Ill stare directly at the sun but never in the mirror It must be exhausting always rooting for the anti-hero"}';
 
     declare @ret int, @response nvarchar(max);
 
@@ -45,7 +45,7 @@ An embedding is a special format of data representation that machine learning mo
         @url = @url,
         @method = 'POST',
         @headers = @headers,
-        @payload = @payload,
+        @payload = @message,
         @timeout = 230,
         @response = @response output;
 
