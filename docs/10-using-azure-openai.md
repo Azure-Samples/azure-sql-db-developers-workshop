@@ -485,4 +485,4 @@ In this next section, we will be using the Todo application against our Free Azu
 
 ## Continue to chapter 11
 
-Click [here](./11-sql-bindings.md) to continue to chapter 1, Azure SQL Bindings for Azure Functions!
+Click [here](./11-sql-bindings.md) to continue to chapter 11, Azure SQL Bindings for Azure Functions!
