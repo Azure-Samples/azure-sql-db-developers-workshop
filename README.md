@@ -40,6 +40,7 @@ Workshop Tasks
 * Applications with SWA
 * Deploy to Azure SQL Database
 * Invoke REST endpoints in the database
+* Use Azure AI Services
 * Create a change data stream
 * CICD with GitHub Actions
 
