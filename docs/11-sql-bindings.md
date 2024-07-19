@@ -179,6 +179,34 @@ In this section, you will create a change data stream using Change Tracking, the
 
     and **save the file**.
 
+1. One quick item to check is at the top of the file.
+
+    ```C#
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Azure.WebJobs;
+    using Microsoft.Azure.WebJobs.Extensions.Sql
+    using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json;
+    ```
+
+    You may see that the **using Microsoft.Azure.WebJobs.Extensions.Sql** line is missing a semicolon (;). Please add a semicolon at the end of that line (**using Microsoft.Azure.WebJobs.Extensions.Sql;**) so it looks like the following:
+
+    ```C#
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Azure.WebJobs;
+    using Microsoft.Azure.WebJobs.Extensions.Sql;
+    using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json;
+    ```
+
+    and **save the file**.
+
 1. If you didn't already, **save the file**.
 
 ### Testing the trigger
@@ -190,7 +218,7 @@ In this section, you will create a change data stream using Change Tracking, the
     we stored the connection string for our Free Azure SQL Database connection. Open the `.env` file and copy the connection string entry
 
     ```text
-    Server=freedbsqlserver.database.windows.net;Initial Catalog=freeDB;User ID=swaappuser;Password=PASSWORD
+    Server=freedbsqlserver.database.windows.net;Initial Catalog=freedb;User ID=swaappuser;Password=PASSWORD
     ```
 
     in the clipboard.
@@ -202,7 +230,7 @@ In this section, you will create a change data stream using Change Tracking, the
 1. Paste the connection string entry copied from the `.env` into the `connection-string` property that you have to manually add to the opened JSON file, just below the **“Values”: {** section in the `local.settings.json` file
 
     ```JSON
-    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freeDB;User ID=sqladmin;Password=PASSWORD;",
+    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freedb;User ID=swaappuser;Password=PASSWORD;",
     ```
 
     ![A picture of pasting the connection-string entry copied from the staticwebapp.database.config.json file just below the “Values”: { section in the local.settings.json file ](./media/ch11/bind21.png)
@@ -214,7 +242,7 @@ In this section, you will create a change data stream using Change Tracking, the
 1. Back in the terminal, run the following command to start the Azure Function:
 
     ```bash
-    func start
+    func host start
     ```
 
     and once the function is started, right click on the Free Azure Database connection profile and select New Query.
