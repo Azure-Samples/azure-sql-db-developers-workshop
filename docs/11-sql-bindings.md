@@ -230,7 +230,7 @@ In this section, you will create a change data stream using Change Tracking, the
 1. Paste the connection string entry copied from the `.env` into the `connection-string` property that you have to manually add to the opened JSON file, just below the **“Values”: {** section in the `local.settings.json` file
 
     ```JSON
-    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freedb;User ID=swaappuser;Password=PASSWORD;",
+    "connection-string": "Server=freedbsqlserver.database.windows.net;Database=freedb;User ID=swaappuser;Password=PASSWORD;"
     ```
 
     ![A picture of pasting the connection-string entry copied from the staticwebapp.database.config.json file just below the “Values”: { section in the local.settings.json file ](./media/ch11/bind21.png)
