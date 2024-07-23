@@ -23,7 +23,7 @@ For this workshop, we will be using GitHub codespaces. This environment will pro
 * labFiles
     - contains files to be used with the workshop in various chapters
 * presentation_slides
-    - Slides for the PASS 2023 Monday pre-conference workshop
+    - Slides for the curent and past versions of the workshop presentation
 
 ### Free accounts needed for the workshop
 
