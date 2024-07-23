@@ -26,9 +26,9 @@ You are an application developer and have been asked to create a To-do list for 
 * Ability to mark a task as completed
 * Ability to delete tasks
 * The database needs to detect newly created tasks for microservices integration to other systems
-* The application need to be able to translate tasks into any language
+* The application needs to be able to translate tasks into any language
 
-Just a reminder, users should not be able to see other users tasks.
+Just a reminder, users should not be able to see other users' tasks.
 
 ### The Workshop: TLDR Edition
 
@@ -40,7 +40,7 @@ Workshop Tasks
 * Applications with SWA
 * Deploy to Azure SQL Database
 * Invoke REST endpoints in the database
-* Use Azure AI Services
+* Use Azure AI Services and friends
 * Create a change data stream
 * CICD with GitHub Actions
 
