@@ -305,7 +305,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ![A picture of the copy and pasted code into the update_todo.sql script](./media/ch2/database24d.png)
 
-    And again for the final procedure, right click on the project and select **Add Stored Procedure**.
+    And again, for the final procedure, right click on the project and select **Add Stored Procedure**.
 
     ![A picture of right clicking the project name and selecting Add Stored Procedure](./media/ch2/database24.png)
 
