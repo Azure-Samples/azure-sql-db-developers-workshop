@@ -34,7 +34,7 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of select a subscription and a Resource group on the Project details section of the page](./media/ch5/deploy1f.png)
 
-    Otherwise you can create a Resource group by clicking the **Create new** button.
+    Otherwise, you can create a Resource group by clicking the **Create new** button.
 
     ![A picture of creating a Resource group by clicking the **Create new** button](./media/ch5/deploy1g.png)
 
