@@ -4,7 +4,7 @@
 
 ## What is Data API builder?
 
-In modern application development, developers want to spend their time and effort on the front end frameworks; crafting the best user experience possible. Having to deal with backed APIs and database development is sometimes out of their skill sets or time consuming. It demands that the backend database queries are efficient and employ the highest levels of security.
+In modern application development, developers want to spend their time and effort on the front-end frameworks; crafting the best user experience possible. Having to deal with backed APIs and database development is sometimes out of their skill sets or time consuming. It demands that the backend database queries are efficient and employ the highest levels of security.
 
 Data API builder for Azure Databases provides modern REST and GraphQL endpoints to your Azure Databases with minimal to zero coding. With Data API builder, database objects, such as tables and stored procedures, can be securely exposed via REST or GraphQL endpoints. Once these objects are REST/GraphQL enabled, they can be accessed using modern application development techniques on any platform, with any language, and any device.
 
@@ -21,8 +21,8 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 * Item-level security via policy expressions
 * CRUD operations for REST Endpoints (POST, GET, PUT, PATCH, DELETE)
 * GraphQL queries and mutations
-* filtering, sorting and pagination
-* relationship navigation in GraphQL
+* Filtering, sorting and pagination
+* Relationship navigation in GraphQL
 
 ## Data API builder workshop tasks
 
@@ -113,7 +113,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     If you get an error with the user not being able to login, open the dab-config.json file and replace the password with what it there. Once the password is replaced and the file is saved, try the dab start command again.
 
 
-    If Data API builder has started successfully, codespace will show you that it opened up port 5000 in a dialog box in the lower right of the page.
+    If Data API builder has started successfully, codespace will show you that it opened port 5000 in a dialog box in the lower right of the page.
 
    ![A picture of codespace informing the user about the new open port for data API builder](./media/ch3/dab6.png)
 
@@ -129,7 +129,7 @@ The worksheets included are:
 - bananaCakePopWorksheet.txt
 - storeprocedureWorksheet.rest
 
-The `.rest` files all use a VS Code extenstion that allows you to submit REST/GraphQL resuests right in the editor. The bananaCakePopWorksheet.txt can be used in the GraphQL section if you choose to use the GraphQL Playground, Banana Cake Pop, that gets deployed when using Data API builder. The worksheets allow you to concentrate on the content and structure of the calls executed rather than diverting your attention to copy and paste activities.
+The `.rest` files all use a VS Code extension that allows you to submit REST/GraphQL resuests right in the editor. The bananaCakePopWorksheet.txt can be used in the GraphQL section if you choose to use the GraphQL Playground, Banana Cake Pop, that gets deployed when using Data API builder. The worksheets allow you to concentrate on the content and structure of the calls executed rather than diverting your attention to copy and paste activities.
 
 1. To start working with the REST endpoints, find the **restWorksheet.rest** file in the labFiles folder and click on it to bring it up in the code editor.
 
@@ -405,7 +405,7 @@ x-ms-correlation-id: 383d79b4-1646-4828-b66d-60fb0afcc14b
 
 ### GraphQL Endpoints
 
-To test the GraphQL endpoints you can either use the `graphqlWorksheet.rest` file or you can use the GraphQL interactive playground, Banana Cake Pop.  This playground is enabled as Data API builder has been configured to run in `development` mode (The playgound will not be enabled when running DAB in other modes).
+To test the GraphQL endpoints you can either use the `graphqlWorksheet.rest` file or you can use the GraphQL interactive playground, Banana Cake Pop.  This playground is enabled as Data API builder has been configured to run in `development` mode (The playground will not be enabled when running DAB in other modes).
 
 #### Using the graphqlWorksheet.rest file
 
@@ -608,9 +608,9 @@ X-Request-Type: GraphQL
 ---
 
 #### Create a relationship - one to many 
-To create a GraphQL relationship, first stop DAB via the terminal in codespaces. This can be done by issuing a Ctrl-C in the terminal window where Data API builder was started.
+To create a GraphQL relationship, first stop DAB via the terminal in codespace. This can be done by issuing a Ctrl-C in the terminal window where Data API builder was started.
 
-![A picture of stopping dab with ctrl-C in the terminal in codespaces](./media/ch3/dab14.png)
+![A picture of stopping dab with ctrl-C in the terminal in codespace](./media/ch3/dab14.png)
 
 Next, issue the following command in the same terminal window.
 
@@ -947,7 +947,7 @@ mutation {
 
 Data API builder can also REST/GraphQL enable stored procedures in the database. To enable the get_person_by_pet stored procedure, again stop Data API builder in the terminal with Ctrl-C.
 
-![A picture of stopping dab with ctrl-C in the terminal in codespaces](./media/ch3/dab14.png)
+![A picture of stopping dab with ctrl-C in the terminal in codespace](./media/ch3/dab14.png)
 
 #### Adding stored procedures for testing
 
