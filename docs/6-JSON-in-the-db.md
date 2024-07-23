@@ -4,7 +4,7 @@
 
 ## JSON in the Azure SQL Database
 
-Along with the the new JSON data type, transact-SQL supports various functions and operators that can be used to work with JSON documents in the Azure SQL database. The available functions are:
+Along with the new JSON data type, transact-SQL supports various functions and operators that can be used to work with JSON documents in the Azure SQL database. The available functions are:
 
 1. **[ISJSON](https://learn.microsoft.com/sql/t-sql/functions/isjson-transact-sql)**: Tests whether a string contains valid JSON.
 1. **[JSON_PATH_EXISTS](https://learn.microsoft.com/sql/t-sql/functions/json-path-exists-transact-sql)**: Tests whether a specified SQL/JSON path exists in the input JSON string.
@@ -183,7 +183,7 @@ The available operators are:
         ) AS T;
     ```
 
-1. Relational data can bw transformed into a JSON string using the new JSON_OBJECT and JSON_ARRAY functions. The new JSON_ARRAY function takes N values that can be specified as a constant, expression, variable, or column reference and formats them into a JSON array value. Using the query sheet, issue the following command:
+1. Relational data can be transformed into a JSON string using the new JSON_OBJECT and JSON_ARRAY functions. The new JSON_ARRAY function takes N values that can be specified as a constant, expression, variable, or column reference and formats them into a JSON array value. Using the query sheet, issue the following command:
 
     ```SQL
     SELECT o.OrderNumber,
@@ -233,7 +233,7 @@ The available operators are:
         ON a.AccountNumber = o.AccountNumber;
     ```
 
-1. In the last example,  a JSON aggregates is used with a GROUP BY clause like any aggregate that exists in Azure SQL Database today. Using the query sheet, issue the following command:
+1. In the last example, a JSON aggregates is used with a GROUP BY clause like any aggregate that exists in Azure SQL Database today. Using the query sheet, issue the following command:
 
     ```SQL
     SELECT schema_id, JSON_OBJECTAGG(name:object_id), JSON_ARRAYAGG(object_id), COUNT(*)
