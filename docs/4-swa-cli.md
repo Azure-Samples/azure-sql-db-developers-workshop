@@ -4,11 +4,11 @@
 
 ## What is Azure Static Web Apps?
 
-Azure Static Web Apps is a service that automatically builds and deploys full stack web apps to Azure from a code repository or can be used locally using SWA CLI. The workflow of Azure Static Web Apps is tailored to a developer's daily workflow; apps are built and deployed based on code changes to the repository for a complete CI/CD experience. When you create an Azure Static Web Apps resource, Azure interacts directly with GitHub or Azure DevOps, to monitor a branch of your choice. Every time you push commits or accept pull requests into the watched branch, a build automatically runs and your app and API deploys to Azure.
+Azure Static Web Apps is a service that automatically builds and deploys full stack web apps to Azure from a code repository or can be used locally using SWA CLI. The workflow of Azure Static Web Apps is tailored to a developer's daily workflow; apps are built and deployed based on code changes to the repository for a complete CI/CD experience. When you create an Azure Static Web Apps resource, Azure interacts directly with GitHub or Azure DevOps, to monitor a branch of your choice. Every time you push commits or accept pull requests into the watched branch, a build automatically runs, and your app and API deploys to Azure.
 
 ![A picture of the Azure Static Web Apps architecture](./media/ch4/swa1.png)
 
-Static web apps are commonly built using libraries and web frameworks like Angular, React, Svelte, Vue, or Blazor where server side rendering isn't required. These apps include HTML, CSS, JavaScript, and image assets that make up the application. With a traditional web server, these assets are served from a single server alongside any required API endpoints.
+Static web apps are commonly built using libraries and web frameworks like Angular, React, Svelte, Vue, or Blazor where server-side rendering isn't required. These apps include HTML, CSS, JavaScript, and image assets that make up the application. With a traditional web server, these assets are served from a single server alongside any required API endpoints.
 
 With Static Web Apps, static assets are separated from a traditional web server and are instead served from points geographically distributed around the world. This distribution makes serving files much faster as files are physically closer to end users. In addition, API endpoints are hosted using a serverless architecture, which avoids the need for a full back-end server altogether.
 
@@ -71,9 +71,9 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
     } 
     ```
 
-1. Next, create a directory called swa-db-connections in the top level directory. Use the following commands:
+1. Next, create a directory called swa-db-connections in the top-level directory. Use the following commands:
 
-    Be at the top level directory for the project
+    Be at the top-level directory for the project
 
     ```bash
     cd /workspaces/azure-sql-db-developers-workshop
@@ -109,7 +109,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 1. The sample JavaScript application uses Static Web Apps for the HTML and CSS files as well as uses the built in Data API builder integration for all the REST calls. 
 
-    ![A picture of the sample javascript application](./media/ch4/swa5.png)
+    ![A picture of the sample JavaScript application](./media/ch4/swa5.png)
 
     Give the application a try by **entering Cats into the Pet Preference** field and **clicking Submit**.
 
@@ -127,7 +127,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
 6. Looking at this file in the editor, first there is a call to the Static Web Apps authentication service at /.auth/me
 
-    ```javascript
+    ```JavaScript
     fetch('/.auth/me')
       .then(res => {
         return res.json()
@@ -314,7 +314,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     This will take you back to the sample application.
 
-1. In the sample application, again, enter Dogs into the Pet Preference text field and click submit. There will no longer be a 403 Status Error and the table will contain data returned by the REST enabled stored procedure.
+1. In the sample application, again, enter Dogs into the Pet Preference text field and click submit. There will no longer be a 403 Status Error, and the table will contain data returned by the REST enabled stored procedure.
 
     ![A picture of entering Dogs into the Pet Preference text field and click submit without an auth error](./media/ch4/swa13.png)
 
