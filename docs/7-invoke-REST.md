@@ -10,7 +10,7 @@ Azure SQL Database External REST Endpoint Invocation provides the ability to cal
 
 * Ability to push business logic out of the database and into Azure Functions
 * Pull/push data to/from external sources (including Azure Blob Storage) for ETL or derived data stores
-* Participate in event based architectures with Azure Event Hub or Kafka
+* Participate in event-based architectures with Azure Event Hub or Kafka
 
 External REST Endpoint Invocation can be called in an Azure SQL Database using the sp_invoke_external_rest_endpoint stored procedure. The following exercises and examples will guide you through calling various Azure Services and seeing how you can integrate REST into your applications and database development implementations.
 
@@ -20,7 +20,7 @@ External REST Endpoint Invocation can be called in an Azure SQL Database using t
 
 In the first example, a sample Azure Function has been created to be used. The function takes in a JSON payload with a currency type and responds with a conversion rate. This example illustrates how External REST Endpoint Invocation can use a web service in queries and reporting.
 
-By default, External REST Endpoint Invocation expects a JSON payload in the response but this can be overridden to be XML or text.
+By default, External REST Endpoint Invocation expects a JSON payload in the response, but this can be overridden to be XML or text.
 
 The pre-created function is as follows:
 
@@ -208,7 +208,7 @@ namespace Company.Function
 
 ### Get your AI Keys
 
-The next few chapters will be using various Azure AI services such as AI Language, OpenAI, and Content Safety. To use these services, we will be sending keys for authentication. They keys you need to use are found by issueing the following command to contact an Azure Function that contains the keys.
+The next few chapters will be using various Azure AI services such as AI Language, OpenAI, and Content Safety. To use these services, we will be sending keys for authentication. They keys you need to use are found by issuing the following command to contact an Azure Function that contains the keys.
 
 1. Copy and paste the following code into the query sheet
 
