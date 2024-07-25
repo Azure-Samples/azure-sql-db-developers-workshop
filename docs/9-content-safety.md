@@ -22,8 +22,8 @@ The following are the features available with AI Content Safety:
 
 | AI Content Safety Feature  | Description    |
 | -------------------------- | ------------- |
-|Analyze text API | Scans text for sexual content, violence, hate, and self harm with multi-severity levels.|
-|Analyze image API | Scans images for sexual content, violence, hate, and self harm with multi-severity levels.|
+|Analyze text API | Scans text for sexual content, violence, hate, and self-harm with multi-severity levels.|
+|Analyze image API | Scans images for sexual content, violence, hate, and self-harm with multi-severity levels.|
 |Prompt Shields (preview) | Scans text for the risk of a User input attack on a Large Language Model.|
 |Groundedness detection (preview) | Detects whether the text responses of large language models (LLMs) are grounded in the source materials provided by the users.|
 |Protected material text detection (preview) | Scans AI-generated text for known text content (for example, song lyrics, articles, recipes, selected web content).|
@@ -36,7 +36,7 @@ In this section, you will use Azure AI Content Safety with the External REST End
 
 ### Moderate text content
 
-The first feature to be used with AI Content Safety is **Moderate text content**, a tool for evaluating different content moderation scenarios such as social media, blog posts, or internal messaging. It takes into account various factors such as the type of content, the platform's policies, and the potential impact on users.
+The first feature to be used with AI Content Safety is **Moderate text content**, a tool for evaluating different content moderation scenarios such as social media, blog posts, or internal messaging. It considers various factors such as the type of content, the platform's policies, and the potential impact on users.
 
 1. Copy the following SQL and paste it into the SQL query editor.
 
@@ -63,7 +63,7 @@ The first feature to be used with AI Content Safety is **Moderate text content**
 
 1. Execute the SQL statement with the run button.
 
-1. View the return message. The content is classified into 4 categories and then given a score. Based on this score, you can decided to allow or block content.
+1. View the return message. The content is classified into 4 categories and then given a score. Based on this score, you can decide to allow or block content.
 
     ```JSON
         "result": {
