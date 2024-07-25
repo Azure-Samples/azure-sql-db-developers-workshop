@@ -215,7 +215,7 @@ The Answer Questions capability attempts to extract the answer to a given questi
 
 ### Document summarization
 
-This prebuilt summarization API can produce a summary for a conversation or from a document. This is a two step process where we first submit the text as a job then get the results with the **returned job request ID**.
+This prebuilt summarization API can produce a summary for a conversation or from a document. This is a two-step process where we first submit the text as a job then get the results with the **returned job request ID**.
 
 1. Copy the following SQL and paste it into the SQL query editor.
 
@@ -394,7 +394,7 @@ Azure AI Language Sentiment Analysis feature provides sentiment labels (such as 
 
 1. Execute the SQL statement with the run button.
 
-1. View the return message. You can see that the overall message was mixed and it classified one positive and one negative sentence in the text.
+1. View the return message. You can see that the overall message was mixed, and it classified one positive and one negative sentence in the text.
 
     ```JSON
     "documents": [
