@@ -178,7 +178,7 @@ Let's use the new GPT-4o model for this next call. We are going to ask it to des
     @response = @response output;
     select @ret as ReturnCode, @response as Response;
     ```
-1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity if not already filled in for you. Also, replace the **DALLE3_IMAGE_URL** with the url of the fantastical image you just created.
+1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity if not already filled in for you. Also, replace the **DALLE3_IMAGE_URL** with the URL of the fantastical image you just created.
 
 1. Execute the SQL statement with the run button.
 
@@ -226,7 +226,7 @@ Additional Best Practices from the documentation:
     where person_id = 1;
     ```
 
-    The resulting prompt is the following for person_id 1, which is Bill whom has a pet preference of Dogs:
+    The resulting prompt is the following for person_id 1, which is Bill who has a pet preference of Dogs:
 
     ```quote
     "You are an experienced marketing expert named Don Chase Katz. Generate 200 letters of ad copy to Bill to convince them to love Cats"
@@ -395,7 +395,7 @@ Additional Best Practices from the documentation:
 > Please change this name and key to align with the values in your account.
 > 
 
-In this next section, we will be using the Todo application against our Free Azure SQL Database. Then, we will be adding to the insert_todo stored procedure to call OpenAI via External REST endpoint invocation. We will be asking OpenAI to translate the Todo task's title into german and then insert that value into the table.
+In this next section, we will be using the Todo application against our Free Azure SQL Database. Then, we will be adding to the insert_todo stored procedure to call OpenAI via External REST endpoint invocation. We will be asking OpenAI to translate the Todo task's title into German and then insert that value into the table.
 
 1. Back in the **SQL Server Connections extension**, right click the database profile name,**Free Azure Database**, and select **New Query**. This will bring up a new query sheet.
 
@@ -425,7 +425,7 @@ In this next section, we will be using the Todo application against our Free Azu
         declare @translated_task VARCHAR(1000);
         declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
         declare @headers nvarchar(102) = N'{"api-key":"OPENAI_KEY"}'
-        declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into german, only respond with the translation"}]}'
+        declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into German, only respond with the translation"}]}'
         declare @ret int, @response nvarchar(max);
     
     BEGIN
@@ -477,11 +477,11 @@ In this next section, we will be using the Todo application against our Free Azu
     swa start
     ```
 
-1. Open the Todo application in a browser if not already opened, or refresh the current browser page where it was running.
+1. Open the Todo application in a browser if not already opened or refresh the current browser page where it was running.
 
-1. Enter a task name and see the title instantly transformed into german.
+1. Enter a task name and see the title instantly transformed into German.
  
-    ![A picture of a todo task being translated into german upon entry in the todo application](./media/ch7/rest10.png)
+    ![A picture of a todo task being translated into German upon entry in the todo application](./media/ch7/rest10.png)
 
 ## Continue to chapter 11
 
