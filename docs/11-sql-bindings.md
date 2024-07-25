@@ -263,7 +263,7 @@ In this section, you will create a change data stream using Change Tracking, the
     [2023-10-23T21:39:06.376Z] Executed 'SqlTriggerBindingCSharp1' (Succeeded, Id=89d5f873-9535-4658-a69f-01e2f0d80fe1, Duration=48ms)
     ```
 
-1. Stop the local function in the terminal in the codespace with a Ctrl-C.
+1. Stop the local function in the terminal in the codespace with a **Ctrl-C**.
 
 ## Continue to chapter 12
 
