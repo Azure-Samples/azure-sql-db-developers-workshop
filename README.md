@@ -43,6 +43,7 @@ Workshop Tasks
 * Use Azure AI Services and friends
 * Create a change data stream
 * CICD with GitHub Actions
+* Advanced Examples
 
 ### The Workshop
 
@@ -54,6 +55,10 @@ In the second lab, you will be using the new Data API builder to create REST and
 
 We will then expand our local development environments with Azure Functions and Static Web Applications. These frameworks will be installed and used locally but can be easily deployed into Azure. The Static Web Applications framework will provide us with a mock deployment platform locally so we can utilize features such as authentication, functions and database integration to simulate deploying our application and use the REST APIs made with Data API builder.
 
-The last lab will be highlighting how integration with other Azure services such as OpenAI, communications or Functions can be accomplished with REST Endpoint Invocation. These examples will show how data from an Azure SQL Database can be sent or received from other Azure Services utilizing authentication and REST endpoints.
+The next lab will be highlighting how integration with other Azure services such as OpenAI, communications or Functions can be accomplished with REST Endpoint Invocation. These examples will show how data from an Azure SQL Database can be sent or received from other Azure Services utilizing authentication and REST endpoints.
+
+Following this, you will be creating a trigger function using Azure Functions and Azure SQL Bindings for Azure Functions. The last lab will introduce you to CI/CD flows using GitHub Actions.
+
+Wrapping up the workshop is a final optional lab that combines many of the concepts you learned today and challenges you to write some code for real world use cases you may come across.
 
 Click [here](./docs/1-Getting-started.md) to get started!
