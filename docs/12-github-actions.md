@@ -156,3 +156,7 @@ The two GitHub Actions that will be used in this chapter are:
     and see the output and the successful deployment of the database objects to the test SQL Server 2022 in a docker container for this GitHub Workflow.
 
     ![A picture of the database deployment in github actions to the SQL Server in docker in codespaces](./media/ch12/act8.png)
+
+## Continue to chapter 13
+
+Click [here](./13-expand.md) to continue to chapter 13, expand your skills!
