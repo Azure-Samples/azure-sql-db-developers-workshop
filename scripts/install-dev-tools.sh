@@ -42,3 +42,5 @@ else
 fi
 
 echo 'export ASPNETCORE_HTTP_PORTS=5000' >> ~/.bashrc
+
+. ~/.bashrc
