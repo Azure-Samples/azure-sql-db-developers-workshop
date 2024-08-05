@@ -52,10 +52,11 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     touch .env
     ```
 
-> [!IMPORTANT]  
-> Remeber to use the ADO.NET connection string in the .env file.
+1. Now find the **.env** file in the file navigator and click it to bring it up in the code editor.
 
-3. And then add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in the previous step:
+    ![A picture of clicking the .env file in the file navigator and click it to bring it up in the code editor](./media/ch3/dab0a1.png)
+
+1. Add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in the previous step:
 
     ```text
     MSSQL='THE ADO.NET CONNECTION STRING YOU COPIED FROM RUNNING sqlcmd config connection-strings --database devDB | grep ADO.NET'
@@ -63,7 +64,10 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     ![The connection string saved in the environment file](./media/ch3/dab0.png)
 
-    Then, you can use the Data API Builder (DAB) CLI to initialize the configuration file:
+> [!IMPORTANT]  
+> Remeber to use the ADO.NET connection string in the .env file.
+
+5. Then, you can use the Data API Builder (DAB) CLI to initialize the configuration file:
 
     ```bash
     dab init --database-type "mssql" --connection-string "@env('MSSQL')" --host-mode "Development" --rest.path "rest"
