@@ -24,6 +24,26 @@ another option to do the same, if you prefer a command line approach, is to run,
 sqlcmd start
 ```
 
+## Data API builder (DAB) starts on port 8080
+
+If you start dab (dab start), and it comes up on port 8080, you can change it back to 5000 with the following steps.
+
+1. Stop dab with a crtl-C
+
+2. Run the following code in the terminal
+
+    ```BASH
+    echo 'export ASPNETCORE_HTTP_PORTS=5000' >> ~/.bashrc
+    ```
+
+    followed by running this code in the terminal to uptake the new change
+
+    ```BASH
+    . ~/.bashrc
+    ```
+
+3. Start up dab again (dab start)
+
 ## Testing connection profile message on the bottom right of the codespace and an unexpected error message on reload
 
 If you see the testing connection profile message on the bottom right of the codespace constantly running 
