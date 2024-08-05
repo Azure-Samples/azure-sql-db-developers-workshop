@@ -1,0 +1,270 @@
+{
+    "$schema": "https://github.com/Azure/data-api-builder/releases/download/v1.1.7/dab.draft.schema.json",
+    "data-source": {
+      "database-type": "mssql",
+      "connection-string": "@env('MSSQL')",
+      "options": {
+        "set-session-context": false
+      }
+    },
+    "runtime": {
+      "rest": {
+        "enabled": true,
+        "path": "/rest",
+        "request-body-strict": true
+      },
+      "graphql": {
+        "enabled": true,
+        "path": "/graphql",
+        "allow-introspection": true
+      },
+      "host": {
+        "cors": {
+          "origins": [],
+          "allow-credentials": false
+        },
+        "authentication": {
+          "provider": "StaticWebApps"
+        },
+        "mode": "development"
+      }
+    },
+    "entities": {
+      "Person": {
+        "source": {
+          "object": "dbo.person",
+          "type": "table"
+        },
+        "graphql": {
+          "enabled": true,
+          "type": {
+            "singular": "Person",
+            "plural": "People"
+          }
+        },
+        "rest": {
+          "enabled": true,
+          "path": "/person"
+        },
+        "permissions": [
+          {
+            "role": "anonymous",
+            "actions": [
+              {
+                "action": "*"
+              }
+            ]
+          }
+        ],
+        "relationships": {
+          "addresses": {
+            "cardinality": "many",
+            "target.entity": "Address",
+            "source.fields": [],
+            "target.fields": [],
+            "linking.source.fields": [],
+            "linking.target.fields": []
+          }
+        }
+      },
+      "Address": {
+        "source": {
+          "object": "dbo.address",
+          "type": "table"
+        },
+        "graphql": {
+          "enabled": true,
+          "type": {
+            "singular": "Address",
+            "plural": "Addresses"
+          }
+        },
+        "rest": {
+          "enabled": true,
+          "path": "/address"
+        },
+        "permissions": [
+          {
+            "role": "anonymous",
+            "actions": [
+              {
+                "action": "*"
+              }
+            ]
+          }
+        ]
+      },
+      "Todo": {
+        "source": {
+          "object": "dbo.todo",
+          "type": "table"
+        },
+        "graphql": {
+          "enabled": true,
+          "type": {
+            "singular": "Todo",
+            "plural": "Todos"
+          }
+        },
+        "rest": {
+          "enabled": true,
+          "path": "/todo"
+        },
+        "permissions": [
+          {
+            "role": "anonymous",
+            "actions": [
+              {
+                "action": "*"
+              }
+            ]
+          }
+        ],
+        "mappings": {
+          "position": "order"
+        }
+      },
+      "GetPersonByPet": {
+        "source": {
+          "object": "dbo.get_person_by_pet",
+          "type": "stored-procedure",
+          "parameters": {
+            "pet": ""
+          }
+        },
+        "graphql": {
+          "enabled": true,
+          "operation": "query",
+          "type": {
+            "singular": "GetPersonByPet",
+            "plural": "GetPersonByPets"
+          }
+        },
+        "rest": {
+          "enabled": true,
+          "methods": [
+            "get"
+          ]
+        },
+        "permissions": [
+          {
+            "role": "anonymous",
+            "actions": [
+              {
+                "action": "execute"
+              }
+            ]
+          }
+        ]
+      },
+      "InsertTodo": {
+        "source": {
+          "object": "dbo.insert_todo",
+          "type": "stored-procedure",
+          "parameters": {
+            "title": "",
+            "owner_id": "",
+            "order": ""
+          }
+        },
+        "graphql": {
+          "enabled": false,
+          "operation": "mutation",
+          "type": {
+            "singular": "InsertTodo",
+            "plural": "InsertTodos"
+          }
+        },
+        "rest": {
+          "enabled": true,
+          "path": "/insert_todo",
+          "methods": [
+            "post"
+          ]
+        },
+        "permissions": [
+          {
+            "role": "anonymous",
+            "actions": [
+              {
+                "action": "execute"
+              }
+            ]
+          }
+        ]
+      },
+      "UpdateTodo": {
+        "source": {
+          "object": "dbo.update_todo",
+          "type": "stored-procedure",
+          "parameters": {
+            "id": "",
+            "title": "",
+            "owner_id": "",
+            "completed": false,
+            "order": ""
+          }
+        },
+        "graphql": {
+          "enabled": false,
+          "operation": "mutation",
+          "type": {
+            "singular": "UpdateTodo",
+            "plural": "UpdateTodos"
+          }
+        },
+        "rest": {
+          "enabled": true,
+          "path": "/update_todo",
+          "methods": [
+            "post"
+          ]
+        },
+        "permissions": [
+          {
+            "role": "anonymous",
+            "actions": [
+              {
+                "action": "execute"
+              }
+            ]
+          }
+        ]
+      },
+      "DeleteTodo": {
+        "source": {
+          "object": "dbo.delete_todo",
+          "type": "stored-procedure",
+          "parameters": {
+            "id": "",
+            "owner_id": ""
+          }
+        },
+        "graphql": {
+          "enabled": false,
+          "operation": "mutation",
+          "type": {
+            "singular": "DeleteTodo",
+            "plural": "DeleteTodos"
+          }
+        },
+        "rest": {
+          "enabled": true,
+          "path": "/delete_todo",
+          "methods": [
+            "delete"
+          ]
+        },
+        "permissions": [
+          {
+            "role": "anonymous",
+            "actions": [
+              {
+                "action": "execute"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
