@@ -445,12 +445,12 @@ To test the GraphQL endpoints you can either use the `graphqlWorksheet.rest` fil
 
     ![A picture of hovering over the local address for port 5000 where Data API builder is running and then left click the world icon to open the URL in a new browser tab](./media/ch3/dab18.png)
 
-1. Once the new tab is opened, append `/graphql` at the end of the URL and then press enter/return.
+1. Once the new tab is opened, append `/graphql/` at the end of the URL and then press enter/return.
 
-    ![A picture of appending /graphql at the end of the URL that was just opened in a new tab](./media/ch3/dab19a.png)
+    ![A picture of appending /graphql/ at the end of the URL that was just opened in a new tab](./media/ch3/dab19a.png)
 
   > [!NOTE]  
-  > Your URL will be different than the one in the above image excepting for the appending of `/graphql` at the end.
+  > Your URL will be different than the one in the above image excepting for the appending of `/graphql/` at the end.
 
 1. You will now see the GraphQL playground, Banana Cake Pop:
 
