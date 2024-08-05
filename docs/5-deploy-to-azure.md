@@ -102,6 +102,26 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of clicking the button labeled "Add your client IPv4 address (X.X.X.X)" to add your local IP address for database access](./media/ch5/deploy1v.png)
 
+1. Next, we need to add the codespace IP address so we can deploy the project to this Azure SQL database.
+
+    Back in the codespace, at a terminal, run the following code:
+
+    ```BASH
+    curl icanhazip.com
+    ```
+
+    This should return an IP address; the IP address of your code space.
+
+    ![A picture of the codespace ip address](./media/ch5/deploy1xIP1.png)
+
+1. Back in the Azure portal, the firewall rules page, click the **+ Add a firewall rule** button
+
+    ![A picture of clicking the Add a firewall rule button](./media/ch5/deploy1xIP2.png)
+
+1. In the pop up box, name the rule **codespace**. Then enter the **IP address** you got back from the curl command above for both the **StartIP** and **EndIP** fields. Then click the blue **OK** button.
+
+    ![A picture of setting up a rule for the codespace in the firewall](./media/ch5/deploy1xIP3.png)
+
 1. Finally, click the **Save** button in the lower left of the page.
 
     ![A picture of clicking the save button in the lower left of the page](./media/ch5/deploy1x.png)
