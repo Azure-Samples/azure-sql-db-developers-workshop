@@ -41,4 +41,4 @@ else
   echo 'PATH=$PATH:$HOME/.dotnet/tools' >> ~/.bashrc
 fi
 
-
+echo 'export ASPNETCORE_HTTP_PORTS=5000' >> ~/.bashrc

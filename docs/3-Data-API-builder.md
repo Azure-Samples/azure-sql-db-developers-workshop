@@ -66,7 +66,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     ![The connection string saved in the environment file](./media/ch3/dab0.png)
 
 > [!IMPORTANT]  
-> Remeber to use the ADO.NET connection string in the .env file.
+> Remeber to use **your** ADO.NET connection string in the .env file.
 
 ### Creating the init file
 
