@@ -44,6 +44,22 @@ If you start dab (dab start), and it comes up on port 8080, you can change it ba
 
 3. Start up dab again (dab start)
 
+## Going to the Banana Cake Pop URL results in an error
+
+If you append /graphql at the end of the URL in chapter 3 you will get the following resulting URL
+
+```code
+https://upgraded-telegram-rvwpqqqj7v2x7gg-5000.app.github.dev:5000/graphql/
+```
+
+and the page will not load.
+
+You can resolve this by appending /graphql/ at the end of the URL or modify the wrong URL that results in an error to be similar to the following:
+
+```code
+https://upgraded-telegram-rvwpqqqj7v2x7gg-5000.app.github.dev/graphql/
+```
+
 ## Testing connection profile message on the bottom right of the codespace and an unexpected error message on reload
 
 If you see the testing connection profile message on the bottom right of the codespace constantly running 
