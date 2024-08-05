@@ -42,6 +42,8 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     sqlcmd config connection-strings --database devDB | grep ADO.NET
     ```
 
+    And copy this connect string just as you did in the previous chapter when creating a connection with the SQL Extension.
+
     Now, since the connection string is using a login/password pair, we're going to use environment variables to avoid storing the connection string in the Data API Builder configuration file.
 
     Create an environment file:
@@ -52,8 +54,11 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     and then add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in the previous step:
 
+    > [!IMPORTANT]  
+    > Remeber to use the ADO.NET connection string in the .env file.
+
     ```text
-    MSSQL='Server=tcp:127.0.0.1,1433;Initial Catalog=devDB;Persist Security Info=False;User ID=vscode;Password=...;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;'
+    MSSQL='THE ADO.NET CONNECTION STRING YOU COPIED FROM RUNNING sqlcmd config connection-strings --database devDB | grep ADO.NET'
     ```
 
     ![The connection string saved in the environment file](./media/ch3/dab0.png)
