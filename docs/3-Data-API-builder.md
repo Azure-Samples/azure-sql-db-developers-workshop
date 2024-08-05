@@ -52,10 +52,10 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     touch .env
     ```
 
-    and then add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in the previous step:
-
 > [!IMPORTANT]  
 > Remeber to use the ADO.NET connection string in the .env file.
+
+3. And then add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in the previous step:
 
     ```text
     MSSQL='THE ADO.NET CONNECTION STRING YOU COPIED FROM RUNNING sqlcmd config connection-strings --database devDB | grep ADO.NET'
