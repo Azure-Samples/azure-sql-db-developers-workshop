@@ -74,14 +74,6 @@ The available operators are:
 
     ![A picture of the inserted rows with the JSON type column](./media/ch6/json2.png)
 
-1. Click the order_info data cell 
-
-    ![A picture of clicking on the order_info data cell in the JSON type column](./media/ch6/json3.png)
-
-    to see the JSON in the order_info column in a new window.
-
-    ![A picture of the JSON in the order_info JSON type column](./media/ch6/json4.png)
-
 1. Using [JSON_VALUE](https://learn.microsoft.com/sql/t-sql/functions/json-value-transact-sql) and [JSON_QUERY](https://learn.microsoft.com/sql/t-sql/functions/json-query-transact-sql), JSON stored in the database can be extracted as a relational result set. Using the query sheet, issue the following command:
 
     ```SQL
