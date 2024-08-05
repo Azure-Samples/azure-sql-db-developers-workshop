@@ -59,14 +59,14 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
 1. Add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in a previous step:
 
-> [!IMPORTANT]  
-> Remeber to use the ADO.NET connection string in the .env file.
-
     ```text
     MSSQL='THE ADO.NET CONNECTION STRING YOU COPIED'
     ```
 
     ![The connection string saved in the environment file](./media/ch3/dab0.png)
+
+> [!IMPORTANT]  
+> Remeber to use the ADO.NET connection string in the .env file.
 
 ### Creating the init file
 
