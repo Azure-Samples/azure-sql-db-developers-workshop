@@ -26,9 +26,10 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
 ## Data API builder workshop tasks
 
-### REST/GraphQL enable a table
+### Setting the connect string in a .env file
 
-> **Step one is important. Be sure to be back in the main directory for this section of the workshop.**
+> [!IMPORTANT]  
+> **This section is important. Be sure to be back in the main directory for this section of the workshop.**
 
 1. Back in your codespace, at the terminal at the bottom of the page, **return to the main directory**
 
@@ -36,7 +37,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
     cd /workspaces/azure-sql-db-developers-workshop
     ```
 
-1. Next step is to create the Data API Builder initialization file. You need to get the connection string to connect to the `devDB` database that you created before. Since Data API builder is a .NET application, you can get the correct connection string using the following command:
+1. Next step is to put our database connection string into a local .env file so it is not hardcoded into the Data API builder init file. You need to get the connection string to connect to the `devDB` database that you created in chapter 2. Since Data API builder is a .NET application, you can get the correct connection string using the following command:
 
     ```bash
     sqlcmd config connection-strings --database devDB | grep ADO.NET
@@ -46,7 +47,7 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     Now, since the connection string is using a login/password pair, we're going to use environment variables to avoid storing the connection string in the Data API Builder configuration file.
 
-    Create an environment file:
+1. Create an environment file by running the following code in the terminal:
 
     ```bash
     touch .env
@@ -56,18 +57,20 @@ Also, Data API builder is Open Source and works on any platform; on-premises, in
 
     ![A picture of clicking the .env file in the file navigator and click it to bring it up in the code editor](./media/ch3/dab0a1.png)
 
-1. Add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in the previous step:
-
-    ```text
-    MSSQL='THE ADO.NET CONNECTION STRING YOU COPIED FROM RUNNING sqlcmd config connection-strings --database devDB | grep ADO.NET'
-    ```
-
-    ![The connection string saved in the environment file](./media/ch3/dab0.png)
+1. Add the connection string to the environment file from Visual Studio Code, setting the `MSSQL` variable to the connection string you obtained in a previous step:
 
 > [!IMPORTANT]  
 > Remeber to use the ADO.NET connection string in the .env file.
 
-5. Then, you can use the Data API Builder (DAB) CLI to initialize the configuration file:
+    ```text
+    MSSQL='THE ADO.NET CONNECTION STRING YOU COPIED'
+    ```
+
+    ![The connection string saved in the environment file](./media/ch3/dab0.png)
+
+### Creating the init file
+
+1. Then, you can use the Data API Builder (DAB) CLI to initialize the configuration file:
 
     ```bash
     dab init --database-type "mssql" --connection-string "@env('MSSQL')" --host-mode "Development" --rest.path "rest"
