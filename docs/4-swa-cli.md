@@ -318,7 +318,7 @@ Static Web Apps has built in [integration with the Azure SQL Database/Local SQL 
 
     ![A picture of entering Dogs into the Pet Preference text field and click submit without an auth error](./media/ch4/swa13.png)
 
-1. Click the Logoff link
+1. **Click the Logoff link**
 
     ![A picture of clicking the logoff link](./media/ch4/swa14.png)
 
