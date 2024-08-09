@@ -2,7 +2,7 @@
 
 # Using Azure AI Content Safety
 
-![A picture of the AI Language logo](./media/ch9/contentSafety.png)
+![A picture of the Ai Content Safety logo](./media/ch9/contentSafety.png)
 
 ## Azure AI Content Safety
 
@@ -59,7 +59,7 @@ The first feature to be used with AI Content Safety is **Moderate text content**
     select @ret as ReturnCode, @response as Response;
     ```
 
-1. Replace the **CONTENT_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
+1. Replace the **CONTENT_KEY** text with the Ai Content Safety Key that was returned to you in the previous chapter when testing connectivity.
 
 1. Execute the SQL statement with the run button.
 
@@ -116,7 +116,7 @@ Prompt Shields provides a unified API that addresses the following types of atta
     select @ret as ReturnCode, @response as Response;
     ```
 
-1. Replace the **CONTENT_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
+1. Replace the **CONTENT_KEY** text with the Ai Content Safety Key that was returned to you in the previous chapter when testing connectivity.
 
 1. Execute the SQL statement with the run button.
 
@@ -156,7 +156,7 @@ Use protected material detection to detect and protect third-party text material
     select @ret as ReturnCode, @response as Response;
     ```
 
-1. Replace the **CONTENT_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
+1. Replace the **CONTENT_KEY** text with the Ai Content Safety Key that was returned to you in the previous chapter when testing connectivity.
 
 1. Execute the SQL statement with the run button.
 
