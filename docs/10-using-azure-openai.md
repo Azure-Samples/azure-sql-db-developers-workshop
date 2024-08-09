@@ -112,7 +112,7 @@ The image generation API creates an image from a text prompt.
     select @ret as ReturnCode, @response as Response;
     ```
 
-1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
+1. Replace the **OPENAI_KEY** text with the Azure OpenAI Key that was returned to you in the previous chapter when testing connectivity.
 
 1. Execute the SQL statement with the run button.
 
@@ -178,7 +178,7 @@ Let's use the new GPT-4o model for this next call. We are going to ask it to des
     @response = @response output;
     select @ret as ReturnCode, @response as Response;
     ```
-1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity if not already filled in for you. Also, replace the **DALLE3_IMAGE_URL** with the URL of the fantastical image you just created.
+1. Replace the **OPENAI_KEY** text with the Azure OpenAI Key that was returned to you in the previous chapter when testing connectivity if not already filled in for you. Also, replace the **DALLE3_IMAGE_URL** with the URL of the fantastical image you just created.
 
 1. Execute the SQL statement with the run button.
 
@@ -276,7 +276,7 @@ Additional Best Practices from the documentation:
     select json_value(@response, '$.result.choices[0].message.content') as [Message];
     ```
 
-1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
+1. Replace the **OPENAI_KEY** text with the Azure OpenAI Key that was returned to you in the previous chapter when testing connectivity.
 
 1. Once the code is in the codespace query editor sheet, run it with the green run arrow in the upper right.
 
@@ -451,7 +451,7 @@ In this next section, we will be using the Todo application against our Free Azu
     GO
     ```
 
-1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
+1. Replace the **OPENAI_KEY** text with the Azure OpenAI Key that was returned to you in the previous chapter when testing connectivity.
 
 > [!CAUTION]  
 > Putting your authentication keys in plain text in a procedure is **NOT** a best practice. We are only doing it here as an example but **managed identies should be used**.
