@@ -179,11 +179,17 @@ The available operators are:
 
     ```SQL
     SELECT o.OrderNumber,
-    		JSON_OBJECT('Date':o.OrderTime, 'Price':o.Price, 'Quantity':o.Quantity, 
-    			'AccountDetails':JSON_OBJECT('AccountNumber':o.AccountNumber,
-                'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3))) AS OrderDetails
-      FROM OrdersR AS o
-      JOIN Accounts AS a
+		JSON_OBJECT(
+            'Date':o.OrderTime, 
+            'Price':o.Price, 
+            'Quantity':o.Quantity, 
+			'AccountDetails':JSON_OBJECT(
+                'AccountNumber':o.AccountNumber,
+                'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)
+            )
+        ) AS OrderDetails
+    FROM OrdersR AS o
+    JOIN Accounts AS a
         ON a.AccountNumber = o.AccountNumber;
     ```
 
@@ -199,11 +205,17 @@ The available operators are:
 
     ```SQL
     SELECT JSON_OBJECTAGG(
-                    OrderNumber:JSON_OBJECT(
-                            'Date':o.OrderTime, 'Price':o.Price, 'Quantity':o.Quantity,
-                            'AccountDetails':JSON_OBJECT('AccountNumber':o.AccountNumber,
-                            'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)))) 
-            AS Orders
+            OrderNumber:JSON_OBJECT(
+                'Date':o.OrderTime, 
+                'Price':o.Price, 
+                'Quantity':o.Quantity,
+                'AccountDetails':JSON_OBJECT(
+                    'AccountNumber':o.AccountNumber,
+                    'PhoneNumbers':JSON_ARRAY(a.Phone1, a.Phone2, a.Phone3)
+                )
+            )
+        ) 
+        AS Orders
     FROM OrdersR AS o
         JOIN Accounts AS a
         ON a.AccountNumber = o.AccountNumber;
