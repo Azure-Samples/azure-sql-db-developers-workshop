@@ -22,7 +22,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
     cd /workspaces/azure-sql-db-developers-workshop
     ```
 
-1. Using the codespace termnal, source the .bashrc file to uptake any changes the install may have made to the path
+1. Using the codespace termnal, source the `.bashrc` file to uptake any changes the install may have made to the path
 
     ```bash
     . ~/.bashrc
@@ -446,6 +446,7 @@ The SQL Database Projects extension is an Azure Data Studio and Visual Studio Co
 
     ```SQL
     select * from person
+    
     select p.person_name, a.address
     from person p, address a
     where p.person_id = a.person_id;
