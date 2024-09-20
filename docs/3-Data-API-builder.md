@@ -456,6 +456,9 @@ To test the GraphQL endpoints you can either use the `graphqlWorksheet.rest` fil
   > [!NOTE]  
   > Your URL will be different than the one in the above image excepting for the appending of `/graphql/` at the end.
 
+  > [!WARNING]
+  > If you are running from Codespaces and you get an error like `This <your-app-name>.app.github.dev page can’t be found`, check the URL to see if `:5000` has been automatically added before `/graphql/`. If yes, remove it: Codespaces port redirection will automatically take care of directing request to the correct port.
+
 1. You will now see the GraphQL playground, Banana Cake Pop:
 
     ![A picture of the welcome page of Banana Cake Pop GraphQL interactive playground](../docs/media/ch3/dab-bcp.png)
