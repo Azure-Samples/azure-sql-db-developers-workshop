@@ -39,8 +39,6 @@ namespace func
         [Function(nameof(HttpTriggerFunctionSQL))]
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, [FromBody] dynamic data)
         {
-            _logger.LogInformation("C# HTTP trigger function processed a request.");
-
             string? currency = req.Query["currency"];
             currency ??= data?.currency ?? "USD";
             
