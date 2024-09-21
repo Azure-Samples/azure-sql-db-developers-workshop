@@ -1,0 +1,10 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+        "OPENAI_KEY": "",
+        "LANGUAGE_SERVICE_KEY": "",
+        "CONTENT_SAFETY_KEY": ""
+    }
+}
