@@ -336,7 +336,7 @@ Azure AI Language Sentiment Analysis feature provides sentiment labels (such as 
 1. Copy the following SQL and paste it into the SQL query editor.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-language-service.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "SentimentAnalysis",
@@ -428,7 +428,7 @@ The Language Detection feature of the Azure AI Language REST API evaluates text 
     declare @message nvarchar(max);
     SET @message = N'Adapté à tous les usages, sur route ou tout-terrain. Pour toutes les bourses. Changement de braquet en douceur et conduite confortable.';
 
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-language-service.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "LanguageDetection",
@@ -486,7 +486,7 @@ This prebuilt capability uses Named Entity Recognition (NER) to identify entitie
     declare @message nvarchar(max);
     SET @message = N'All-occasion value bike with our basic comfort and safety features. Offers wider, more stable tires for a ride around town or weekend trip.';
 
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-language-service.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "EntityRecognition",
@@ -515,6 +515,23 @@ This prebuilt capability uses Named Entity Recognition (NER) to identify entitie
         @response = @response output;
 
     select @ret as ReturnCode, @response as Response;
+    select
+        d.id,
+        e.*
+    from
+        openjson(@response, '$.result.results.documents[0]') with
+            (   
+                id int,
+                entities nvarchar(max) as json
+            ) d
+    cross apply 
+        openjson(d.entities) with (
+            [text] nvarchar(100),
+            [category] nvarchar(100),
+            [offset] int,
+            [length] int,
+            confidenceScore decimal(9,2)
+        ) e
     ```
 
 1. Replace the **LANGUAGE_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
@@ -558,6 +575,8 @@ This prebuilt capability uses Named Entity Recognition (NER) to identify entitie
     ],
     ```
 
+1. You also have an example of how the returned JSON can be easily converted into a table using OPENJSON.
+
 1. If you want to experiment with this, you can change the **ProductDescriptionID** in the SQL statement that sets the message. Some values you can use are 661, 1062, or 647.
 
 ### Entity Linking
@@ -570,7 +589,7 @@ This prebuilt capability disambiguates the identity of an entity found in text b
     declare @message nvarchar(max);
     SET @message = N'Top-of-the-line competition mountain bike. Performance-enhancing options include the innovative HL Frame, super-smooth front suspension, and traction for all terrain.';
 
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-language-service.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "EntityLinking",
