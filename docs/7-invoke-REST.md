@@ -36,8 +36,8 @@ namespace func
     {
         private readonly ILogger<HttpTriggerFunctionSQL> _logger = logger;
 
-        [Function(nameof(HttpTriggerFunctionSQL))]
-        public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, [FromBody] dynamic data)
+        [Function(nameof(ConvertCurrency))]
+        public IActionResult ConvertCurrency([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, [FromBody] dynamic data)
         {
             string? currency = req.Query["currency"];
             currency ??= data?.currency ?? "USD";
@@ -92,7 +92,7 @@ namespace func
     DECLARE @ret INT, @response NVARCHAR(MAX), @priceConversion float;
     
     EXEC @ret = sp_invoke_external_rest_endpoint
-      @url = N'https://vsliveredmond2024.azurewebsites.net/api/HttpTriggerFunctionSQL',
+      @url = N'https://dm-dev-workshop-func.azurewebsites.net/api/ConvertCurrency',
       @payload = N'{"currency":"JPY"}',
       @method = N'POST',
       @response = @response OUTPUT;
@@ -195,7 +195,7 @@ The next few chapters will be using various Azure AI services such as AI Languag
         DECLARE @headers nvarchar(102) = N'{"Accept":"text/*"}'
 
         EXEC @ret = sp_invoke_external_rest_endpoint
-        @url = N'https://vsliveredmond2024.azurewebsites.net/api/getKeys',
+        @url = N'https://dm-dev-workshop-func.azurewebsites.net/api/GetKeys',
         @method = 'GET',
         @headers = @headers,
         @response = @response OUTPUT;
