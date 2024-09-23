@@ -191,16 +191,16 @@ The next few chapters will be using various Azure AI services such as AI Languag
 1. Copy and paste the following code into the query sheet
 
     ```SQL
-        DECLARE @ret INT, @response NVARCHAR(MAX)
-        DECLARE @headers nvarchar(102) = N'{"Accept":"text/*"}'
+    DECLARE @ret INT, @response NVARCHAR(MAX)
+    DECLARE @headers nvarchar(102) = N'{"Accept":"text/*"}'
 
-        EXEC @ret = sp_invoke_external_rest_endpoint
-        @url = N'https://dm-dev-workshop-func.azurewebsites.net/api/GetKeys',
-        @method = 'GET',
-        @headers = @headers,
-        @response = @response OUTPUT;
-        
-        SELECT @ret AS ReturnCode, @response AS Response;
+    EXEC @ret = sp_invoke_external_rest_endpoint
+    @url = N'https://dm-dev-workshop-func.azurewebsites.net/api/GetKeys',
+    @method = 'GET',
+    @headers = @headers,
+    @response = @response OUTPUT;
+    
+    SELECT @ret AS ReturnCode, @response AS Response;
     ```
 
 1. To execute the code, **left click the green arrow** on the top right of the query sheet.
