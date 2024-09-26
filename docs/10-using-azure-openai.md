@@ -238,10 +238,6 @@ Additional Best Practices from the documentation:
 
 ### Sending the prompt text with External REST Endpoint Invocation
 
-> [!NOTE]
-> The server name in the URL parameter on the next example is `aidemo` and the headers parameter value for api-key is `1234567890`.
-> Please change this name and key to align with the values in your account.
-> 
 
 1. Open a new query sheet
 
@@ -393,11 +389,6 @@ Additional Best Practices from the documentation:
     ```
 
 ### The Todo application, SWA, and External REST Endpoint Invocation
-
-> [!NOTE]
-> The server name in the URL parameter on the next example is `aidemo` and the headers parameter value for api-key is `1234567890`.
-> Please change this name and key to align with the values in your account.
-> 
 
 In this next section, we will be using the Todo application against our Free Azure SQL Database. Then, we will be adding to the insert_todo stored procedure to call OpenAI via External REST endpoint invocation. We will be asking OpenAI to translate the Todo task's title into German and then insert that value into the table.
 
