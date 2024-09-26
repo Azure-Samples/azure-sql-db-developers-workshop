@@ -34,10 +34,13 @@ An embedding is a special format of data representation that machine learning mo
 1. Copy the following SQL and paste it into the SQL query editor. You can see from the T-SQL that we are going to create an embedding for a text string.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024embeddings/embeddings?api-version=2024-02-01';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ai.openai.azure.com/openai/deployments/text-embedding-3-large/embeddings?api-version=2024-02-01';
     declare @headers nvarchar(300) = N'{"api-key": "OPENAI_KEY"}';
-    declare @message nvarchar(max);
-    SET @message = N'{"input": "Its me Hi Im the problem, its me At teatime Everybody agrees Ill stare directly at the sun but never in the mirror It must be exhausting always rooting for the anti-hero"}';
+    declare @payload nvarchar(max);
+    set @payload = json_object(
+        'input': 'Its me Hi Im the problem, its me At teatime Everybody agrees I''ll stare directly at the sun but never in the mirror It must be exhausting always rooting for the anti-hero',
+        'dimensions': 1536
+    );
 
     declare @ret int, @response nvarchar(max);
 
@@ -45,11 +48,12 @@ An embedding is a special format of data representation that machine learning mo
         @url = @url,
         @method = 'POST',
         @headers = @headers,
-        @payload = @message,
+        @payload = @payload,
         @timeout = 230,
         @response = @response output;
 
     select @ret as ReturnCode, @response as Response;
+    select count(*) from openjson(@response, '$.result.data[0].embedding') -- check that the embedding is 1536 dimensions
     ```
 
 1. Replace the **OPENAI_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
@@ -88,7 +92,7 @@ The image generation API creates an image from a text prompt.
 1. Copy the following SQL and paste it into the SQL query editor. We are going to use a product description from the adventure works dataset which will be sent to the DALL-E 3 text to image endpoint.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024wallE/images/generations?api-version=2023-12-01-preview';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ai.openai.azure.com/openai/deployments/dall-e-3/images/generations?api-version=2024-02-01';
     declare @headers nvarchar(300) = N'{"api-key": "OPENAI_KEY"}';
     declare @message nvarchar(max);
     SET @message = N'{
@@ -143,7 +147,7 @@ Let's use the new GPT-4o model for this next call. We are going to ask it to des
 1. Copy the following SQL and paste it into the SQL query editor. 
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2023-03-15-preview';
     declare @headers nvarchar(102) = N'{"api-key":"OPENAI_KEY"}';
     declare @payload nvarchar(max) = N'{
         "messages": [
@@ -258,7 +262,7 @@ Additional Best Practices from the documentation:
     from person
     where person_id = 1);
     
-    declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2023-03-15-preview';
     declare @headers nvarchar(102) = N'{"api-key":"OPENAI_KEY"}'
     declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"'+(@adcopy)+'"}]}'
     declare @ret int, @response nvarchar(max);
@@ -423,7 +427,7 @@ In this next section, we will be using the Todo application against our Free Azu
     AS
     
         declare @translated_task VARCHAR(1000);
-        declare @url nvarchar(4000) = N'https://vslive2024ai.openai.azure.com/openai/deployments/vslive2024ChattyKathy/chat/completions?api-version=2024-04-01-preview';
+        declare @url nvarchar(4000) = N'https://dm-dev-workshop-ai.openai.azure.com/openai/deployments/gpt-35-turbo/chat/completions?api-version=2024-04-01-preview';
         declare @headers nvarchar(102) = N'{"api-key":"OPENAI_KEY"}'
         declare @payload nvarchar(max) = N'{"messages":[{"role":"system","content":"Translate \"'+(@title)+'\" into German, only respond with the translation"}]}'
         declare @ret int, @response nvarchar(max);
