@@ -187,19 +187,6 @@ In this section, you will create a change data stream using Change Tracking, the
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.Sql
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
-    ```
-
-    You may see that the **using Microsoft.Azure.WebJobs.Extensions.Sql** line is missing a semicolon (;). Please add a semicolon at the end of that line (**using Microsoft.Azure.WebJobs.Extensions.Sql;**) so it looks like the following:
-
-    ```C#
-    using System;
-    using System.Collections.Generic;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Extensions.Sql;
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
