@@ -65,7 +65,7 @@ In this section, you will create a change data stream using Change Tracking, the
 1. Next, issue the following command to start the function creation process:
 
     ```bash
-    func init triggerBinding --worker-runtime dotnet
+    func init triggerBinding --worker-runtime dotnet-isolated
     ```
 
 1. When this process is finished, click the File Explorer extension to see the new files that were created.
@@ -85,7 +85,7 @@ In this section, you will create a change data stream using Change Tracking, the
     then
 
     ```bash
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.Sql
+    dotnet add package Microsoft.Azure.Functions.Worker.Extensions.Sql
     ```
 
 ### Create the SQL trigger function
