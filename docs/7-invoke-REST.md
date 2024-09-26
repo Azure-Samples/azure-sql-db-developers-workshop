@@ -25,53 +25,31 @@ By default, External REST Endpoint Invocation expects a JSON payload in the resp
 The pre-created function is as follows:
 
 ```C#
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using System.Net.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Company.Function
+namespace func
 {
-    public static class HttpTriggerFunction
+    public class HttpTriggerFunctionSQL(ILogger<HttpTriggerFunctionSQL> logger)
     {
-        [FunctionName("HttpTriggerFunctionSQL")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+        private readonly ILogger<HttpTriggerFunctionSQL> _logger = logger;
+
+        [Function(nameof(ConvertCurrency))]
+        public IActionResult ConvertCurrency([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, [FromBody] dynamic data)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
-            string currency = req.Query["currency"];
-            double conversion = 1;
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            currency = currency ?? data?.currency ?? "USD";
-
+            string? currency = req.Query["currency"];
+            currency ??= data?.currency ?? "USD";
             
-            if (currency == "JPY")
-                {
-                    conversion = 147.81;
-                }
-            else if (currency == "EUR")
-                {
-                    conversion = 0.93;
-                }
-            else
-                {
-                    conversion = 1;
-                }
+            double conversion = currency switch
+            {
+                "JPY" => 147.81,
+                "EUR" => 0.93,
+                _ => 1
+            };
 
-
-            var myObj = new {currency = $"{currency}", priceConversion = $"{conversion}"};
-            var jsonToReturn = JsonConvert.SerializeObject(myObj);
-
-            return new OkObjectResult(myObj);
+            return new OkObjectResult(new {currency = $"{currency}", priceConversion = $"{conversion}"});
         }
     }
 }
@@ -114,7 +92,7 @@ namespace Company.Function
     DECLARE @ret INT, @response NVARCHAR(MAX), @priceConversion float;
     
     EXEC @ret = sp_invoke_external_rest_endpoint
-      @url = N'https://vsliveredmond2024.azurewebsites.net/api/HttpTriggerFunctionSQL',
+      @url = N'https://dm-dev-workshop-func.azurewebsites.net/api/ConvertCurrency',
       @payload = N'{"currency":"JPY"}',
       @method = N'POST',
       @response = @response OUTPUT;
@@ -213,16 +191,16 @@ The next few chapters will be using various Azure AI services such as AI Languag
 1. Copy and paste the following code into the query sheet
 
     ```SQL
-        DECLARE @ret INT, @response NVARCHAR(MAX)
-        DECLARE @headers nvarchar(102) = N'{"Accept":"text/*"}'
+    DECLARE @ret INT, @response NVARCHAR(MAX)
+    DECLARE @headers nvarchar(102) = N'{"Accept":"text/*"}'
 
-        EXEC @ret = sp_invoke_external_rest_endpoint
-        @url = N'https://vsliveredmond2024.azurewebsites.net/api/getKeys',
-        @method = 'GET',
-        @headers = @headers,
-        @response = @response OUTPUT;
-        
-        SELECT @ret AS ReturnCode, @response AS Response;
+    EXEC @ret = sp_invoke_external_rest_endpoint
+    @url = N'https://dm-dev-workshop-func.azurewebsites.net/api/GetKeys',
+    @method = 'GET',
+    @headers = @headers,
+    @response = @response OUTPUT;
+    
+    SELECT @ret AS ReturnCode, @response AS Response;
     ```
 
 1. To execute the code, **left click the green arrow** on the top right of the query sheet.

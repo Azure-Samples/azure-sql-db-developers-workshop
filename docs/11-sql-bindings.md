@@ -65,7 +65,7 @@ In this section, you will create a change data stream using Change Tracking, the
 1. Next, issue the following command to start the function creation process:
 
     ```bash
-    func init triggerBinding --worker-runtime dotnet
+    func init triggerBinding --worker-runtime dotnet-isolated
     ```
 
 1. When this process is finished, click the File Explorer extension to see the new files that were created.
@@ -85,7 +85,7 @@ In this section, you will create a change data stream using Change Tracking, the
     then
 
     ```bash
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.Sql
+    dotnet add package Microsoft.Azure.Functions.Worker.Extensions.Sql
     ```
 
 ### Create the SQL trigger function
@@ -180,19 +180,6 @@ In this section, you will create a change data stream using Change Tracking, the
     and **save the file**.
 
 1. One quick item to check is at the top of the file.
-
-    ```C#
-    using System;
-    using System.Collections.Generic;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.Sql
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
-    ```
-
-    You may see that the **using Microsoft.Azure.WebJobs.Extensions.Sql** line is missing a semicolon (;). Please add a semicolon at the end of that line (**using Microsoft.Azure.WebJobs.Extensions.Sql;**) so it looks like the following:
 
     ```C#
     using System;

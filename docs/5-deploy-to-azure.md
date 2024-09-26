@@ -160,11 +160,6 @@ The next section of the workshop will be using an Azure SQL Database. To move ou
 
     ![A picture of using Free Azure Database as the connection profile name](./media/ch5/deploy9.png)
 
-    * After pressing Enter and the connection profile is verified, a warning box **may** appear on the lower right of the screen. This warning is indicating that due to new security features within the database, you need to enable the self-signed certificate.
-        Click the Enable Trust Server Certificate green button to continue.
-
-        ![A picture of clicking the Enable Trust Server Certificate green button to continue](./media/ch5/deploy10.png)
-
     * There is now a connection to the Azure SQL Database running in the cloud in the code space you can use for deployment and further development.
 
         ![A picture of code spaces indicating a successful connection](./media/ch5/deploy11.png)

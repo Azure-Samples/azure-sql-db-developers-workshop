@@ -162,10 +162,11 @@ The `.rest` files all use a VS Code extension that allows you to submit REST/Gra
 ### REST Examples
 
 #### Get all persons in the table
+
 **Request:**
 
 ```bash
-http://localhost:5000/rest/person
+GET http://localhost:5000/rest/person
 ```
 
 **Response:**
@@ -190,10 +191,11 @@ http://localhost:5000/rest/person
 ---
 
 #### Get person by Primary Key
+
 **Request:**
 
 ```bash
-http://localhost:5000/rest/person/person_id/1
+GET http://localhost:5000/rest/person/person_id/1
 ```
 
 **Response:**
@@ -214,10 +216,11 @@ http://localhost:5000/rest/person/person_id/1
 ---
 
 #### Filter the columns using select
+
 **Request:**
 
 ```bash
-http://localhost:5000/rest/person?$select=person_email
+GET http://localhost:5000/rest/person?$select=person_email
 ```
 
 **Response:**
@@ -245,7 +248,7 @@ http://localhost:5000/rest/person?$select=person_email
 **Request:**
 
 ```bash
-http://localhost:5000/rest/person?$filter=person_name eq 'bill'
+GET http://localhost:5000/rest/person?$filter=person_name eq 'bill'
 ```
 
 **Response:**
@@ -266,7 +269,7 @@ http://localhost:5000/rest/person?$filter=person_name eq 'bill'
 **Request:**
 
 ```bash
-http://localhost:5000/rest/person?$filter=person_name ne 'bill'
+GET http://localhost:5000/rest/person?$filter=person_name ne 'bill'
 ```
 
 **Response:**
@@ -297,7 +300,7 @@ http://localhost:5000/rest/person?$filter=person_name ne 'bill'
 **Request:**
 
 ```bash
-http://localhost:5000/rest/person?$orderby=person_id desc
+GET http://localhost:5000/rest/person?$orderby=person_id desc
 ```
 
 **Response:**
@@ -330,7 +333,6 @@ http://localhost:5000/rest/person?$orderby=person_id desc
 ---
 
 #### Using POST to create a record
-(POST will precede the URL)
 
 **Request:**
 
@@ -359,6 +361,8 @@ content-type: application/json
   ]
 }
 ```
+
+You can double check with the GET commands you learned in the previous section that the new record has been added to the database
 
 ---
 
@@ -451,6 +455,9 @@ To test the GraphQL endpoints you can either use the `graphqlWorksheet.rest` fil
 
   > [!NOTE]  
   > Your URL will be different than the one in the above image excepting for the appending of `/graphql/` at the end.
+
+  > [!WARNING]
+  > If you are running from Codespaces and you get an error like `This <your-app-name>.app.github.dev page can’t be found`, check the URL to see if `:5000` has been automatically added before `/graphql/`. If yes, remove it: Codespaces port redirection will automatically take care of directing request to the correct port.
 
 1. You will now see the GraphQL playground, Banana Cake Pop:
 

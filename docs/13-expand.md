@@ -31,7 +31,7 @@ The available operators are:
 Let's start with the first REST call made, the PII detection and redaction endpoint:
 
 ```SQL
-declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+declare @url nvarchar(4000) = N'https://dm-dev-workshop-ls.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
 declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
 declare @payload nvarchar(max) = N'{
     "kind": "PiiEntityRecognition",
@@ -238,7 +238,7 @@ WHERE A.[key] = 'entities'
 
 Can we make a stored procedure that takes in say the authentication key and content we want to send to a set of endpoints? Maybe a parameter that sets the endpoint we want to use?
 
-If we look at the AI Content Safety URLs, they start with "https://vslive2024language.cognitiveservices.azure.com/contentsafety/text:". The URL also ends with the API version "?api-version=2024-02-15-preview". What is different is what is after text:. The 3 options we can use that have a similar payload are analyze, detectJailbreak, and detectProtectedMaterial.
+If we look at the AI Content Safety URLs, they start with "https://dm-dev-workshop-ls.cognitiveservices.azure.com/contentsafety/text:". The URL also ends with the API version "?api-version=2024-02-15-preview". What is different is what is after text:. The 3 options we can use that have a similar payload are analyze, detectJailbreak, and detectProtectedMaterial.
 
 With that said, it seems we have 3 parameters for the stored procedure: Auth key, operation, and message.
 
@@ -254,7 +254,7 @@ Can you create a stored procedure that takes in 3 parameters and calls the 3 AI 
 ```SQL
 CREATE PROCEDURE aiContentSafety @operation nvarchar(100), @safetykey nvarchar(100), @message nvarchar(max)
 AS
-declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/contentsafety/text:' + @operation + '?api-version=2024-02-15-preview';
+declare @url nvarchar(4000) = N'https://dm-dev-workshop-safety.cognitiveservices.azure.com/contentsafety/text:' + @operation + '?api-version=2024-02-15-preview';
 declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"'+ @safetykey +'"}';
 declare @payload nvarchar(max) = N'{
 "text": "'+ @message +'"
@@ -350,7 +350,7 @@ Can you add logic and JSON functions to the stored procedure to extract informat
 ```SQL
 CREATE PROCEDURE aiContentSafety @operation nvarchar(100), @safetykey nvarchar(100), @message nvarchar(max)
 AS
-declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/contentsafety/text:' + @operation + '?api-version=2024-02-15-preview';
+declare @url nvarchar(4000) = N'https://dm-dev-workshop-safety.cognitiveservices.azure.com/contentsafety/text:' + @operation + '?api-version=2024-02-15-preview';
 declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"'+ @safetykey +'"}';
 declare @payload nvarchar(max) = N'{
 "text": "'+ @message +'"

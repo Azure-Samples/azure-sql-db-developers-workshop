@@ -42,7 +42,7 @@ The first endpoint we will use is the Personally Identifiable Information (PII) 
 1. Copy the following SQL and paste it into the SQL query editor.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ls.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "PiiEntityRecognition",
@@ -148,7 +148,7 @@ The Answer Questions capability attempts to extract the answer to a given questi
 1. Copy the following SQL and paste it into the SQL query editor. This example uses a description from the Adventure Works ProductDescription table to seed the session.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:query-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ls.cognitiveservices.azure.com/language/:query-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @message nvarchar(max);
     SET @message = N'This bike is ridden by race winners. Developed with the Adventure Works Cycles professional race team, it has a extremely light heat-treated aluminum frame, and steering that allows precision control.';
@@ -220,7 +220,7 @@ This prebuilt summarization API can produce a summary for a conversation or from
 1. Copy the following SQL and paste it into the SQL query editor.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/analyze-text/jobs?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ls.cognitiveservices.azure.com/language/analyze-text/jobs?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
     "displayName": "Document ext Summarization Task Example",
@@ -254,39 +254,15 @@ This prebuilt summarization API can produce a summary for a conversation or from
         @timeout = 230,
         @response = @response output;
 
-    select @ret as ReturnCode, @response as Response;
+    select @ret as ReturnCode, json_value(@response, '$.response.headers."operation-location"') as [url], @response as Response;
+
     ```
 
 1. Replace the **LANGUAGE_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
 
 1. Execute the SQL statement with the run button.
 
-1. View the results and find the **operation-location** value.
-
-    ```JSON
-    {
-        "response": {
-            "status": {
-                "http": {
-                    "code": 202,
-                    "description": ""
-                }
-            },
-            "headers": {
-                "Date": "Fri, 03 May 2024 20:31:10 GMT",
-                "Content-Length": "0",
-                "operation-location": "https://vslive2024language.cognitiveservices.azure.com/language/analyze-text/jobs/1111-2222-4444-111?api-version=2023-04-01",
-                "x-envoy-upstream-service-time": "238",
-                "apim-request-id": "abababab-abab-1234-1122-abababababab",
-                "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
-                "x-content-type-options": "nosniff",
-                "x-ms-region": "West US"
-            }
-        }
-    }
-    ```
-
-1. Copy the URL in the **operation-location** value.
+1. Copy and paste the value of the **operation-location** column that contains the url that needs to be used in the next step
 
 1. Copy and paste the following code into the query editor.
 
@@ -302,10 +278,12 @@ This prebuilt summarization API can produce a summary for a conversation or from
         @timeout = 230,
         @response = @response output;
 
-    select @ret as ReturnCode, @response as Response;
+    select @ret as ReturnCode, @response as Response;    
     ```
 
 1. Replace the **LANGUAGE_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity. Replace the **OPERATION-LOCATION-URL** with the **operation-location** URL value from the response message.
+
+Make sure to 
 
 1. Execute the SQL statement with the run button.
 
@@ -358,7 +336,7 @@ Azure AI Language Sentiment Analysis feature provides sentiment labels (such as 
 1. Copy the following SQL and paste it into the SQL query editor.
 
     ```SQL
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ls.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "SentimentAnalysis",
@@ -450,7 +428,7 @@ The Language Detection feature of the Azure AI Language REST API evaluates text 
     declare @message nvarchar(max);
     SET @message = N'Adapté à tous les usages, sur route ou tout-terrain. Pour toutes les bourses. Changement de braquet en douceur et conduite confortable.';
 
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ls.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "LanguageDetection",
@@ -508,7 +486,7 @@ This prebuilt capability uses Named Entity Recognition (NER) to identify entitie
     declare @message nvarchar(max);
     SET @message = N'All-occasion value bike with our basic comfort and safety features. Offers wider, more stable tires for a ride around town or weekend trip.';
 
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ls.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "EntityRecognition",
@@ -537,6 +515,23 @@ This prebuilt capability uses Named Entity Recognition (NER) to identify entitie
         @response = @response output;
 
     select @ret as ReturnCode, @response as Response;
+    select
+        d.id,
+        e.*
+    from
+        openjson(@response, '$.result.results.documents[0]') with
+            (   
+                id int,
+                entities nvarchar(max) as json
+            ) d
+    cross apply 
+        openjson(d.entities) with (
+            [text] nvarchar(100),
+            [category] nvarchar(100),
+            [offset] int,
+            [length] int,
+            confidenceScore decimal(9,2)
+        ) e
     ```
 
 1. Replace the **LANGUAGE_KEY** text with the AI Language Key that was returned to you in the previous chapter when testing connectivity.
@@ -580,6 +575,8 @@ This prebuilt capability uses Named Entity Recognition (NER) to identify entitie
     ],
     ```
 
+1. You also have an example of how the returned JSON can be easily converted into a table using OPENJSON.
+
 1. If you want to experiment with this, you can change the **ProductDescriptionID** in the SQL statement that sets the message. Some values you can use are 661, 1062, or 647.
 
 ### Entity Linking
@@ -592,7 +589,7 @@ This prebuilt capability disambiguates the identity of an entity found in text b
     declare @message nvarchar(max);
     SET @message = N'Top-of-the-line competition mountain bike. Performance-enhancing options include the innovative HL Frame, super-smooth front suspension, and traction for all terrain.';
 
-    declare @url nvarchar(4000) = N'https://vslive2024language.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
+    declare @url nvarchar(4000) = N'https://dm-dev-workshop-ls.cognitiveservices.azure.com/language/:analyze-text?api-version=2023-04-01';
     declare @headers nvarchar(300) = N'{"Ocp-Apim-Subscription-Key":"LANGUAGE_KEY"}';
     declare @payload nvarchar(max) = N'{
         "kind": "EntityLinking",
