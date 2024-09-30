@@ -196,6 +196,8 @@ In this section, you will create a change data stream using Change Tracking, the
 
 1. If you didn't already, **save the file**.
 
+1. In the terminal run the following code: `dotnet add package Newtonsoft.Json` to make sure the needed Newtonsoft.Json is installed.
+
 ### Testing the trigger
 
 1. Now that the function code is done, we need to provide it a value for the `connection-string` Azure Function setting. If you remember, back in the `.env` in the root directory,
