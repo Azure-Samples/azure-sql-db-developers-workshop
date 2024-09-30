@@ -196,7 +196,11 @@ In this section, you will create a change data stream using Change Tracking, the
 
 1. If you didn't already, **save the file**.
 
-1. In the terminal run the following code: `dotnet add package Newtonsoft.Json` to make sure the needed Newtonsoft.Json is installed.
+1. In the terminal run the following code:
+   ```C#
+   dotnet add package Newtonsoft.Json
+   ```
+   to make sure the needed Newtonsoft.Json is installed.
 
 ### Testing the trigger
 
