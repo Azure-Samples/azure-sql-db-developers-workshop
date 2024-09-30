@@ -2,19 +2,33 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace func
 {
+    public class Payload
+    {
+        public string? currency { get; set; }
+    }
+
     public class HttpTriggerFunctionSQL(ILogger<HttpTriggerFunctionSQL> logger)
     {
         private readonly ILogger<HttpTriggerFunctionSQL> _logger = logger;
 
         [Function(nameof(ConvertCurrency))]
-        public IActionResult ConvertCurrency([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, [FromBody] dynamic data)
+        public async Task<IActionResult> ConvertCurrency([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
             string? currency = req.Query["currency"];
-            currency ??= data?.currency ?? "USD";
-            
+    
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            if (!string.IsNullOrEmpty(requestBody))
+            {
+                Payload? data = JsonSerializer.Deserialize<Payload>(requestBody);
+                Console.WriteLine(JsonSerializer.Serialize(data));
+                currency ??= data?.currency;
+            }
+            currency ??= "USD";
+
             double conversion = currency switch
             {
                 "JPY" => 147.81,
@@ -26,7 +40,7 @@ namespace func
         }
 
         [Function(nameof(GetKeys))]
-        public IActionResult GetKeys([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, [FromBody] dynamic data)
+        public IActionResult GetKeys([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
             string openAIKey = Environment.GetEnvironmentVariable("OPENAI_KEY") ?? "N/A";
             string languageServiceKey = Environment.GetEnvironmentVariable("LANGUAGE_SERVICE_KEY") ?? "N/A";
