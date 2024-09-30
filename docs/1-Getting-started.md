@@ -91,7 +91,7 @@ swa --version
 * [git](https://git-scm.com/downloads)
 * [Azure Data Studio](https://learn.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Azure Functions Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
-* [.NET SDK 6+](https://dotnet.microsoft.com/download/dotnet/7.0)
+* [.NET SDK 8+](https://dotnet.microsoft.com/download/dotnet/8.0)
 * [Go-sqlcmd](https://github.com/microsoft/go-sqlcmd)
 * [SqlPackage](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-download)
 * [Data API Builder](https://github.com/Azure/data-api-builder)
